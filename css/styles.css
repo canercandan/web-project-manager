@@ -50,6 +50,29 @@ input.search
 	background: transparent url("../images/icons/magnifier.png") no-repeat;
 }
 
+fieldset
+{
+	padding: 25px;
+	border: 3px solid SkyBlue;
+}
+
+legend
+{
+	padding: 5px;
+	border: 3px solid SkyBlue;
+}
+
+.form
+{
+	font-weight: bold;
+	text-align: center;
+}
+
+.form label
+{
+	border-bottom: 1px solid SkyBlue;
+}
+
 .clear
 {
 	clear: both;

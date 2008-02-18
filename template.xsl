@@ -19,9 +19,9 @@
 	  <div id="body">
 	    <div id="nav">
 	      <a href="#">Home</a><br />
-	      <a href="#">Home</a><br />
-	      <a href="#">Home</a><br />
-	      <a href="#">Home</a><br />
+	      <a href="#">Inscription</a><br />
+	      <a href="#">Connexion</a><br />
+	      <a href="#">Contact</a><br />
 	    </div>
 	    <div id="box">
 	      <xsl:if test="doc/body/create">
@@ -47,15 +47,24 @@
   </xsl:template>
   <xsl:template match="create">
     <form action="#">
-      <div>
-	Login<br />
-	<input type="text" name="{field_login}" /><br />
-	Password<br />
-	<input type="text" name="{field_passwd}" /><br />
-	Email<br />
-	<input type="text" name="{field_email}" /><br />
-	<input type="submit" value="Ok" />
-      </div>
+      <fieldset>
+	<legend>Inscription</legend>
+	<div class="form">
+	  <label>
+	    Login<br />
+	    <input type="text" name="{field_login}" />
+	  </label><br />
+	  <label>
+	    Password<br />
+	    <input type="text" name="{field_passwd}" />
+	  </label><br />
+	  <label>
+	    Email<br />
+	    <input type="text" name="{field_email}" />
+	  </label><br />
+	  <input type="submit" value="Ok" />
+	</div>
+      </fieldset>
     </form>
   </xsl:template>
 </xsl:stylesheet>
