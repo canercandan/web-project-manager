@@ -4,11 +4,10 @@ require_once("define_usr.php");
 
 function usr_login_check()
 {
-	$test = mysql_query(sprintf(USR_SQL_SELECT_LOGIN, USR_POST_LOGIN));
-	$login = mysql_result($test, 0, 0);
-	if (!$test)
-		return (1);
-	return (0);
+  $test = mysql_query(sprintf(USR_SQL_SELECT_LOGIN, $_POST[USR_POST_LOGIN]));
+  if (@mysql_num_rows($test))
+    return (1);
+  return (0);
 }
 
 function usr_email_check()
