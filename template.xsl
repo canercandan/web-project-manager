@@ -32,8 +32,8 @@
     <xsl:value-of select="text" />
     <xsl:for-each select="autor">
       <span class="autor">
-	<xsl:value-of select="." />,
-      </span>
+	<xsl:value-of select="." />
+      </span>,
     </xsl:for-each>
   </xsl:template>
   <xsl:template match="login">
