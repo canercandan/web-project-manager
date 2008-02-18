@@ -2,15 +2,6 @@
 
 require_once('./define_usr.php');
 
-function usr_field()
-{
-  $login = sprintf(USR_XML_FIELD_LOGIN, USR_POST_LOGIN);
-  $passwd = sprintf(USR_XML_FIELD_PASSWD, USR_POST_PASSWD);
-  $email = sprintf(USR_XML_FIELD_EMAIL, USR_POST_EMAIL);
-  $field = sprintf(USR_XML_FIELD, $login, $passwd, $email);
-  return (sprintf(USR_XML_CREATE, $field));
-}
-
 function usr_login_check()
 {
   $test = mysql_query(sprintf(USR_SQL_SELECT_LOGIN, $_POST[USR_POST_LOGIN]));
