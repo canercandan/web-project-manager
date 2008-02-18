@@ -1,20 +1,12 @@
 #content,
-#header > .title,
-#header > .by,
-#body > .left,
-#body > .right,
-#body > .right > .subtitle
+#header h1,
+#nav,
+#body
 {
 	border-radius: 15px; /* CSS3 Standard */
 	-moz-border-radius: 15px; /* for Mozilla */
 }
 
-#header > .title,
-#header > .by,
-.ban_728x90,
-.ban_300x250,
-.nav > li,
-#footer IMG,
 input
 {
 	filter: alpha(opacity=70); /* for IE */
@@ -22,11 +14,6 @@ input
 	-moz-opacity: 0.7; /* for Mozilla */
 }
 
-#header > div:hover,
-#header > h1:hover,
-#body div:hover,
-.nav > li:hover,
-#footer IMG:hover,
 input:hover
 {
 	filter: alpha(opacity=100); /* for IE */

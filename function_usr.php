@@ -8,7 +8,7 @@ function usr_field()
   $passwd = sprintf(USR_XML_FIELD_PASSWD, USR_POST_PASSWD);
   $email = sprintf(USR_XML_FIELD_EMAIL, USR_POST_EMAIL);
   $field = sprintf(USR_XML_FIELD, $login, $passwd, $email);
-  return ($field);
+  return (sprintf(USR_XML_CREATE, $field));
 }
 
 function usr_login_check()

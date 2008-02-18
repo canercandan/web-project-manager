@@ -29,8 +29,8 @@ textarea
 	font-size: 10px;
 	font-weight: bold;
 	text-decoration: none;
-	color: SkyBlue;
-	border: 1px dashed #ffcc33;
+	color: Black;
+	border: 1px dashed SkyBlue;
 }
 
 input[type='text'],
@@ -65,20 +65,46 @@ input.search
 
 #header
 {
+	padding: 5px;
+}
+
+#header h1
+{
+	margin: 10px auto;
+	padding: 15px;
+	width: 200px;
+	text-align: center;
+	font-size: 2em;
+	border: 5px solid WhiteSmoke;
 }
 
 #body
 {
+	padding: 10px;
 	background-color: WhiteSmoke;
 }
 
 #footer
 {
-
+	padding: 5px;
+	text-align: right;
 }
 
 #footer .autor
 {
 	padding: 0 5px;
 	text-decoration: underline;
+}
+
+#nav
+{
+	float: left;
+	padding: 5px 15px;
+	width: 10%;
+	background-color: SkyBlue;
+}
+
+#box
+{
+	margin-left: 15%;
 }
