@@ -17,19 +17,25 @@
 	    <h1>TechWeb</h1>
 	  </div>
 	  <div id="body">
-	    <xsl:if test="doc/content/login">
-	      <xsl:apply-templates
-		 select="doc/content/login" />
+	    <xsl:if test="doc/body/login">
+	      <xsl:apply-templates select="doc/body/login" />
 	    </xsl:if>
 	  </div>
 	  <div id="footer">
-	    Copyleft by candan_c, aubry_j,
-	    roser_m, lazaru_v.
+	    <xsl:value-of select="doc/footer" />
 	  </div>
 	</div>
       </body>
     </html>
   </xsl:template>
   <xsl:template match="login">
+    <form action="#">
+      <div>
+	Login<br />
+	<input type="text" name="login" /><br />
+	Email<br />
+	<input type="text" name="email" /><br />
+      </div>
+    </form>
   </xsl:template>
 </xsl:stylesheet>
