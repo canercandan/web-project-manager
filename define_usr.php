@@ -17,7 +17,7 @@ define('USR_XML_ERROR_EMAIL', "error : email invalid");
 define('USR_XML_MESG', "<mesg>%s</mesg>");
 define('USR_XML_MESG_OK', "congratulation, user create");
 
-define('USR_REGEX_EMAIL', '^[[:alpha:]]{1}[[:alnum:]]*((\.|_|-)[[:alnum:]]+)*@[[:alpha:]]{1}[[:alnum:]]*((\.|-)[[:alnum:]]+)*(\.[[:alpha:]]{2,4})$');
+define('USR_REGEX_EMAIL', "^[a-zA-Z0-9\_\-\.]+\@+[a-zA-Z0-9\_\-\.]+\.[a-zA-Z0-9]{2,4}$");
 
 /*
 ** Define user : name for request
