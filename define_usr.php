@@ -4,10 +4,6 @@
 ** Define user : name for xml
 */
 
-  /*
-merde de can
-  */
-
 define('USR_XML_DOC', "<doc>%s</doc>");
 
 define('USR_XML_LOGIN', "<login>%s</login>");
