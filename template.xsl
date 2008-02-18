@@ -18,15 +18,18 @@
 	  </div>
 	  <div id="body">
 	    <xsl:if test="doc/body/login">
-	      <xsl:apply-templates select="doc/body/login" />
+	      <xsl:apply-templates select="doc/content/login" />
 	    </xsl:if>
 	  </div>
 	  <div id="footer">
-	    <xsl:value-of select="doc/footer" />
+	    <xsl:apply-templates select="doc/footer" />
 	  </div>
 	</div>
       </body>
     </html>
+  </xsl:template>
+  <xsl:template match="footer">
+    <xsl:value-of select="text" />
   </xsl:template>
   <xsl:template match="login">
     <form action="#">
