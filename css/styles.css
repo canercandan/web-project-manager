@@ -1,0 +1,56 @@
+@import url("./more.css");
+
+body
+{
+	margin: 0;
+	padding: 0;
+	font-family: verdana, arial, sans-serif;
+	font-size: 1em;
+	color: #000;
+	background-color: WhiteSmoke;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active
+{
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 0.8em;
+	color: Peru;
+}
+
+input,
+select,
+textarea
+{
+	background-color: #eee;
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: none;
+	color: SkyBlue;
+	border: 1px dashed #ffcc33;
+}
+
+input[type='text'],
+select
+{
+	width: 180px;
+}
+
+input[type='submit']
+{
+	width: 50px;
+}
+
+input.search
+{
+	padding-left: 15px;
+	background: transparent url("../images/icons/magnifier.png") no-repeat;
+}
+
+.clear
+{
+	clear: both;
+}
