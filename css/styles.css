@@ -71,3 +71,14 @@ input.search
 {
 	background-color: WhiteSmoke;
 }
+
+#footer
+{
+
+}
+
+#footer .autor
+{
+	padding: 0 5px;
+	text-decoration: underline;
+}

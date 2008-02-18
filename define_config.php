@@ -14,7 +14,7 @@ define('XML_HEADER',
 define('XML_FOOTER',
        '  </body>
           <footer>
-	    <text>Copyleft by</text>
+	    <text>Copyleft by </text>
 	    <autor>candan_c</autor>
 	    <autor>aubry_j</autor>
 	    <autor>roser_m</autor>

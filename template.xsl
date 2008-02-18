@@ -18,7 +18,7 @@
 	  </div>
 	  <div id="body">
 	    <xsl:if test="doc/body/login">
-	      <xsl:apply-templates select="doc/content/login" />
+	      <xsl:apply-templates select="doc/body/login" />
 	    </xsl:if>
 	  </div>
 	  <div id="footer">
@@ -30,6 +30,11 @@
   </xsl:template>
   <xsl:template match="footer">
     <xsl:value-of select="text" />
+    <xsl:for-each select="autor">
+      <span class="autor">
+	<xsl:value-of select="." />,
+      </span>
+    </xsl:for-each>
   </xsl:template>
   <xsl:template match="login">
     <form action="#">
