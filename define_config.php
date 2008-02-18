@@ -14,7 +14,11 @@ define('XML_HEADER',
 define('XML_FOOTER',
        '  </body>
           <footer>
-	    Copyleft by == candan_c, aubry_j, roser_m, lazaru_v
+	    <text>Copyleft by</text>
+	    <autor>candan_c</autor>
+	    <autor>aubry_j</autor>
+	    <autor>roser_m</autor>
+	    <autor>lazaru_v</autor>
 	  </footer>
 	</doc>');
 
