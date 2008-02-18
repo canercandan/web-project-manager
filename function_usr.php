@@ -47,6 +47,4 @@ function usr_add()
   return ($doc);
 }
 
-$usr = usr_field();
-echo $usr;
 ?>
