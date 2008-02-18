@@ -36,9 +36,4 @@ function usr_add()
 	return ($doc);
 }
 
-$connect = mysql_connect("localhost", "root", "2243562668869");
-mysql_select_db("tech_web");
-$answer = usr_add();
-echo "$answer";
-mysql_close($connect);
 ?>
