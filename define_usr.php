@@ -37,7 +37,7 @@ define('USR_SQL_SELECT_LOGIN', 'SELECT usr_login
 
 define('USR_SQL_SELECT_PASSWD', 'SELECT usr_passwd
 							    FROM tw_usr
-								WHERE usr_login = %s;');
+								WHERE usr_login = \'%s\';');
 
 /*
 ** Define user : sql add request
@@ -57,19 +57,19 @@ define('USR_SQL_ADD_TABLE_LOCATION', "INSERT INTO tw_location
 */
 
 define('USR_SQL_UPDATE_TABLE_USR', "UPDATE tw_usr
-								   SET %s = %s
-								   WHERE usr_login = %s;");
+								   SET \'%s\' = \'%s\'
+								   WHERE usr_login = \'%s\';");
 
 define('USR_SQL_UPDATE_TABLE_PROFIL', "UPDATE tw_profil
-									  SET %s = %s
+									  SET \'%s\' = \'%s\'
 									  WHERE profil_id = ( SELECT usr_profil_id
 														  FROM tw_usr
-														  WHERE usr_login = %s );");
+														  WHERE usr_login = \'%s\' );");
 
 define('USR_SQL_UPDATE_TABLE_LOCATION', "UPDATE tw_location
-									    SET %s = %s
+									    SET \'%s\' = \'%s\'
 										WHERE location_id = ( SELECT usr_profil_id
 															  FROM tw_usr
-															  WHERE usr_login = %s );");
+															  WHERE usr_login = \'%s\' );");
 
 ?>
