@@ -60,7 +60,7 @@ define('USR_SQL_ADD_TABLE_USR',
 
 define('USR_SQL_ADD_TABLE_PROFIL',
        'INSERT INTO tw_profil
-	                                                           VALUES(0, 0, AAA, AAA, AAA, 000);');
+	VALUES(0, 0, AAA, AAA, AAA, 000);');
 
 define('USR_SQL_ADD_TABLE_LOCATION',
        'INSERT INTO tw_location
