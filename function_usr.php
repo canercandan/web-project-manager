@@ -1,6 +1,17 @@
 <?php
 session_start();
-require_once("define_usr.php");
+require_once('define_usr.php');
+require_once('define_config.php');
+
+function usr_field()
+{
+	$login = sprintf(USR_XML_FIELD_LOGIN, USR_POST_LOGIN);
+	$passwd = sprintf(USR_XML_FIELD_PASSWD, USR_POST_PASSWD);
+	$email = sprintf(USR_XML_FIELD_EMAIL, USR_POST_EMAIL);
+	$field = sprintf(USR_XML_FIELD, $login, $passwd, $email);
+	$usr = sprintf(XML_CONTENT, XML_HEADER, $field, XML_FOOTER);
+	return ($usr);
+}
 
 function usr_login_check()
 {
@@ -36,4 +47,6 @@ function usr_add()
   return ($doc);
 }
 
+$usr = usr_field();
+echo $usr;
 ?>

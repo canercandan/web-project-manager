@@ -4,8 +4,12 @@
 ** Define user : name for xml
 */
 
-define('USR_XML_DOC', "<doc>%s</doc>");
+define('USR_XML_FIELD', '%s%s%s');
+define('USR_XML_FIELD_LOGIN', '<field_login>%s</field_login>');
+define('USR_XML_FIELD_PASSWD', '<field_passwd>%s</field_passwd>');
+define('USR_XML_FIELD_EMAIL', '<field_email>%s</field_email>');
 
+define('USR_XML_DOC', "<doc>%s</doc>");
 define('USR_XML_LOGIN', "<login>%s</login>");
 define('USR_XML_PASSWD', "<passwd>%s</passwd>");
 define('USR_XML_EMAIL', "<email>%s</email>");
