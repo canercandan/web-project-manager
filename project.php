@@ -1,17 +1,10 @@
 <?php
 
+require_once('define_project.php');
+
 /*
 ** a completer par viven
 */
-
-
-define('MAIN', 1);
-
-require_once('./define_config.php');
-require_once('define_project.php');
-
-header(HEADER_CONTENT_TYPE);
-printf(XML_HEADER);
 
 printf(PROJECT_BEGIN);
 
@@ -24,18 +17,24 @@ else
 	printf(PROJECT_NAME,UNKNOWED_PROJECT);
 }
 
+/*
+** TODO Project Menu
+*/
+
+/*
+** TODO Activity list marc 
+*/
+	
 if (isset($_SESSION[ACTIVITY_NAME]))
 {
+	// window at the right of the project menu = activity window
 	include('activity.php');
 }
 else
 {
-	/*
-	** TODO Activity list 
-	*/
-
 	if (true || (isset($_SESSION[PROJECT_MENU]) && $_SESSION[PROJECT_MENU] == ADD_ACTIVITY))
 	{
+		// window at the right of the project menu = add activity to this project
 		include('add_activity.php');
 	}
 	
@@ -45,7 +44,5 @@ else
 }
 
 printf(PROJECT_END);
-
-printf(XML_FOOTER);
 
 ?>
