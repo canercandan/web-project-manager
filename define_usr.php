@@ -75,10 +75,12 @@ define('USR_SQL_UPDATE_TABLE_USR',
 	SET \'%s\' = \'%s\'
 	WHERE usr_login = \'%s\';');
 
+//mysql_insert_id();
+
 define('USR_SQL_UPDATE_TABLE_PROFIL',
        'UPDATE tw_profil
 	SET \'%s\' = \'%s\'
-	WHERE profil_id = (SELECT usr_profil_id
+	WHERE profil_usr_id = (SELECT usr_profil_id
 			   FROM tw_usr
 			   WHERE usr_login = \'%s\');');
 
