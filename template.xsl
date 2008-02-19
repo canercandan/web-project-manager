@@ -33,6 +33,12 @@
 	      <xsl:if test="doc/body/connect">
 		<xsl:apply-templates select="doc/body/connect" />
 	      </xsl:if>
+	      <xsl:if test="doc/body/add_activity">
+		<xsl:apply-templates select="doc/body/add_activity" />
+	      </xsl:if>
+	      <xsl:if test="doc/body/error">
+		<xsl:apply-templates select="doc/body/error" />
+	      </xsl:if>
 	    </div>
 	    <br class="clear" />
 	  </div>
@@ -64,7 +70,7 @@
       <fieldset>
 	<legend>Inscription</legend>
 	<div class="form">
-	  With this form, you can to create an account.<br />
+	  With this form, you can create an account.<br />
 	  <br />
 	  <label>
 	    Login<br />
@@ -106,5 +112,35 @@
 	</div>
       </fieldset>
     </form>
+  </xsl:template>
+  <xsl:template match="add_activity">
+    <form action="#" method="post">
+      <fieldset>
+	<legend>Add an activity</legend>
+	<div class="form">
+	  <label>
+	    Name<br />
+	    <input type="text" name="{field_activity_name}" />
+	  </label><br />
+	  <label>
+	    Describe<br />
+	    <textarea name="{field_activity_describ}"></textarea>
+	  </label><br />
+	  <label>
+	    Charge<br />
+	    <input type="text" name="{field_activity_charge}" />
+	  </label><br />
+	  <input type="submit" value="Ok" />
+	</div>
+      </fieldset>
+    </form>
+  </xsl:template>
+  <xsl:template match="error">
+    <fieldset>
+      <legend>Error</legend>
+      <div class="error">
+	<xsl:value-of select="." />
+      </div>
+    </fieldset>
   </xsl:template>
 </xsl:stylesheet>

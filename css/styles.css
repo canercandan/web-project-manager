@@ -74,6 +74,11 @@ legend
 	border-bottom: 1px solid SkyBlue;
 }
 
+.error
+{
+	color: Red;
+}
+
 .clear
 {
 	clear: both;
