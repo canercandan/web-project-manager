@@ -7,7 +7,6 @@ define('FIELD_ACTIVITY_NAME', '<field_activity_name>%s</field_activity_name>');
 define('FIELD_ACTIVITY_DESCRIB', '<field_activity_describ>%s</field_activity_describ>');
 define('FIELD_ACTIVITY_CHARGE', '<field_activity_charge>%s</field_activity_charge>');
 
-define('PROJECT_NAME', '<project_name>%s</project_name>');
 define('ACTIVITY_NAME', '<activity_name>%s</activity_name>');
 define('ACTIVITY_DESCRIB', '<activity_describ>%s</activity_describ>');
 define('ACTIVITY_CHARGE', '<activity_charge>%s</activity_charge>');
