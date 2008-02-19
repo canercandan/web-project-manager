@@ -21,6 +21,7 @@ define('USR_XML_EMAIL', '<email>%s</email>');
 define('USR_XML_ERROR', '<error>%s</error>');
 define('USR_XML_ERROR_LOGIN', 'error : login already exist');
 define('USR_XML_ERROR_EMAIL', 'error : email invalid');
+define('USR_XML_ERROR_PASSWD_NOTFOUND', 'error: password isn\'t found.');
 
 define('USR_XML_MESG', '<mesg>%s</mesg>');
 define('USR_XML_MESG_OK', 'congratulation, user create');

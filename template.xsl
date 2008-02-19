@@ -24,6 +24,12 @@
 	      <a href="#">Contact</a><br />
 	    </div>
 	    <div id="box">
+	      <xsl:if test="doc/body/error">
+		<xsl:apply-templates select="doc/body/error" />
+	      </xsl:if>
+	      <xsl:if test="doc/body/mesg">
+		<xsl:apply-templates select="doc/body/mesg" />
+	      </xsl:if>
 	      <xsl:if test="doc/body/home">
 		<xsl:apply-templates select="doc/body/home" />
 	      </xsl:if>
@@ -35,9 +41,6 @@
 	      </xsl:if>
 	      <xsl:if test="doc/body/add_activity">
 		<xsl:apply-templates select="doc/body/add_activity" />
-	      </xsl:if>
-	      <xsl:if test="doc/body/error">
-		<xsl:apply-templates select="doc/body/error" />
 	      </xsl:if>
 	    </div>
 	    <br class="clear" />
@@ -66,7 +69,7 @@
     </fieldset>
   </xsl:template>
   <xsl:template match="create">
-    <form action="#" method="post">
+    <form action="./create.php" method="post">
       <fieldset>
 	<legend>Inscription</legend>
 	<div class="form">
@@ -94,7 +97,7 @@
     </form>
   </xsl:template>
   <xsl:template match="connect">
-    <form action="#" method="post">
+    <form action="./connect.php" method="post">
       <fieldset>
 	<legend>Connexion</legend>
 	<div class="form">
@@ -139,6 +142,14 @@
     <fieldset>
       <legend>Error</legend>
       <div class="error">
+	<xsl:value-of select="." />
+      </div>
+    </fieldset>
+  </xsl:template>
+  <xsl:template match="mesg">
+    <fieldset>
+      <legend>Confirmation</legend>
+      <div class="mesg">
 	<xsl:value-of select="." />
       </div>
     </fieldset>

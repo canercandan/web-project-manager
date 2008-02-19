@@ -22,4 +22,10 @@ define('XML_FOOTER',
 	  </footer>
 	</doc>');
 
+define('XML_ERROR',
+       '<error>%s</error>');
+
+define('XML_MESG',
+       '<mesg>%s</mesg>');
+
 ?>
