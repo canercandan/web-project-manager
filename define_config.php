@@ -7,9 +7,14 @@ define('HEADER_CONTENT_TYPE', 'Content-Type: text/xml');
 
 define('XML_HEADER',
        '<?xml version="1.0" encoding="iso-8859-1"?>
-	<?xml-stylesheet type="text/xsl" href="./template.xsl"?>
+	%s
 	<doc>
 	  <body>');
+
+define('XML_TEMPLATE',
+       '<?xml-stylesheet type="text/xsl" href="./template.xsl"?>');
+
+define('XML_NO_TEMPLATE', '');
 
 define('XML_FOOTER',
        '  </body>

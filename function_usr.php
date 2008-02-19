@@ -1,4 +1,5 @@
 <?php
+
 require_once('./define_usr.php');
 
 function usr_login_check()
@@ -21,7 +22,7 @@ function usr_passwd_check()
 function usr_repasswd_check()
 {
   if (strcmp($_POST[USR_POST_PASSWD], $_POST[USR_POST_REPASSWD]) == 0)
-	return (1);
+    return (1);
   return (0);
 }
 
@@ -36,7 +37,7 @@ function usr_add()
 {
   $login = usr_login_check();
   if ($login)
-	printf(USR_ERROR, USR_ERROR_LOGIN);
+    printf(USR_ERROR, USR_ERROR_LOGIN);
   $passwd = usr_repasswd_check();
   if (!$login && !$passwd)
     printf(USR_ERROR, USR_ERROR_REPASSWD);
@@ -52,9 +53,9 @@ function usr_connect()
   $login = usr_login_check();
   $passwd = usr_passwd_check();
   if (!login)
-	printf(USR_ERROR, USR_ERROR_LOGIN);
+    printf(USR_ERROR, USR_ERROR_LOGIN);
   if (!passwd)
-	printf(USR_ERROR, USR_ERROR_PASSWD);
+    printf(USR_ERROR, USR_ERROR_PASSWD);
   if (login && passwd)
     printf(USR_MESG, USR_MESG_CONNECT_OK);
 }

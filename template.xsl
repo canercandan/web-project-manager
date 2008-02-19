@@ -15,13 +15,16 @@
 	<div id="content">
 	  <div id="header">
 	    <h1>TechWeb</h1>
+	    <ul id="menu">
+	      <li><a href="./index.php">Home</a></li>
+	      <li><a href="./create.php">Inscription</a></li>
+	      <li><a href="./connect.php">Connexion</a></li>
+	      <li><a href="#">Contact</a></li>
+	    </ul>
+	    <br class="clear" />
 	  </div>
 	  <div id="body">
 	    <div id="nav">
-	      <a href="./index.php">Home</a><br />
-	      <a href="./create.php">Inscription</a><br />
-	      <a href="./connect.php">Connexion</a><br />
-	      <a href="#">Contact</a><br />
 	    </div>
 	    <div id="box">
 	      <xsl:if test="doc/body/error">
