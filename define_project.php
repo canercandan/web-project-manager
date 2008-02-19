@@ -1,6 +1,6 @@
 <?php
 
-define('PROJECT_NAME', '<project_name>%s</project_name>');
+define('PROJECT_NAME', '<name>%s</name>');
 define('PROJECT_BEGIN', '<project>');
 define('PROJECT_END', '</project>');
 define('UNKNOWED_PROJECT', 'Unknowed project');
