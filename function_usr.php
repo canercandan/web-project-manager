@@ -34,6 +34,36 @@ function usr_email_check()
   return (0);
 }
 
+function usr_select_location()
+{
+  $test = sql_query(sprintf(USR_SQL_SELECT_LOCATION_BEGIN));
+  $item = sprintf(USR_FIELD_SELECT_LOCATION_BEGIN);
+  $item = sprintf(USR_XML_SELECT_LOCATION, USR_POST_LOCATION);
+  $i = 0;
+  while (sql_num_rows($test, $i, 0))
+    {
+	  $item = $item . sprintf(USR_XML_ITEM, sql_num_rows($test, $i, 0), sql_num_rows($test, $i, 1)));
+	  $i++;
+    }
+  $item = $item . sprintf(USR_FIELD_SELECT_LOCATION_END);
+  return ($item);  
+}
+
+function usr_select_title()
+{
+  $test = sql_query(sprintf(USR_SQL_SELECT_TITLE_BEGIN));
+  $item = sprintf(USR_FIELD_SELECT_TITLE_BEGIN);
+  $item = sprintf(USR_XML_SELECT_TITLE, USR_POST_TITLE);
+  $i = 0;
+  while (sql_num_rows($test, $i, 0))
+    {
+	  $item = $item . sprintf(USR_XML_ITEM, sql_num_rows($test, $i, 0), sql_num_rows($test, $i, 1)));
+	  $i++;
+    }
+  $item = $item . sprintf(USR_FIELD_SELECT_TITLE_END);
+  return ($item);
+}
+
 function usr_add()
 {
   $login = usr_login_check();

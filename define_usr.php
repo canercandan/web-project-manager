@@ -14,9 +14,17 @@ define('USR_FIELD_PASSWD', '<field_passwd>%s</field_passwd>');
 define('USR_FIELD_REPASSWD', '<field_repasswd>%s</field_repasswd>');
 define('USR_FIELD_EMAIL', '<field_email>%s</field_email>');
 
+define('USR_FIELD_SELECT_LOCATION_BEGIN', '<field_select_location>');
+define('USR_FIELD_SELECT_LOCATION_END', '</field_select_location>');
+define('USR_FIELD_SELECT_TITLE_BEGIN', '<field_select_title>');
+define('USR_FIELD_SELECT_TITLE_END', '</field_select_title>');
+
 define('USR_XML_LOGIN', '<login>%s</login>');
 define('USR_XML_PASSWD', '<passwd>%s</passwd>');
 define('USR_XML_EMAIL', '<email>%s</email>');
+define('USR_XML_ITEM', '<item><id>%s</id><name>%s</name></item>');
+define('USR_XML_SELECT_LOCATION', '<select_location>%s</select_location>');
+define('USR_XML_SELECT_TITLE', '<select_title>%s</select_title>');
 
 define('USR_ERROR', '<error>%s</error>');
 
@@ -30,6 +38,8 @@ define('USR_POST_LOGIN', 'usrlogin');
 define('USR_POST_PASSWD', 'usrpasswd');
 define('USR_POST_REPASSWD', 'usrpasswd2');
 define('USR_POST_EMAIL', 'usremail');
+define('USR_POST_LOCATION', 'locationid');
+define('USR_POST_TITLE', 'titleid');
 
 define('USR_ERROR_LOGIN', 'error : wrong login');
 define('USR_ERROR_EMAIL', 'error : wrong email');
@@ -54,11 +64,11 @@ define('USR_SQL_SELECT_PASSWD',
 	    FROM tw_usr
 	    WHERE usr_login = \'%s\';');
 
-define('USR_SQL_SELECT_PROFIL_LOCATION',
+define('USR_SQL_SELECT_LOCATION',
 	   'SELECT location_id, location_name
 	    FROM tw_location;');
 
-define('USR_SQL_SELECT_PROFIL_TITLE',
+define('USR_SQL_SELECT_TITLE',
 	   'SELECT title_id, title_name
 	    FROM tw_title;');
 
