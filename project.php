@@ -1,6 +1,7 @@
 <?php
 
 require_once('define_project.php');
+require_once('function_activity.php');
 
 /*
 ** a completer par viven
@@ -20,10 +21,9 @@ else
 /*
 ** TODO Project Menu
 */
-
-/*
-** TODO Activity list marc 
-*/
+printf(ACTIVITIES_LIST_START);
+print_activities_list(0 /*$_SESSION['PROJECT_ID']*/, 0);
+printf(ACTIVITIES_LIST_END);
 	
 if (isset($_SESSION[ACTIVITY_NAME]))
 {

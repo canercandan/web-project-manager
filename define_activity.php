@@ -39,6 +39,8 @@ VALUES (
 NULL , \'%d\', \'%d\', \'%s\', \'%d\', CURDATE(), NULL, \'%s\'
 );');
 
-
+define('SQL_SELECT_ACTIVITIES', 'SELECT activity_id, activity_name FROM tw_activity 
+WHERE activity_project_id = \'%d\' 
+and activity_parent_id = \'%d\';');
 
 ?>

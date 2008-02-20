@@ -7,6 +7,6 @@ USER_ID (Jordan apres connection)
 USER_NAME (Jordan apres connection)
 ACTIVITY_ID (Marc)
 ACTIVITY_NAME (Marc)
-DEVELOPPED_ACTIVITY_[%s (ID)] (Marc)
+DEVELOPPED_ACTIVITY[%s (ID)] (Marc)
 
 
