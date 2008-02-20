@@ -60,34 +60,42 @@
 	    <br class="clear" />
 	  </div>
 	  <div id="body">
-	    <xsl:if test="doc/body/project">
-	      <div id="nav">
-		Actions
-	      </div>
-	    </xsl:if>
-	    <div id="box">
-	      <xsl:if test="doc/body/error">
-		<xsl:apply-templates select="doc/body/error" />
-	      </xsl:if>
-	      <xsl:if test="doc/body/mesg">
-		<xsl:apply-templates select="doc/body/mesg" />
-	      </xsl:if>
-	      <xsl:if test="doc/body/home">
-		<xsl:apply-templates select="doc/body/home" />
-	      </xsl:if>
-	      <xsl:if test="doc/body/create">
-		<xsl:apply-templates select="doc/body/create" />
-	      </xsl:if>
-	      <xsl:if test="doc/body/connect">
-		<xsl:apply-templates select="doc/body/connect" />
-	      </xsl:if>
-	      <xsl:if test="doc/body/project/add_activity">
-		<xsl:apply-templates select="doc/body/project/add_activity" />
-	      </xsl:if>
-	      <xsl:if test="doc/body/project/activities_list">
-		<xsl:apply-templates select="doc/body/project/activities_list" />
-	      </xsl:if>
-	    </div>
+	    <xsl:choose>
+	      <xsl:when test="doc/body/project">
+		<div id="nav">
+		  Actions
+		</div>
+		<div id="box">
+		  <xsl:if test="doc/body/project/add_activity">
+		    <xsl:apply-templates select="doc/body/project/add_activity" />
+		  </xsl:if>
+		  <xsl:if test="doc/body/project/activity">
+		    <div id="activity">
+		      <xsl:apply-templates select="doc/body/project/activity" />
+		    </div>
+		  </xsl:if>
+		</div>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<div>
+		  <xsl:if test="doc/body/error">
+		    <xsl:apply-templates select="doc/body/error" />
+		  </xsl:if>
+		  <xsl:if test="doc/body/mesg">
+		    <xsl:apply-templates select="doc/body/mesg" />
+		  </xsl:if>
+		  <xsl:if test="doc/body/home">
+		    <xsl:apply-templates select="doc/body/home" />
+		  </xsl:if>
+		  <xsl:if test="doc/body/create">
+		    <xsl:apply-templates select="doc/body/create" />
+		  </xsl:if>
+		  <xsl:if test="doc/body/connect">
+		    <xsl:apply-templates select="doc/body/connect" />
+		  </xsl:if>
+		</div>
+	      </xsl:otherwise>
+	    </xsl:choose>
 	    <br class="clear" />
 	  </div>
 	  <div id="footer">
@@ -211,7 +219,7 @@
   </xsl:template>
   <xsl:template match="activity">
     <ul>
-    <xsl:for-each select="activity">
+    <xsl:for-each select=".">
       <xsl:if test="developped">
 	<li><xsl:value-of select="title" /></li>
 	<xsl:if test="activity">
