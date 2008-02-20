@@ -121,40 +121,42 @@
   </xsl:template>
   <xsl:template match="add_activity">
     <form action="#" method="post">
-      <xsl:if test="mesg">
-	<fieldset>
-	  <legend>Confirmation</legend>
-	  <div class="mesg">
-	    <xsl:value-of select="." />
-	  </div>
-	</fieldset>
-      </xsl:if>
-      <xsl:if test="mesg=0">
-	<fieldset>
-	  <legend>Add an activity</legend>
-	  <div class="form">
-	    <xsl:if test="field_activity_name">
-	      <label>
-		Name<br />
-		<input type="text" name="{field_activity_name}" />
-	      </label><br />
-	    </xsl:if>
-	    <xsl:if test="field_activity_describ">
-	      <label>
-		Describe<br />
-		<textarea name="{field_activity_describ}"></textarea>
-	      </label><br />
-	    </xsl:if>
-	    <xsl:if test="field_activity_charge">
-	      <label>
-		Charge<br />
-		<input type="text" name="{field_activity_charge}" />
-	      </label><br />
-	    </xsl:if>
-	    <input type="submit" value="Ok" />
-	  </div>
-	</fieldset>
-      </xsl:if>
+      <xsl:choose>
+	<xsl:when test="mesg">
+	  <fieldset>
+	    <legend>Confirmation</legend>
+	    <div class="mesg">
+	      <xsl:value-of select="." />
+	    </div>
+	  </fieldset>
+	</xsl:when>
+	<xsl:otherwise>
+	  <fieldset>
+	    <legend>Add an activity</legend>
+	    <div class="form">
+	      <xsl:if test="field_activity_name">
+		<label>
+		  Name<br />
+		  <input type="text" name="{field_activity_name}" />
+		</label><br />
+	      </xsl:if>
+	      <xsl:if test="field_activity_describ">
+		<label>
+		  Describe<br />
+		  <textarea name="{field_activity_describ}"></textarea>
+		</label><br />
+	      </xsl:if>
+	      <xsl:if test="field_activity_charge">
+		<label>
+		  Charge<br />
+		  <input type="text" name="{field_activity_charge}" />
+		</label><br />
+	      </xsl:if>
+	      <input type="submit" value="Ok" />
+	    </div>
+	  </fieldset>
+	</xsl:otherwise>
+      </xsl:choose>
     </form>
   </xsl:template>
   <xsl:template match="error">
