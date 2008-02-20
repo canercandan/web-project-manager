@@ -91,10 +91,14 @@ CREATE TABLE IF NOT EXISTS tw_usr_level (
   PRIMARY KEY  (level_id)
 ) ENGINE=MyISAM;
 
-
+INSERT INTO tw_usr_level (level_id, level_name)
+VALUES (1, 'Administrator Root');
 
 INSERT INTO tw_usr_level (level_id, level_name)
-VALUES ('Administrator Root'),
-VALUES ('Administrator'),
-VALUES ('Chef de projet'),
-VALUES ('Participant');
+VALUES (2, 'Administrator');
+
+INSERT INTO tw_usr_level (level_id, level_name)
+VALUES (3, 'Chef de projet');
+
+INSERT INTO tw_usr_level (level_id, level_name)
+VALUES (4, 'Participant');
