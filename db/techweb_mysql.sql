@@ -86,7 +86,15 @@ CREATE TABLE IF NOT EXISTS tw_usr (
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS tw_usr_level (
-  usr_level_id INT NOT NULL auto_increment,
-  usr_level_name varchar(30) default NULL,
-  PRIMARY KEY  (usr_level_id)
+  level_id INT NOT NULL auto_increment,
+  level_name varchar(30) default NULL,
+  PRIMARY KEY  (level_id)
 ) ENGINE=MyISAM;
+
+
+
+INSERT INTO tw_usr_level (level_id, level_name)
+VALUES ('Administrator Root'),
+VALUES ('Administrator'),
+VALUES ('Chef de projet'),
+VALUES ('Participant');
