@@ -54,21 +54,21 @@ define('USR_SQL_SELECT_PASSWD',
 
 /*
 ** Define user : sql add request
+*/
 
-
-define('USR_SQL_ADD_TABLE_USR',
+define('USR_SQL_ADD_USR',
        'INSERT INTO tw_usr
-	VALUES(0, 0, %s, sha1(%s), %s, 2000-01-01);');
+		VALUES(0, 0, \'%s\', sha1(\'%s\'), \'%s\', curdate(), 0);');
 
-define('USR_SQL_ADD_TABLE_PROFIL',
+define('USR_SQL_ADD_PROFIL',
        'INSERT INTO tw_profil
-	VALUES(0, 0, AAA, AAA, AAA, 000);');
+		VALUES(\'%s\', \'%s\', \'AAA\', \'AAA\', \'AAA\', \'AAA\', 0, 0);');
 
-define('USR_SQL_ADD_TABLE_LOCATION',
+define('USR_SQL_ADD_LOCATION',
        'INSERT INTO tw_location
-	VALUES(0, AAA, AAA);');
+		VALUES(0, \'AAA\', \'AAA\');');
 
-
+/*
 ** Define user : sql update request
 
 
