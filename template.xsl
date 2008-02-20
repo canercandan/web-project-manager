@@ -121,6 +121,14 @@
   </xsl:template>
   <xsl:template match="add_activity">
     <form action="#" method="post">
+      <xsl:if test="mesg">
+	<fieldset>
+	  <legend>Confirmation</legend>
+	  <div class="mesg">
+	    <xsl:value-of select="." />
+	  </div>
+	</fieldset>
+      </xsl:if>
       <fieldset>
 	<legend>Add an activity</legend>
 	<div class="form">
