@@ -84,6 +84,9 @@
 	      <xsl:if test="doc/body/project/add_activity">
 		<xsl:apply-templates select="doc/body/project/add_activity" />
 	      </xsl:if>
+	      <xsl:if test="doc/body/project/activities_list">
+		<xsl:apply-templates select="doc/body/project/activities_list" />
+	      </xsl:if>
 	    </div>
 	    <br class="clear" />
 	  </div>
@@ -205,6 +208,18 @@
 	</xsl:otherwise>
       </xsl:choose>
     </form>
+  </xsl:template>
+  <xsl:template match="activity">
+    <ul>
+    <xsl:for-each select="activity">
+      <xsl:if test="developped">
+	<li><xsl:value-of select="title" /></li>
+	<xsl:if test="activity">
+	  <xsl:apply-templates select="activity" />
+	</xsl:if>
+      </xsl:if>
+    </xsl:for-each>
+    </ul>
   </xsl:template>
   <xsl:template match="error">
     <fieldset>
