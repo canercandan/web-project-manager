@@ -131,6 +131,14 @@
 	  </fieldset>
 	</xsl:when>
 	<xsl:otherwise>
+	  <xsl:if test="error">
+	    <fieldset>
+	      <legend>Error</legend>
+	      <div class="error">
+		<xsl:value-of select="." />
+	      </div>
+	    </fieldset>
+	  </xsl:if>
 	  <fieldset>
 	    <legend>Add an activity</legend>
 	    <div class="form">
