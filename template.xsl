@@ -165,7 +165,7 @@
 	  <fieldset>
 	    <legend>Confirmation</legend>
 	    <div class="mesg">
-	      <xsl:value-of select="." />
+	      <xsl:value-of select="mesg" />
 	    </div>
 	  </fieldset>
 	</xsl:when>
