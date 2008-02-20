@@ -16,17 +16,55 @@
 	  <div id="header">
 	    <h1>TechWeb</h1>
 	    <ul id="menu">
-	      <li><a href="./index.php">Home</a></li>
-	      <li><a href="./create.php">Inscription</a></li>
-	      <li><a href="./connect.php">Connexion</a></li>
-	      <li><a href="#">Contact</a></li>
-	      <li><a href="./root.php">Project</a></li>
+	      <xsl:choose>
+		<xsl:when test="doc/body/home">
+		  <li class="on"><a href="./index.php">Home</a></li>
+		</xsl:when>
+		<xsl:otherwise>
+		  <li><a href="./index.php">Home</a></li>
+		</xsl:otherwise>
+	      </xsl:choose>
+	      <xsl:choose>
+		<xsl:when test="doc/body/create">
+		  <li class="on"><a href="./create.php">Inscription</a></li>
+		</xsl:when>
+		<xsl:otherwise>
+		  <li><a href="./create.php">Inscription</a></li>
+		</xsl:otherwise>
+	      </xsl:choose>
+	      <xsl:choose>
+		<xsl:when test="doc/body/connect">
+		  <li class="on"><a href="./connect.php">Connexion</a></li>
+		</xsl:when>
+		<xsl:otherwise>
+		  <li><a href="./connect.php">Connexion</a></li>
+		</xsl:otherwise>
+	      </xsl:choose>
+	      <xsl:choose>
+		<xsl:when test="doc/body/contact">
+		  <li class="on"><a href="#">Contact</a></li>
+		</xsl:when>
+		<xsl:otherwise>
+		  <li><a href="#">Contact</a></li>
+		</xsl:otherwise>
+	      </xsl:choose>
+	      <xsl:choose>
+		<xsl:when test="doc/body/project">
+		  <li class="on"><a href="./root.php">Project</a></li>
+		</xsl:when>
+		<xsl:otherwise>
+		  <li><a href="./root.php">Project</a></li>
+		</xsl:otherwise>
+	      </xsl:choose>
 	    </ul>
 	    <br class="clear" />
 	  </div>
 	  <div id="body">
-	    <div id="nav">
-	    </div>
+	    <xsl:if test="doc/body/project">
+	      <div id="nav">
+		Actions
+	      </div>
+	    </xsl:if>
 	    <div id="box">
 	      <xsl:if test="doc/body/error">
 		<xsl:apply-templates select="doc/body/error" />

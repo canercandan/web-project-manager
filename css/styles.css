@@ -107,12 +107,20 @@ legend
 	margin: 10px auto;
 	padding: 5px;
 	width: 95%;
+	border: 2px solid Black;
 	background-color: SkyBlue;
 }
 
 #header
 {
 	padding: 5px;
+}
+
+#header h1,
+#menu li
+{
+	color: WhiteSmoke;
+	border: 5px solid WhiteSmoke;
 }
 
 #header h1
@@ -122,7 +130,7 @@ legend
 	width: 200px;
 	text-align: center;
 	font-size: 2em;
-	border: 5px solid WhiteSmoke;
+	background-color: Black;
 }
 
 #body
@@ -150,6 +158,12 @@ legend
 	padding: 5px;
 	list-style-type: none;
 	border: 5px solid WhiteSmoke;
+	background-color: SkyBlue;
+}
+
+#menu li.on
+{
+	background-color: Black;
 }
 
 #nav
@@ -162,5 +176,5 @@ legend
 
 #box
 {
-	margin-left: 15%;
+	/*margin-left: 15%;*/
 }
