@@ -174,7 +174,7 @@
 	    <fieldset>
 	      <legend>Error</legend>
 	      <div class="error">
-		<xsl:value-of select="." />
+		<xsl:value-of select="error" />
 	      </div>
 	    </fieldset>
 	  </xsl:if>
