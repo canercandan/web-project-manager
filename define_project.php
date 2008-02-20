@@ -1,5 +1,8 @@
 <?php
 
+if (!MAIN)
+  exit(0);
+
 define('PROJECT_BEGIN', '<project>');
 define('PROJECT_END', '</project>');
 define('PROJECT_NAME', '<name>%s</name>');
