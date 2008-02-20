@@ -42,8 +42,8 @@
 	      <xsl:if test="doc/body/connect">
 		<xsl:apply-templates select="doc/body/connect" />
 	      </xsl:if>
-	      <xsl:if test="doc/body/add_activity">
-		<xsl:apply-templates select="doc/body/add_activity" />
+	      <xsl:if test="doc/body/project/add_activity">
+		<xsl:apply-templates select="doc/body/project/add_activity" />
 	      </xsl:if>
 	    </div>
 	    <br class="clear" />

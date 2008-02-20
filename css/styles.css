@@ -146,7 +146,8 @@ legend
 #menu li
 {
 	float: left;
-	margin: 100px;
+	margin: 5px 50px;
+	border: 5px solid WhiteSmoke;
 }
 
 #nav
