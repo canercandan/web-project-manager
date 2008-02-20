@@ -19,15 +19,8 @@ define('USR_XML_PASSWD', '<passwd>%s</passwd>');
 define('USR_XML_EMAIL', '<email>%s</email>');
 
 define('USR_ERROR', '<error>%s</error>');
-define('USR_ERROR_LOGIN', 'error : wrong login');
-define('USR_ERROR_EMAIL', 'error : wrong email');
-define('USR_ERROR_PASSWD', 'error: password not found');
 
 define('USR_MESG', '<mesg>%s</mesg>');
-define('USR_MESG_CREATE_OK', 'congratulation, user create');
-define('USR_MESG_CONNECT_OK', 'congratulation, you are login to %s');
-
-define('USR_REGEX_EMAIL', '^[a-zA-Z0-9\_\-\.]+\@+[a-zA-Z0-9\_\-\.]+\.[a-zA-Z0-9]{2,4}$');
 
 /*
 ** Define user : name for request
@@ -37,6 +30,15 @@ define('USR_POST_LOGIN', 'usrlogin');
 define('USR_POST_PASSWD', 'usrpasswd');
 define('USR_POST_REPASSWD', 'usrpasswd2');
 define('USR_POST_EMAIL', 'usremail');
+
+define('USR_ERROR_LOGIN', 'error : wrong login');
+define('USR_ERROR_EMAIL', 'error : wrong email');
+define('USR_ERROR_PASSWD', 'error: password not found');
+
+define('USR_MESG_CREATE_OK', 'congratulation, user create');
+define('USR_MESG_CONNECT_OK', 'congratulation, you are login to %s');
+
+define('USR_REGEX_EMAIL', '^[a-zA-Z0-9\_\-\.]+\@+[a-zA-Z0-9\_\-\.]+\.[a-zA-Z0-9]{2,4}$');
 
 /*
 ** Define user : sql  select request
@@ -51,6 +53,14 @@ define('USR_SQL_SELECT_PASSWD',
        'SELECT usr_passwd
 	    FROM tw_usr
 	    WHERE usr_login = \'%s\';');
+
+define('USR_SQL_SELECT_PROFIL_LOCATION',
+	   'SELECT location_id, location_name
+	    FROM tw_location;');
+
+define('USR_SQL_SELECT_PROFIL_TITLE',
+	   'SELECT title_id, title_name
+	    FROM tw_title;');
 
 /*
 ** Define user : sql add request

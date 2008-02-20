@@ -46,7 +46,8 @@ function usr_add()
   if (!$login && $passwd && !$email)
     printf(USR_ERROR, USR_ERROR_EMAIL);
   if (!$login && $passwd && $email)
-  {
+	printf(USR_MESG, USR_MESG_CREATE_OK);
+  /*
 	sql_query(sprintf(USR_SQL_ADD_LOCATION, $id);
 	$test = sql_query(sprintf());
 	$id = = sql_num_rows($test);
@@ -55,7 +56,7 @@ function usr_add()
 	$id = = sql_num_rows($test);
     sql_query(sprintf(USR_SQL_ADD_TABLE_USR, $_POST[USR_POST_LOGIN], $_POST[USR_POST_PASSWD], $_POST[USR_POST_EMAIL]));
     printf(USR_MESG, USR_MESG_CREATE_OK);
-  }
+   */
 }
 
 function usr_connect()
