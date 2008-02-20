@@ -33,6 +33,8 @@ define('XML_ERROR',
 define('XML_MESG',
        '<mesg>%s</mesg>');
 
+define('DEBUG', 'debug');
+
 define('SQL_HOST', 'localhost');
 define('SQL_USER', 'techweb');
 define('SQL_PASSWD', ',MyTFfwCvKA5SBNL');

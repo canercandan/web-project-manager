@@ -147,6 +147,8 @@ legend
 {
 	float: left;
 	margin: 5px 50px;
+	padding: 5px;
+	list-style-type: none;
 	border: 5px solid WhiteSmoke;
 }
 

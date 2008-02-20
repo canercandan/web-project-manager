@@ -20,6 +20,7 @@
 	      <li><a href="./create.php">Inscription</a></li>
 	      <li><a href="./connect.php">Connexion</a></li>
 	      <li><a href="#">Contact</a></li>
+	      <li><a href="./root.php">Project</a></li>
 	    </ul>
 	    <br class="clear" />
 	  </div>
