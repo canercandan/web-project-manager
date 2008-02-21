@@ -22,18 +22,12 @@ if ($_POST[USR_POST_LOGIN])
   {
     if (!$_POST[USR_POST_PASSWD])
 	  printf(XML_ERROR, USR_ERROR_PASSWD_NOTFOUND);
-	else 
-	  {
-	    if (!$_POST[USR_POST_REPASSWD])
-		  printf(XML_ERROR, USR_ERROR_REPASSWD_NOTFOUND);
-		else
-		  {
-			if (!$_POST[USR_POST_EMAIL])
-			  printf(XML_ERROR, USR_ERROR_EMAIL_NOTFOUND);
-			else
-			  usr_add();
-		  }
-	  }
+	else if (!$_POST[USR_POST_REPASSWD])
+	  printf(XML_ERROR, USR_ERROR_REPASSWD_NOTFOUND);
+	else if (!$_POST[USR_POST_EMAIL])
+	  printf(XML_ERROR, USR_ERROR_EMAIL_NOTFOUND);
+	else
+	  usr_add();
   }
 printf(USR_CREATE_END);
 printf(XML_FOOTER);
