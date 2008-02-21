@@ -89,7 +89,7 @@ define('USR_SQL_ADD_USR',
 
 define('USR_SQL_ADD_PROFIL',
        'INSERT INTO tw_profil
-		VALUES(\'%s\', 0, \'AAA\', \'AAA\', \'AAA\', \'AAA\', 0, 0);');
+		VALUES(\'%s\', 0, '', '', '', '', 0, 0);');
 
 /*
 ** Define user : sql update request
