@@ -40,4 +40,6 @@ define('SQL_USER', 'techweb');
 define('SQL_PASSWD', ',MyTFfwCvKA5SBNL');
 define('SQL_DB', 'techweb');
 
+define('SESS_NAME', 'techweb');
+
 ?>
