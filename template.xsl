@@ -132,7 +132,8 @@
 	      <br />
 	      <label>
 		Login<br />
-		<input type="text" name="{field_login}" />
+		<input type="text" name="{field_login}"
+		       value="{value_login}" />
 	      </label><br />
 	      <label>
 		Password<br />
@@ -144,7 +145,8 @@
 	      </label><br />
 	      <label>
 		Email<br />
-		<input type="text" name="{field_email}" />
+		<input type="text" name="{field_email}"
+		       value="{value_email}" />
 	      </label><br />
 	      <input type="submit" value="Ok" />
 	    </div>
@@ -154,35 +156,45 @@
     </xsl:choose>
   </xsl:template>
   <xsl:template match="connect">
-    <form action="./connect.php" method="post">
-      <fieldset>
-	<legend>Connexion</legend>
-	<div class="form">
-	  With this form, you can sign in an account.<br />
-	  <br />
-	  <label>
-	    Login<br />
-	    <input type="text" name="{field_login}" />
-	  </label><br />
-	  <label>
-	    Password<br />
-	    <input type="password" name="{field_passwd}" />
-	  </label><br />
-	  <input type="submit" value="Ok" />
-	</div>
-      </fieldset>
-    </form>
+    <xsl:choose>
+      <xsl:when test="mesg">
+	<xsl:apply-templates select="mesg" />
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:if test="error">
+	  <xsl:apply-templates select="error" />
+	</xsl:if>
+	<form action="./connect.php" method="post">
+	  <fieldset>
+	    <legend>Connexion</legend>
+	    <div class="form">
+	      With this form, you can sign in an account.<br />
+	      <br />
+	      <label>
+		Login<br />
+		<input type="text" name="{field_login}" />
+	      </label><br />
+	      <label>
+		Password<br />
+		<input type="password" name="{field_passwd}" />
+	      </label><br />
+	      <input type="submit" value="Ok" />
+	    </div>
+	  </fieldset>
+	</form>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   <xsl:template match="add_activity">
-    <form action="#" method="post">
-      <xsl:choose>
-	<xsl:when test="mesg">
-	  <xsl:apply-templates select="mesg" />
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:if test="error">
-	    <xsl:apply-templates select="error" />
-	  </xsl:if>
+    <xsl:choose>
+      <xsl:when test="mesg">
+	<xsl:apply-templates select="mesg" />
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:if test="error">
+	  <xsl:apply-templates select="error" />
+	</xsl:if>
+	<form action="#" method="post">
 	  <fieldset>
 	    <legend>Add an activity</legend>
 	    <div class="form">
@@ -207,9 +219,9 @@
 	      <input type="submit" value="Ok" />
 	    </div>
 	  </fieldset>
-	</xsl:otherwise>
-      </xsl:choose>
-    </form>
+	</form>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   <xsl:template match="activity">
     <ul>
