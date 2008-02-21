@@ -87,6 +87,6 @@ member_project_id = \'%s\'
 AND
 member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHERE activity_member_activity_id = \'%d\')
 order by profil_name, profil_fname;
-')
+');
 
 ?>
