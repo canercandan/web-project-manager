@@ -6,6 +6,7 @@ require_once('./define_config.php');
 require_once('./function_usr.php');
 
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
+$ok = 0;
 sql_select_db(SQL_DB, $link);
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
@@ -20,7 +21,7 @@ if ($_POST[USR_POST_LOGIN])
     if (!$_POST[USR_POST_PASSWD])
       printf(XML_ERROR, USR_ERROR_PASSWD_NOTFOUND);
     else
-      usr_connect();
+      $ok = usr_connect();
   }
 printf(USR_CONNECT_END);
 printf(XML_FOOTER);

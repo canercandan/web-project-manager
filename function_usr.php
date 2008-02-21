@@ -74,13 +74,14 @@ function usr_add()
   if (!$login && $passwd && !$email)
     printf(USR_ERROR, USR_ERROR_EMAIL);
   if (!$login && $passwd && $email)
-  {
-	sql_query(sprintf(USR_SQL_ADD_USR, $_POST[USR_POST_LOGIN], sha1($_POST[USR_POST_PASSWD]), $_POST[USR_POST_EMAIL]));
-	$user = mysql_insert_id();
-	sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
-    printf(USR_MESG, USR_MESG_CREATE_OK);
-	return (1);
-  }
+    {
+	  sql_query(sprintf(USR_SQL_ADD_USR, $_POST[USR_POST_LOGIN], sha1($_POST[USR_POST_PASSWD]), $_POST[USR_POST_EMAIL]));
+	  $user = mysql_insert_id();
+	  sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
+      printf(USR_MESG, USR_MESG_CREATE_OK);
+	  return (1);
+    }
+  return (0);
 }
 
 function usr_connect()
@@ -92,7 +93,11 @@ function usr_connect()
   if ($login && !$passwd)
     printf(USR_ERROR, USR_ERROR_PASSWD);
   if ($login && $passwd)
-    printf(USR_MESG, USR_MESG_CONNECT_OK);
+    {
+      printf(USR_MESG, USR_MESG_CONNECT_OK);
+	  return (1);
+    }
+  return (0);
 }
 
 ?>

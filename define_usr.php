@@ -53,7 +53,7 @@ define('USR_ERROR_EMAIL_NOTFOUND', 'error : email not found');
 define('USR_ERROR_LOGIN_EXIST', 'error : login already exist');
 
 define('USR_MESG_CREATE_OK', 'congratulation, user create');
-define('USR_MESG_CONNECT_OK', 'congratulation, you are login to %s');
+define('USR_MESG_CONNECT_OK', 'welcome on techweb');
 
 define('USR_REGEX_EMAIL', '^[a-zA-Z0-9\_\-\.]+\@+[a-zA-Z0-9\_\-\.]+\.[a-zA-Z0-9]{2,4}$');
 
@@ -88,8 +88,8 @@ define('USR_SQL_ADD_USR',
 		VALUES(0, \'%s\', \'%s\', \'%s\', curdate(), 0);');
 
 define('USR_SQL_ADD_PROFIL',
-       'INSERT INTO tw_profil
-		VALUES(\'%s\', 0, '', '', '', '', 0, 0);');
+       'INSERT INTO tw_profil (profil_usr_id)
+		VALUES(\'%s\');');
 
 /*
 ** Define user : sql update request
