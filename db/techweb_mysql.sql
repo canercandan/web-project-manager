@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS tw_profil (
   profil_mphone varchar(15) default NULL,
   profil_title_id INT NOT NULL,
   profil_perso_adress text NOT NULL,
-  PRIMARY KEY  (profil_id)
+  PRIMARY KEY  (profil_usr_id)
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS tw_project (
