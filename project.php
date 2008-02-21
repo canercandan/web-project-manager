@@ -1,5 +1,8 @@
 <?php
 
+if (!MAIN)
+  exit(0);
+
 require_once('define_project.php');
 require_once('function_activity.php');
 
@@ -8,13 +11,13 @@ require_once('function_activity.php');
 */
 
 if (isset($_GET['less']) && isset($_GET['activity']))
-{
-	$_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 0;
-}
-else if (isset($_GET['more']) && isset($_GET['activity']))
-{
-	$_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 1;
-}
+  {
+    $_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 0;
+  }
+ else if (isset($_GET['more']) && isset($_GET['activity']))
+   {
+     $_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 1;
+   }
 
 /*
 ** a completer par viven
@@ -23,13 +26,13 @@ else if (isset($_GET['more']) && isset($_GET['activity']))
 printf(PROJECT_BEGIN);
 
 if (isset($_SESSION['PROJECT_NAME']))
-{
-	printf(PROJECT_NAME,$_SESSION['PROJECT_NAME']);
-}
-else
-{
-	printf(PROJECT_NAME,UNKNOWED_PROJECT);
-}
+  {
+    printf(PROJECT_NAME,$_SESSION['PROJECT_NAME']);
+  }
+ else
+   {
+     printf(PROJECT_NAME,UNKNOWED_PROJECT);
+   }
 
 /*
 ** TODO Project Menu
@@ -40,24 +43,24 @@ printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][0]) ? $_SESSION['DEV
 printf(ACTIVITY_ID, 0);
 print_activities_list(0 /*$_SESSION['PROJECT_ID']*/, 0);
 printf(ACTIVITY_END);
-	
+
 if (true || isset($_SESSION[ACTIVITY_NAME]))
-{
-	// window at the right of the project menu = activity window
-	include('activity.php');
-}
-else
-{
-	if (true || (isset($_SESSION[PROJECT_MENU]) && $_SESSION[PROJECT_MENU] == ADD_ACTIVITY))
-	{
-		// window at the right of the project menu = add activity to this project
-		include('add_activity.php');
-	}
-	
-	/*
-	** TODO info projet, ajout membre, .... = Vivien
-	*/
-}
+  {
+    // window at the right of the project menu = activity window
+    include('activity.php');
+  }
+ else
+   {
+     if (true || (isset($_SESSION[PROJECT_MENU]) && $_SESSION[PROJECT_MENU] == ADD_ACTIVITY))
+       {
+	 // window at the right of the project menu = add activity to this project
+	 include('add_activity.php');
+       }
+
+     /*
+      ** TODO info projet, ajout membre, .... = Vivien
+      */
+   }
 
 printf(PROJECT_END);
 

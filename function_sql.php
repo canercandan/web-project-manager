@@ -1,5 +1,8 @@
 <?php
 
+if (!MAIN)
+  exit(0);
+
 require_once("./define_sql.php");
 
 function	sql_connect($host, $user, $passwd)

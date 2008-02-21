@@ -1,7 +1,7 @@
 <?php
 
 require_once('./define_activity.php');
-require_once('function_activity.php');
+require_once('./function_activity.php');
 
 printf(MEMBER_ACTIVITY_BEGIN);
 

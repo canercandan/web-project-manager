@@ -1,5 +1,8 @@
 <?php
 
+if (!MAIN)
+  exit(0);
+
 define('UNKNOWED_ACTIVITY', 'Unknowed activity');
 
 define('ACTIVITY_WINDOW_BEGIN', '<activity_window>');
