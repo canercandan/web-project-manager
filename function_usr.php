@@ -5,7 +5,7 @@ require_once('./function_sql.php');
 
 function usr_login_check()
 {
-  $test = sql_query(sprintf(USR_SQL_SELECT_LOGIN, $_POST[USR_POST_LOGIN]));
+  $test = sql_query(sprintf(USR_SQL_SELECT_PASSWD, sql_real_escape_string($_POST[USR_POST_LOGIN])));
   if (sql_num_rows($test))
     return (1);
   return (0);
@@ -13,7 +13,7 @@ function usr_login_check()
 
 function usr_passwd_check()
 {
-  $test = sql_query(sprintf(USR_SQL_SELECT_PASSWD, $_POST[USR_POST_LOGIN]));
+  $test = sql_query(sprintf(USR_SQL_SELECT_PASSWD, sql_real_escape_string($_POST[USR_POST_LOGIN])));
   $passwd = sql_result($test, 0, 0);
   var_dump($passwd);
   if (strcmp(sha1($_POST[USR_POST_PASSWD]), $passwd) == 0)
@@ -35,6 +35,7 @@ function usr_email_check()
   return (0);
 }
 
+/*
 function usr_select_location()
 {
   $test = sql_query(sprintf(USR_SQL_SELECT_LOCATION_BEGIN));
@@ -62,24 +63,26 @@ function usr_select_title()
   $item = sprintf(USR_XML_SELECT, $item, sprintf(USR_FIELD_SELECT_TITLE_END));
   return ($item);
 }
+*/
 
 function usr_add()
 {
   $login = usr_login_check();
   if ($login)
-    printf(USR_ERROR, USR_ERROR_LOGIN_EXIST);
+    printf(XML_ERROR, USR_ERROR_LOGIN_EXIST);
   $passwd = usr_repasswd_check();
   if (!$login && !$passwd)
-    printf(USR_ERROR, USR_ERROR_REPASSWD);
+    printf(XML_ERROR, USR_ERROR_REPASSWD);
   $email= usr_email_check();
   if (!$login && $passwd && !$email)
-    printf(USR_ERROR, USR_ERROR_EMAIL);
+    printf(XML_ERROR, USR_ERROR_EMAIL);
   if (!$login && $passwd && $email)
     {
-	  sql_query(sprintf(USR_SQL_ADD_USR, $_POST[USR_POST_LOGIN], sha1($_POST[USR_POST_PASSWD]), $_POST[USR_POST_EMAIL]));
+	  sql_query(sprintf(USR_SQL_ADD_USR, sql_real_escape_string($_POST[USR_POST_LOGIN]), 
+						sha1(sql_real_escape_string($_POST[USR_POST_PASSWD])), sql_real_escape_string($_POST[USR_POST_EMAIL])));
 	  $user = mysql_insert_id();
 	  sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
-      printf(USR_MESG, USR_MESG_CREATE_OK);
+      printf(XML_MESG, USR_MESG_CREATE_OK);
 	  return (1);
     }
   return (0);
@@ -90,12 +93,12 @@ function usr_connect()
   $login = usr_login_check();
   $passwd = usr_passwd_check();
   if (!$login)
-    printf(USR_ERROR, USR_ERROR_LOGIN_EXIST);
+    printf(XML_ERROR, USR_ERROR_LOGIN_EXIST);
   if ($login && !$passwd)
-    printf(USR_ERROR, USR_ERROR_PASSWD);
+    printf(XML_ERROR, USR_ERROR_PASSWD);
   if ($login && $passwd)
     {
-      printf(USR_MESG, USR_MESG_CONNECT_OK);
+      printf(XML_MESG, USR_MESG_CONNECT_OK);
 	  return (1);
     }
   return (0);

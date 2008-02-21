@@ -14,23 +14,19 @@ define('USR_FIELD_PASSWD', '<field_passwd>%s</field_passwd>');
 define('USR_FIELD_REPASSWD', '<field_repasswd>%s</field_repasswd>');
 define('USR_FIELD_EMAIL', '<field_email>%s</field_email>');
 
-define('USR_FIELD_SELECT_LOCATION_BEGIN', '<field_select_location><name>%s</name>');
-define('USR_FIELD_SELECT_LOCATION_END', '</field_select_location>');
-define('USR_FIELD_SELECT_TITLE_BEGIN', '<field_select_title><name>%s</name>');
-define('USR_FIELD_SELECT_TITLE_END', '</field_select_title>');
+define('USR_FIELD_SELECT_LOCATION_BEGIN', '<field_location><name>%s</name>');
+define('USR_FIELD_SELECT_LOCATION_END', '</field_location>');
+define('USR_FIELD_SELECT_TITLE_BEGIN', '<field_title><name>%s</name>');
+define('USR_FIELD_SELECT_TITLE_END', '</field_title>');
 
-define('USER_VALUE_LOGIN', '<value_login>%s</value_login>');
-define('USER_VALUE_EMAIL', '<value_email>%s</value_email>');
+define('USR_VALUE_LOGIN', '<value_login>%s</value_login>');
+define('USR_VALUE_EMAIL', '<value_email>%s</value_email>');
 
 define('USR_XML_LOGIN', '<login>%s</login>');
 define('USR_XML_PASSWD', '<passwd>%s</passwd>');
 define('USR_XML_EMAIL', '<email>%s</email>');
 define('USR_XML_SELECT', '%s%s');
 define('USR_XML_ITEM', '<item><id>%s</id><name>%s</name></item>');
-
-define('USR_ERROR', '<error>%s</error>');
-
-define('USR_MESG', '<mesg>%s</mesg>');
 
 /*
 ** Define user : name for request

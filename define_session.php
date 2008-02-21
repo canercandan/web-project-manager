@@ -1,3 +1,6 @@
+<?php
+
+/*
 Nom des variables de sessions utilisees
 
 PROJECT_MENU (Vivien / Marc)
@@ -8,5 +11,6 @@ USER_NAME (Jordan apres connection)
 ACTIVITY_ID (Marc)
 ACTIVITY_NAME (Marc)
 DEVELOPPED_ACTIVITY[%s (ID)] (Marc)
+*/
 
-
+?>

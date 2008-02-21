@@ -4,6 +4,8 @@ define('MAIN', 1);
 
 require_once('./define_config.php');
 require_once('./function_usr.php');
+session_name(SESS_NAME);
+session_start();
 
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 $ok = 0;
@@ -24,6 +26,12 @@ if ($_POST[USR_POST_LOGIN])
       $ok = usr_connect();
   }
 printf(USR_CONNECT_END);
+/*
+if (ok)
+  {
+    $_SESSION[USR_SESSION_LOGIN] = $_POST[USR_POST_LOGIN];
+  }
+*/
 printf(XML_FOOTER);
 sql_close($link);
 
