@@ -14,7 +14,8 @@ function usr_login_check()
 function usr_passwd_check()
 {
   $test = sql_query(sprintf(USR_SQL_SELECT_PASSWD, $_POST[USR_POST_LOGIN]));
-  $passwd = sql_num_rows($test, 0, 0);
+  $passwd = sql_result($test, 0, 0);
+  var_dump($passwd);
   if (strcmp(sha1($_POST[USR_POST_PASSWD]), $passwd) == 0)
     return (1);
   return (0);
