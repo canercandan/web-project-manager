@@ -41,8 +41,11 @@ define('USR_POST_LOCATION', 'locationid');
 define('USR_POST_TITLE', 'titleid');
 
 define('USR_ERROR_LOGIN', 'error : wrong login');
+define('USR_ERROR_PASSWD', 'error: wrong password');
 define('USR_ERROR_EMAIL', 'error : wrong email');
-define('USR_ERROR_PASSWD', 'error: password not found');
+define('USR_ERROR_PASSWD_NOTFOUND', 'error: password not found');
+define('USR_ERROR_REPASSWD_NOTFOUND', 'error: password not found');
+define('USR_ERROR_EMAIL_NOTFOUND', 'error: email not found');
 
 define('USR_MESG_CREATE_OK', 'congratulation, user create');
 define('USR_MESG_CONNECT_OK', 'congratulation, you are login to %s');
@@ -77,11 +80,11 @@ define('USR_SQL_SELECT_TITLE',
 
 define('USR_SQL_ADD_USR',
        'INSERT INTO tw_usr
-		VALUES(0, 0, \'%s\', sha1(\'%s\'), \'%s\', curdate(), 0);');
+		VALUES(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', curdate(), 0);');
 
 define('USR_SQL_ADD_PROFIL',
        'INSERT INTO tw_profil
-		VALUES(\'%s\', \'%s\', \'AAA\', \'AAA\', \'AAA\', \'AAA\', 0, 0);');
+		VALUES(0, \'%s\', \'AAA\', \'AAA\', \'AAA\', \'AAA\', 0, 0);');
 
 define('USR_SQL_ADD_LOCATION',
        'INSERT INTO tw_location

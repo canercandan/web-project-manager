@@ -14,7 +14,7 @@ function usr_login_check()
 function usr_passwd_check()
 {
   $test = sql_query(sprintf(USR_SQL_SELECT_PASSWD, $_POST[USR_POST_LOGIN]));
-  $passwd = sql_num_rows($test);
+  $passwd = sql_num_rows($test, 0, 0);
   if (strcmp(sha1($_POST[USR_POST_PASSWD]), $passwd) == 0)
     return (1);
   return (0);
@@ -74,26 +74,24 @@ function usr_add()
   if (!$login && $passwd && !$email)
     printf(USR_ERROR, USR_ERROR_EMAIL);
   if (!$login && $passwd && $email)
-	printf(USR_MESG, USR_MESG_CREATE_OK);
-  /*
-	sql_query(sprintf(USR_SQL_ADD_LOCATION, $id);
-	$test = sql_query(sprintf());
-	$id = = sql_num_rows($test);
-	sql_query(sprintf(USR_SQL_ADD_PROFIL, $id);
-	$test = sql_query(sprintf());
-	$id = = sql_num_rows($test);
-    sql_query(sprintf(USR_SQL_ADD_TABLE_USR, $_POST[USR_POST_LOGIN], $_POST[USR_POST_PASSWD], $_POST[USR_POST_EMAIL]));
+  {
+	sql_query(sprintf(USR_SQL_ADD_LOCATION, $_POST[USR_POST_LOGIN]));
+	$location = mysql_insert_id();
+	sql_query(sprintf(USR_SQL_ADD_PROFIL, $location, $_POST[USR_POST_LOGIN]));
+	$profil = mysql_insert_id();
+    sql_query(sprintf(USR_SQL_ADD_USR, $profil, $profil, $_POST[USR_POST_LOGIN], sha1($_POST[USR_POST_PASSWD]), $_POST[USR_POST_EMAIL]));
     printf(USR_MESG, USR_MESG_CREATE_OK);
-   */
+  }
 }
 
 function usr_connect()
 {
   $login = usr_login_check();
   $passwd = usr_passwd_check();
+  printf('lll %s jjjjjj', $passwd);
   if (!$login)
     printf(USR_ERROR, USR_ERROR_LOGIN);
-  if (!$passwd)
+  if ($login && !$passwd)
     printf(USR_ERROR, USR_ERROR_PASSWD);
   if ($login && $passwd)
     printf(USR_MESG, USR_MESG_CONNECT_OK);
