@@ -7,8 +7,8 @@ define('PROJECT_BEGIN', '<project>');
 define('PROJECT_END', '</project>');
 define('PROJECT_NAME', '<name>%s</name>');
 define('ADD_PROJECT_BEGIN', '<add_project>');
-define('ACTIVITIES_LIST_START', '<activities_list>');
-define('ACTIVITIES_LIST_END', '</activities_list>');
+define('ACTIVITY_START', '<activity>');
+define('ACTIVITY_END', '</activity>');
 
 define('FIELD_PROJECT_NAME', '<field_name>%s</field_name>');
 define('FIELD_PROJECT_DESCRIB', '<field_descr>%s</field_descr>');
