@@ -15,8 +15,8 @@ define('MEMBER_LIST_PROJECT_BEGIN', '<member_list_project>');
 define('MEMBER_LIST_ACTIVITY_BEGIN', '<member_list_activity>');
 define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
 define('MEMBER_LIST_ACTIVITY_END', '</member_list_activity>');
-define('MEMBER_PROJECT', '<member><id>%d</id><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role></member>');
-define('MEMBER_ACTIVITY', '<member><id>%d</id><name>%s</name>%s<fname>%s</fname><title>%s</title><role>%s</role><level>%d</level></member>');
+define('MEMBER_ELEM_PROJECT', '<member><id>%d</id><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role></member>');
+define('MEMBER_ELEM_ACTIVITY', '<member><id>%d</id><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><level>%d</level></member>');
 
 define('FIELD_ACTIVITY_NAME', '<field_activity_name>%s</field_activity_name>');
 define('FIELD_ACTIVITY_DESCRIB', '<field_activity_describ>%s</field_activity_describ>');
@@ -72,8 +72,8 @@ WHERE activity_id = \'%d\';');
 
 define('SQL_GET_PARENT_ID', 'SELECT activity_parent_id FROM tw_activity WHERE activity_id = \'%d\';');
 
-define('SQL_GET_MEMBER_PROJECT', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name
-FROM tw_profil, tw_user, tw_title, tw_member_role, tw_member
+define('SQL_GET_MEMBER_ACTIVITY', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, activity_level
+FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member, tw_activity_member
 WHERE 
 member_usr_id = usr_id
 AND
@@ -83,7 +83,26 @@ profil_title_id = title_id
 AND
 member_role_id = role_id
 AND
-member_project_id = \'%s\'
+member_project_id = \'%d\'
+AND
+member_usr_id = activity_member_usr_id
+AND
+activity_member_activity_id = \'%d\'
+order by profil_name, profil_fname;
+');
+
+define('SQL_GET_MEMBER_PROJECT', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name
+FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member
+WHERE 
+member_usr_id = usr_id
+AND
+usr_profil_id = profil_id
+AND
+profil_title_id = title_id
+AND
+member_role_id = role_id
+AND
+member_project_id = \'%d\'
 AND
 member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHERE activity_member_activity_id = \'%d\')
 order by profil_name, profil_fname;

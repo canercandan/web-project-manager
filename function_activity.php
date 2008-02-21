@@ -2,13 +2,27 @@
 
 require_once('./define_activity.php');
 
+function get_member_activity($id_activity, $id_project)
+{
+	
+	$res = sql_query(sprintf(SQL_GET_MEMBER_ACTIVITY, sql_real_escape_string($id_project),
+			sql_real_escape_string($id_activity)));
+	if (sql_num_rows($res))
+		while ($tab = sql_fetch_array($res))
+		{
+			printf(MEMBER_ELEM_ACTIVITY, $tab[0], $tab[1], $tab[2], $tab[3], $tab[4], $tab[5]);
+		}
+}
+
 function get_member_project_activity($id_activity, $id_project)
 {
-;
-/*	$res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT, sql_real_escape_string($id_project), 
-			sql_real_escape_string($id_activity));
-	while ($tab = sql_fetch_array($res))
-		{*/
+	$res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT, sql_real_escape_string($id_project), 
+			sql_real_escape_string($id_activity)));
+	if (sql_num_rows($res))
+		while ($tab = sql_fetch_array($res))
+		{
+			printf(MEMBER_ELEM_PROJECT, $tab[0], $tab[1], $tab[2], $tab[3], $tab[4]);
+		}
 }
 
 function add_activities($id_project, $id_activity, $name, $describ, $charge)
@@ -35,7 +49,8 @@ function update_charge($id_activity)
 function print_activities_list($id_project, $id_activity)
 {	
 	$res = SQL_QUERY(sprintf(SQL_SELECT_ACTIVITIES, sql_real_escape_string($id_project), sql_real_escape_string($id_activity)));
-	while ($tab = sql_fetch_array($res))
+	if (sql_num_rows($res))
+		while ($tab = sql_fetch_array($res))
 		{
 			printf(ACTIVITY_START);
 			printf(ACTIVITY_TITLE, $tab[1]);

@@ -28,7 +28,7 @@ printf(ACTIVITY_ID, isset($_SESSION['PROJECT_ID']) ? $_SESSION['PROJECT_ID'] : 0
 print_activities_list(0 /*$_SESSION['PROJECT_ID']*/, 0);
 printf(ACTIVITY_END);
 	
-if (isset($_SESSION[ACTIVITY_NAME]))
+if (/*true || */isset($_SESSION[ACTIVITY_NAME]))
 {
 	// window at the right of the project menu = activity window
 	include('activity.php');
