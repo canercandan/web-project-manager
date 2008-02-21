@@ -233,12 +233,22 @@
 	  </xsl:if>
 	</xsl:when>
 	<xsl:otherwise>
-	  <li>
-	    <a href="./root.php?more=1&amp;activity={id}">
-	      <img src="./images/icons/more.png" />
-	    </a>
-	    <xsl:value-of select="title" />
-	  </li>
+	  <xsl:choose>
+	    <xsl:when test="activity">
+	      <li>
+		<a href="./root.php?more=1&amp;activity={id}">
+		  <img src="./images/icons/more.png" />
+		</a>
+		<xsl:value-of select="title" />
+	      </li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li>
+		<img src="./images/icons/less_not.png" />
+		<xsl:value-of select="title" />
+	      </li>
+	    </xsl:otherwise>
+	  </xsl:choose>
 	</xsl:otherwise>
       </xsl:choose>
     </xsl:for-each>
