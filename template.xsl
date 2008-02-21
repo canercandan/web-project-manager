@@ -172,7 +172,7 @@
 	      <br />
 	      <label>
 		Login<br />
-		<input type="text" name="{field_login}" />
+		<input type="text" name="{field_login}" value="{value_login}" />
 	      </label><br />
 	      <label>
 		Password<br />
