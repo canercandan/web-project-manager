@@ -41,10 +41,10 @@ function usr_select_location()
   $i = 0;
   while (sql_num_rows($test, $i, 0))
     {
-      $item = sprintf(USR_XML_SELECT, $item, sprintf(USR_XML_ITEM, sql_num_rows($test, $i, 0), sql_num_rows($test, $i, 1));
+      $item = sprintf(USR_XML_SELECT, $item, sprintf(USR_XML_ITEM, sql_num_rows($test, $i, 0), sql_num_rows($test, $i, 1)));
       $i++;
     }
-  $item = sprintf(USR_XML_SELECT, $item, sprintf(USR_FIELD_SELECT_LOCATION_END);
+  $item = sprintf(USR_XML_SELECT, $item, sprintf(USR_FIELD_SELECT_LOCATION_END));
   return ($item);
 }
 
@@ -55,10 +55,10 @@ function usr_select_title()
   $i = 0;
   while (sql_num_rows($test, $i, 0))
     {
-      $item = sprintf(USR_XML_SELECT, $item, sprintf(USR_XML_ITEM, sql_num_rows($test, $i, 0), sql_num_rows($test, $i, 1));
+      $item = sprintf(USR_XML_SELECT, $item, sprintf(USR_XML_ITEM, sql_num_rows($test, $i, 0), sql_num_rows($test, $i, 1)));
       $i++;
     }
-  $item = sprintf(USR_XML_SELECT, $item, sprintf(USR_FIELD_SELECT_TITLE_END);
+  $item = sprintf(USR_XML_SELECT, $item, sprintf(USR_FIELD_SELECT_TITLE_END));
   return ($item);
 }
 
