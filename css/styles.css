@@ -171,7 +171,8 @@ legend
 	background-color: Black;
 }
 
-#nav
+#project,
+#activity
 {
 	float: left;
 	padding: 5px 15px;
@@ -184,21 +185,21 @@ legend
 	margin-left: 15%;
 }
 
-#activity ul
+#activity_list ul
 {
 	margin-left: 15px;
 	font-size: 12px;
 	border-left: 1px dashed Silver;
 }
 
-#activity li
+#activity_list li
 {
 	padding: 3px 0;
 	list-style-type: none;
 	vertical-align: middle;
 }
 
-#activity li img
+#activity_list li img
 {
 	padding: 0 5px;
 }

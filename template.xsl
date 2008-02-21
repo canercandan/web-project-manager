@@ -62,7 +62,10 @@
 	  <div id="body">
 	    <xsl:choose>
 	      <xsl:when test="doc/body/project">
-		<div id="nav">
+		<div id="project">
+		  Actions
+		</div>
+		<div id="activity">
 		  Actions
 		</div>
 		<div id="box">
@@ -70,7 +73,7 @@
 		    <xsl:apply-templates select="doc/body/project/add_activity" />
 		  </xsl:if>
 		  <xsl:if test="doc/body/project/activity">
-		    <div id="activity">
+		    <div id="activity_list">
 		      <xsl:apply-templates select="doc/body/project/activity" />
 		    </div>
 		  </xsl:if>
