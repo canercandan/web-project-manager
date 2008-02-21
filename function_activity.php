@@ -9,7 +9,18 @@ function add_activities($id_project, $id_activity, $name, $describ, $charge)
 		sql_real_escape_string($name), 
 		sql_real_escape_string($charge), 
 		sql_real_escape_string($describ)));
+	update_charge($id_activity);
+}
 
+function update_charge($id_activity)
+{
+	if ($id_activity != 0)
+	{
+		$res = sql_query(sprintf(SQL_GET_CHARGE, sql_real_escape_string($id_activity)));
+		sql_query(sprintf(SQL_UPDATE_CHARGE, sql_result($res, 0, 0), sql_real_escape_string($id_activity)));
+		$res = sql_query(sprintf(SQL_GET_PARENT_ID, sql_real_escape_string($id_activity)));
+		update_charge(sql_result($res, 0, 0));
+	}	
 }
 
 function print_activities_list($id_project, $id_activity)

@@ -43,4 +43,14 @@ define('SQL_SELECT_ACTIVITIES', 'SELECT activity_id, activity_name FROM tw_activ
 WHERE activity_project_id = \'%d\' 
 and activity_parent_id = \'%d\';');
 
+define('SQL_GET_CHARGE', 'SELECT SUM(activity_charge_total) 
+	FROM tw_activity 
+	WHERE activity_parent_id = \'%d\';');
+
+define('SQL_UPDATE_CHARGE', 'UPDATE tw_activity 
+SET activity_charge_total = \'%d\' 
+WHERE activity_id = \'%d\';');
+
+define('SQL_GET_PARENT_ID', 'SELECT activity_parent_id FROM tw_activity WHERE activity_id = \'%d\';');
+
 ?>
