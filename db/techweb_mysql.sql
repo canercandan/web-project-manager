@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS tw_member_role (
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS tw_profil (
-  profil_id INT NOT NULL auto_increment,
+  profil_usr_id INT NOT NULL,
   profil_location_id INT default NULL,
   profil_name varchar(30) default NULL,
   profil_fname varchar(30) default NULL,
@@ -70,7 +70,6 @@ CREATE TABLE IF NOT EXISTS tw_title (
 
 CREATE TABLE IF NOT EXISTS tw_usr (
   usr_id INT NOT NULL auto_increment,
-  usr_profil_id INT default NULL,
   usr_login varchar(20) default NULL,
   usr_passwd varchar(40) default NULL,
   usr_email varchar(150) default NULL,
