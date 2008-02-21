@@ -22,6 +22,7 @@ define('USR_FIELD_SELECT_TITLE_END', '</field_select_title>');
 define('USR_XML_LOGIN', '<login>%s</login>');
 define('USR_XML_PASSWD', '<passwd>%s</passwd>');
 define('USR_XML_EMAIL', '<email>%s</email>');
+define('USR_XML_SELECT', '%s%s');
 define('USR_XML_ITEM', '<item><id>%s</id><name>%s</name></item>');
 
 define('USR_ERROR', '<error>%s</error>');
