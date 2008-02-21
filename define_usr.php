@@ -19,6 +19,9 @@ define('USR_FIELD_SELECT_LOCATION_END', '</field_select_location>');
 define('USR_FIELD_SELECT_TITLE_BEGIN', '<field_select_title><name>%s</name>');
 define('USR_FIELD_SELECT_TITLE_END', '</field_select_title>');
 
+define('USER_VALUE_LOGIN', '<value_login>%s</value_login>');
+define('USER_VALUE_EMAIL', '<value_email>%s</value_email>');
+
 define('USR_XML_LOGIN', '<login>%s</login>');
 define('USR_XML_PASSWD', '<passwd>%s</passwd>');
 define('USR_XML_EMAIL', '<email>%s</email>');
