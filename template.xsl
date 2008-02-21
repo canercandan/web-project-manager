@@ -220,12 +220,27 @@
   <xsl:template match="activity">
     <ul>
     <xsl:for-each select=".">
-      <xsl:if test="developped">
-	<li><xsl:value-of select="title" /></li>
-	<xsl:if test="activity">
-	  <xsl:apply-templates select="activity" />
-	</xsl:if>
-      </xsl:if>
+      <xsl:choose>
+	<xsl:when test="developped=1">
+	  <li>
+	    <a href="./root.php?less=1&amp;activity={id}">
+	      <img src="./images/icons/less.png" />
+	    </a>
+	    <xsl:value-of select="title" />
+	  </li>
+	  <xsl:if test="activity">
+	    <xsl:apply-templates select="activity" />
+	  </xsl:if>
+	</xsl:when>
+	<xsl:otherwise>
+	  <li>
+	    <a href="./root.php?more=1&amp;activity={id}">
+	      <img src="./images/icons/more.png" />
+	    </a>
+	    <xsl:value-of select="title" />
+	  </li>
+	</xsl:otherwise>
+      </xsl:choose>
     </xsl:for-each>
     </ul>
   </xsl:template>

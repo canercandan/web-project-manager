@@ -6,7 +6,7 @@ require_once('./define_config.php');
 require_once('./function_usr.php');
 require_once('./function_sql.php');
 
-$link = sql_connect(SQL_HOST, SQL_USR, SQL_PASSWD);
+$link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])

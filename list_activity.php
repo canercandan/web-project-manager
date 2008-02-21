@@ -13,9 +13,9 @@ if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE);
 else
   printf(XML_HEADER, XML_TEMPLATE);
-define(PROJECT_BEGIN, '<project>');
-define(PROJECT_END, '</project>');
-define(ACTIVITY_CONTENT,
+define('PROJECT_BEGIN', '<project>');
+define('PROJECT_END', '</project>');
+define('ACTIVITY_CONTENT',
        '<activity>
 	  <title>%s</title>
 	  <developped>%d</developped>
@@ -27,12 +27,12 @@ printf(ACTIVITY_CONTENT, 'coco', 1, 1,
        sprintf(ACTIVITY_CONTENT, 'kiki', 1, 2,
 	       sprintf(ACTIVITY_CONTENT, 'lala', 1, 3,
 		       sprintf(ACTIVITY_CONTENT, 'lala2', 1, 4,
-			       sprintf(ACTIVITY_CONTENT, 'lala3', 1, 5,
-				       sprintf(ACTIVITY_CONTENT, 'lala4', 1, 6,
+			       sprintf(ACTIVITY_CONTENT, 'lala3', 0, 5,
+				       sprintf(ACTIVITY_CONTENT, 'lala4', 0, 6,
 					       '').
 				       sprintf(ACTIVITY_CONTENT, 'lala4', 1, 7,
 					       '')).
-			       sprintf(ACTIVITY_CONTENT, 'lala3', 1, 8,
+			       sprintf(ACTIVITY_CONTENT, 'lala3', 0, 8,
 				       ''))).
 	       sprintf(ACTIVITY_CONTENT, 'lolo', 1, 9,
 		       '')));

@@ -8,6 +8,11 @@ li
 	padding: 0;
 }
 
+img
+{
+	border: 0;
+}
+
 body
 {
 	font-family: verdana, arial, sans-serif;
@@ -182,4 +187,18 @@ legend
 #activity ul
 {
 	margin-left: 15px;
+	font-size: 12px;
+	border-left: 1px dashed Silver;
+}
+
+#activity li
+{
+	padding: 3px 0;
+	list-style-type: none;
+	vertical-align: middle;
+}
+
+#activity li img
+{
+	padding: 0 5px;
 }
