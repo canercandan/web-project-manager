@@ -42,6 +42,7 @@ define('USR_POST_TITLE', 'titleid');
 
 define('USR_ERROR_LOGIN', 'error : wrong login');
 define('USR_ERROR_PASSWD', 'error: wrong password');
+define('USR_ERROR_REPASSWD', 'error : two different password enter');
 define('USR_ERROR_EMAIL', 'error : wrong email');
 define('USR_ERROR_PASSWD_NOTFOUND', 'error: password not found');
 define('USR_ERROR_REPASSWD_NOTFOUND', 'error: password not found');
