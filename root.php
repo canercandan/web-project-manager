@@ -3,6 +3,7 @@
 /*
 ** a completer par viven
 */
+session_start();
 
 define('MAIN', 1);
 

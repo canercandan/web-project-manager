@@ -4,6 +4,19 @@ require_once('define_project.php');
 require_once('function_activity.php');
 
 /*
+** Tree manager
+*/
+
+if (isset($_GET['less']) && isset($_GET['activity']))
+{
+	$_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 0;
+}
+else if (isset($_GET['more']) && isset($_GET['activity']))
+{
+	$_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 1;
+}
+
+/*
 ** a completer par viven
 */
 
@@ -23,12 +36,12 @@ else
 */
 printf(ACTIVITY_START);
 printf(ACTIVITY_TITLE, isset($_SESSION['PROJECT_NAME']) ? $_SESSION['PROJECT_NAME'] : UNKNOWED_PROJECT);
-printf(ACTIVITY_DEV, 1); //isset($_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]]));
-printf(ACTIVITY_ID, isset($_SESSION['PROJECT_ID']) ? $_SESSION['PROJECT_ID'] : 0);
+printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][0]) ? $_SESSION['DEVELOPPED_ACTIVITY'][0] : 0);
+printf(ACTIVITY_ID, 0);
 print_activities_list(0 /*$_SESSION['PROJECT_ID']*/, 0);
 printf(ACTIVITY_END);
 	
-if (/*true || */isset($_SESSION[ACTIVITY_NAME]))
+if (true || isset($_SESSION[ACTIVITY_NAME]))
 {
 	// window at the right of the project menu = activity window
 	include('activity.php');
