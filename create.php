@@ -18,7 +18,6 @@ printf(USR_FIELD_LOGIN, USR_POST_LOGIN);
 printf(USR_FIELD_PASSWD, USR_POST_PASSWD);
 printf(USR_FIELD_REPASSWD, USR_POST_REPASSWD);
 printf(USR_FIELD_EMAIL, USR_POST_EMAIL);
-printf(USR_CREATE_END);
 if ($_POST[USR_POST_LOGIN])
   {
     if (!$_POST[USR_POST_PASSWD])
@@ -36,6 +35,7 @@ if ($_POST[USR_POST_LOGIN])
 		  }
 	  }
   }
+printf(USR_CREATE_END);
 printf(XML_FOOTER);
 sql_close($link);
 
