@@ -1,7 +1,22 @@
 <?php
 
+define('UNKNOWED_ACTIVITY', 'Unknowed activity');
+
+define('ACTIVITY_WINDOW_BEGIN', '<activity_window>');
+define('ACTIVITY_WINDOW_END', '</activity_window>');
+
 define('ADD_ACTIVITY_BEGIN', '<add_activity>');
 define('ADD_ACTIVITY_END', '</add_activity>');
+define('MEMBER_ACTIVITY_BEGIN', '<member_activity>');
+define('MEMBER_ACTIVITY_END', '</member_activity>');
+
+define('MEMBER_ACTIVITY', 0);
+define('MEMBER_LIST_PROJECT_BEGIN', '<member_list_project>');
+define('MEMBER_LIST_ACTIVITY_BEGIN', '<member_list_activity>');
+define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
+define('MEMBER_LIST_ACTIVITY_END', '</member_list_activity>');
+define('MEMBER_PROJECT', '<member><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role></member>');
+define('MEMBER_ACTIVITY', '<member><name>%s</name>%s<fname>%s</fname><title>%s</title><role>%s</role><level>%d</level></member>');
 
 define('FIELD_ACTIVITY_NAME', '<field_activity_name>%s</field_activity_name>');
 define('FIELD_ACTIVITY_DESCRIB', '<field_activity_describ>%s</field_activity_describ>');
@@ -10,6 +25,9 @@ define('FIELD_ACTIVITY_CHARGE', '<field_activity_charge>%s</field_activity_charg
 define('ACTIVITY_NAME', '<activity_name>%s</activity_name>');
 define('ACTIVITY_DESCRIB', '<activity_describ>%s</activity_describ>');
 define('ACTIVITY_CHARGE', '<activity_charge>%s</activity_charge>');
+define('ACTIVITY_TITLE', '<title>%s</title>');
+define('ACTIVITY_DEV', '<developped>%d</developped>');
+define('ACTIVITY_ID', '<id>%s</id>');
 
 define('ERROR_ACTIVITY_NAME', 'error : activity\'s name already used');
 define('ERROR_ACTIVITY_CHARGE', 'error : activity charge invalid');
@@ -52,5 +70,7 @@ SET activity_charge_total = \'%d\'
 WHERE activity_id = \'%d\';');
 
 define('SQL_GET_PARENT_ID', 'SELECT activity_parent_id FROM tw_activity WHERE activity_id = \'%d\';');
+
+define('SQL_GET_MEMBER_PROJECT', 'SELECT profil_name, profil_fname, title_name, role_name')
 
 ?>

@@ -21,9 +21,9 @@ else
 /*
 ** TODO Project Menu
 */
-printf(ACTIVITIES_LIST_START);
+printf(ACTIVITY_START);
 print_activities_list(0 /*$_SESSION['PROJECT_ID']*/, 0);
-printf(ACTIVITIES_LIST_END);
+printf(ACTIVITY_END);
 	
 if (isset($_SESSION[ACTIVITY_NAME]))
 {
