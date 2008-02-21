@@ -78,12 +78,6 @@
 	      </xsl:when>
 	      <xsl:otherwise>
 		<div>
-		  <xsl:if test="doc/body/error">
-		    <xsl:apply-templates select="doc/body/error" />
-		  </xsl:if>
-		  <xsl:if test="doc/body/mesg">
-		    <xsl:apply-templates select="doc/body/mesg" />
-		  </xsl:if>
 		  <xsl:if test="doc/body/home">
 		    <xsl:apply-templates select="doc/body/home" />
 		  </xsl:if>
@@ -122,32 +116,42 @@
     </fieldset>
   </xsl:template>
   <xsl:template match="create">
-    <form action="./create.php" method="post">
-      <fieldset>
-	<legend>Inscription</legend>
-	<div class="form">
-	  With this form, you can create an account.<br />
-	  <br />
-	  <label>
-	    Login<br />
-	    <input type="text" name="{field_login}" />
-	  </label><br />
-	  <label>
-	    Password<br />
-	    <input type="password" name="{field_passwd}" />
-	  </label><br />
-	  <label>
-	    Repeat password<br />
-	    <input type="password" name="{field_repasswd}" />
-	  </label><br />
-	  <label>
-	    Email<br />
-	    <input type="text" name="{field_email}" />
-	  </label><br />
-	  <input type="submit" value="Ok" />
-	</div>
-      </fieldset>
-    </form>
+    <xsl:choose>
+      <xsl:when test="mesg">
+	<xsl:apply-templates select="mesg" />
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:if test="error">
+	  <xsl:apply-templates select="error" />
+	</xsl:if>
+	<form action="./create.php" method="post">
+	  <fieldset>
+	    <legend>Inscription</legend>
+	    <div class="form">
+	      With this form, you can create an account.<br />
+	      <br />
+	      <label>
+		Login<br />
+		<input type="text" name="{field_login}" />
+	      </label><br />
+	      <label>
+		Password<br />
+		<input type="password" name="{field_passwd}" />
+	      </label><br />
+	      <label>
+		Repeat password<br />
+		<input type="password" name="{field_repasswd}" />
+	      </label><br />
+	      <label>
+		Email<br />
+		<input type="text" name="{field_email}" />
+	      </label><br />
+	      <input type="submit" value="Ok" />
+	    </div>
+	  </fieldset>
+	</form>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   <xsl:template match="connect">
     <form action="./connect.php" method="post">
@@ -173,21 +177,11 @@
     <form action="#" method="post">
       <xsl:choose>
 	<xsl:when test="mesg">
-	  <fieldset>
-	    <legend>Confirmation</legend>
-	    <div class="mesg">
-	      <xsl:value-of select="mesg" />
-	    </div>
-	  </fieldset>
+	  <xsl:apply-templates select="mesg" />
 	</xsl:when>
 	<xsl:otherwise>
 	  <xsl:if test="error">
-	    <fieldset>
-	      <legend>Error</legend>
-	      <div class="error">
-		<xsl:value-of select="error" />
-	      </div>
-	    </fieldset>
+	    <xsl:apply-templates select="error" />
 	  </xsl:if>
 	  <fieldset>
 	    <legend>Add an activity</legend>
