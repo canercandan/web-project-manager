@@ -66,7 +66,7 @@ function usr_add()
 {
   $login = usr_login_check();
   if ($login)
-    printf(USR_ERROR, USR_ERROR_LOGIN);
+    printf(USR_ERROR, USR_ERROR_LOGIN_EXIST);
   $passwd = usr_repasswd_check();
   if (!$login && !$passwd)
     printf(USR_ERROR, USR_ERROR_REPASSWD);
@@ -75,11 +75,9 @@ function usr_add()
     printf(USR_ERROR, USR_ERROR_EMAIL);
   if (!$login && $passwd && $email)
   {
-	sql_query(sprintf(USR_SQL_ADD_LOCATION, $_POST[USR_POST_LOGIN]));
-	$location = mysql_insert_id();
-	sql_query(sprintf(USR_SQL_ADD_PROFIL, $location, $_POST[USR_POST_LOGIN]));
-	$profil = mysql_insert_id();
-    sql_query(sprintf(USR_SQL_ADD_USR, $profil, $profil, $_POST[USR_POST_LOGIN], sha1($_POST[USR_POST_PASSWD]), $_POST[USR_POST_EMAIL]));
+	sql_query(sprintf(USR_SQL_ADD_USR, $_POST[USR_POST_LOGIN], sha1($_POST[USR_POST_PASSWD]), $_POST[USR_POST_EMAIL]));
+	$user = mysql_insert_id();
+	sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
     printf(USR_MESG, USR_MESG_CREATE_OK);
   }
 }
@@ -88,9 +86,8 @@ function usr_connect()
 {
   $login = usr_login_check();
   $passwd = usr_passwd_check();
-  printf('lll %s jjjjjj', $passwd);
   if (!$login)
-    printf(USR_ERROR, USR_ERROR_LOGIN);
+    printf(USR_ERROR, USR_ERROR_LOGIN_EXIST);
   if ($login && !$passwd)
     printf(USR_ERROR, USR_ERROR_PASSWD);
   if ($login && $passwd)
