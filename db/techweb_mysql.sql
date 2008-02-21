@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS tw_project (
 ) ENGINE=MyISAM;
 
 CREATE TABLE IF NOT EXISTS tw_title (
-  title_id INT NOT NULL,
+  title_id INT NOT NULL auto_increment,
   title_name varchar(30) default NULL,
   PRIMARY KEY  (title_id)
 ) ENGINE=MyISAM;
