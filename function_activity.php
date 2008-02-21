@@ -2,7 +2,13 @@
 
 require_once('./define_activity.php');
 
-get_member_project_activity()
+get_member_project_activity($id_activity, $id_project)
+{
+/*	$res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT, sql_real_escape_string($id_project), 
+			sql_real_escape_string($id_activity));
+	while ($tab = sql_fetch_array($res))
+		{*/
+}
 
 function add_activities($id_project, $id_activity, $name, $describ, $charge)
 {
