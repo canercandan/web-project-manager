@@ -79,6 +79,7 @@ function usr_add()
 	$user = mysql_insert_id();
 	sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
     printf(USR_MESG, USR_MESG_CREATE_OK);
+	return (1);
   }
 }
 

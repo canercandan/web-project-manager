@@ -15,7 +15,6 @@ else
 printf(USR_CONNECT_BEGIN);
 printf(USR_FIELD_LOGIN, USR_POST_LOGIN);
 printf(USR_FIELD_PASSWD, USR_POST_PASSWD);
-printf(USR_CONNECT_END);
 if ($_POST[USR_POST_LOGIN])
   {
     if (!$_POST[USR_POST_PASSWD])
@@ -23,6 +22,7 @@ if ($_POST[USR_POST_LOGIN])
     else
       usr_connect();
   }
+printf(USR_CONNECT_END);
 printf(XML_FOOTER);
 sql_close($link);
 
