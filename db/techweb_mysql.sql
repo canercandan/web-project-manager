@@ -10,16 +10,10 @@ CREATE TABLE IF NOT EXISTS tw_activity (
   PRIMARY KEY  (activity_id)
 ) ENGINE=MyISAM;
 
-CREATE TABLE IF NOT EXISTS tw_activity_level (
-  level_id INT NOT NULL auto_increment,
-  level_name varchar(30) default NULL,
-  PRIMARY KEY  (level_id)
-) ENGINE=MyISAM;
-
 CREATE TABLE IF NOT EXISTS tw_activity_member (
   activity_member_activity_id INT NOT NULL,
   activity_member_usr_id INT NOT NULL,
-  activity_level_id INT NOT NULL,
+  activity_level INT NOT NULL,
   activity_member_date_start date NOT NULL,
   activity_member_date_end date default NULL,
   PRIMARY KEY  (activity_member_usr_id, activity_member_activity_id)
