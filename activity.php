@@ -21,10 +21,10 @@ if (true || (isset($_SESSION[ACTIVITY_MENU]) && $_SESSION[ACTIVITY_MENU] == MEMB
   {
     include('member_activity.php');
   }
- else if (true)
-   {
-     include('informations_activity.php');
-   }
+if (true)
+  {
+    include('informations_activity.php');
+  }
 
 printf(ACTIVITY_WINDOW_END);
 
