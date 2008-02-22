@@ -316,7 +316,9 @@
 	    <a href="./root.php?less=1&amp;activity={id}">
 	      <img src="./images/icons/less.png" />
 	    </a>
-	    <xsl:value-of select="title" />
+	    <a href="./root.php?activity={id}">
+	      <xsl:value-of select="title" />
+	    </a>
 	  </li>
 	  <xsl:if test="activity">
 	    <xsl:apply-templates select="activity" />
@@ -329,13 +331,17 @@
 		<a href="./root.php?more=1&amp;activity={id}">
 		  <img src="./images/icons/more.png" />
 		</a>
-		<xsl:value-of select="title" />
+		<a href="./root.php?activity={id}">
+		  <xsl:value-of select="title" />
+		</a>
 	      </li>
 	    </xsl:when>
 	    <xsl:otherwise>
 	      <li>
 		<img src="./images/icons/less_not.png" />
-		<xsl:value-of select="title" />
+		<a href="./root.php?activity={id}">
+		  <xsl:value-of select="title" />
+		</a>
 	      </li>
 	    </xsl:otherwise>
 	  </xsl:choose>
