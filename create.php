@@ -6,7 +6,7 @@ require_once('./function_usr.php');
 
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
-$ok = 0;
+header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE);
 else
@@ -40,7 +40,7 @@ else
 	  printf(XML_ERROR, USR_ERROR_EMAIL_NOTFOUND);
 	else
 	{
-	  $ok= usr_add();
+	  $ok = usr_add();
 	  header('Location:?ok=1');
 	}
   }

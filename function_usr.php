@@ -96,9 +96,7 @@ function usr_connect()
   if ($login && !$passwd)
     printf(XML_ERROR, USR_ERROR_PASSWD);
   if ($login && $passwd)
-    {
 	  return (1);
-    }
   return (0);
 }
 
