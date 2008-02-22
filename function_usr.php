@@ -82,7 +82,6 @@ function usr_add()
 						sha1(sql_real_escape_string($_POST[USR_POST_PASSWD])), sql_real_escape_string($_POST[USR_POST_EMAIL])));
 	  $user = mysql_insert_id();
 	  sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
-      printf(XML_MESG, USR_MESG_CREATE_OK);
 	  return (1);
     }
   return (0);
@@ -98,7 +97,6 @@ function usr_connect()
     printf(XML_ERROR, USR_ERROR_PASSWD);
   if ($login && $passwd)
     {
-      printf(XML_MESG, USR_MESG_CONNECT_OK);
 	  return (1);
     }
   return (0);
