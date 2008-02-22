@@ -12,6 +12,8 @@ define('ADD_ACTIVITY_BEGIN', '<add_activity>');
 define('ADD_ACTIVITY_END', '</add_activity>');
 define('MEMBER_ACTIVITY_BEGIN', '<member_activity>');
 define('MEMBER_ACTIVITY_END', '</member_activity>');
+define('INFORMATION_ACTIVITY_BEGIN', '<information_activity>');
+define('INFORMATION_ACTIVITY_END', '</information_activity>');
 
 define('MEMBER_ACTIVITY', 0);
 define('MEMBER_LIST_PROJECT_BEGIN', '<member_list_project>');
@@ -110,5 +112,63 @@ AND
 member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHERE activity_member_activity_id = \'%d\')
 order by profil_name, profil_fname;
 ');
+
+define('SQL_GET_ACTIVITY_INFORMATIONS', 'SELECT activity_name, activity_describtion, activity_charge_total FROM tw_activity
+WHERE activity_id = \'%d\';');
+define('SQL_GET_UNDERACT_WORK', 
+	'
+	SELECT activity_id, activity_name, activity_charge_total, SUM(CURDATE() - activity_member_date_start) as "work" FROM tw_activity, tw_activity_member
+	WHERE activity_member_activity_id = activity_id
+	AND CURDATE() > activity_member_date_start
+	AND (activity_member_date_end is NULL or CURDATE() < activity_member_date_end)
+	AND activity_id = \'%d\'
+	AND activity_work = 1
+	AND activity_id not in (SELECT DISTINCT activity_parent_id FROM tw_activity)
+	GROUP BY activity_id
+	UNION
+	SELECT activity_id, activity_name, activity_charge_total, SUM(activity_member_date_end - activity_member_date_start) as "work" FROM tw_activity, tw_activity_member
+	WHERE activity_member_activity_id = activity_id
+	AND CURDATE() > activity_member_date_start
+	AND activity_member_date_end is not NULL
+	AND CURDATE() > activity_member_date_end
+	AND activity_id = \'%d\'
+	AND activity_work = 1
+	AND activity_id not in (SELECT DISTINCT activity_parent_id FROM tw_activity)
+	GROUP BY activity_id
+	UNION
+	SELECT activity_id, activity_name, activity_charge_total, -1 as "work" FROM tw_activity 
+	WHERE activity_parent_id = \'%d\' AND activity_id in (SELECT DISTINCT activity_parent_id FROM tw_activity)
+		UNION
+	SELECT activity_id, activity_name, activity_charge_total, SUM(CURDATE() - activity_member_date_start) as "work" FROM tw_activity, tw_activity_member
+	WHERE activity_member_activity_id = activity_id
+	AND CURDATE() > activity_member_date_start
+	AND (activity_member_date_end is NULL or CURDATE() < activity_member_date_end)
+	AND activity_parent_id = \'%d\'
+	AND activity_work = 1
+	AND activity_id not in (SELECT DISTINCT activity_parent_id FROM tw_activity)
+	GROUP BY activity_id
+	UNION
+	SELECT activity_id, activity_name, activity_charge_total, SUM(activity_member_date_end - activity_member_date_start) as "work" FROM tw_activity, tw_activity_member
+	WHERE activity_member_activity_id = activity_id
+	AND CURDATE() > activity_member_date_start
+	AND activity_work = 1
+	AND activity_member_date_end is not NULL
+	AND CURDATE() > activity_member_date_end
+	AND activity_parent_id = \'%d\'
+	AND activity_id not in (SELECT DISTINCT activity_parent_id FROM tw_activity)
+	GROUP BY activity_id
+	UNION
+	SELECT activity_id, activity_name, activity_charge_total, 0 as "work" FROM tw_activity
+	WHERE activity_id not in (
+	SELECT DISTINCT activity_parent_id FROM tw_activity
+	UNION
+	SELECT DISTINCT activity_member_activity_id FROM tw_activity_member
+	WHERE
+	CURDATE() > activity_member_date_start
+	AND activity_work = 1
+	)
+	AND activity_parent_id = \'%d\'
+	GROUP BY activity_id;'
+	);
 
 ?>
