@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS tw_activity_member (
   activity_level INT NOT NULL,
   activity_member_date_start date NOT NULL,
   activity_member_date_end date default NULL,
+  activity_work INT default NOT NULL,
   PRIMARY KEY  (activity_member_usr_id, activity_member_activity_id)
 ) ENGINE=MyISAM;
 
