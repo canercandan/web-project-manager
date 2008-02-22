@@ -63,19 +63,22 @@
 	    <xsl:choose>
 	      <xsl:when test="doc/body/project">
 		<div id="project">
-		  Actions
+		  <xsl:if test="doc/body/project/name">
+		    <div class="list">
+		      <xsl:apply-templates select="doc/body/project/name" />
+		    </div>
+		  </xsl:if>
 		</div>
 		<div id="activity">
-		  Actions
+		  <xsl:if test="doc/body/project/activity">
+		    <div class="list">
+		      <xsl:apply-templates select="doc/body/project/activity" />
+		    </div>
+		  </xsl:if>
 		</div>
 		<div id="box">
 		  <xsl:if test="doc/body/project/add_activity">
 		    <xsl:apply-templates select="doc/body/project/add_activity" />
-		  </xsl:if>
-		  <xsl:if test="doc/body/project/activity">
-		    <div id="activity_list">
-		      <xsl:apply-templates select="doc/body/project/activity" />
-		    </div>
 		  </xsl:if>
 		</div>
 	      </xsl:when>
@@ -293,6 +296,16 @@
 	</form>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+  <xsl:template match="name">
+    <ul>
+      <xsl:for-each select=".">
+	<li>
+	  <img src="./images/icons/less_not.png" />
+	  <xsl:value-of select="." />
+	</li>
+      </xsl:for-each>
+    </ul>
   </xsl:template>
   <xsl:template match="activity">
     <ul>
