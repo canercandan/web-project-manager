@@ -25,7 +25,8 @@ function get_activity_work($id_activity)
 	  if ($tab[3] >= 0)
 	    {
 	      $work += $tab[3];
-	      printf('<activity_work><id>%d</id><name>%s</name><charge>%d</charge><work>%d</work><percent>%d</percent></activity_work>',
+		  if ($tab[0] != $id_activity)
+			printf('<activity_work><id>%d</id><name>%s</name><charge>%d</charge><work>%d</work><percent>%d</percent></activity_work>',
 		     $tab[0],
 		     $tab[1],
 		     $tab[2],

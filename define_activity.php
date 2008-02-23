@@ -115,6 +115,7 @@ order by profil_name, profil_fname;
 
 define('SQL_GET_ACTIVITY_INFORMATIONS', 'SELECT activity_name, activity_describtion, activity_charge_total FROM tw_activity
 WHERE activity_id = \'%d\';');
+
 define('SQL_GET_UNDERACT_WORK', 
 	'
 	SELECT activity_id, activity_name, activity_charge_total, SUM(CURDATE() - activity_member_date_start) as "work" FROM tw_activity, tw_activity_member
@@ -135,7 +136,7 @@ define('SQL_GET_UNDERACT_WORK',
 	AND activity_work = 1
 	AND activity_id not in (SELECT DISTINCT activity_parent_id FROM tw_activity)
 	GROUP BY activity_id
-	UNION
+	UNION	
 	SELECT activity_id, activity_name, activity_charge_total, -1 as "work" FROM tw_activity 
 	WHERE activity_parent_id = \'%d\' AND activity_id in (SELECT DISTINCT activity_parent_id FROM tw_activity)
 		UNION
