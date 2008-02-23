@@ -80,6 +80,9 @@
 		  <xsl:if test="doc/body/project/add_activity">
 		    <xsl:apply-templates select="doc/body/project/add_activity" />
 		  </xsl:if>
+		  <xsl:if test="doc/body/project/activity_window">
+		    <xsl:apply-templates select="doc/body/project/activity_window" />
+		  </xsl:if>
 		</div>
 	      </xsl:when>
 	      <xsl:otherwise>
@@ -115,6 +118,22 @@
 	<xsl:value-of select="." />
       </span>,
     </xsl:for-each>
+  </xsl:template>
+  <xsl:template match="error">
+    <fieldset>
+      <legend>Error</legend>
+      <div class="error">
+	<xsl:value-of select="." />
+      </div>
+    </fieldset>
+  </xsl:template>
+  <xsl:template match="mesg">
+    <fieldset>
+      <legend>Confirmation</legend>
+      <div class="mesg">
+	<xsl:value-of select="." />
+      </div>
+    </fieldset>
   </xsl:template>
   <xsl:template match="home">
     <fieldset>
@@ -309,61 +328,60 @@
   </xsl:template>
   <xsl:template match="activity">
     <ul>
-    <xsl:for-each select=".">
-      <xsl:choose>
-	<xsl:when test="developped=1">
-	  <li>
-	    <a href="./root.php?less=1&amp;activity={id}">
-	      <img src="./images/icons/less.png" />
-	    </a>
-	    <a href="./root.php?activity_infos={id}">
-	      <xsl:value-of select="title" />
-	    </a>
-	  </li>
-	  <xsl:if test="activity">
-	    <xsl:apply-templates select="activity" />
-	  </xsl:if>
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:choose>
-	    <xsl:when test="activity">
-	      <li>
-		<a href="./root.php?more=1&amp;activity={id}">
-		  <img src="./images/icons/more.png" />
-		</a>
-		<a href="./root.php?activity_infos={id}">
-		  <xsl:value-of select="title" />
-		</a>
-	      </li>
-	    </xsl:when>
-	    <xsl:otherwise>
-	      <li>
-		<img src="./images/icons/less_not.png" />
-		<a href="./root.php?activity_infos={id}">
-		  <xsl:value-of select="title" />
-		</a>
-	      </li>
-	    </xsl:otherwise>
-	  </xsl:choose>
-	</xsl:otherwise>
-      </xsl:choose>
-    </xsl:for-each>
+      <xsl:for-each select=".">
+	<xsl:choose>
+	  <xsl:when test="developped=1">
+	    <li>
+	      <a href="./root.php?less=1&amp;activity={id}">
+		<img src="./images/icons/less.png" />
+	      </a>
+	      <a href="./root.php?activity_infos={id}">
+		<xsl:value-of select="title" />
+	      </a>
+	    </li>
+	    <xsl:if test="activity">
+	      <xsl:apply-templates select="activity" />
+	    </xsl:if>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:choose>
+	      <xsl:when test="activity">
+		<li>
+		  <a href="./root.php?more=1&amp;activity={id}">
+		    <img src="./images/icons/more.png" />
+		  </a>
+		  <a href="./root.php?activity_infos={id}">
+		    <xsl:value-of select="title" />
+		  </a>
+		</li>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<li>
+		  <img src="./images/icons/less_not.png" />
+		  <a href="./root.php?activity_infos={id}">
+		    <xsl:value-of select="title" />
+		  </a>
+		</li>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </xsl:otherwise>
+	</xsl:choose>
+      </xsl:for-each>
     </ul>
   </xsl:template>
-  <xsl:template match="error">
-    <fieldset>
-      <legend>Error</legend>
-      <div class="error">
-	<xsl:value-of select="." />
-      </div>
-    </fieldset>
+  <xsl:template match="activity_window">
+    <xsl:if test="information_activity">
+      <xsl:if test="information_activity/activity_work">
+	<xsl:apply-templates select="information_activity/activity_work" />
+      </xsl:if>
+    </xsl:if>
   </xsl:template>
-  <xsl:template match="mesg">
-    <fieldset>
-      <legend>Confirmation</legend>
-      <div class="mesg">
-	<xsl:value-of select="." />
-      </div>
-    </fieldset>
+  <xsl:template match="activity_work">
+    <xsl:value-of select="name" />
+    (<xsl:value-of select="id" />)
+    charge:
+    <xsl:value-of select="charge" />
+    <br />
+    <xsl:apply-templates select="activity_work" />
   </xsl:template>
 </xsl:stylesheet>
