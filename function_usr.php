@@ -1,7 +1,6 @@
 <?php
 
 require_once('./define_usr.php');
-require_once('./function_sql.php');
 
 function usr_login_check()
 {
