@@ -7,6 +7,7 @@ require_once('./function_usr.php');
 require_once('./define_session.php');
 session_name(SESS_NAME);
 session_start();
+
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 
@@ -16,11 +17,11 @@ if ($_POST[USR_POST_LOGIN])
       $error = sprintf(XML_ERROR, USR_ERROR_PASSWD_NOTFOUND);
     else if (!$login = usr_login_check())
       $error = sprintf(XML_ERROR, USR_ERROR_LOGIN);
-	else if ($login && (!$passwd = usr_repasswd_check()))
-      $error = sprintf(XML_ERROR, USR_ERROR_REPASSWD);
+	else if ($login && (!$passwd = usr_passwd_check()))
+      $error = sprintf(XML_ERROR, USR_ERROR_PASSWD);
 	else
 	{
-	  header(sprintf(HEADER_LOCATION_CREATE));
+	  header(sprintf(HEADER_LOCATION_CONNECT));
 	  exit(0);
 	}
   }
@@ -40,6 +41,7 @@ else
 	printf(USR_CONNECT_BEGIN);
 	printf(USR_FIELD_LOGIN, USR_POST_LOGIN);
 	printf(USR_FIELD_PASSWD, USR_POST_PASSWD);
+	printf(USR_VALUE_LOGIN, $_POST[USR_POST_LOGIN]);
 	printf(USR_CONNECT_END);
   }
 printf(XML_FOOTER);

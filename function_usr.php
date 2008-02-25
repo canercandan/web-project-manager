@@ -15,7 +15,6 @@ function usr_passwd_check()
 {
   $test = sql_query(sprintf(USR_SQL_SELECT_PASSWD, sql_real_escape_string($_POST[USR_POST_LOGIN])));
   $passwd = sql_result($test, 0, 0);
-  var_dump($passwd);
   if (strcmp(sha1($_POST[USR_POST_PASSWD]), $passwd) == 0)
     return (1);
   return (0);
@@ -70,20 +69,5 @@ function usr_add()
   $user = mysql_insert_id();
   sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
 }
-
-/*
-function usr_connect()
-{
-  $login = usr_login_check();
-  $passwd = usr_passwd_check();
-  if (!$login)
-    printf(XML_ERROR, USR_ERROR_LOGIN);
-  if ($login && !$passwd)
-    printf(XML_ERROR, USR_ERROR_PASSWD);
-  if ($login && $passwd)
-	  return (1);
-  return (0);
-}
-*/
 
 ?>
