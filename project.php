@@ -23,8 +23,6 @@ if (isset($_GET['less']) && isset($_GET['activity']))
 ** a completer par viven
 */
 
-printf(PROJECT_BEGIN);
-
 printf(PROJECT_WINDOW_BEGIN);
 
 if (isset($_SESSION['PROJECT_NAME']))
@@ -65,7 +63,5 @@ if (true || isset($_SESSION[ACTIVITY_NAME]))
    }
 
 printf(PROJECT_WINDOW_END);
-
-printf(PROJECT_END);
 
 ?>

@@ -22,6 +22,8 @@ else
 /*
 ** TODO Project list
 */
+printf(PROJECT_BEGIN);
+printf(PROJECT_END);
 
 // if ....  projet selectionne
 // right window = project window (project menu, activity list ... )
