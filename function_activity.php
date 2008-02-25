@@ -73,7 +73,7 @@ function get_member_activity($id_activity, $id_project)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-	printf(MEMBER_ELEM_ACTIVITY, $tab[0], $tab[1], $tab[2], $tab[3], $tab[4], $tab[5]);
+	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, $tab[1], $tab[2], $tab[3], $tab[4], $tab[5]);
       }
 }
 
@@ -84,7 +84,7 @@ function get_member_project_activity($id_activity, $id_project)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-	printf(MEMBER_ELEM_PROJECT, $tab[0], $tab[1], $tab[2], $tab[3], $tab[4]);
+	printf(MEMBER_ELEM_PROJECT, $tab[0], 0, $tab[1], $tab[2], $tab[3], $tab[4]);
       }
 }
 
@@ -119,7 +119,6 @@ function print_activities_list($id_project, $id_activity)
 	printf(ACTIVITY_TITLE, $tab[1]);
 	printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]] : 0);
 	printf(ACTIVITY_ID, $tab[0]);
-	printf(ACTIVITY_EDITABLE, 1); //TODO
 	print_activities_list($id_project, $tab[0]);
 	printf(ACTIVITY_END);
       }
