@@ -8,6 +8,7 @@ define('MAIN', 1);
 
 require_once('./define_config.php');
 require_once('function_sql.php');
+require_once('function_project.php');
 require_once('define_project.php');
 
 session_name(SESS_NAME);
@@ -20,11 +21,7 @@ if ($_GET[DEBUG])
 else
   printf(XML_HEADER, XML_TEMPLATE);
 
-/*
-** TODO Project list
-*/
-printf(PROJECT_BEGIN);
-printf(PROJECT_END);
+print_projects_list(0);
 
 // if ....  projet selectionne
 // right window = project window (project menu, activity list ... )

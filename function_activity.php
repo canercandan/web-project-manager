@@ -4,6 +4,7 @@ if (!MAIN)
   exit(0);
 
 require_once('./define_activity.php');
+require_once('./function_sql.php');
 
 function get_activity_work($id_activity)
 {
@@ -118,6 +119,7 @@ function print_activities_list($id_project, $id_activity)
 	printf(ACTIVITY_TITLE, $tab[1]);
 	printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]] : 0);
 	printf(ACTIVITY_ID, $tab[0]);
+	printf(ACTIVITY_EDITABLE, 1); //TODO
 	print_activities_list($id_project, $tab[0]);
 	printf(ACTIVITY_END);
       }

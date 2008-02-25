@@ -5,6 +5,7 @@ if (!MAIN)
 
 define('PROJECT_BEGIN', '<project>');
 define('PROJECT_END', '</project>');
+define('PROJECT_ITEM', '<project><title>%s</title><id>%d</id></project>');
 define('PROJECT_WINDOW_BEGIN', '<project_window>');
 define('PROJECT_WINDOW_END', '</project_window>');
 define('PROJECT_NAME', '<name>%s</name>');
@@ -20,5 +21,15 @@ define('UNKNOWED_PROJECT', 'Unknowed project');
 define('INFORMATION', 0);
 define('ADD_ACTIVITY', 1);
 define('ADD_MEMBER', 2);
+
+/*
+** SQL
+*/
+
+define('SQL_SELECT_PROJECT', 'select project_name, project_id from tw_project');
+	/*	tw_membre
+		WHERE
+		membre_usr_id = \'%d\' AND member_project_id = project_id');
+	*/
 
 ?>
