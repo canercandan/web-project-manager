@@ -3,9 +3,9 @@ define('MAIN', 1);
 
 require_once('./define_config.php');
 require_once('./function_profil.php');
-
 session_name(SESS_NAME);
 session_start();
+var_dump($_SESSION['USER_LOGIN']);
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 
@@ -14,14 +14,14 @@ if (PROFIL_POST_TITLE || PROFIL_POST_LOCATION || PROFIL_POST_NAME ||
     PROFIL_POST_FNAME || PROFIL_POST_FPHONE || PROFIL_POST_MPHONE || PROFIL_POST_ADDRESS)
   profil_update();
   */
-  
-if (!($profil = profil_check()))
+
+if (($profil = profil_check()))
   {
-    var_dump($profil);
     header(sprintf(HEADER_LOCATION_MEMBRE));
-	exit (0);
+	exit(0);
   }
-else
+
+if (!$_GET['ok'])
   {
 	header(HEADER_CONTENT_TYPE);
 	if ($_GET[DEBUG])
