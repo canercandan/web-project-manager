@@ -14,6 +14,7 @@ define('ADD_PROJECT_END', '</add_project>');
 define('ACTIVITY_START', '<activity>');
 define('ACTIVITY_END', '</activity>');
 
+define('PROJECT_OK', 'Congratulation, project added');
 define('FIELD_PROJECT_NAME', '<field_name>%s</field_name>');
 define('FIELD_PROJECT_DESCRIB', '<field_descr>%s</field_descr>');
 define('POST_PROJECT_NAME', 'projname');
