@@ -4,6 +4,7 @@ define('MAIN', 1);
 
 require_once('./define_config.php');
 require_once('./function_usr.php');
+require_once('./define_session.php');
 session_name(SESS_NAME);
 session_start();
 
@@ -29,7 +30,7 @@ printf(USR_CONNECT_END);
 /*
 if (ok)
   {
-    $_SESSION[USR_SESSION_LOGIN] = $_POST[USR_POST_LOGIN];
+    $_SESSION[SESSION_LOGIN] = $_POST[USR_POST_LOGIN];
   }
 */
 printf(XML_FOOTER);

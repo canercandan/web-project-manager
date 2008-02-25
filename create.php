@@ -6,14 +6,14 @@ require_once('./function_usr.php');
 
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
-header(HEADER_CONTENT_TYPE);
-if ($_GET[DEBUG])
-  printf(XML_HEADER, XML_NO_TEMPLATE);
-else
-  printf(XML_HEADER, XML_TEMPLATE);
-printf(USR_CREATE_BEGIN);
 if ($_GET['ok'])
 {
+  header(HEADER_CONTENT_TYPE);
+  if ($_GET[DEBUG])
+    printf(XML_HEADER, XML_NO_TEMPLATE);
+  else
+    printf(XML_HEADER, XML_TEMPLATE);
+  printf(USR_CREATE_BEGIN);
   printf(XML_MESG, USR_MESG_CREATE_OK);
   printf(USR_CREATE_END);
   printf(USR_CONNECT_BEGIN);
@@ -24,6 +24,12 @@ if ($_GET['ok'])
 }
 else
 {
+  header(HEADER_CONTENT_TYPE);
+  if ($_GET[DEBUG])
+    printf(XML_HEADER, XML_NO_TEMPLATE);
+  else
+    printf(XML_HEADER, XML_TEMPLATE);
+  printf(USR_CREATE_BEGIN);
   printf(USR_FIELD_LOGIN, USR_POST_LOGIN);
   printf(USR_FIELD_PASSWD, USR_POST_PASSWD);
   printf(USR_FIELD_REPASSWD, USR_POST_REPASSWD);
@@ -40,7 +46,7 @@ else
 	  printf(XML_ERROR, USR_ERROR_EMAIL_NOTFOUND);
 	else
 	{
-	  $ok = usr_add();
+	  usr_add();
 	  header('Location:?ok=1');
 	}
   }

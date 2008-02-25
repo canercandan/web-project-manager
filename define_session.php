@@ -1,5 +1,9 @@
 <?php
 
+define('SESSION_LOGIN', 'sesslog');
+define('SESSION_PASSWD', 'sesspassswd');
+define('SESSION_EMAIL', 'sessmail');
+
 /*
 Nom des variables de sessions utilisees
 
