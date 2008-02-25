@@ -38,7 +38,7 @@ function usr_profil_check()
 {
   $test = sql_query(sprintf(USR_SQL_SELECT_PROFIL, sql_real_escape_string($_POST[USR_POST_LOGIN])));
   $tab = sql_fetch_array($test);
-  if ($tab[1] == 'NULL' || $tab[2] == 'NULL' || $tab[3] == 'NULL' || $tab[4] == 'NULL' || $tab[5] == 'NULL' || $tab[6] == '0' || $tab[7] == 'NULL')
+  if ($tab[1] == 'NULL' || $tab[2] == 'NULL' || $tab[3] == 'NULL' || $tab[4] == 'NULL' || $tab[5] == 'NULL' || $tab[6] == '0')
 	return (0);
   else
     return (1);

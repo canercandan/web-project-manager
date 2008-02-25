@@ -3,6 +3,12 @@
 if (!MAIN)
   exit(0);
 
+/*
+** Define profil : name for xml
+*/
+
+//define('HEADER_LOCATION_MEMBRE', 'Location:membre.php?ok=1');
+
 define('PROFIL_BEGIN', '<profil>');
 define('PROFIL_END', '</profil>');
 
@@ -22,6 +28,10 @@ define('PROFIL_VALUE_FPHONE', '<value_fphone>%s</value_fphone>');
 define('PROFIL_VALUE_MPHONE', '<value_mphone>%s</value_mphone>');
 define('PROFIL_VALUE_ADDRESS', '<value_address>%s</value_address>');
 
+/*
+** Define profil : name for request
+*/
+
 define('PROFIL_POST_TITLE', 'profil_title');
 define('PROFIL_POST_LOCATION', 'profil_location');
 define('PROFIL_POST_NAME', 'profil_name');
@@ -30,4 +40,15 @@ define('PROFIL_POST_FPHONE', 'profil_fphone');
 define('PROFIL_POST_MPHONE', 'profil_mphone');
 define('PROFIL_POST_ADDRESS', 'profil_address');
 
+/*
+** Define profil : sql profil request
+*/
+
+define('PROFIL_SQL_SELECT_PROFIL',
+	   'SELECT *
+	    FROM tw_profil
+		WHERE profil_usr_id = ( SELECT usr_id
+								FROM tw_usr
+								WHERE usr_login = \'%s\' );');
+		
 ?>
