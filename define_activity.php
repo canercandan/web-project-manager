@@ -82,7 +82,7 @@ FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member, tw_activity_member
 WHERE 
 member_usr_id = usr_id
 AND
-usr_profil_id = profil_id
+usr_id = profil_usr_id
 AND
 profil_title_id = title_id
 AND
@@ -101,7 +101,7 @@ FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member
 WHERE 
 member_usr_id = usr_id
 AND
-usr_profil_id = profil_id
+usr_id = profil_usr_id
 AND
 profil_title_id = title_id
 AND
