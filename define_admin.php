@@ -15,9 +15,12 @@ define('FIELD_LOCATION_NAME', '<field_name>%s</field_name>');
 define('FIELD_LOCATION_ADDR', '<field_addr>%s</field_addr>');
 define('POST_LOCATION_NAME', 'locname');
 define('POST_LOCATION_ADDR', 'locaddr');
+define('POST_LOCATION_MODNAME', '<field_name>modlocname</field_name>');
+define('POST_LOCATION_MODADDR', '<field_addr>modlocaddr</field_addr>');
+define('POST_LOCATION_MODID', '<field_id>modlocid</field_id>');
 define('LOCATION_START', '<location>');
 define('LOCATION_END', '</location>');
-define('LOCATION_ITEM', '<location><id>%d</id><name>%s</name><address>%s</address></location>');
+define('LOCATION_ITEM', '<location>%s%s%s<id>%d</id><name>%s</name><address>%s</address></location>');
 
 
 /*
