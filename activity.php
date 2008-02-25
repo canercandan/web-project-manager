@@ -17,7 +17,7 @@ if (isset($_SESSION[ACTIVITY_NAME]))
      printf('<name>%s</name>', UNKNOWED_ACTIVITY);
    }
 
-if (true || (isset($_SESSION[ACTIVITY_MENU]) && $_SESSION[ACTIVITY_MENU] == MEMBER_ACTIVITY))
+if ( (isset($_SESSION[ACTIVITY_MENU]) && $_SESSION[ACTIVITY_MENU] == MEMBER_ACTIVITY))
   {
     include('member_activity.php');
   }
