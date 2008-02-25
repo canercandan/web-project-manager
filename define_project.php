@@ -33,7 +33,8 @@ define('SQL_SELECT_PROJECT', 'select project_name, project_id from tw_project');
 		WHERE
 		membre_usr_id = \'%d\' AND member_project_id = project_id');
 	*/
-define('SQL_ADD_PROJECT', 'INSERT INTO `techweb`.`tw_project` (
+
+define('SQL_ADD_PROJECT', 'INSERT INTO `tw_project` (
 `project_id` ,
 `project_autor_usr_id` ,
 `project_name` ,
@@ -43,4 +44,5 @@ define('SQL_ADD_PROJECT', 'INSERT INTO `techweb`.`tw_project` (
 VALUES (
 NULL , \'%d\', \'%s\', \'%s\', CURDATE()
 );');
+
 ?>

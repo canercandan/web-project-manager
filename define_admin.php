@@ -10,6 +10,7 @@ define('ADD_LOCATION_END', '</add_location>');
 
 define('ADMIN_LOCATION', 1);
 
+define('LOC_NAME_MISSING', 'Please fill the location name.');
 define('LOCATION_OK', 'Congratulation, location added');
 define('FIELD_LOCATION_NAME', '<field_name>%s</field_name>');
 define('FIELD_LOCATION_ADDR', '<field_addr>%s</field_addr>');
@@ -28,5 +29,19 @@ define('LOCATION_ITEM', '<location>%s%s%s<id>%d</id><name>%s</name><address>%s</
 */
 
 define('SQL_GET_LOCATIONS', 'SELECT location_id, location_name, location_address FROM tw_location');
+
+define('SQL_ADD_LOCATION', '
+INSERT INTO `tw_location` (
+`location_id` ,
+`location_name` ,
+`location_address`
+)
+VALUES (
+NULL , \'%s\', \'%s\'
+);');
+
+define('SQL_UPDATE_LOCATION', '
+UPDATE `tw_location` SET `location_name` = \'%s\',
+`location_address` = \'%s\' WHERE `tw_location`.`location_id` =\'%d\;');
 
 ?>

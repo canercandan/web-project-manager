@@ -8,7 +8,7 @@ require_once('./function_activity.php');
 
 printf(ADD_ACTIVITY_BEGIN);
 
-if (!isset($_POST[POST_ACTIVITY_NAME]) && !isset($_POST[POST_ACTIVITY_DESCRIB]) && !isset($_POST[POST_ACTIVITY_CHARGE]))
+if (!isset($_POST[POST_ACTIVITY_NAME]) || !isset($_POST[POST_ACTIVITY_DESCRIB]) || !isset($_POST[POST_ACTIVITY_CHARGE]))
   {
     /*
      ** TODO  add a date box
