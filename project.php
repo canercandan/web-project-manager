@@ -25,6 +25,8 @@ if (isset($_GET['less']) && isset($_GET['activity']))
 
 printf(PROJECT_BEGIN);
 
+printf(PROJECT_WINDOW_BEGIN);
+
 if (isset($_SESSION['PROJECT_NAME']))
   {
     printf(PROJECT_NAME,$_SESSION['PROJECT_NAME']);
@@ -61,6 +63,8 @@ if (true || isset($_SESSION[ACTIVITY_NAME]))
       ** TODO info projet, ajout membre, .... = Vivien
       */
    }
+
+printf(PROJECT_WINDOW_END);
 
 printf(PROJECT_END);
 

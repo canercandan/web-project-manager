@@ -6,8 +6,10 @@
     <ul>
       <xsl:for-each select=".">
 	<li>
-	  <img src="./images/icons/less_not.png" />
-	  <xsl:value-of select="." />
+	  <a href="?project_id={id}">
+	    <img src="./images/icons/less_not.png" />
+	    <xsl:value-of select="." />
+	  </a>
 	</li>
       </xsl:for-each>
     </ul>

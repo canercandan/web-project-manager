@@ -5,6 +5,8 @@ if (!MAIN)
 
 define('PROJECT_BEGIN', '<project>');
 define('PROJECT_END', '</project>');
+define('PROJECT_WINDOW_BEGIN', '<project_window>');
+define('PROJECT_WINDOW_END', '</project_window>');
 define('PROJECT_NAME', '<name>%s</name>');
 define('ADD_PROJECT_BEGIN', '<add_project>');
 define('ACTIVITY_START', '<activity>');
