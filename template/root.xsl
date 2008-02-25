@@ -60,28 +60,7 @@
 	  <div id="body">
 	    <xsl:choose>
 	      <xsl:when test="doc/body/project">
-		<div id="project">
-		  <xsl:if test="doc/body/project/name">
-		    <div class="list">
-		      <xsl:apply-templates select="doc/body/project/name" />
-		    </div>
-		  </xsl:if>
-		</div>
-		<div id="activity">
-		  <xsl:if test="doc/body/project/activity">
-		    <div class="list">
-		      <xsl:apply-templates select="doc/body/project/activity" />
-		    </div>
-		  </xsl:if>
-		</div>
-		<div id="box">
-		  <xsl:if test="doc/body/project/add_activity">
-		    <xsl:apply-templates select="doc/body/project/add_activity" />
-		  </xsl:if>
-		  <xsl:if test="doc/body/project/activity_window">
-		    <xsl:apply-templates select="doc/body/project/activity_window" />
-		  </xsl:if>
-		</div>
+		<xsl:apply-templates select="doc/body/project" />
 	      </xsl:when>
 	      <xsl:otherwise>
 		<div>

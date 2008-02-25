@@ -190,9 +190,26 @@ legend
 	width: 10%;
 }
 
-#box
+.menu
 {
-	margin-left: 30%;
+	float: left;
+}
+
+.menu > ul
+{
+	margin: 5px 50px;
+	padding: 5px;
+	list-style-type: none;
+	border: 5px solid WhiteSmoke;
+	background-color: SkyBlue;
+	width: 160px;
+}
+
+.box
+{
+	margin-left: 170px;
+	padding: 5px;
+	border: 1px dashed SkyBlue;
 }
 
 .list ul
