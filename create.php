@@ -6,7 +6,20 @@ require_once('./function_usr.php');
 
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
-if ($_GET['ok'])
+
+if ($_POST[USR_POST_LOGIN])
+{
+    if (!$_POST[USR_POST_PASSWD])
+	  $ok = (sprintf(XML_ERROR, USR_ERROR_PASSWD_NOTFOUND));
+	else if (!$_POST[USR_POST_REPASSWD])
+	  $ok = (sprintf(XML_ERROR, USR_ERROR_REPASSWD_NOTFOUND));
+	else if (!$_POST[USR_POST_EMAIL])
+	  $ok = (sprintf(XML_ERROR, USR_ERROR_EMAIL_NOTFOUND));
+	else
+	  $ok = usr_add();
+}
+
+if ($ok == 'ok')
 {
   header(HEADER_CONTENT_TYPE);
   if ($_GET[DEBUG])
@@ -36,20 +49,7 @@ else
   printf(USR_FIELD_EMAIL, USR_POST_EMAIL);
   printf(USR_VALUE_LOGIN, $_POST[USR_POST_LOGIN]);
   printf(USR_VALUE_EMAIL, $_POST[USR_POST_EMAIL]);
-  if ($_POST[USR_POST_LOGIN])
-  {
-    if (!$_POST[USR_POST_PASSWD])
-	  printf(XML_ERROR, USR_ERROR_PASSWD_NOTFOUND);
-	else if (!$_POST[USR_POST_REPASSWD])
-	  printf(XML_ERROR, USR_ERROR_REPASSWD_NOTFOUND);
-	else if (!$_POST[USR_POST_EMAIL])
-	  printf(XML_ERROR, USR_ERROR_EMAIL_NOTFOUND);
-	else
-	{
-	  usr_add();
-	  header('Location:?ok=1');
-	}
-  }
+  printf($ok);
   printf(USR_CREATE_END);
 }
 printf(XML_FOOTER);

@@ -67,22 +67,21 @@ function usr_add()
 {
   $login = usr_login_check();
   if ($login)
-    printf(XML_ERROR, USR_ERROR_LOGIN_EXIST);
+    return (sprintf(XML_ERROR, USR_ERROR_LOGIN_EXIST));
   $passwd = usr_repasswd_check();
   if (!$login && !$passwd)
-    printf(XML_ERROR, USR_ERROR_REPASSWD);
+    return (sprintf(XML_ERROR, USR_ERROR_REPASSWD));
   $email= usr_email_check();
   if (!$login && $passwd && !$email)
-    printf(XML_ERROR, USR_ERROR_EMAIL);
+    return (sprintf(XML_ERROR, USR_ERROR_EMAIL));
   if (!$login && $passwd && $email)
     {
 	  sql_query(sprintf(USR_SQL_ADD_USR, sql_real_escape_string($_POST[USR_POST_LOGIN]), 
 						sha1(sql_real_escape_string($_POST[USR_POST_PASSWD])), sql_real_escape_string($_POST[USR_POST_EMAIL])));
 	  $user = mysql_insert_id();
 	  sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
-	  return (1);
+	  return ('ok');
     }
-  return (0);
 }
 
 /*
