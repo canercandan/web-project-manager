@@ -9,22 +9,13 @@
     <ul>
       <xsl:for-each select=".">
 	<li>
-	  <a href="?activity=1&amp;information=1">
-	    <img src="./images/icons/less_not.png" />
-	    Information
-	  </a>
+	  <a href="?activity=1&amp;information=1">Information</a>
 	</li>
 	<li>
-	  <a href="?activity=1&amp;member=1">
-	    <img src="./images/icons/less_not.png" />
-	    Membres
-	  </a>
+	  <a href="?activity=1&amp;member=1">Membres</a>
 	</li>
 	<li>
-	  <a href="?activity=1&amp;add_activity=1">
-	    <img src="./images/icons/less_not.png" />
-	    Add an sub-activity
-	  </a>
+	  <a href="?activity=1&amp;add_activity=1">Add an sub-activity</a>
 	</li>
       </xsl:for-each>
     </ul>

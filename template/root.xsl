@@ -13,7 +13,7 @@
 	<div id="content">
 	  <div id="header">
 	    <h1>TechWeb</h1>
-	    <ul id="menu">
+	    <ul id="nav">
 	      <xsl:choose>
 		<xsl:when test="doc/body/home">
 		  <li class="on"><a href="./index.php">Home</a></li>
@@ -60,7 +60,46 @@
 	  <div id="body">
 	    <xsl:choose>
 	      <xsl:when test="doc/body/project">
-		<xsl:apply-templates select="doc/body/project" />
+		<div class="box2">
+		  <div class="menu">
+		    project menu<br />
+		    <xsl:if test="doc/body/project/project">
+		      <div class="list">
+			<xsl:apply-templates select="doc/body/project/project" />
+		      </div>
+		    </xsl:if>
+		  </div>
+		  <div class="box">
+		    <div class="menu">
+		      project admin<br />
+		      <xsl:apply-templates select="doc/body/project_window/admin" />
+		      activity menu<br />
+		      <xsl:if test="doc/body/project_window/activity">
+			<div class="list">
+			  <xsl:apply-templates select="doc/body/project_window/activity" />
+			</div>
+		      </xsl:if>
+		    </div>
+		    <div class="box">
+		      <div class="menu">
+			activity admin<br />
+			<xsl:apply-templates select="doc/body/project_window/activity_window/admin" />
+		      </div>
+		      <div class="box">
+			activity box<br />
+			<xsl:if test="doc/body/project_window/add_activity">
+			  <xsl:apply-templates select="doc/body/project_window/add_activity" />
+			</xsl:if>
+			<xsl:if test="doc/body/project_window/activity_window">
+			  <xsl:apply-templates select="doc/body/project_window/activity_window" />
+			</xsl:if>
+		      </div>
+		      <br class="clear" />
+		    </div>
+		    <br class="clear" />
+		  </div>
+		  <br class="clear" />
+		</div>
 	      </xsl:when>
 	      <xsl:otherwise>
 		<div>
