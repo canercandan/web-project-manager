@@ -37,7 +37,7 @@ INSERT INTO `tw_title` (`title_id`, `title_name`) VALUES
 (2, 'Designer'),
 (3, 'Graphist');
 
-INSERT INTO `tw_usr` (`usr_id`, `usr_login`, `usr_passwd`, `usr_email`, `usr_date`, `usr_usr_level_id`) VALUES 
+INSERT INTO `tw_usr` (`usr_id`, `usr_login`, `usr_passwd`, `usr_email`, `usr_date`, `usr_level_id`) VALUES 
 (1, 'tom', 'passtom', 'tom@mail.com', '2008-02-21', 1),
 (2, 'pierre', 'pierrepass', 'pierre@mail.com', '2008-02-13', 1);
 
