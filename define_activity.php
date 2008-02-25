@@ -40,7 +40,6 @@ define('ERROR_ACTIVITY_CHARGE', 'error : activity charge invalid');
 
 define('ACTIVITY_OK', 'Congratulation, activity added');
 define('CHARGE_NOT_INT', 'The unit of the charge of an activity is \'day per man\', that\'s why the charge must be an integer.');
-define('FIELD_NOT_FILLED', 'Please fill all the fields');
 define('POST_ACTIVITY_NAME', 'activityname');
 define('POST_ACTIVITY_DESCRIB', 'activitydescrib');
 define('POST_ACTIVITY_CHARGE', 'activitycharge');

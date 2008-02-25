@@ -32,6 +32,9 @@ define('XML_ERROR',
 
 define('XML_MESG',
        '<mesg>%s</mesg>');
+	   
+define('ADMIN', '<admin>%d</admin>');
+define('FIELD_NOT_FILLED', 'Please fill all the fields');
 
 define('DEBUG', 'debug');
 

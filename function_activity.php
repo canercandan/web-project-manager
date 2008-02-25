@@ -6,6 +6,11 @@ if (!MAIN)
 require_once('./define_activity.php');
 require_once('./function_sql.php');
 
+function check_admin_for_activity($id_activity)
+{
+	printf(ADMIN,1);
+}
+
 function get_activity_work($id_activity)
 {
   $res = sql_query(sprintf(SQL_GET_UNDERACT_WORK, sql_real_escape_string($id_activity),

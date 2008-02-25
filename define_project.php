@@ -10,6 +10,7 @@ define('PROJECT_WINDOW_BEGIN', '<project_window>');
 define('PROJECT_WINDOW_END', '</project_window>');
 define('PROJECT_NAME', '<name>%s</name>');
 define('ADD_PROJECT_BEGIN', '<add_project>');
+define('ADD_PROJECT_END', '</add_project>');
 define('ACTIVITY_START', '<activity>');
 define('ACTIVITY_END', '</activity>');
 
@@ -31,5 +32,14 @@ define('SQL_SELECT_PROJECT', 'select project_name, project_id from tw_project');
 		WHERE
 		membre_usr_id = \'%d\' AND member_project_id = project_id');
 	*/
-
+define('SQL_ADD_PROJECT', 'INSERT INTO `techweb`.`tw_project` (
+`project_id` ,
+`project_autor_usr_id` ,
+`project_name` ,
+`project_describ` ,
+`project_date`
+)
+VALUES (
+NULL , \'%d\', \'%s\', \'%s\', CURDATE()
+);');
 ?>

@@ -20,13 +20,21 @@ if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE);
 else
   printf(XML_HEADER, XML_TEMPLATE);
-
+  
+check_admin_create_project();
 print_projects_list(0);
 
 // if ....  projet selectionne
 // right window = project window (project menu, activity list ... )
-include('project.php');
-
+if (true || isset($_SESSION['PROJECT_NAME']))
+	{
+		include('project.php');
+	}
+else
+	{
+		include('add_project.php');
+		
+	}
 printf(XML_FOOTER);
 
 ?>

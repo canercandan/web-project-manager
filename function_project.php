@@ -17,5 +17,22 @@ function print_projects_list($id_user)
       }
 	printf(PROJECT_END);
 }
-  
+
+function add_project($id_user, $name, $describ)
+{
+  sql_query(sprintf(SQL_ADD_PROJECT, sql_real_escape_string($id_user),
+									sql_real_escape_string($name),
+									sql_real_escape_string($describ)));
+}
+
+function check_admin_for_project($id_project)
+{
+	printf(ADMIN,1);
+}
+
+function check_admin_create_project()
+{
+	printf(ADMIN,1);
+}
+
 ?>

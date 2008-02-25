@@ -17,6 +17,8 @@ if (isset($_SESSION[ACTIVITY_NAME]))
      printf('<name>%s</name>', UNKNOWED_ACTIVITY);
    }
 
+check_admin_for_activity(isset($_SESSION[ACTIVITY_ID]) ? $_SESSION[ACTIVITY_ID] : 0);
+
 if ( (isset($_SESSION[ACTIVITY_MENU]) && $_SESSION[ACTIVITY_MENU] == MEMBER_ACTIVITY))
   {
     include('member_activity.php');

@@ -34,9 +34,8 @@ if (isset($_SESSION['PROJECT_NAME']))
      printf(PROJECT_NAME,UNKNOWED_PROJECT);
    }
 
-/*
-** TODO Project Menu
-*/
+check_admin_for_project(isset($_SESSION['PROJECT_ID']) ? $_SESSION['PROJECT_ID'] : 0);
+
 printf(ACTIVITY_START);
 printf(ACTIVITY_TITLE, isset($_SESSION['PROJECT_NAME']) ? $_SESSION['PROJECT_NAME'] : UNKNOWED_PROJECT);
 printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][0]) ? $_SESSION['DEVELOPPED_ACTIVITY'][0] : 0);
