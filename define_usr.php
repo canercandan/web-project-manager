@@ -5,7 +5,8 @@
 */
 
 define('HEADER_LOCATION_CREATE', 'Location:?ok=1&login=%s');
-define('HEADER_LOCATION_CONNECT', 'Location:?ok=1');
+define('HEADER_LOCATION_PROFIL', 'Location:profil.php?ok=1');
+define('HEADER_LOCATION_MEMBRE', 'Location:membre.php?ok=1');
 
 define('USR_CREATE_BEGIN', '<create>');
 define('USR_CREATE_END', '</create>');
@@ -70,6 +71,13 @@ define('USR_SQL_SELECT_PASSWD',
 	    FROM tw_usr
 	    WHERE usr_login = \'%s\';');
 
+define('USR_SQL_SELECT_PROFIL',
+	   'SELECT *
+	    FROM tw_profil
+		WHERE profil_usr_id = ( SELECT usr_id
+								FROM tw_usr
+								WHERE usr_login = \'%s\' );');
+
 define('USR_SQL_SELECT_LOCATION',
 	   'SELECT location_id, location_name
 	    FROM tw_location;');
@@ -92,6 +100,15 @@ define('USR_SQL_ADD_PROFIL',
        'INSERT INTO tw_profil
 	(profil_usr_id)
 	VALUES(\'%s\');');
+
+/*
+** Define user : sql session request
+*/
+
+define('USR_SQL_SESSION_ID',
+	   'SELECT usr_id
+	    FROM tw_usr
+		WHERE usr_login = \'%s\';');
 
 /*
 ** Define user : sql update request

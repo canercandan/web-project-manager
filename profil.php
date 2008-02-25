@@ -1,4 +1,6 @@
 <?php
+session_name(SESS_NAME);
+session_start();
 
 define('MAIN', 1);
 

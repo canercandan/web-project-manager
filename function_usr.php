@@ -34,6 +34,16 @@ function usr_email_check()
   return (0);
 }
 
+function usr_profil_check()
+{
+  $test = sql_query(sprintf(USR_SQL_SELECT_PROFIL, sql_real_escape_string($_POST[USR_POST_LOGIN])));
+  $tab = sql_fetch_array($test);
+  if ($tab[1] == 'NULL' || $tab[2] == 'NULL' || $tab[3] == 'NULL' || $tab[4] == 'NULL' || $tab[5] == 'NULL' || $tab[6] == '0' || $tab[7] == 'NULL')
+	return (0);
+  else
+    return (1);
+}
+
 function usr_select_location()
 {
   $test = sql_query(sprintf(USR_SQL_SELECT_LOCATION_BEGIN));
@@ -68,6 +78,15 @@ function usr_add()
 		    sha1(sql_real_escape_string($_POST[USR_POST_PASSWD])), sql_real_escape_string($_POST[USR_POST_EMAIL])));
   $user = mysql_insert_id();
   sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
+}
+
+function usr_session_id()
+{
+  $test = sql_query(sprintf(USR_SQL_SESSION_ID, sql_real_escape_string($_POST[USR_POST_LOGIN])));
+  if (sql_num_rows($test))
+    return (sql_result($test, 0, 0));
+  else
+    return (0);
 }
 
 ?>

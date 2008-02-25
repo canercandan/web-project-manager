@@ -48,6 +48,11 @@ function	sql_num_rows($res)
   return (mysql_num_rows($res));
 }
 
+function	sql_num_fields($res)
+{
+  return  (mysql_num_fields($res));
+}
+  
 function	sql_fetch_array($res)
 {
   return (mysql_fetch_array($res));
