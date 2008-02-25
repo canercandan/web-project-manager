@@ -15,7 +15,7 @@ INSERT INTO `tw_member_role` (`role_id`, `role_name`) VALUES
 (2, 'Developpeur'),
 (3, 'Observateur');
 
-INSERT INTO `tw_profil` (`profil_id`, `profil_location_id`, `profil_name`, `profil_fname`, `profil_fphone`, `profil_mphone`, `profil_title_id`, `profil_perso_adress`) VALUES 
+INSERT INTO `tw_profil` (`profil_usr_id`, `profil_location_id`, `profil_name`, `profil_fname`, `profil_fphone`, `profil_mphone`, `profil_title_id`, `profil_perso_adress`) VALUES 
 (1, 1, 'Soyer', 'Tom', '043256532', '064211233', 1, '10, rue des oublies'),
 (2, 2, 'Paul', 'Pierre', '1234567', '32514232', 3, '56, avenue Jack\r\n96432 Paris');
 
@@ -24,9 +24,9 @@ INSERT INTO `tw_title` (`title_id`, `title_name`) VALUES
 (2, 'Designer'),
 (3, 'Graphist');
 
-INSERT INTO `tw_usr` (`usr_id`, `usr_profil_id`, `usr_login`, `usr_passwd`, `usr_email`, `usr_date`, `usr_usr_level_id`) VALUES 
-(1, 1, 'tom', 'passtom', 'tom@mail.com', '2008-02-21', 1),
-(2, 2, 'pierre', 'pierrepass', 'pierre@mail.com', '2008-02-13', 1);
+INSERT INTO `tw_usr` (`usr_id`, usr_level_id, `usr_login`, `usr_passwd`, `usr_email`, `usr_date`) VALUES 
+(1, 1, 'tom', 'passtom', 'tom@mail.com', '2008-02-21'),
+(2, 2, 'pierre', 'pierrepass', 'pierre@mail.com', '2008-02-13');
 
 INSERT INTO `tw_usr_level` (`level_id`, `level_name`) VALUES 
 (1, 'Administrator Root'),

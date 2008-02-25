@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS tw_activity_member (
   activity_level INT NOT NULL,
   activity_member_date_start date NOT NULL,
   activity_member_date_end date default NULL,
-  activity_work INT default NOT NULL,
+  activity_work INT NOT NULL,
   PRIMARY KEY  (activity_member_usr_id, activity_member_activity_id)
 ) ENGINE=MyISAM;
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS tw_usr (
   usr_passwd varchar(40) default NULL,
   usr_email varchar(150) default NULL,
   usr_date date default NULL,
-  usr_usr_level_id INT NOT NULL,
+  usr_level_id INT NOT NULL,
   PRIMARY KEY  (usr_id)
 ) ENGINE=MyISAM;
 
@@ -84,15 +84,3 @@ CREATE TABLE IF NOT EXISTS tw_usr_level (
   level_name varchar(30) default NULL,
   PRIMARY KEY  (level_id)
 ) ENGINE=MyISAM;
-
-INSERT INTO tw_usr_level (level_id, level_name)
-VALUES (1, 'Administrator Root');
-
-INSERT INTO tw_usr_level (level_id, level_name)
-VALUES (2, 'Administrator');
-
-INSERT INTO tw_usr_level (level_id, level_name)
-VALUES (3, 'Chef de projet');
-
-INSERT INTO tw_usr_level (level_id, level_name)
-VALUES (4, 'Participant');

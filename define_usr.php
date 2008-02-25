@@ -4,6 +4,9 @@
 ** Define user : name for xml
 */
 
+define('HEADER_LOCATION_CREATE', 'Location:?ok=1&login=%s');
+define('HEADER_LOCATION_CONNECT', 'Location:?ok=1');
+
 define('USR_CREATE_BEGIN', '<create>');
 define('USR_CREATE_END', '</create>');
 define('USR_CONNECT_BEGIN', '<connect>');
@@ -81,11 +84,14 @@ define('USR_SQL_SELECT_TITLE',
 
 define('USR_SQL_ADD_USR',
        'INSERT INTO tw_usr
-		VALUES(0, \'%s\', \'%s\', \'%s\', curdate(), 0);');
+	(usr_level_id, usr_login, usr_passwd,
+	usr_email, usr_date)
+	VALUES(4, \'%s\', \'%s\', \'%s\', curdate());');
 
 define('USR_SQL_ADD_PROFIL',
-       'INSERT INTO tw_profil (profil_usr_id)
-		VALUES(\'%s\');');
+       'INSERT INTO tw_profil
+	(profil_usr_id)
+	VALUES(\'%s\');');
 
 /*
 ** Define user : sql update request
