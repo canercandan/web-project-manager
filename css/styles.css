@@ -176,7 +176,7 @@ legend
 {
 	float: left;
 	padding: 5px;
-	min-width: 200px;
+	width: 250px;
 }
 
 .menu ul
@@ -194,8 +194,7 @@ legend
 
 .box
 {
-	margin-left: 210px;
-	height: 100%;
+	margin-left: 270px;
 }
 
 .blue1
@@ -213,6 +212,11 @@ legend
 	background-color: #eee;
 }
 
+.marg
+{
+	padding: 15px;
+}
+
 h2
 {
 	padding: 5px 0;
@@ -227,6 +231,11 @@ h3.blue2
 	font-size: 0.9em;
 }
 
+.list
+{
+	overflow: auto;
+}
+
 .list ul
 {
 	margin-left: 15px;
@@ -238,9 +247,24 @@ h3.blue2
 	padding: 3px 0;
 	list-style-type: none;
 	vertical-align: middle;
+	display: block;
 }
 
 .list li img
 {
 	padding: 0 5px;
+}
+
+.bar
+{
+	width: 100px;
+	height: 20px;
+	background-color: WhiteSmoke;
+	border: 1px solid LightSteelBlue;
+}
+
+.bar .ok
+{
+	height: 100%;
+	background-color: OliveDrab;
 }

@@ -17,10 +17,5 @@
 	</li>
       </ul>
     </xsl:if>
-    <xsl:if test="information_activity">
-      <xsl:if test="information_activity/activity_work">
-	<xsl:apply-templates select="information_activity/activity_work" />
-      </xsl:if>
-    </xsl:if>
   </xsl:template>
 </xsl:stylesheet>

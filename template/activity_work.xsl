@@ -4,9 +4,11 @@
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="activity_work">
     <xsl:value-of select="name" />
-    (<xsl:value-of select="id" />)
     charge:
     <xsl:value-of select="charge" />
+    <div class="bar">
+      <div class="ok" style="width: {percent}%" />
+    </div>
     <br />
     <xsl:apply-templates select="activity_work" />
   </xsl:template>

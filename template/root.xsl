@@ -67,14 +67,14 @@
 		    </xsl:if>
 		  </div>
 		  <div class="box">
-		    <h2 class="blue2">
-		      <xsl:value-of select="doc/body/project_window/name" />
-		    </h2>
-		    <div class="menu blue2">
-		      <xsl:if test="doc/body/project_window">
+		    <xsl:if test="doc/body/project_window">
+		      <h2 class="blue2">
+			<xsl:value-of select="doc/body/project_window/name" />
+		      </h2>
+		      <div class="menu blue2">
 			<xsl:apply-templates select="doc/body/project_window" />
-		      </xsl:if>
-		    </div>
+		      </div>
+		    </xsl:if>
 		    <div class="box">
 		      <xsl:choose>
 			<xsl:when test="doc/body/project_window/activity_window">
@@ -82,13 +82,14 @@
 			    <xsl:value-of select="doc/body/project_window/activity_window/name" />
 			  </h2>
 			  <div class="menu blue3">
-			    <xsl:if test="doc/body/project_window/activity_window">
-			      <xsl:apply-templates select="doc/body/project_window/activity_window" />
-			    </xsl:if>
+			    <xsl:apply-templates select="doc/body/project_window/activity_window" />
 			  </div>
-			  <div class="box">
+			  <div class="box marg">
 			    <xsl:if test="doc/body/project_window/activity_window/add_activity">
 			      <xsl:apply-templates select="doc/body/project_window/activity_window/add_activity" />
+			    </xsl:if>
+			    <xsl:if test="doc/body/project_window/activity_window/information_activity/activity_work">
+			      <xsl:apply-templates select="doc/body/project_window/activity_window/information_activity/activity_work" />
 			    </xsl:if>
 			  </div>
 			  <div class="clear" />
