@@ -55,55 +55,54 @@
 		</xsl:otherwise>
 	      </xsl:choose>
 	    </ul>
-	    <br class="clear" />
+	    <div class="clear" />
 	  </div>
 	  <div id="body">
 	    <xsl:choose>
 	      <xsl:when test="doc/body/project">
 		<div class="box2">
-		  <div class="menu">
-		    project menu<br />
-		    <xsl:if test="doc/body/project/project">
-		      <div class="list">
-			<xsl:apply-templates select="doc/body/project/project" />
-		      </div>
+		  <div class="menu blue1">
+		    <xsl:if test="doc/body/project">
+		      <xsl:apply-templates select="doc/body/project" />
 		    </xsl:if>
 		  </div>
 		  <div class="box">
-		    <div class="menu">
-		      <xsl:apply-templates select="doc/body/project_window/admin" />
-		      <xsl:if test="doc/body/project_window/activity">
-			<div class="list">
-			  <xsl:apply-templates select="doc/body/project_window/activity" />
-			</div>
+		    <h2 class="blue2">
+		      <xsl:value-of select="doc/body/project_window/name" />
+		    </h2>
+		    <div class="menu blue2">
+		      <xsl:if test="doc/body/project_window">
+			<xsl:apply-templates select="doc/body/project_window" />
 		      </xsl:if>
 		    </div>
 		    <div class="box">
 		      <xsl:choose>
 			<xsl:when test="doc/body/project_window/activity_window">
-			  <div class="menu">
-			    activity admin<br />
-			    <xsl:apply-templates select="doc/body/project_window/activity_window/admin" />
-			  </div>
-			  <div class="box">
-			    activity box<br />
-			    <xsl:if test="doc/body/project_window/add_activity">
-			      <xsl:apply-templates select="doc/body/project_window/add_activity" />
-			    </xsl:if>
+			  <h2 class="blue3">
+			    <xsl:value-of select="doc/body/project_window/activity_window/name" />
+			  </h2>
+			  <div class="menu blue3">
 			    <xsl:if test="doc/body/project_window/activity_window">
 			      <xsl:apply-templates select="doc/body/project_window/activity_window" />
 			    </xsl:if>
 			  </div>
-			  <br class="clear" />
+			  <div class="box">
+			    <xsl:if test="doc/body/project_window/activity_window/add_activity">
+			      <xsl:apply-templates select="doc/body/project_window/activity_window/add_activity" />
+			    </xsl:if>
+			  </div>
+			  <div class="clear" />
 			</xsl:when>
 			<xsl:otherwise>
-			  action activity
+			  <xsl:if test="doc/body/project_window/add_activity">
+			    <xsl:apply-templates select="doc/body/project_window/add_activity" />
+			  </xsl:if>
 			</xsl:otherwise>
 		      </xsl:choose>
 		    </div>
-		    <br class="clear" />
+		    <div class="clear" />
 		  </div>
-		  <br class="clear" />
+		  <div class="clear" />
 		</div>
 	      </xsl:when>
 	      <xsl:otherwise>
@@ -123,7 +122,7 @@
 		</div>
 	      </xsl:otherwise>
 	    </xsl:choose>
-	    <br class="clear" />
+	    <div class="clear" />
 	  </div>
 	  <div id="footer">
 	    <xsl:apply-templates select="doc/footer" />

@@ -9,9 +9,14 @@
 	  <xsl:when test="developped=1">
 	    <li>
 	      <a href="./root.php?less=1&amp;activity={id}">
-		<xsl:if test="activity">
-		  <img src="./images/icons/less.png" />
-		</xsl:if>
+		<xsl:choose>
+		  <xsl:when test="activity">
+		    <img src="./images/icons/less.png" />
+		  </xsl:when>
+		  <xsl:otherwise>
+		    <img src="./images/icons/less_not.png" />
+		  </xsl:otherwise>
+		</xsl:choose>
 	      </a>
 	      <a href="./root.php?activity_id={id}">
 		<xsl:value-of select="title" />

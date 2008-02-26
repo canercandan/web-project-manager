@@ -2,7 +2,9 @@
 
 body,
 ul,
-li
+li,
+h2,
+h3
 {
 	margin: 0;
 	padding: 0;
@@ -41,7 +43,7 @@ textarea
 	font-weight: bold;
 	text-decoration: none;
 	color: Black;
-	border: 1px dashed SkyBlue;
+	border: 1px dashed LightSteelBlue;
 }
 
 input[type='text'],
@@ -64,15 +66,15 @@ input.search
 
 fieldset
 {
-	margin: 10px 0;
+	margin: 10px;
 	padding: 25px;
-	border: 3px solid SkyBlue;
+	border: 3px solid LightSteelBlue;
 }
 
 legend
 {
 	padding: 5px;
-	border: 3px solid SkyBlue;
+	border: 3px solid LightSteelBlue;
 }
 
 .form
@@ -83,7 +85,7 @@ legend
 
 .form label
 {
-	border-bottom: 1px solid SkyBlue;
+	border-bottom: 1px solid LightSteelBlue;
 }
 
 .error,
@@ -113,7 +115,7 @@ legend
 	padding: 5px;
 	width: 95%;
 	border: 2px solid Black;
-	background-color: SkyBlue;
+	background-color: LightSteelBlue;
 }
 
 #header
@@ -162,7 +164,7 @@ legend
 	margin: 5px 50px;
 	padding: 5px;
 	list-style-type: none;
-	background-color: SkyBlue;
+	background-color: LightSteelBlue;
 }
 
 #nav li.on
@@ -184,15 +186,45 @@ legend
 }
 
 .box,
-.box2
+.box2,
+.menu
 {
-	padding: 5px;
-	border: 1px dashed SkyBlue;
+	border: 1px dashed LightSteelBlue;
 }
 
 .box
 {
 	margin-left: 210px;
+	height: 100%;
+}
+
+.blue1
+{
+	background-color: LightSteelBlue;
+}
+
+.blue2
+{
+	background-color: Lavender;
+}
+
+.blue3
+{
+	background-color: #eee;
+}
+
+h2
+{
+	padding: 5px 0;
+	font-size: 1.2em;
+	text-align: center;
+}
+
+h3.blue1,
+h3.blue2
+{
+	padding: 4px 10px;
+	font-size: 0.9em;
 }
 
 .list ul
