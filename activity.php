@@ -6,19 +6,6 @@ if (!MAIN)
 require_once('define_activity.php');
 require_once('function_activity.php');
 
-if (isset($_GET['activity']) && isset($_GET['information']))
-{
-	$_SESSION['ACTIVITY_MENU'] = INFORMATION_ACTIVITY;
-}
-else if (isset($_GET['activity']) && isset($_GET['member']))
-{
-	$_SESSION['ACTIVITY_MENU'] = MEMBER_ACTIVITY;
-}
-else if (isset($_GET['activity']) && isset($_GET['add_activity']))
-{
-	$_SESSION['ACTIVITY_MENU'] = ADD_ACTIVITY_ACTIVITY;
-}
-
 printf(ACTIVITY_WINDOW_BEGIN);
 
 if (isset($_SESSION['ACTIVITY_NAME']))
