@@ -47,6 +47,8 @@ if (isset($_SESSION['ACTIVITY_NAME']))
 				include('add_activity.php');
 			else if ($_SESSION['PROJECT_MENU'] == INFORMATION)
 				include('informations_project.php');
+			else if ($_SESSION['PROJECT_MENU'] == MEMBER)
+				include('member_project.php');
        }
 
      /*

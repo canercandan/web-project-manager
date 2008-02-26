@@ -18,6 +18,12 @@ define('MEMBER_PROJECT_END', '</member_project>');
 define('INFORMATION_PROJECT_BEGIN', '<information_project>');
 define('INFORMATION_PROJECT_END', '</information_project>');
 
+define('MEMBER_ELEM_PROJ', '<member><id>%d</id><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title></member>');
+define('MEMBER_ELEM_PROJECT_PROJ', '<member><id>%d</id><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title><role post="modrole">%s</role></member>');
+define('MEMBER_LIST_PROJECT_BEGIN', '<member_list_project>');
+define('MEMBER_LIST_BEGIN', '<member_list>');
+define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
+define('MEMBER_LIST_END', '</member_list>');
 define('PROJECT_OK', 'Congratulation, project added');
 define('FIELD_PROJECT_NAME', '<field_name>%s</field_name>');
 define('FIELD_PROJECT_DESCRIB', '<field_descr>%s</field_descr>');
@@ -32,7 +38,20 @@ define('MEMBER', 2);
 ** SQL
 */
 
-//<activity_work><id>%d</id><name>%s</name><charge>%d</charge>
+define('SQL_GET_ROLE', 'SELECT role_id, role_name FROM tw_member_role');
+define('SQL_GET_MEMBER_OUT_PROJECT', 'SELECT usr_id, profil_name, profil_fname, title_name FROM tw_usr, tw_profil, tw_title
+WHERE
+profil_title_id = title_id
+AND profil_usr_id = usr_id
+AND usr_id not in (SELECT member_usr_id FROM tw_member WHERE member_project_id = \'%d\');');
+
+define('SQL_GET_MEMBER_PROJECT', 'SELECT profil_usr_id, profil_name, profil_fname, title_name, member_role_id FROM tw_profil, tw_member, tw_title
+WHERE
+profil_usr_id = member_usr_id
+AND member_project_id = \'%d\'
+AND title_id = profil_title_id;');
+
+
 define('SQL_GET_FIRST_ACTIVITY', 'SELECT activity_id, activity_name, activity_charge_total
 	FROM tw_activity
 	WHERE 
