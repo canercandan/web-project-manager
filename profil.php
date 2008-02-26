@@ -20,7 +20,7 @@ if (PROFIL_POST_TITLE || PROFIL_POST_LOCATION || PROFIL_POST_NAME ||
 
 if (($profil = profil_check()))
   {
-    header(HEADER_LOCATION_MEMBRE);
+    header(LOCATION_MEMBRE);
     exit(0);
   }
 header(HEADER_CONTENT_TYPE);
