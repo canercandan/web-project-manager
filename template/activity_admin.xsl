@@ -3,9 +3,7 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="activity_window/admin">
-    <div>
-      Activity Menu
-    </div>
+    <h3>Activity Menu</h3>
     <ul>
       <li>
 	<a href="?activity=1&amp;information=1">Information</a>

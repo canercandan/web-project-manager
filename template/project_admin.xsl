@@ -3,9 +3,7 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="project_window/admin">
-    <div>
-      Project Menu
-    </div>
+    <h3>Project Menu</h3>
     <ul>
       <li>
 	<a href="?project=1&amp;information=1">Information</a>

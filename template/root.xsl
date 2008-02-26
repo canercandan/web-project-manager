@@ -71,9 +71,7 @@
 		  </div>
 		  <div class="box">
 		    <div class="menu">
-		      project admin<br />
 		      <xsl:apply-templates select="doc/body/project_window/admin" />
-		      activity menu<br />
 		      <xsl:if test="doc/body/project_window/activity">
 			<div class="list">
 			  <xsl:apply-templates select="doc/body/project_window/activity" />
