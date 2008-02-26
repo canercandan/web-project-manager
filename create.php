@@ -24,9 +24,9 @@ if ($_POST[USR_POST_LOGIN])
       $error = sprintf(XML_ERROR, USR_ERROR_EMAIL);
     else
       {
-	usr_add();
-	header(sprintf(HEADER_LOCATION_CREATE, $_POST[USR_POST_LOGIN]));
-	exit(0);
+		usr_add();
+		header(sprintf(HEADER_LOCATION_CREATE, $_POST[USR_POST_LOGIN]));
+		exit(0);
       }
   }
 header(HEADER_CONTENT_TYPE);

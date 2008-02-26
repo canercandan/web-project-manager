@@ -24,7 +24,7 @@ if ($_POST[USR_POST_LOGIN])
       {
 	$_SESSION['USER_ID'] = usr_session_id();
 	$_SESSION['USER_LOGIN'] = $_POST[USR_POST_LOGIN];
-	if ((!$profil = usr_profil_check()))
+	if (!($profil = usr_profil_check()))
 	  header(HEADER_LOCATION_PROFIL);
 	else
 	  header(HEADER_LOCATION_MEMBRE);

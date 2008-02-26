@@ -8,6 +8,7 @@ if (!MAIN)
 */
 
 define('LOCATION_MEMBRE', 'Location:membre.php?ok=1');
+define('LOCATION_PROFIL', 'Location:membre.php?ok=1');
 
 define('PROFIL_BEGIN', '<profil>');
 define('PROFIL_END', '</profil>');
@@ -41,15 +42,36 @@ define('PROFIL_POST_FPHONE', 'profil_fphone');
 define('PROFIL_POST_MPHONE', 'profil_mphone');
 define('PROFIL_POST_ADDRESS', 'profil_address');
 
+define('PROFIL_LOCATION_ERROR', 'error : no location select');
+define('PROFIL_TITLE_ERROR', 'error : no title select');
+define('PROFIL_NAME_ERROR', 'error : no name enter');
+define('PROFIL_FNAME_ERROR', 'error : no first name enter');
+define('PROFIL_FPHONE_ERROR', 'error : nophone enter');
+define('PROFIL_MPHONE_ERROR', 'error : no mobile enter');
+define('PROFIL_ADDRESS_ERROR', 'error : no address enter');
+
 /*
 ** Define profil : sql profil request
 */
 
-define('PROFIL_SQL_SELECT_PROFIL',
+define('PROFIL_SQL_SELECT',
        'SELECT *
 	FROM tw_profil
 	WHERE profil_usr_id = (SELECT usr_id
 			       FROM tw_usr
 			       WHERE usr_login = \'%s\');');
+				   
+define('PROFIL_SQL_UPDATE',
+	   'INSERT INTO tw_profil
+	    (profil_usr_id,
+		 profil_location_id, 
+	     profil_name, 
+		 profil_fname,
+		 profil_fphone,
+		 profil_mphone,
+		 profil_title_id,
+		 profil_perso_adress)
+		VALUES (\'%s\', \'%s\', \'%s\', \'%s\', 
+		        \'%s\', \'%s\', \'%s\', \'%s\');');
 
 ?>
