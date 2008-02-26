@@ -6,6 +6,11 @@ if (!MAIN)
 require_once('./function_sql.php');
 require_once('define_project.php');
 
+function get_information_projecy($id_project)
+{
+	printf('<name>%s</name><describ>%s</describ><date>%s/%02s/%s</date><autor name="%s" fname="%s" title="%s"/>');
+}
+
 function print_projects_list($id_user)
 {
   $res = SQL_QUERY(sprintf(SQL_SELECT_PROJECT/*, sql_real_escape_string($id_user) */));

@@ -13,6 +13,10 @@ define('ADD_PROJECT_BEGIN', '<add_project>');
 define('ADD_PROJECT_END', '</add_project>');
 define('ACTIVITY_START', '<activity>');
 define('ACTIVITY_END', '</activity>');
+define('MEMBER_PROJECT_BEGIN', '<member_project>');
+define('MEMBER_PROJECT_END', '</member_project>');
+define('INFORMATION_PROJECT_BEGIN', '<information_project>');
+define('INFORMATION_PROJECT_END', '</information_project>');
 
 define('PROJECT_OK', 'Congratulation, project added');
 define('FIELD_PROJECT_NAME', '<field_name>%s</field_name>');

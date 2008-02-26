@@ -69,7 +69,7 @@ function get_activity_informations($id_activity)
 {
   $res = sql_query(sprintf(SQL_GET_ACTIVITY_INFORMATIONS, sql_real_escape_string($id_activity)));
   $tab = sql_fetch_array($res);
-  printf('<name>%s</name><describ>%s</describ><date>%s/%02s/%s</date>', $tab[0], $tab[1], $tab[3], $tab[4], $tab[5]);
+  printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date>%s/%02s/%s</date>', $tab[0], $tab[1], $tab[3], $tab[4], $tab[5]);
   printf('<activity_work><id>%d</id><name>%s</name><charge>%d</charge>',
 	 $id_activity,
 	 $tab[0],
@@ -87,7 +87,7 @@ function get_member_activity($id_activity, $id_project)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, $tab[1], $tab[2], $tab[3], $tab[4], $tab[5]);
+	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, $tab[1], $tab[2], $tab[3], $tab[4], $tab[5], $tab[6]);
       }
 }
 
