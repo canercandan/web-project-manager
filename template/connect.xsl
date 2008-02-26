@@ -17,11 +17,12 @@
           <br />
           <label>
             Login<br />
-            <input type="text" name="{field_login}" value="{value_login}" />
+            <input type="text" name="{field_login/@name}"
+		   value="{field_login/@value}" />
           </label><br />
           <label>
             Password<br />
-            <input type="password" name="{field_passwd}" />
+            <input type="password" name="{field_passwd/@name}" />
           </label><br />
           <input type="submit" value="Ok" />
         </div>

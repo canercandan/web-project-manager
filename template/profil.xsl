@@ -17,48 +17,36 @@
 	    <div class="form">
 	      <label>
 		Location<br />
-		<select name="{field_location/name}">
-		  <xsl:for-each select="field_location/item">
-		    <option value="{id}">
-		      <xsl:value-of select="name" />
-		    </option>
-		  </xsl:for-each>
-		</select>
+		<xsl:apply-templates select="field_location" />
 	      </label><br />
 	      <label>
 		Title<br />
-		<select name="{field_title/name}">
-		  <xsl:for-each select="field_title/item">
-		    <option value="{id}">
-		      <xsl:value-of select="name" />
-		    </option>
-		  </xsl:for-each>
-		</select>
+		<xsl:apply-templates select="field_title" />
 	      </label><br />
 	      <label>
 		Name<br />
-		<input type="text" name="{field_name}"
-		       value="{value_name}" />
+		<input type="text" name="{field_name/@name}"
+		       value="{field_name/@value}" />
 	      </label><br />
 	      <label>
 		First name<br />
-		<input type="text" name="{field_fname}"
-		       value="{value_fname}" />
+		<input type="text" name="{field_fname/@name}"
+		       value="{field_fname/@value}" />
 	      </label><br />
 	      <label>
 		Phone<br />
-		<input type="text" name="{field_fphone}"
-		       value="{value_fphone}" />
+		<input type="text" name="{field_fphone/@name}"
+		       value="{field_fphone/@value}" />
 	      </label><br />
 	      <label>
 		Mobile<br />
-		<input type="text" name="{field_mphone}"
-		       value="{value_mphone}" />
+		<input type="text" name="{field_mphone/@name}"
+		       value="{field_mphone/@value}" />
 	      </label><br />
 	      <label>
 		Address personal<br />
-		<input type="text" name="{field_address}"
-		       value="{value_address}" />
+		<input type="text" name="{field_address/@name}"
+		       value="{field_address/@value}" />
 	      </label><br />
 	      <input type="submit" value="Ok" />
 	    </div>
