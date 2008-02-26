@@ -10,11 +10,12 @@
   <xsl:import href="./template/profil.xsl" />
   <xsl:import href="./template/activity.xsl" />
   <xsl:import href="./template/activity_window.xsl" />
-  <xsl:import href="./template/activity_window_action.xsl" />
+  <xsl:import href="./template/activity_admin.xsl" />
   <xsl:import href="./template/activity_work.xsl" />
   <xsl:import href="./template/add_activity.xsl" />
   <xsl:import href="./template/error.xsl" />
   <xsl:import href="./template/mesg.xsl" />
   <xsl:import href="./template/project.xsl" />
-  <xsl:import href="./template/project_window_action.xsl" />
+  <xsl:import href="./template/location.xsl" />
+  <xsl:import href="./template/title.xsl" />
 </xsl:stylesheet>

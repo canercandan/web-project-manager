@@ -13,24 +13,19 @@ define('USR_CREATE_END', '</create>');
 define('USR_CONNECT_BEGIN', '<connect>');
 define('USR_CONNECT_END', '</connect>');
 
-define('USR_FIELD_LOGIN', '<field_login>%s</field_login>');
-define('USR_FIELD_PASSWD', '<field_passwd>%s</field_passwd>');
-define('USR_FIELD_REPASSWD', '<field_repasswd>%s</field_repasswd>');
-define('USR_FIELD_EMAIL', '<field_email>%s</field_email>');
+define('USR_FIELD_LOGIN', '<field_login name="%s" value="%s" />');
+define('USR_FIELD_PASSWD', '<field_passwd name="%s" />');
+define('USR_FIELD_REPASSWD', '<field_repasswd name="%s" />');
+define('USR_FIELD_EMAIL', '<field_email name="%s" value="%s" />');
 
-define('USR_FIELD_SELECT_LOCATION_BEGIN', '<field_location><name>%s</name>');
-define('USR_FIELD_SELECT_LOCATION_END', '</field_location>');
-define('USR_FIELD_SELECT_TITLE_BEGIN', '<field_title><name>%s</name>');
-define('USR_FIELD_SELECT_TITLE_END', '</field_title>');
-
-define('USR_VALUE_LOGIN', '<value_login>%s</value_login>');
-define('USR_VALUE_EMAIL', '<value_email>%s</value_email>');
+define('USR_FIELD_LOCATION_BEGIN', '<field_location name="%s">');
+define('USR_FIELD_LOCATION_END', '</field_location>');
+define('USR_FIELD_TITLE_BEGIN', '<field_title name="%s">');
+define('USR_FIELD_TITLE_END', '</field_title>');
 
 define('USR_XML_LOGIN', '<login>%s</login>');
 define('USR_XML_PASSWD', '<passwd>%s</passwd>');
 define('USR_XML_EMAIL', '<email>%s</email>');
-define('USR_XML_SELECT', '%s%s');
-define('USR_XML_ITEM', '<item><id>%s</id><name>%s</name></item>');
 
 /*
 ** Define user : name for request

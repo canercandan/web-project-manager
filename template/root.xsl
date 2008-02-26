@@ -81,20 +81,27 @@
 		      </xsl:if>
 		    </div>
 		    <div class="box">
-		      <div class="menu">
-			activity admin<br />
-			<xsl:apply-templates select="doc/body/project_window/activity_window/admin" />
-		      </div>
-		      <div class="box">
-			activity box<br />
-			<xsl:if test="doc/body/project_window/add_activity">
-			  <xsl:apply-templates select="doc/body/project_window/add_activity" />
-			</xsl:if>
-			<xsl:if test="doc/body/project_window/activity_window">
-			  <xsl:apply-templates select="doc/body/project_window/activity_window" />
-			</xsl:if>
-		      </div>
-		      <br class="clear" />
+		      <xsl:choose>
+			<xsl:when test="doc/body/project_window/activity_window">
+			  <div class="menu">
+			    activity admin<br />
+			    <xsl:apply-templates select="doc/body/project_window/activity_window/admin" />
+			  </div>
+			  <div class="box">
+			    activity box<br />
+			    <xsl:if test="doc/body/project_window/add_activity">
+			      <xsl:apply-templates select="doc/body/project_window/add_activity" />
+			    </xsl:if>
+			    <xsl:if test="doc/body/project_window/activity_window">
+			      <xsl:apply-templates select="doc/body/project_window/activity_window" />
+			    </xsl:if>
+			  </div>
+			  <br class="clear" />
+			</xsl:when>
+			<xsl:otherwise>
+			  action activity
+			</xsl:otherwise>
+		      </xsl:choose>
 		    </div>
 		    <br class="clear" />
 		  </div>
