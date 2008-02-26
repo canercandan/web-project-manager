@@ -38,12 +38,12 @@ else
   printf(XML_HEADER, XML_TEMPLATE);
 if (!$_GET['ok'])
   {
-	printf(USR_CONNECT_BEGIN);
-	printf(USR_FIELD_LOGIN, USR_POST_LOGIN);
-	printf(USR_FIELD_PASSWD, USR_POST_PASSWD);
-	printf(USR_VALUE_LOGIN, $_POST[USR_POST_LOGIN]);
-	printf($error);
-	printf(USR_CONNECT_END);
+    printf(USR_CONNECT_BEGIN);
+    printf(USR_FIELD_LOGIN,
+	   USR_POST_LOGIN, $_POST[USR_POST_LOGIN]);
+    printf(USR_FIELD_PASSWD, USR_POST_PASSWD);
+    printf($error);
+    printf(USR_CONNECT_END);
   }
 printf(XML_FOOTER);
 sql_close($link);

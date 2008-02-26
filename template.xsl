@@ -16,6 +16,6 @@
   <xsl:import href="./template/error.xsl" />
   <xsl:import href="./template/mesg.xsl" />
   <xsl:import href="./template/project.xsl" />
-  <xsl:import href="./template/location.xsl" />
-  <xsl:import href="./template/title.xsl" />
+  <xsl:import href="./template/field_location.xsl" />
+  <xsl:import href="./template/field_title.xsl" />
 </xsl:stylesheet>
