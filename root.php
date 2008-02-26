@@ -26,7 +26,25 @@ print_projects_list(0);
 
 // if ....  projet selectionne
 // right window = project window (project menu, activity list ... )
-if (true || isset($_SESSION['PROJECT_NAME']))
+if (isset($_GET['project_id']))
+{
+	if (($checked = check_project(0, $_GET['project_id'])))
+	{
+		$_SESSION['PROJECT_NAME'] = $checked;
+		$_SESSION['PROJECT_ID'] = $_GET['project_id'];
+		$_SESSION['PROJECT_MENU'] = ADD_ACTIVITY;
+		unset($_SESSION['ACTIVITY_NAME']);
+		unset($_SESSION['ACTIVITY_ID']);
+		unset($_SESSION['ACTIVITY_MENU']);
+	}
+	else
+	{
+		;
+	}
+}
+
+
+if (isset($_SESSION['PROJECT_NAME']))
 	{
 		include('project.php');
 	}

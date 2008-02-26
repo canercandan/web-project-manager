@@ -6,6 +6,15 @@ if (!MAIN)
 require_once('./define_activity.php');
 require_once('./function_sql.php');
 
+function check_activity($id_user, $id_activity)
+{
+	$res = SQL_QUERY(sprintf(SQL_CHECK_ACTIVITY, sql_real_escape_string($id_activity)));
+	if (sql_num_rows($res))
+		return (sql_result($res,0, 0));
+	else
+		return (null);
+}
+
 function check_admin_for_activity($id_activity)
 {
 	printf(ADMIN,1);

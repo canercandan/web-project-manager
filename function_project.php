@@ -18,6 +18,15 @@ function print_projects_list($id_user)
 	printf(PROJECT_END);
 }
 
+function check_project($id_user, $id_project)
+{
+	$res = SQL_QUERY(sprintf(SQL_CHECK_PROJECT, sql_real_escape_string($id_project)));
+	if (sql_num_rows($res))
+		return (sql_result($res,0, 0));
+	else
+		return (null);
+}
+
 function add_project($id_user, $name, $describ)
 {
   sql_query(sprintf(SQL_ADD_PROJECT, sql_real_escape_string($id_user),

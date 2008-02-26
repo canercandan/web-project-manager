@@ -22,11 +22,13 @@ define('POST_PROJECT_DESCRIB', 'projdescr');
 define('UNKNOWED_PROJECT', 'Unknowed project');
 define('INFORMATION', 0);
 define('ADD_ACTIVITY', 1);
-define('ADD_MEMBER', 2);
+define('MEMBER', 2);
 
 /*
 ** SQL
 */
+
+define('SQL_CHECK_PROJECT', 'select project_name from tw_project where project_id = \'%d\';');
 
 define('SQL_SELECT_PROJECT', 'select project_name, project_id from tw_project');
 	/*	tw_membre

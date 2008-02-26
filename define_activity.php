@@ -16,6 +16,8 @@ define('INFORMATION_ACTIVITY_BEGIN', '<information_activity>');
 define('INFORMATION_ACTIVITY_END', '</information_activity>');
 
 define('MEMBER_ACTIVITY', 0);
+define('INFORMATION_ACTIVITY', 1);
+define('ADD_ACTIVITY_ACTIVITY', 2);
 define('MEMBER_LIST_PROJECT_BEGIN', '<member_list_project>');
 define('MEMBER_LIST_ACTIVITY_BEGIN', '<member_list_activity>');
 define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
@@ -47,6 +49,8 @@ define('POST_ACTIVITY_CHARGE', 'activitycharge');
 /*
 ** Define activity sql request
 */
+
+define('SQL_CHECK_ACTIVITY', 'SELECT activity_name FROM tw_activity WHERE activity_id = \'%d\';');
 
 define('SQL_ADD_ACTIVITY','INSERT INTO `tw_activity` (
 `activity_id` ,

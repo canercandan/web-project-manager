@@ -1,6 +1,6 @@
 <?php
 
-if (!MAIN)
+if (!MAIN || !isset($_SESSION['PROJECT_ID']))
   exit(0);
 
 require_once('./define_activity.php');
@@ -26,10 +26,11 @@ if (!isset($_POST[POST_ACTIVITY_NAME]) || !isset($_POST[POST_ACTIVITY_DESCRIB]) 
 	 printf(FIELD_ACTIVITY_DESCRIB, POST_ACTIVITY_DESCRIB);
 	 printf(FIELD_ACTIVITY_CHARGE, POST_ACTIVITY_CHARGE);
        }
-     else if (is_numeric($_POST[POST_ACTIVITY_CHARGE]))
+     else if (isset($_SESSION['ACTIVITY_ADDED'])) //is_numeric($_POST[POST_ACTIVITY_CHARGE]))
        {
-	 add_activities(0 /*$_SESSION['PROJECT_ID']*/ , (isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 6), $_POST[POST_ACTIVITY_NAME], $_POST[POST_ACTIVITY_DESCRIB], $_POST[POST_ACTIVITY_CHARGE]);
-	 printf(XML_MESG, ACTIVITY_OK);
+//	 add_activities($_SESSION['PROJECT_ID'] , (isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 0), $_POST[POST_ACTIVITY_NAME], $_POST[POST_ACTIVITY_DESCRIB], $_POST[POST_ACTIVITY_CHARGE]);
+			printf(XML_MESG, ACTIVITY_OK);
+			unset($_SESSION['ACTIVITY_ADDED']);
        }
      else
        {
