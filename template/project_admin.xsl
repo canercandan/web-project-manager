@@ -7,17 +7,15 @@
       Project Menu
     </div>
     <ul>
-      <xsl:for-each select=".">
-	<li>
-	  <a href="?project=1&amp;information=1">Information</a>
-	</li>
-	<li>
-	  <a href="?project=1&amp;member=1">Membres</a>
-	</li>
-	<li>
-	  <a href="?project=1&amp;add_activity=1">Add an activity</a>
-	</li>
-      </xsl:for-each>
+      <li>
+	<a href="?project=1&amp;information=1">Information</a>
+      </li>
+      <li>
+	<a href="?project=1&amp;member=1">Membres</a>
+      </li>
+      <li>
+	<a href="?project=1&amp;add_activity=1">Add an activity</a>
+      </li>
     </ul>
   </xsl:template>
 </xsl:stylesheet>

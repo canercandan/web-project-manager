@@ -7,17 +7,15 @@
       Activity Menu
     </div>
     <ul>
-      <xsl:for-each select=".">
-	<li>
-	  <a href="?activity=1&amp;information=1">Information</a>
-	</li>
-	<li>
-	  <a href="?activity=1&amp;member=1">Membres</a>
-	</li>
-	<li>
-	  <a href="?activity=1&amp;add_activity=1">Add an sub-activity</a>
-	</li>
-      </xsl:for-each>
+      <li>
+	<a href="?activity=1&amp;information=1">Information</a>
+      </li>
+      <li>
+	<a href="?activity=1&amp;member=1">Membres</a>
+      </li>
+      <li>
+	<a href="?activity=1&amp;add_activity=1">Add an sub-activity</a>
+      </li>
     </ul>
   </xsl:template>
 </xsl:stylesheet>
