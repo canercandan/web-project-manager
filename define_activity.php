@@ -117,7 +117,7 @@ member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHER
 order by profil_name, profil_fname;
 ');
 
-define('SQL_GET_ACTIVITY_INFORMATIONS', 'SELECT activity_name, activity_describtion, activity_charge_total FROM tw_activity
+define('SQL_GET_ACTIVITY_INFORMATIONS', 'SELECT activity_name, activity_describtion, activity_charge_total, day(activity_date_begin), month(activity_date_begin), year(activity_date_begin) FROM tw_activity
 WHERE activity_id = \'%d\';');
 
 define('SQL_GET_UNDERACT_WORK', 
