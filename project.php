@@ -40,10 +40,13 @@ if (isset($_SESSION['ACTIVITY_NAME']))
   }
  else
    {
-     if ((isset($_SESSION['PROJECT_MENU']) && $_SESSION['PROJECT_MENU'] == ADD_ACTIVITY))
+     if ((isset($_SESSION['PROJECT_MENU'])))
        {
 	 // window at the right of the project menu = add activity to this project
-			include('add_activity.php');
+			if ($_SESSION['PROJECT_MENU'] == ADD_ACTIVITY)
+				include('add_activity.php');
+			else if ($_SESSION['PROJECT_MENU'] == INFORMATION)
+				include('informations_project.php');
        }
 
      /*

@@ -32,6 +32,20 @@ define('MEMBER', 2);
 ** SQL
 */
 
+//<activity_work><id>%d</id><name>%s</name><charge>%d</charge>
+define('SQL_GET_FIRST_ACTIVITY', 'SELECT activity_id, activity_name, activity_charge_total
+	FROM tw_activity
+	WHERE 
+	activity_project_id = \'%d\'
+	AND activity_parent_id = 0;');
+
+define('SQL_INFORMATION', 'SELECT project_name, project_describ, day(project_date), month(project_date), year(project_date), profil_name, profil_fname, title_name
+FROM tw_profil, tw_title, tw_project
+WHERE
+title_id = profil_title_id
+AND profil_usr_id = project_autor_usr_id
+AND project_id = \'%d\';');
+
 define('SQL_CHECK_PROJECT', 'select project_name from tw_project where project_id = \'%d\';');
 
 define('SQL_SELECT_PROJECT', 'select project_name, project_id from tw_project');
