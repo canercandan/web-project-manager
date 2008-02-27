@@ -88,8 +88,8 @@
 			    <xsl:if test="doc/body/project_window/activity_window/add_activity">
 			      <xsl:apply-templates select="doc/body/project_window/activity_window/add_activity" />
 			    </xsl:if>
-			    <xsl:if test="doc/body/project_window/activity_window/information_activity/activity_work">
-			      <xsl:apply-templates select="doc/body/project_window/activity_window/information_activity/activity_work" />
+			    <xsl:if test="doc/body/project_window/activity_window/information_activity">
+			      <xsl:apply-templates select="doc/body/project_window/activity_window/information_activity" />
 			    </xsl:if>
 			  </div>
 			  <div class="clear" />

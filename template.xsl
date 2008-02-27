@@ -11,6 +11,7 @@
   <xsl:import href="./template/activity.xsl" />
   <xsl:import href="./template/activity_window.xsl" />
   <xsl:import href="./template/activity_work.xsl" />
+  <xsl:import href="./template/information_activity.xsl" />
   <xsl:import href="./template/add_activity.xsl" />
   <xsl:import href="./template/error.xsl" />
   <xsl:import href="./template/mesg.xsl" />

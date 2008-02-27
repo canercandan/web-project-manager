@@ -2,6 +2,20 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="activity/title">
+    <a href="./root.php?activity_id={../id}#activity_{../id}">
+      <xsl:choose>
+	<xsl:when test="../surline=1">
+	  <span class="on" id="activity_{../id}">
+	    <xsl:value-of select="." />
+	  </span>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:value-of select="." />
+	</xsl:otherwise>
+      </xsl:choose>
+    </a>
+  </xsl:template>
   <xsl:template match="activity">
     <ul>
       <xsl:for-each select=".">
@@ -18,35 +32,27 @@
 		  </xsl:otherwise>
 		</xsl:choose>
 	      </a>
-	      <a href="./root.php?activity_id={id}">
-		<xsl:value-of select="title" />
-	      </a>
+	      <xsl:apply-templates select="title" />
 	    </li>
 	    <xsl:if test="activity">
 	      <xsl:apply-templates select="activity" />
 	    </xsl:if>
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <xsl:choose>
-	      <xsl:when test="activity">
-		<li>
+	    <li>
+	      <xsl:choose>
+		<xsl:when test="activity">
 		  <a href="./root.php?more=1&amp;activity={id}">
 		    <img src="./images/icons/more.png" />
 		  </a>
-		  <a href="./root.php?activity_id={id}">
-		    <xsl:value-of select="title" />
-		  </a>
-		</li>
-	      </xsl:when>
-	      <xsl:otherwise>
-		<li>
+		  <xsl:apply-templates select="title" />
+		</xsl:when>
+		<xsl:otherwise>
 		  <img src="./images/icons/less_not.png" />
-		  <a href="./root.php?activity_id={id}">
-		    <xsl:value-of select="title" />
-		  </a>
-		</li>
-	      </xsl:otherwise>
-	    </xsl:choose>
+		  <xsl:apply-templates select="title" />
+		</xsl:otherwise>
+	      </xsl:choose>
+	    </li>
 	  </xsl:otherwise>
 	</xsl:choose>
       </xsl:for-each>
