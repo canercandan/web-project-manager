@@ -130,6 +130,7 @@ function print_activities_list($id_project, $id_activity)
     while ($tab = sql_fetch_array($res))
       {
 	printf(ACTIVITY_START);
+	printf('<surline>%d</surline>', (isset($_SESSION['ACTIVITY_ID']) && $_SESSION['ACTIVITY_ID'] == $tab[0]) ? 1 : 0);
 	printf(ACTIVITY_TITLE, $tab[1]);
 	printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]] : 0);
 	printf(ACTIVITY_ID, $tab[0]);
