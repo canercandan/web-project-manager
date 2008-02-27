@@ -71,7 +71,7 @@ function get_activity_informations($id_activity)
 {
   $res = sql_query(sprintf(SQL_GET_ACTIVITY_INFORMATIONS, sql_real_escape_string($id_activity)));
   $tab = sql_fetch_array($res);
-  printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date>%s/%02s/%s</date>', htmlentities($tab[0]), htmlentities($tab[1]), $tab[3], $tab[4], $tab[5]);
+  printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date day="%s" month="%02s" year= "%s"/>', htmlentities($tab[0]), htmlentities($tab[1]), $tab[3], $tab[4], $tab[5]);
   printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge>',
 		(isset($_SESSION['DEVELOPPED_WORK'][$id_activity]) ? $_SESSION['DEVELOPPED_WORK'][$id_activity] : 0),
 		$id_activity,
