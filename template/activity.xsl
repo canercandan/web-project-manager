@@ -2,6 +2,9 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="activity_list">
+  </xsl:template>
+
   <xsl:template match="activity/title">
     <a href="./root.php?activity_id={../id}#activity_{../id}">
       <xsl:choose>
@@ -16,6 +19,7 @@
       </xsl:choose>
     </a>
   </xsl:template>
+
   <xsl:template match="activity">
     <ul>
       <xsl:for-each select=".">
@@ -45,13 +49,12 @@
 		  <a href="./root.php?more=1&amp;activity={id}">
 		    <img src="./images/icons/more.png" />
 		  </a>
-		  <xsl:apply-templates select="title" />
 		</xsl:when>
 		<xsl:otherwise>
 		  <img src="./images/icons/less_not.png" />
-		  <xsl:apply-templates select="title" />
 		</xsl:otherwise>
 	      </xsl:choose>
+	      <xsl:apply-templates select="title" />
 	    </li>
 	  </xsl:otherwise>
 	</xsl:choose>

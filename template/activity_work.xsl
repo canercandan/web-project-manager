@@ -20,7 +20,7 @@
 	  <li>
 	    <a href="./root.php?less=1&amp;work_id={id}">
 	      <xsl:choose>
-		<xsl:when test="activity">
+		<xsl:when test="activity_work">
 		  <img src="./images/icons/less.png" />
 		</xsl:when>
 		<xsl:otherwise>
