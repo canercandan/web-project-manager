@@ -31,5 +31,16 @@ function get_days()
 	printf('</list_day>');
 }
 
+function get_years()
+{
+	printf('<list_year>');
+	$res = getdate();
+	$year = $res['year'] - 5;
+	for ($i = $year; $i < $year + 30; $i++)
+	{
+		printf('<year id="%d" value="%d"/>', $i, $i);
+	}
+	printf('</list_year>');
+}
 
 ?>

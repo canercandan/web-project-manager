@@ -41,6 +41,7 @@ function get_information_project($id_project)
 	$tab = sql_fetch_array($res);
 	get_months();
 	get_days();
+	get_years();
 	if (sql_num_rows($res))
 	{
 		printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date day="%s" month="%s" year="%s"/><autor name="%s" fname="%s" title="%s"/>',
