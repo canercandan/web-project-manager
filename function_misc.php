@@ -6,19 +6,30 @@ if (!MAIN)
 function get_months()
 {
 	printf('<list_month>');
-	printf('<month id="1" name="January"/>');
-	printf('<month id="2" name="February"/>');
-	printf('<month id="3" name="March"/>');
-	printf('<month id="4" name="April"/>');
-	printf('<month id="5" name="May"/>');
-	printf('<month id="6" name="June"/>');
-	printf('<month id="7" name="July"/>');
-	printf('<month id="8" name="August"/>');
-	printf('<month id="9" name="September"/>');
-	printf('<month id="10" name="October"/>');
-	printf('<month id="11" name="November"/>');
-	printf('<month id="12" name="December"/>');
+	printf('<month id="1" value="January"/>');
+	printf('<month id="2" value="February"/>');
+	printf('<month id="3" value="March"/>');
+	printf('<month id="4" value="April"/>');
+	printf('<month id="5" value="May"/>');
+	printf('<month id="6" value="June"/>');
+	printf('<month id="7" value="July"/>');
+	printf('<month id="8" value="August"/>');
+	printf('<month id="9" value="September"/>');
+	printf('<month id="10" value="October"/>');
+	printf('<month id="11" value="November"/>');
+	printf('<month id="12" value="December"/>');
 	printf('</list_month>');
 }
+
+function get_days()
+{
+	printf('<list_day>');
+	for ($i = 1; $i < 32; $i++)
+	{
+		printf('<day id="%d" value="%02d"/>', $i, $i);
+	}
+	printf('</list_day>');
+}
+
 
 ?>

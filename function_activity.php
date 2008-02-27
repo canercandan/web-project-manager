@@ -73,6 +73,7 @@ function get_activity_informations($id_activity)
   $res = sql_query(sprintf(SQL_GET_ACTIVITY_INFORMATIONS, sql_real_escape_string($id_activity)));
   $tab = sql_fetch_array($res);
   get_months();
+  get_days();
   printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date day="%s" month="%s" year= "%s"/>', htmlentities($tab[0]), htmlentities($tab[1]), $tab[3], $tab[4], $tab[5]);
   printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge>',
 		(isset($_SESSION['DEVELOPPED_WORK'][$id_activity]) ? $_SESSION['DEVELOPPED_WORK'][$id_activity] : 0),
@@ -92,7 +93,7 @@ function get_member_activity($id_activity, $id_project)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]), htmlentities($tab[6]));
+	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]), htmlentities($tab[6]), htmlentities($tab[7]));
       }
 }
 
@@ -103,7 +104,7 @@ function get_member_project_activity($id_activity, $id_project)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(MEMBER_ELEM_PROJECT, $tab[0], 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]));
+		printf(MEMBER_ELEM_PROJECT, $tab[0], 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]));
       }
 }
 

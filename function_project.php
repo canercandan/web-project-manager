@@ -14,7 +14,7 @@ function get_member_out_project($id_project)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(MEMBER_ELEM_PROJ, htmlentities($tab[0]), 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]));
+		printf(MEMBER_ELEM_PROJ, htmlentities($tab[0]), 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]));
       }
 }
 
@@ -32,7 +32,7 @@ function get_member_project($id_project)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(MEMBER_ELEM_PROJECT_PROJ, htmlentities($tab[0]), 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]));
+		printf(MEMBER_ELEM_PROJECT_PROJ, htmlentities($tab[0]), 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]));
       }
 }
 function get_information_project($id_project)
@@ -40,6 +40,7 @@ function get_information_project($id_project)
 	$res = SQL_QUERY(sprintf(SQL_INFORMATION, sql_real_escape_string($id_project)));
 	$tab = sql_fetch_array($res);
 	get_months();
+	get_days();
 	if (sql_num_rows($res))
 	{
 		printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date day="%s" month="%s" year="%s"/><autor name="%s" fname="%s" title="%s"/>',

@@ -22,8 +22,8 @@ define('MEMBER_LIST_PROJECT_BEGIN', '<member_list_project>');
 define('MEMBER_LIST_ACTIVITY_BEGIN', '<member_list_activity>');
 define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
 define('MEMBER_LIST_ACTIVITY_END', '</member_list_activity>');
-define('MEMBER_ELEM_PROJECT', '<member><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role></member>');
-define('MEMBER_ELEM_ACTIVITY', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><level post="modlevel">%d</level><work post="modwork">%d</work></member>');
+define('MEMBER_ELEM_PROJECT', '<member><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><login>%s</login></member>');
+define('MEMBER_ELEM_ACTIVITY', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><level post="modlevel">%d</level><work post="modwork">%d</work><login>%s</login></member>');
 
 define('FIELD_ACTIVITY_NAME', '<field_activity_name>%s</field_activity_name>');
 define('FIELD_ACTIVITY_DESCRIB', '<field_activity_describ>%s</field_activity_describ>');
@@ -81,7 +81,7 @@ WHERE activity_id = \'%d\';');
 
 define('SQL_GET_PARENT_ID', 'SELECT activity_parent_id FROM tw_activity WHERE activity_id = \'%d\';');
 
-define('SQL_GET_MEMBER_ACTIVITY', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, activity_level, activity_work
+define('SQL_GET_MEMBER_ACTIVITY', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, activity_level, activity_work, usr_login
 FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member, tw_activity_member
 WHERE 
 member_usr_id = usr_id
@@ -100,7 +100,7 @@ activity_member_activity_id = \'%d\'
 order by profil_name, profil_fname;
 ');
 
-define('SQL_GET_MEMBER_PROJECT', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name
+define('SQL_GET_MEMBER_PROJECT', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, usr_login
 FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member
 WHERE 
 member_usr_id = usr_id
