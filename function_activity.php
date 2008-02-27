@@ -46,8 +46,8 @@ function get_activity_work($id_activity)
 			 $tab[0],
 		     $tab[1],
 		     $tab[2],
-		     $tab[3],
-		     ($tab[3] * 100) / $tab[2]);
+		     ($tab[3] < $tab[2] ? $tab[3] : $tab[2]),
+		     (($tab[3] < $tab[2] ? $tab[3] : $tab[2]) * 100) / $tab[2]);
 	    }
 	  else
 	    {
@@ -57,10 +57,10 @@ function get_activity_work($id_activity)
 				$tab[1],
 				$tab[2]);
 	      $tab[3] = get_activity_work($tab[0]);
-	      $work += $tab[3];
+	      $work += ($tab[3] < $tab[2] ? $tab[3] : $tab[2]);
 	      printf('<work>%d</work><percent>%d</percent></activity_work>',
-		     $tab[3],
-		     ($tab[3] * 100) / $tab[2]);
+		     ($tab[3] < $tab[2] ? $tab[3] : $tab[2]),
+		     (($tab[3] < $tab[2] ? $tab[3] : $tab[2]) * 100) / $tab[2]);
 	    }
 	}
       return ($work);
@@ -79,8 +79,8 @@ function get_activity_informations($id_activity)
 		$tab[2]);
   $work = get_activity_work($id_activity);
   printf('<work>%d</work><percent>%d</percent></activity_work>',
-	 $work,
-	 ($work * 100) / $tab[2]);
+	 ($work < $tab[2] ? $work : $tab[2]),
+	 (($work < $tab[2] ? $work : $tab[2]) * 100) / $tab[2]);
 }
 
 function get_member_activity($id_activity, $id_project)
