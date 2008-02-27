@@ -9,7 +9,8 @@ if (isset($_GET['project_id']))
 	{
 		$_SESSION['PROJECT_NAME'] = $checked;
 		$_SESSION['PROJECT_ID'] = $_GET['project_id'];
-		$_SESSION['PROJECT_MENU'] = ADD_ACTIVITY;
+		if (!isset($_SESSION['PROJECT_MENU']))
+			$_SESSION['PROJECT_MENU'] = INFORMATION;
 		unset($_SESSION['ACTIVITY_NAME']);
 		unset($_SESSION['ACTIVITY_ID']);
 		unset($_SESSION['ACTIVITY_MENU']);
@@ -26,13 +27,15 @@ else if (isset($_GET['activity_id']))
 		unset($_SESSION['ACTIVITY_NAME']);
 		unset($_SESSION['ACTIVITY_ID']);
 		unset($_SESSION['ACTIVITY_MENU']);
-		$_SESSION['PROJECT_MENU'] = ADD_ACTIVITY;
+		if (!isset($_SESSION['PROJECT_MENU']))
+			$_SESSION['PROJECT_MENU'] = INFORMATION;
 	}
 	else if (($checked = check_activity(0, $_GET['activity_id'])))
 	{
 		$_SESSION['ACTIVITY_NAME'] = $checked;
 		$_SESSION['ACTIVITY_ID'] = $_GET['activity_id'];
-		$_SESSION['ACTIVITY_MENU'] = INFORMATION_ACTIVITY;
+		if (!isset($_SESSION['ACTIVITY_MENU']))
+			$_SESSION['ACTIVITY_MENU'] = INFORMATION_ACTIVITY;
 	}
 	else
 	{
@@ -88,6 +91,15 @@ else if (isset($_GET['activity']) && isset($_GET['add_activity']))
 {
 	$_SESSION['ACTIVITY_MENU'] = ADD_ACTIVITY_ACTIVITY;
 }
-
+else if (isset($_GET['project_add']))
+{
+	unset($_SESSION['ACTIVITY_NAME']);
+	unset($_SESSION['ACTIVITY_ID']);
+	unset($_SESSION['ACTIVITY_MENU']);
+	unset($_SESSION['PROJECT_NAME']);
+	unset($_SESSION['PROJECT_ID']);
+	unset($_SESSION['PROJECT_MENU']);
+	$_SESSION['ROOT_MENU'] = ADD_PROJECT;
+}
 
 ?>

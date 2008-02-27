@@ -20,14 +20,14 @@ printf(PROJECT_WINDOW_BEGIN);
 
 if (isset($_SESSION['PROJECT_NAME']))
   {
-    printf(PROJECT_NAME,$_SESSION['PROJECT_NAME']);
+    printf(PROJECT_NAME, htmlentities($_SESSION['PROJECT_NAME']));
   }
 
 
 check_admin_for_project(isset($_SESSION['PROJECT_ID']) ? $_SESSION['PROJECT_ID'] : 0);
 
 printf(ACTIVITY_LIST_START);
-printf(ACTIVITY_TITLE, isset($_SESSION['PROJECT_NAME']) ? $_SESSION['PROJECT_NAME'] : UNKNOWED_PROJECT);
+printf(ACTIVITY_TITLE, htmlentities(isset($_SESSION['PROJECT_NAME']) ? $_SESSION['PROJECT_NAME'] : UNKNOWED_PROJECT));
 printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][0]) ? $_SESSION['DEVELOPPED_ACTIVITY'][0] : 0);
 printf(ACTIVITY_ID, 0);
 print_activities_list($_SESSION['PROJECT_ID'], 0);

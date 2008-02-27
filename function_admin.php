@@ -25,7 +25,7 @@ function get_location()
 	$res = sql_query(SQL_GET_LOCATIONS);
 	while ($tab = sql_fetch_array($res))
 		{
-			printf(LOCATION_ITEM, POST_LOCATION_MODNAME, POST_LOCATION_MODADDR, POST_LOCATION_MODID, $tab[0], $tab[1], $tab[2]);
+			printf(LOCATION_ITEM, POST_LOCATION_MODNAME, POST_LOCATION_MODADDR, POST_LOCATION_MODID, htmlentities($tab[0]), htmlentities($tab[1]), htmlentities($tab[2]));
 		}
 	printf(LOCATION_END);
 }
@@ -48,7 +48,7 @@ function get_title()
 	$res = sql_query(SQL_GET_TITLES);
 	while ($tab = sql_fetch_array($res))
 		{
-			printf(TITLE_ITEM, SUBMIT_MOD_TITLE, SUBMIT_DEL_TITLE, POST_TITLE_ID, POST_TITLE_NAME, $tab[0], $tab[1]);
+			printf(TITLE_ITEM, SUBMIT_MOD_TITLE, SUBMIT_DEL_TITLE, POST_TITLE_ID, POST_TITLE_NAME, $tab[0], htmlentities($tab[1]));
 		}
 }
 ?>

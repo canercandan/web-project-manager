@@ -29,9 +29,11 @@ print_projects_list(0);
 // if ....  projet selectionne
 // right window = project window (project menu, activity list ... )
 
-
-
-if (isset($_SESSION['PROJECT_NAME']))
+if (isset($_SESSION['ROOT_MENU']) && !isset($_SESSION['PROJECT_NAME']) && !isset($_SESSION['ACTIVITY_NAME']))
+{
+	include('add_project.php');
+}
+else if (isset($_SESSION['PROJECT_NAME']))
 	{
 		include('project.php');
 	}

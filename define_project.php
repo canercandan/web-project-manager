@@ -3,6 +3,8 @@
 if (!MAIN)
   exit(0);
 
+define('ADD_PROJECT', 0);
+
 define('PROJECT_BEGIN', '<project>');
 define('PROJECT_END', '</project>');
 define('PROJECT_ITEM', '<project><title>%s</title><id>%d</id></project>');
@@ -20,8 +22,8 @@ define('MEMBER_PROJECT_END', '</member_project>');
 define('INFORMATION_PROJECT_BEGIN', '<information_project>');
 define('INFORMATION_PROJECT_END', '</information_project>');
 
-define('MEMBER_ELEM_PROJ', '<member><id>%d</id><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title></member>');
-define('MEMBER_ELEM_PROJECT_PROJ', '<member><id>%d</id><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title><role post="modrole">%s</role></member>');
+define('MEMBER_ELEM_PROJ', '<member><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title></member>');
+define('MEMBER_ELEM_PROJECT_PROJ', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title><role post="modrole">%s</role></member>');
 define('MEMBER_LIST_PROJECT_BEGIN', '<member_list_project>');
 define('MEMBER_LIST_BEGIN', '<member_list>');
 define('MEMBER_LIST_PROJECT_END', '</member_list_project>');

@@ -13,7 +13,7 @@ function get_member_out_project($id_project)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(MEMBER_ELEM_PROJ, $tab[0], 0, $tab[1], $tab[2], $tab[3]);
+		printf(MEMBER_ELEM_PROJ, htmlentities($tab[0]), 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]));
       }
 }
 
@@ -24,14 +24,14 @@ function get_member_project($id_project)
 	if (sql_num_rows($res))
 		while ($tab = sql_fetch_array($res))
 		{
-			printf('<role id="%s" name="%s"/>', $tab[0], $tab[1]);
+			printf('<role id="%s" name="%s"/>', htmlentities($tab[0]), htmlentities($tab[1]));
 		}
 	printf('</role_list>');		
   $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT, sql_real_escape_string($id_project)));
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(MEMBER_ELEM_PROJECT_PROJ, $tab[0], 0, $tab[1], $tab[2], $tab[3], $tab[4]);
+		printf(MEMBER_ELEM_PROJECT_PROJ, htmlentities($tab[0]), 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]));
       }
 }
 function get_information_project($id_project)
@@ -40,15 +40,15 @@ function get_information_project($id_project)
 	$tab = sql_fetch_array($res);
 	if (sql_num_rows($res))
 		printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date>%s/%02s/%s</date><autor name="%s" fname="%s" title="%s"/>',
-		$tab[0],
-		$tab[1],
-		$tab[2],
-		$tab[3],
-		$tab[4],
-		$tab[5],
-		$tab[6],
-		$tab[7]);
-	printf('<activity_work><id>%d</id><name>%s</name>', 0, $tab[0]);
+		htmlentities($tab[0]),
+		htmlentities($tab[1]),
+		htmlentities($tab[2]),
+		htmlentities($tab[3]),
+		htmlentities($tab[4]),
+		htmlentities($tab[5]),
+		htmlentities($tab[6]),
+		htmlentities($tab[7]));
+	printf('<activity_work><id>%d</id><name>%s</name>', 0, htmlentities($tab[0]));
 	$tot_work = 0;
 	$tot_charge=0;
 	$res = SQL_QUERY(sprintf(SQL_GET_FIRST_ACTIVITY, sql_real_escape_string($id_project)));
@@ -56,9 +56,9 @@ function get_information_project($id_project)
 		while ($tab = sql_fetch_array($res))
 		{
 			printf('<activity_work><id>%d</id><name>%s</name><charge>%d</charge>',
-			$tab[0],
-			$tab[1],
-			$tab[2]);
+			htmlentities($tab[0]),
+			htmlentities($tab[1]),
+			htmlentities($tab[2]));
 			$work = get_activity_work($tab[0]);
 			printf('<work>%d</work><percent>%d</percent></activity_work>',
 				$work,
@@ -76,7 +76,7 @@ function print_projects_list($id_user)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(PROJECT_ITEM, $tab[0], $tab[1]);
+		printf(PROJECT_ITEM, htmlentities($tab[0]), htmlentities($tab[1]));
       }
 	printf(PROJECT_END);
 }
