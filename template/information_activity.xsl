@@ -13,6 +13,7 @@
       </xsl:if>
       <xsl:if test="date">
 	<xsl:value-of select="date" />
+      </xsl:if>
     </fieldset>
     <xsl:if test="activity_work">
       <fieldset>
