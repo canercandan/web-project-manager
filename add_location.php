@@ -9,9 +9,10 @@ if (isset($_POST[POST_LOCATION_MODNAME]) && isset($_POST[POST_LOCATION_MODADDR])
 {
 	 update_location($_POST[POST_LOCATION_MODID], $_POST[POST_LOCATION_MODNAME], $_POST[POST_LOCATION_MODADDR]);
 }
-get_location();
+
 if (!isset($_POST[POST_LOCATION_NAME]) || !isset($_POST[POST_LOCATION_ADDR]))
   {
+	get_location();
     printf(FIELD_LOCATION_NAME, POST_LOCATION_NAME);
     printf(FIELD_LOCATION_ADDR, POST_LOCATION_ADDR);
   }
@@ -20,13 +21,17 @@ if (!isset($_POST[POST_LOCATION_NAME]) || !isset($_POST[POST_LOCATION_ADDR]))
 	if ($_POST[POST_LOCATION_NAME] == "")
 		{
 			printf(XML_ERROR, LOC_NAME_MISSING);
+			get_location();
 			printf(FIELD_LOCATION_NAME, POST_LOCATION_NAME);
 			printf(FIELD_LOCATION_ADDR, POST_LOCATION_ADDR);
        }
 	else 
        {
 			add_location($_POST[POST_LOCATION_NAME], $_POST[POST_LOCATION_ADDR]);
+			get_location();
 			printf(XML_MESG, LOCATION_OK);
+			printf(FIELD_LOCATION_NAME, POST_LOCATION_NAME);
+			printf(FIELD_LOCATION_ADDR, POST_LOCATION_ADDR);
        }
    }
 

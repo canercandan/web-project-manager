@@ -47,9 +47,13 @@ else if (isset($_GET['more']) && isset($_GET['activity']))
    {
      $_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 1;
    }
-else if (isset($_GET['more']) && isset($_GET['activity']))
+else if (isset($_GET['more']) && isset($_GET['work_id']))
    {
-     $_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 1;
+     $_SESSION['DEVELOPPED_WORK'][$_GET['work_id']] = 1;
+   }
+else if (isset($_GET['less']) && isset($_GET['work_id']))
+   {
+     $_SESSION['DEVELOPPED_WORK'][$_GET['work_id']] = 0;
    }
 else if (isset($_GET['project']) && isset($_GET['information']))
 {

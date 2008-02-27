@@ -41,8 +41,9 @@ function get_activity_work($id_activity)
 	    {
 	      $work += $tab[3];
 		  if ($tab[0] != $id_activity)
-			printf('<activity_work><id>%d</id><name>%s</name><charge>%d</charge><work>%d</work><percent>%d</percent></activity_work>',
-		     $tab[0],
+			printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge><work>%d</work><percent>%d</percent></activity_work>',
+		     (isset($_SESSION['DEVELOPPED_WORK'][$tab[0]]) ? $_SESSION['DEVELOPPED_WORK'][$tab[0]] : 0),
+			 $tab[0],
 		     $tab[1],
 		     $tab[2],
 		     $tab[3],
@@ -50,10 +51,11 @@ function get_activity_work($id_activity)
 	    }
 	  else
 	    {
-	      printf('<activity_work><id>%d</id><name>%s</name><charge>%d</charge>',
-		     $tab[0],
-		     $tab[1],
-		     $tab[2]);
+	      printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge>',
+				(isset($_SESSION['DEVELOPPED_WORK'][$tab[0]]) ? $_SESSION['DEVELOPPED_WORK'][$tab[0]] : 0),
+				$tab[0],
+				$tab[1],
+				$tab[2]);
 	      $tab[3] = get_activity_work($tab[0]);
 	      $work += $tab[3];
 	      printf('<work>%d</work><percent>%d</percent></activity_work>',
@@ -70,10 +72,11 @@ function get_activity_informations($id_activity)
   $res = sql_query(sprintf(SQL_GET_ACTIVITY_INFORMATIONS, sql_real_escape_string($id_activity)));
   $tab = sql_fetch_array($res);
   printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date>%s/%02s/%s</date>', $tab[0], $tab[1], $tab[3], $tab[4], $tab[5]);
-  printf('<activity_work><id>%d</id><name>%s</name><charge>%d</charge>',
-	 $id_activity,
-	 $tab[0],
-	 $tab[2]);
+  printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge>',
+		(isset($_SESSION['DEVELOPPED_WORK'][$id_activity]) ? $_SESSION['DEVELOPPED_WORK'][$id_activity] : 0),
+		$id_activity,
+		$tab[0],
+		$tab[2]);
   $work = get_activity_work($id_activity);
   printf('<work>%d</work><percent>%d</percent></activity_work>',
 	 $work,

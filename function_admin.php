@@ -3,6 +3,17 @@
 if (!MAIN)
   exit(0);
 
+function delete_title($title_id)
+{
+	sql_query(sprintf(SQL_DELETE_TITLE, sql_real_escape_string($title_id)));
+	sql_query(sprintf(SQL_DELETE_PROFIL_TITLE, sql_real_escape_string($title_id)));
+}
+
+function add_title($title_name)
+{
+	sql_query(sprintf(SQL_ADD_TITLE, sql_real_escape_string($title_name)));
+}
+  
 function get_location()
 {
 	printf(LOCATION_START);

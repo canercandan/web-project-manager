@@ -14,6 +14,8 @@ define('ADMIN_LOCATION', 1);
 define('ADMIN_TITLE', 2);
 define('LOC_NAME_MISSING', 'Please fill the location name.');
 define('LOCATION_OK', 'Congratulation, location added');
+define('TITLE_OK', 'Congratulation, title added');
+define('TITLE_OK', 'Title deleted');
 define('SUBMIT_MOD_TITLE', 'modif');
 define('SUBMIT_DEL_TITLE', 'delete');
 define('POST_TITLE_ID', 'titleid');
@@ -36,8 +38,15 @@ define('LOCATION_ITEM', '<location><field_name>%s</field_name><field_addr>%s</fi
 ** SQL
 */
 
+define('SQL_DELETE_PROFIL_TITLE', 'UPDATE tw_profil SET profil_title_id = 0 WHERE profil_title_id = \'%d\';');
+define('SQL_DELETE_TITLE', 'DELETE FROM tw_title where title_id = \'%d\';');
+
 define('SQL_GET_TITLES', 'SELECT title_id, title_name FROM tw_title');
 define('SQL_GET_LOCATIONS', 'SELECT location_id, location_name, location_address FROM tw_location');
+define('SQL_ADD_TITLE',
+'INSERT INTO tw_title (title_id, title_name)
+VALUES (NULL, \'%s\');');
+
 
 define('SQL_ADD_LOCATION', '
 INSERT INTO `tw_location` (
