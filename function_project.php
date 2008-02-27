@@ -6,6 +6,7 @@ if (!MAIN)
 require_once('./function_sql.php');
 require_once('define_project.php');
 require_once('function_activity.php');
+require_once('function_misc.php');
 
 function get_member_out_project($id_project)
 {
@@ -38,8 +39,10 @@ function get_information_project($id_project)
 {
 	$res = SQL_QUERY(sprintf(SQL_INFORMATION, sql_real_escape_string($id_project)));
 	$tab = sql_fetch_array($res);
+	get_months();
 	if (sql_num_rows($res))
-		printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date day="%s" month="%02s" year="%s"/><autor name="%s" fname="%s" title="%s"/>',
+	{
+		printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date day="%s" month="%s" year="%s"/><autor name="%s" fname="%s" title="%s"/>',
 		htmlentities($tab[0]),
 		htmlentities($tab[1]),
 		htmlentities($tab[2]),
@@ -48,6 +51,7 @@ function get_information_project($id_project)
 		htmlentities($tab[5]),
 		htmlentities($tab[6]),
 		htmlentities($tab[7]));
+	}
 	printf('<activity_work><id>%d</id><name>%s</name>', 0, htmlentities($tab[0]));
 	$tot_work = 0;
 	$tot_charge=0;
