@@ -20,14 +20,16 @@ else
   
 printf(ADMIN_START);
 
-if ( true || (isset($_SESSION[ADMIN_MENU]) && $_SESSION[ADMIN_MENU] == ADMIN_LOCATION))
+if ((isset($_SESSION[ADMIN_MENU]) && $_SESSION[ADMIN_MENU] == ADMIN_LOCATION))
   {
     include('add_location.php');
   }
 else
   {
-  ;
-  }
+	include('add_title.php');
+	}
+  
+
 printf(ADMIN_END);
 printf(XML_FOOTER);
 ?>

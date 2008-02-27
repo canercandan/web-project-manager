@@ -27,4 +27,12 @@ function update_location($id_loc, $name, $addr)
 										sql_real_escape_string($id_loc)));
 }
 
+function get_title()
+{
+	$res = sql_query(SQL_GET_TITLES);
+	while ($tab = sql_fetch_array($res))
+		{
+			printf(TITLE_ITEM, $tab[0], $tab[1]);
+		}
+}
 ?>
