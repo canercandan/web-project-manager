@@ -21,7 +21,9 @@
     <xsl:if test="activity">
       <h3 class="blue1">Activity List</h3>
       <div class="list">
-	<xsl:apply-templates select="activity" />
+	<ul>
+	  <xsl:apply-templates select="activity" />
+	</ul>
       </div>
     </xsl:if>
   </xsl:template>

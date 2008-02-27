@@ -179,7 +179,7 @@ legend
 	width: 250px;
 }
 
-.menu ul
+.menu > ul
 {
 	padding-left: 15px;
 	list-style-type: none;
@@ -236,11 +236,16 @@ h3.blue2
 	overflow: auto;
 }
 
-.list ul
+.list ul,
+.list ul.chield
 {
-	margin-left: 15px;
 	list-style-type: none;
 	border-left: 1px dashed Silver;
+}
+
+.list ul.chield
+{
+	margin-left: 20px;
 }
 
 .list li
