@@ -83,21 +83,7 @@
 			<div class="box">
 			  <xsl:choose>
 			    <xsl:when test="doc/body/project_window/activity_window">
-			      <h2 class="blue3">
-				<xsl:value-of select="doc/body/project_window/activity_window/name" />
-			      </h2>
-			      <div class="menu blue3">
-				<xsl:apply-templates select="doc/body/project_window/activity_window" />
-			      </div>
-			      <div class="box marg">
-				<xsl:if test="doc/body/project_window/activity_window/add_activity">
-				  <xsl:apply-templates select="doc/body/project_window/activity_window/add_activity" />
-				</xsl:if>
-				<xsl:if test="doc/body/project_window/activity_window/information_activity">
-				  <xsl:apply-templates select="doc/body/project_window/activity_window/information_activity" />
-				</xsl:if>
-			      </div>
-			      <div class="clear" />
+			      <xsl:apply-templates select="doc/body/project_window/activity_window" />
 			    </xsl:when>
 			    <xsl:otherwise>
 			      <xsl:if test="doc/body/project_window/add_activity">

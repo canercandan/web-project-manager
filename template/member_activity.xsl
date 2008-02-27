@@ -5,10 +5,30 @@
   <xsl:template match="member_activity">
     <fieldset>
       <legend>Members activity</legend>
-      <div class="left">
-      </div>
-      <div class="right">
-      </div>
+      <form action="?" method="post">
+	<div class="member_top">
+	  <label>
+	    Members list of project<br />
+	    <select multiple="multiple">
+	      <xsl:for-each select="member_list_project/member">
+		<option value="{id}"></option>
+	      </xsl:for-each>
+	    </select>
+	  </label>
+	</div>
+	<div class="member_middle">
+	  <input type="submit" name="top" value="/\" />
+	  <input type="submit" name="bottom" value="\/" />
+	</div>
+	<div class="member_bottom">
+	  <label>
+	    Member list of activity
+	    <select multiple="multiple">
+	    </select>
+	  </label>
+	</div>
+	<div class="clear" />
+      </form>
     </fieldset>
   </xsl:template>
 </xsl:stylesheet>
