@@ -8,6 +8,11 @@
       <xsl:if test="name">
 	<xsl:value-of select="name" />
       </xsl:if>
+      <xsl:if test="describ">
+	<xsl:value-of select="describ" />
+      </xsl:if>
+      <xsl:if test="date">
+	<xsl:value-of select="date" />
     </fieldset>
     <xsl:if test="activity_work">
       <fieldset>
