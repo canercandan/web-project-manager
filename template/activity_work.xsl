@@ -5,7 +5,7 @@
   <xsl:template match="activity_work/name">
     <xsl:value-of select="." />
     (<xsl:value-of select="../work" /> /
-    <xsl:value-of select="../charge" /> day/man)
+    <xsl:value-of select="../charge" /> days/man)
     <div class="bar">
       <div class="ok" style="width: {../percent}%">
 	<xsl:value-of select="../percent" />%

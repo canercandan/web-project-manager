@@ -3,7 +3,7 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="project">
-    <h3 class="blue2">Generaly Menu</h3>
+    <h3 class="blue2">General Menu</h3>
     <ul>
       <li class="add">
 	<a href="./root.php?project_add=1">Add a project</a>

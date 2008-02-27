@@ -4,7 +4,7 @@
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="information_activity">
     <fieldset>
-      <legend>Generaly</legend>
+      <legend>General information</legend>
       <xsl:if test="name">
 	<xsl:value-of select="name" />
       </xsl:if>
