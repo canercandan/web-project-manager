@@ -87,7 +87,7 @@ function get_member_activity($id_activity, $id_project)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, $tab[1], $tab[2], $tab[3], $tab[4], $tab[5], $tab[6]);
+	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, $tab[1], $tab[2], $tab[3], $tab[4], $tab[5], $tab[6]);
       }
 }
 
