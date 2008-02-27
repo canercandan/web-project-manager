@@ -16,8 +16,8 @@
   <xsl:template match="activity_work">
     <xsl:choose>
       <xsl:when test="developped=1">
-	<li>
-	  <a href="./root.php?less=1&amp;work_id={id}">
+	<li id="work_{id}">
+	  <a href="./root.php?less=1&amp;work_id={id}#work_{id}">
 	    <xsl:choose>
 	      <xsl:when test="activity_work">
 		<img src="./images/icons/less.png" />
@@ -36,10 +36,10 @@
 	</xsl:if>
       </xsl:when>
       <xsl:otherwise>
-	<li>
+	<li id="work_{id}">
 	  <xsl:choose>
 	    <xsl:when test="activity_work">
-	      <a href="./root.php?more=1&amp;work_id={id}">
+	      <a href="./root.php?more=1&amp;work_id={id}#work_{id}">
 		<img src="./images/icons/more.png" />
 	      </a>
 	    </xsl:when>

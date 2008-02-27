@@ -11,7 +11,7 @@
 	<xsl:if test="error">
 	  <xsl:apply-templates select="error" />
 	</xsl:if>
-	<form action="#" method="post">
+	<form action="?" method="post">
 	  <fieldset>
 	    <legend>Add an activity</legend>
 	    <div class="form">

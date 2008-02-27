@@ -6,13 +6,13 @@
     <xsl:if test="admin">
       <h3 class="blue1">Activity Menu</h3>
       <ul>
-	<li>
+	<li class="go">
 	  <a href="?activity=1&amp;information=1">Information</a>
 	</li>
-	<li>
+	<li class="go">
 	  <a href="?activity=1&amp;member=1">Membres</a>
 	</li>
-	<li>
+	<li class="go">
 	  <a href="?activity=1&amp;add_activity=1">Add an sub-activity</a>
 	</li>
       </ul>

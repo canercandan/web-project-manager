@@ -4,16 +4,48 @@
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="information_activity">
     <fieldset>
-      <legend>General information</legend>
-      <xsl:if test="name">
-	<xsl:value-of select="name" />
-      </xsl:if>
-      <xsl:if test="describ">
-	<xsl:value-of select="describ" />
-      </xsl:if>
-      <xsl:if test="date">
-	<xsl:value-of select="date" />
-      </xsl:if>
+      <legend>General</legend>
+      <table class="list">
+	<caption>Infomation</caption>
+	<thead>
+	  <tr>
+	    <th>Name</th>
+	    <th>Describe</th>
+	    <th>Date</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr class="little">
+	    <xsl:choose>
+	      <xsl:when test="editable=1">
+		<td>
+		  <input type="text" name="{name/@post}"
+			 value="{name}" />
+		</td>
+		<td>
+		  <textarea name="describ/@post">
+		    <xsl:value-of select="describ" />
+		  </textarea>
+		</td>
+		<td>
+		  DATE
+		</td>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<td>
+		  <xsl:value-of select="name" />
+		</td>
+		<td>
+		  <xsl:value-of select="describ" />
+		</td>
+		<td>
+		  <xsl:value-of select="date" />
+		</td>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </tr>
+	</tbody>
+      </table>
     </fieldset>
     <xsl:if test="activity_work">
       <fieldset>

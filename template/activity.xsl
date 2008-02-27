@@ -3,10 +3,11 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="activity/title">
-    <a href="./root.php?activity_id={../id}#activity_{../id}">
+    <a href="./root.php?activity_id={../id}#activity_{../id}"
+       id="activity_{../id}">
       <xsl:choose>
 	<xsl:when test="../surline=1">
-	  <span class="on" id="activity_{../id}">
+	  <span class="on">
 	    <xsl:value-of select="." />
 	  </span>
 	</xsl:when>
@@ -22,7 +23,7 @@
       <xsl:choose>
 	<xsl:when test="developped=1">
 	  <li>
-	    <a href="./root.php?less=1&amp;activity={id}">
+	    <a href="./root.php?less=1&amp;activity={id}#activity_{id}">
 	      <xsl:choose>
 		<xsl:when test="activity">
 		  <img src="./images/icons/less.png" />
@@ -44,7 +45,7 @@
 	  <li>
 	    <xsl:choose>
 	      <xsl:when test="activity">
-		<a href="./root.php?more=1&amp;activity={id}">
+		<a href="./root.php?more=1&amp;activity={id}#activity_{id}">
 		  <img src="./images/icons/more.png" />
 		</a>
 	      </xsl:when>
