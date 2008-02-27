@@ -13,6 +13,11 @@ function add_title($title_name)
 {
 	sql_query(sprintf(SQL_ADD_TITLE, sql_real_escape_string($title_name)));
 }
+
+function update_title($title_name, $title_id)
+{
+
+}
   
 function get_location()
 {

@@ -10,7 +10,7 @@ printf(ACTIVITY_WINDOW_BEGIN);
 
 if (isset($_SESSION['ACTIVITY_NAME']))
   {
-    printf('<name>%s</name>', $_SESSION['ACTIVITY_NAME']);
+    printf('<name>%s</name>', htmlentities($_SESSION['ACTIVITY_NAME']));
   }
  else
    {
