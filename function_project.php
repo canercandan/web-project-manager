@@ -39,7 +39,7 @@ function get_information_project($id_project)
 	$res = SQL_QUERY(sprintf(SQL_INFORMATION, sql_real_escape_string($id_project)));
 	$tab = sql_fetch_array($res);
 	if (sql_num_rows($res))
-		printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date>%s/%02s/%s</date><autor name="%s" fname="%s" title="%s"/>',
+		printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date day="%s" month="%02s" year="%s"/><autor name="%s" fname="%s" title="%s"/>',
 		htmlentities($tab[0]),
 		htmlentities($tab[1]),
 		htmlentities($tab[2]),
