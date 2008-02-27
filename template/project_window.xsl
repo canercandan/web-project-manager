@@ -6,13 +6,13 @@
     <xsl:if test="admin">
       <h3 class="blue1">Project Menu</h3>
       <ul>
-	<li>
+	<li class="go">
 	  <a href="?project=1&amp;information=1">Information</a>
 	</li>
-	<li>
+	<li class="go">
 	  <a href="?project=1&amp;member=1">Membres</a>
 	</li>
-	<li>
+	<li class="go">
 	  <a href="?project=1&amp;add_activity=1">Add an activity</a>
 	</li>
       </ul>

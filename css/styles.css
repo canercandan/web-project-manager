@@ -185,6 +185,29 @@ legend
 	list-style-type: none;
 }
 
+li.go,
+li.open,
+li.add
+{
+	padding: 5px 0;
+	padding-left: 25px;
+}
+
+li.go
+{
+	background: transparent url("../images/icons/book_go.png") no-repeat left center;
+}
+
+li.open
+{
+	background: transparent url("../images/icons/book_open.png") no-repeat left center;
+}
+
+li.add
+{
+	background: transparent url("../images/icons/book_add.png") no-repeat left center;
+}
+
 .box,
 .box2,
 .menu
