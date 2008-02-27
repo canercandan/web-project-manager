@@ -14,18 +14,22 @@ define('ADMIN_LOCATION', 1);
 define('ADMIN_TITLE', 2);
 define('LOC_NAME_MISSING', 'Please fill the location name.');
 define('LOCATION_OK', 'Congratulation, location added');
-define('TITLE_ITEM', '<title submitmod="modif" submitdel="delete" postid="modtitleid" postvalue="modtitlename" id="%d" value="%s"/>');
+define('SUBMIT_MOD_TITLE', 'modif');
+define('SUBMIT_DEL_TITLE', 'delete');
+define('POST_TITLE_ID', 'titleid');
+define('POST_TITLE_NAME', 'titlename');
+define('TITLE_ITEM', '<title submitmod="%s" submitdel="%s" postid="%s" postvalue="%s" id="%d" value="%s"/>');
 define('FIELD_LOCATION_NAME', '<field_name>%s</field_name>');
 define('FIELD_LOCATION_ADDR', '<field_addr>%s</field_addr>');
-define('FIELD_TITLE_NAME', '<field_name value="%s">newtitlename</field_name>');
+define('FIELD_TITLE_NAME', '<field_name value="%s">%s</field_name>');
 define('POST_LOCATION_NAME', 'locname');
 define('POST_LOCATION_ADDR', 'locaddr');
-define('POST_LOCATION_MODNAME', '<field_name>modlocname</field_name>');
-define('POST_LOCATION_MODADDR', '<field_addr>modlocaddr</field_addr>');
-define('POST_LOCATION_MODID', '<field_id>modlocid</field_id>');
+define('POST_LOCATION_MODNAME', 'modlocname');
+define('POST_LOCATION_MODADDR', 'modlocaddr');
+define('POST_LOCATION_MODID', 'modlocid');
 define('LOCATION_START', '<location>');
 define('LOCATION_END', '</location>');
-define('LOCATION_ITEM', '<location>%s%s%s<id>%d</id><name>%s</name><address>%s</address></location>');
+define('LOCATION_ITEM', '<location><field_name>%s</field_name><field_addr>%s</field_addr><field_id>%s</field_id><id>%d</id><name>%s</name><address>%s</address></location>');
 
 
 /*
