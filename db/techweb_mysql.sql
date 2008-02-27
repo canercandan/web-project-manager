@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS tw_activity (
   activity_id INT NOT NULL auto_increment,
   activity_project_id INT default NULL,
   activity_parent_id INT default NULL,
-  activity_name varchar(30) default NULL,
+  activity_name varchar(20) default NULL,
   activity_charge_total INT default NULL,
   activity_date_begin date default NULL,
   activity_date_end date default NULL,
