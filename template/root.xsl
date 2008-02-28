@@ -47,7 +47,7 @@
 		</xsl:otherwise>
 	      </xsl:choose>
 	      <xsl:choose>
-		<xsl:when test="doc/body/project_window">
+		<xsl:when test="doc/body/menu_project">
 		  <li class="on"><a href="./root.php?project_view=1">Project</a></li>
 		</xsl:when>
 		<xsl:otherwise>
