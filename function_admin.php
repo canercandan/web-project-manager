@@ -3,6 +3,11 @@
 if (!MAIN)
   exit(0);
 
+function get_roles()
+{
+	
+}
+  
 function delete_title($title_id)
 {
 	sql_query(sprintf(SQL_DELETE_TITLE, sql_real_escape_string($title_id)));

@@ -100,7 +100,7 @@ activity_member_activity_id = \'%d\'
 order by profil_name, profil_fname;
 ');
 
-define('SQL_GET_MEMBER_PROJECT', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, usr_login
+define('SQL_GET_MEMBER_PROJECT_ACT', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, usr_login
 FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member
 WHERE 
 member_usr_id = usr_id

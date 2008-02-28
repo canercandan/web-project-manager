@@ -100,7 +100,7 @@ function get_member_activity($id_activity, $id_project)
 
 function get_member_project_activity($id_activity, $id_project)
 {
-  $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT, sql_real_escape_string($id_project),
+  $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT_ACT, sql_real_escape_string($id_project),
 			   sql_real_escape_string($id_activity)));
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
