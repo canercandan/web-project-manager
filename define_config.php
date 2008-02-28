@@ -42,6 +42,8 @@ define('SQL_USER', 'techweb');
 define('SQL_PASSWD', ',MyTFfwCvKA5SBNL');
 define('SQL_DB', 'techweb');
 
+define('MENU_PROJECT', '<menu_project/>');
+
 define('SESS_NAME', 'techweb');
 
 ?>

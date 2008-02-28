@@ -36,8 +36,14 @@ if (isset($_SESSION['ROOT_MENU']) && !isset($_SESSION['PROJECT_NAME']) && !isset
 }
 else if (isset($_SESSION['PROJECT_NAME']))
 	{
+		printf(MENU_PROJECT);
 		include('project.php');
 	}
+else 
+{
+	printf(MENU_PROJECT);
+}
+
 
 print_projects_list(0);
 printf(XML_FOOTER);
