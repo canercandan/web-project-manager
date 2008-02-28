@@ -70,36 +70,32 @@
 	      <xsl:apply-templates select="doc/body/project" />
 	    </xsl:if>
 	    <xsl:choose>
-	      <xsl:when test="doc/body/project">
+	      <xsl:when test="doc/body/project_window">
 		<div class="box2">
-		  <xsl:choose>
-		    <xsl:when test="doc/body/add_project">
-		      <xsl:apply-templates select="doc/body/add_project" />
-		    </xsl:when>
-		    <xsl:otherwise>
-		      <xsl:if test="doc/body/project_window">
-			<h2 class="blue2">
-			  <xsl:value-of select="doc/body/project_window/name" />
-			</h2>
-			<div class="menu blue2">
-			  <xsl:apply-templates select="doc/body/project_window" />
-			</div>
-		      </xsl:if>
-		      <div class="box">
-			<xsl:choose>
-			  <xsl:when test="doc/body/project_window/activity_window">
-			    <xsl:apply-templates select="doc/body/project_window/activity_window" />
-			  </xsl:when>
-			  <xsl:otherwise>
-			    <xsl:if test="doc/body/project_window/add_activity">
-			      <xsl:apply-templates select="doc/body/project_window/add_activity" />
-			    </xsl:if>
-			  </xsl:otherwise>
-			</xsl:choose>
-		      </div>
-		      <div class="clear" />
-		    </xsl:otherwise>
-		  </xsl:choose>
+		  <h2 class="blue2">
+		    <xsl:value-of select="doc/body/project_window/name" />
+		  </h2>
+		  <div class="menu blue2">
+		    <xsl:apply-templates select="doc/body/project_window" />
+		  </div>
+		  <div class="box">
+		    <xsl:choose>
+		      <xsl:when test="doc/body/project_window/activity_window">
+			<xsl:apply-templates select="doc/body/project_window/activity_window" />
+		      </xsl:when>
+		      <xsl:otherwise>
+			<xsl:if test="doc/body/project_window/add_activity">
+			  <xsl:apply-templates select="doc/body/project_window/add_activity" />
+			</xsl:if>
+		      </xsl:otherwise>
+		    </xsl:choose>
+		  </div>
+		  <div class="clear" />
+		</div>
+	      </xsl:when>
+	      <xsl:when test="doc/body/add_project">
+		<div class="box2">
+		  <xsl:apply-templates select="doc/body/add_project" />
 		</div>
 	      </xsl:when>
 	      <xsl:otherwise>

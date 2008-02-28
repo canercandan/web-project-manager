@@ -41,6 +41,7 @@ textarea
 	background-color: #eee;
 	font-size: 10px;
 	font-weight: bold;
+	font-family: Verdana, Arial, sans-serif;
 	text-decoration: none;
 	color: Black;
 	border: 1px dashed LightSteelBlue;
@@ -228,6 +229,7 @@ legend
 
 ul.line
 {
+	margin: 10px 0;
 	width: 100%;
 	height: 80px;
 	list-style-type: none;
