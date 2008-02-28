@@ -24,7 +24,7 @@ else
 include('get_manager.php');
  
 check_admin_create_project();
-print_projects_list(0);
+
 
 // if ....  projet selectionne
 // right window = project window (project menu, activity list ... )
@@ -42,6 +42,7 @@ else
 		include('add_project.php');
 		
 	}
+print_projects_list(0);
 printf(XML_FOOTER);
 
 ?>
