@@ -47,56 +47,59 @@
 		</xsl:otherwise>
 	      </xsl:choose>
 	      <xsl:choose>
-		<xsl:when test="doc/body/project">
-		  <li class="on"><a href="./root.php">Project</a></li>
+		<xsl:when test="doc/body/project_window">
+		  <li class="on"><a href="./root.php?project_view=1">Project</a></li>
 		</xsl:when>
 		<xsl:otherwise>
-		  <li><a href="./root.php">Project</a></li>
+		  <li><a href="./root.php?project_view=1">Project</a></li>
+		</xsl:otherwise>
+	      </xsl:choose>
+	      <xsl:choose>
+		<xsl:when test="doc/body/add_project">
+		  <li class="on"><a href="./root.php?project_add=1">Add a project</a></li>
+		</xsl:when>
+		<xsl:otherwise>
+		  <li><a href="./root.php?project_add=1">Add a project</a></li>
 		</xsl:otherwise>
 	      </xsl:choose>
 	    </ul>
 	    <div class="clear" />
 	  </div>
 	  <div id="body">
+	    <xsl:if test="doc/body/project">
+	      <xsl:apply-templates select="doc/body/project" />
+	    </xsl:if>
 	    <xsl:choose>
 	      <xsl:when test="doc/body/project">
 		<div class="box2">
-		  <div class="menu blue1">
-		    <xsl:if test="doc/body/project">
-		      <xsl:apply-templates select="doc/body/project" />
-		    </xsl:if>
-		  </div>
-		  <div class="box">
-		    <xsl:choose>
-		      <xsl:when test="doc/body/add_project">
-			<xsl:apply-templates select="doc/body/add_project" />
-		      </xsl:when>
-		      <xsl:otherwise>
-			<xsl:if test="doc/body/project_window">
-			  <h2 class="blue2">
-			    <xsl:value-of select="doc/body/project_window/name" />
-			  </h2>
-			  <div class="menu blue2">
-			    <xsl:apply-templates select="doc/body/project_window" />
-			  </div>
-			</xsl:if>
-			<div class="box">
-			  <xsl:choose>
-			    <xsl:when test="doc/body/project_window/activity_window">
-			      <xsl:apply-templates select="doc/body/project_window/activity_window" />
-			    </xsl:when>
-			    <xsl:otherwise>
-			      <xsl:if test="doc/body/project_window/add_activity">
-				<xsl:apply-templates select="doc/body/project_window/add_activity" />
-			      </xsl:if>
-			    </xsl:otherwise>
-			  </xsl:choose>
+		  <xsl:choose>
+		    <xsl:when test="doc/body/add_project">
+		      <xsl:apply-templates select="doc/body/add_project" />
+		    </xsl:when>
+		    <xsl:otherwise>
+		      <xsl:if test="doc/body/project_window">
+			<h2 class="blue2">
+			  <xsl:value-of select="doc/body/project_window/name" />
+			</h2>
+			<div class="menu blue2">
+			  <xsl:apply-templates select="doc/body/project_window" />
 			</div>
-			<div class="clear" />
-		      </xsl:otherwise>
-		    </xsl:choose>
-		  </div>
-		  <div class="clear" />
+		      </xsl:if>
+		      <div class="box">
+			<xsl:choose>
+			  <xsl:when test="doc/body/project_window/activity_window">
+			    <xsl:apply-templates select="doc/body/project_window/activity_window" />
+			  </xsl:when>
+			  <xsl:otherwise>
+			    <xsl:if test="doc/body/project_window/add_activity">
+			      <xsl:apply-templates select="doc/body/project_window/add_activity" />
+			    </xsl:if>
+			  </xsl:otherwise>
+			</xsl:choose>
+		      </div>
+		      <div class="clear" />
+		    </xsl:otherwise>
+		  </xsl:choose>
 		</div>
 	      </xsl:when>
 	      <xsl:otherwise>

@@ -2,50 +2,66 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="list_day">
+    <select name="@../date/postday">
+      <xsl:for-each select="day">
+	<option value="{@id}">
+	  <xsl:value-of select="@value" />
+	</option>
+      </xsl:for-each>
+    </select>
+  </xsl:template>
+
+  <xsl:template match="list_month">
+    <select name="@../date/postmonth">
+      <xsl:for-each select="month">
+	<option value="{@id}">
+	  <xsl:value-of select="@value" />
+	</option>
+      </xsl:for-each>
+    </select>
+  </xsl:template>
+
+  <xsl:template match="list_year">
+    <select name="@../date/postyear">
+      <xsl:for-each select="year">
+	<option value="{@id}">
+	  <xsl:value-of select="@value" />
+	</option>
+      </xsl:for-each>
+    </select>
+  </xsl:template>
+
   <xsl:template match="information_activity">
     <fieldset>
       <legend>General</legend>
-      <table class="list">
-	<caption>Infomation</caption>
-	<thead>
-	  <tr>
-	    <th>Name</th>
-	    <th>Describe</th>
-	    <th>Date</th>
-	  </tr>
-	</thead>
-	<tbody>
-	  <tr class="little">
-	    <xsl:choose>
-	      <xsl:when test="editable=1">
-		<td>
-		  <input type="text" name="{name/@post}"
-			 value="{name}" />
-		</td>
-		<td>
-		  <textarea name="describ/@post">
-		    <xsl:value-of select="describ" />
-		  </textarea>
-		</td>
-		<td>
-		  DATE
-		</td>
-	      </xsl:when>
-	      <xsl:otherwise>
-		<td>
-		  <xsl:value-of select="name" />
-		</td>
-		<td>
-		  <xsl:value-of select="describ" />
-		</td>
-		<td>
-		  <xsl:value-of select="date" />
-		</td>
-	      </xsl:otherwise>
-	    </xsl:choose>
-	  </tr>
-	</tbody>
-      </table>
+      <form action="?" method="post">
+	<div class="form">
+	  <label>
+	    Name<br />
+	    <input type="text" name="{name/@post}"
+		   value="{name}" />
+	  </label>
+	  <hr />
+	  <label class="big">
+	    Describe<br />
+	    <textarea name="describ/@post">
+	      <xsl:value-of select="describ" />
+	    </textarea>
+	  </label>
+	  <hr />
+	  <div class="little">
+	    Date<br />
+	    <xsl:apply-templates select="list_day" />
+	    <xsl:apply-templates select="list_month" />
+	    <xsl:apply-templates select="list_year" />
+	  </div>
+	  <hr />
+	  <label>
+	    <input type="submit" value="Ok" />
+	  </label>
+	</div>
+      </form>
     </fieldset>
     <xsl:if test="activity_work">
       <fieldset>

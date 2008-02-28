@@ -21,20 +21,23 @@
 		Login<br />
 		<input type="text" name="{field_login/@name}"
 		       value="{field_login/@value}" />
-	      </label><br />
+	      </label>
+	      <hr />
 	      <label>
 		Password<br />
 		<input type="password" name="{field_passwd/@name}" />
-	      </label><br />
+	      </label>
+	      <hr />
 	      <label>
 		Repeat password<br />
 		<input type="password" name="{field_repasswd/@name}" />
-	      </label><br />
+	      </label>
+	      <hr />
 	      <label>
 		Email<br />
 		<input type="text" name="{field_email/@name}"
 		       value="{field_email/@value}" />
-	      </label><br />
+	      </label>
 	      <input type="submit" value="Ok" />
 	    </div>
 	  </fieldset>
