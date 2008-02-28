@@ -8,6 +8,13 @@ require_once('./function_activity.php');
 
 printf(ADD_ACTIVITY_BEGIN);
 
+if (isset($_GET['creation']))
+{
+	if ($_GET['creation'] == 'activity')
+	{
+			printf(XML_MESG, ACTIVITY_OK);
+	}
+}
 if (!isset($_POST[POST_ACTIVITY_NAME]) || !isset($_POST[POST_ACTIVITY_DESCRIB]) || !isset($_POST[POST_ACTIVITY_CHARGE]))
   {
     /*
@@ -19,7 +26,7 @@ if (!isset($_POST[POST_ACTIVITY_NAME]) || !isset($_POST[POST_ACTIVITY_DESCRIB]) 
   }
  else
    {
-     if ($_POST[POST_ACTIVITY_NAME] == "" || $_POST[POST_ACTIVITY_DESCRIB] == "" || $_POST[POST_ACTIVITY_CHARGE] == "")
+     if ($_POST[POST_ACTIVITY_NAME] == "" || $_POST[POST_ACTIVITY_CHARGE] == "")
        {
 	 printf(XML_ERROR, FIELD_NOT_FILLED);
 	 printf(FIELD_ACTIVITY_NAME, POST_ACTIVITY_NAME);
@@ -28,8 +35,9 @@ if (!isset($_POST[POST_ACTIVITY_NAME]) || !isset($_POST[POST_ACTIVITY_DESCRIB]) 
        }
      else if (isset($_SESSION['ACTIVITY_ADDED']))
        {
-			printf(XML_MESG, ACTIVITY_OK);
 			unset($_SESSION['ACTIVITY_ADDED']);
+			header('Location:root.php?creation=activity');
+			exit(0);
        }
      else
        {
