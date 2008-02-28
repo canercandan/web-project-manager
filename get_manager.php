@@ -103,12 +103,6 @@ else if (isset($_GET['project_add']))
 }
 else if (isset($_GET['project_view']))
 {
-	unset($_SESSION['ACTIVITY_NAME']);
-	unset($_SESSION['ACTIVITY_ID']);
-	unset($_SESSION['ACTIVITY_MENU']);
-	unset($_SESSION['PROJECT_NAME']);
-	unset($_SESSION['PROJECT_ID']);
-	unset($_SESSION['PROJECT_MENU']);
 	unset($_SESSION['ROOT_MENU']);
 }
 
