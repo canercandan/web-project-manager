@@ -29,7 +29,7 @@ check_admin_create_project();
 // if ....  projet selectionne
 // right window = project window (project menu, activity list ... )
 
-if (isset($_SESSION['ROOT_MENU']) && !isset($_SESSION['PROJECT_NAME']) && !isset($_SESSION['ACTIVITY_NAME']))
+if (isset($_SESSION['ROOT_MENU']))
 {
 	if ($_SESSION['ROOT_MENU'] == ADD_PROJECT) 
 		include('add_project.php');

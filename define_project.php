@@ -7,7 +7,7 @@ define('ADD_PROJECT', 0);
 
 define('PROJECT_BEGIN', '<project>');
 define('PROJECT_END', '</project>');
-define('PROJECT_ITEM', '<project><title>%s</title><id>%d</id></project>');
+define('PROJECT_ITEM', '<project><surline>%s</surline><title>%s</title><id>%d</id></project>');
 define('PROJECT_WINDOW_BEGIN', '<project_window>');
 define('PROJECT_WINDOW_END', '</project_window>');
 define('PROJECT_NAME', '<name>%s</name>');
