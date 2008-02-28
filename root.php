@@ -38,11 +38,7 @@ else if (isset($_SESSION['PROJECT_NAME']))
 	{
 		include('project.php');
 	}
-else
-	{
-		include('add_project.php');
-		
-	}
+
 print_projects_list(0);
 printf(XML_FOOTER);
 
