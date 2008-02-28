@@ -3,6 +3,13 @@
 require_once('function_project.php');
 require_once('function_activity.php');
 
+if (isset($_GET['creation']))
+{
+	if ($_GET['creation'] == 'project')
+	{
+		printf(XML_MESG, PROJECT_OK);
+	}
+}
 if (isset($_GET['project_id']))
 {
 	if (($checked = check_project(0, $_GET['project_id'])))
