@@ -31,7 +31,7 @@ check_admin_create_project();
 
 if (isset($_SESSION['ROOT_MENU']) && !isset($_SESSION['PROJECT_NAME']) && !isset($_SESSION['ACTIVITY_NAME']))
 {
-	if ($_SESSION['ROOT_MENU'] = ADD_PROJECT) 
+	if ($_SESSION['ROOT_MENU'] == ADD_PROJECT) 
 		include('add_project.php');
 }
 else if (isset($_SESSION['PROJECT_NAME']))
