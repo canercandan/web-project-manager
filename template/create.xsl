@@ -38,6 +38,7 @@
 		<input type="text" name="{field_email/@name}"
 		       value="{field_email/@value}" />
 	      </label>
+	      <hr />
 	      <input type="submit" value="Ok" />
 	    </div>
 	  </fieldset>

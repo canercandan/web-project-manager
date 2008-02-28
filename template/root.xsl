@@ -75,12 +75,43 @@
 		  <h2 class="blue2">
 		    <xsl:value-of select="doc/body/project_window/name" />
 		  </h2>
+		  <xsl:if test="doc/body/project_window/admin">
+		    <h3 class="blue1">Project Menu</h3>
+		    <ul class="line">
+		      <li class="go">
+			<a href="?project=1&amp;information=1">Information</a>
+		      </li>
+		      <li class="go">
+			<a href="?project=1&amp;member=1">Membres</a>
+		      </li>
+		      <li class="go">
+			<a href="?project=1&amp;add_activity=1">Add an activity</a>
+		      </li>
+		    </ul>
+		  </xsl:if>
 		  <div class="menu blue2">
 		    <xsl:apply-templates select="doc/body/project_window" />
 		  </div>
 		  <div class="box">
 		    <xsl:choose>
 		      <xsl:when test="doc/body/project_window/activity_window">
+			<h2 class="blue3">
+			  <xsl:value-of select="doc/body/project_window/activity_window/name" />
+			</h2>
+			<xsl:if test="doc/body/project_window/activity_window/admin">
+			  <h3 class="blue1">Activity Menu</h3>
+			  <ul class="line">
+			    <li class="go">
+			      <a href="?activity=1&amp;information=1">Information</a>
+			    </li>
+			    <li class="go">
+			      <a href="?activity=1&amp;member=1">Membres</a>
+			    </li>
+			    <li class="go">
+			      <a href="?activity=1&amp;add_activity=1">Add an sub-activity</a>
+			    </li>
+			  </ul>
+			</xsl:if>
 			<xsl:apply-templates select="doc/body/project_window/activity_window" />
 		      </xsl:when>
 		      <xsl:otherwise>

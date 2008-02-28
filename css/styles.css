@@ -229,11 +229,12 @@ legend
 
 ul.line
 {
-	margin: 10px 0;
-	width: 100%;
+	margin: 10px auto;
+	width: 90%;
 	max-height: 80px;
 	list-style-type: none;
 	overflow: auto;
+	border: 1px dashed LightSteelBlue;
 }
 
 ul.line li
@@ -328,6 +329,11 @@ h3.blue2
 {
 	max-height: 300px;
 	overflow: auto;
+}
+
+.list_ch
+{
+	max-height: 150px;
 }
 
 .list ul,

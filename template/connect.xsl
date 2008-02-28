@@ -19,11 +19,13 @@
             Login<br />
             <input type="text" name="{field_login/@name}"
 		   value="{field_login/@value}" />
-          </label><br />
+          </label>
+	  <hr />
           <label>
             Password<br />
             <input type="password" name="{field_passwd/@name}" />
-          </label><br />
+          </label>
+	  <hr />
           <input type="submit" value="Ok" />
         </div>
       </fieldset>
