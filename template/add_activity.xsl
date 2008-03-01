@@ -15,24 +15,21 @@
 	  <fieldset>
 	    <legend>Add an activity</legend>
 	    <div class="form">
-	      <xsl:if test="field_activity_name">
-		<label>
-		  Name<br />
-		  <input type="text" name="{field_activity_name}" />
-		</label><br />
-	      </xsl:if>
-	      <xsl:if test="field_activity_describ">
-		<label>
-		  Describe<br />
-		  <textarea name="{field_activity_describ}"></textarea>
-		</label><br />
-	      </xsl:if>
-	      <xsl:if test="field_activity_charge">
-		<label>
-		  Charge<br />
-		  <input type="text" name="{field_activity_charge}" />
-		</label><br />
-	      </xsl:if>
+	      <label>
+		Name<br />
+		<input type="text" name="{field_activity_name}" />
+	      </label>
+	      <hr />
+	      <label class="big">
+		Describe<br />
+		<textarea name="{field_activity_describ}"></textarea>
+	      </label>
+	      <hr />
+	      <label>
+		Charge<br />
+		<input type="text" name="{field_activity_charge}" />
+	      </label>
+	      <hr />
 	      <input type="submit" value="Ok" />
 	    </div>
 	  </fieldset>

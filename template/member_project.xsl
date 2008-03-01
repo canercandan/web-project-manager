@@ -2,7 +2,22 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template match="member_activity/member_list_project">
+  <xsl:template match="member_project/member_list">
+    <thead>
+      <tr>
+	<th>Select</th>
+	<th>Login</th>
+	<th>Name</th>
+	<th>First name</th>
+	<th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <xsl:apply-templates select="member" />
+    </tbody>
+  </xsl:template>
+
+  <xsl:template match="member_project/member_list_project">
     <thead>
       <tr>
 	<th>Select</th>
@@ -18,25 +33,7 @@
     </tbody>
   </xsl:template>
 
-  <xsl:template match="member_activity/member_list_activity">
-    <thead>
-      <tr>
-	<th>Select</th>
-	<th>Login</th>
-	<th>Name</th>
-	<th>First name</th>
-	<th>Title</th>
-	<th>Role</th>
-	<th>Administrator</th>
-	<th>Work</th>
-      </tr>
-    </thead>
-    <tbody>
-      <xsl:apply-templates select="member" />
-    </tbody>
-  </xsl:template>
-
-  <xsl:template match="member_activity/member_list_project/member">
+  <xsl:template match="member_project/member_list/member">
     <tr>
       <td>
 	<input type="checkbox" name="{../checkbox/@name}[]"
@@ -50,7 +47,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_activity/member_list_activity/member">
+  <xsl:template match="member_project/member_list_project/member">
     <tr>
       <td>
 	<input type="checkbox" name="{../checkbox/@name}[]"
@@ -66,7 +63,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_activity">
+  <xsl:template match="member_project">
     <fieldset>
       <legend>Members activity</legend>
       <form action="?" method="post">
