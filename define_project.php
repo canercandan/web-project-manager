@@ -37,6 +37,10 @@ define('UNKNOWED_PROJECT', 'Unknowed project');
 define('INFORMATION', 0);
 define('ADD_ACTIVITY', 1);
 define('MEMBER', 2);
+define('MEMBER_BTN_UP', '<btn_up post="btn_up"/>');
+define('MEMBER_BTN_DOWN', '<btn_down post="btn_down"/>');
+define('MEMBER_BTN_SUBMIT', '<btn_submit post="btn_sumbit"/>');
+define('MEMBER_POST_SELECT', '<checkbox name="selectmember"/>');
 
 /*
 ** SQL

@@ -91,11 +91,11 @@ function get_member_activity($id_activity, $id_project)
 {
   $res = sql_query(sprintf(SQL_GET_MEMBER_ACTIVITY, sql_real_escape_string($id_project),
 			   sql_real_escape_string($id_activity)));
-			   printf('<checkbox name="tom"/>');
+	printf(MEMBER_POST_SELECT);
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]), htmlentities($tab[6]), htmlentities($tab[7]));
+	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), MEMBER_POST_LEVEL, htmlentities($tab[5]), MEMBER_POST_WORK, htmlentities($tab[6]), htmlentities($tab[7]));
       }
 }
 
@@ -103,11 +103,11 @@ function get_member_project_activity($id_activity, $id_project)
 {
   $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT_ACT, sql_real_escape_string($id_project),
 			   sql_real_escape_string($id_activity)));
-  printf('<checkbox name="tom"/>');
+  printf(MEMBER_POST_SELECT);
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(MEMBER_ELEM_PROJECT, $tab[0], 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]));
+	  printf(MEMBER_ELEM_PROJECT, $tab[0], 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]));
       }
 }
 

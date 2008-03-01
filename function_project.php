@@ -11,6 +11,7 @@ require_once('function_misc.php');
 function get_member_out_project($id_project)
 {
   $res = sql_query(sprintf(SQL_GET_MEMBER_OUT_PROJECT, sql_real_escape_string($id_project)));
+  printf(MEMBER_POST_SELECT);
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
@@ -27,7 +28,8 @@ function get_member_project($id_project)
 		{
 			printf('<role id="%s" name="%s"/>', htmlentities($tab[0]), htmlentities($tab[1]));
 		}
-	printf('</role_list>');		
+	printf('</role_list>');
+ printf(MEMBER_POST_SELECT);	
   $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT, sql_real_escape_string($id_project)));
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))

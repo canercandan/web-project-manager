@@ -4,7 +4,9 @@ require_once('./define_activity.php');
 require_once('./function_activity.php');
 
 printf(MEMBER_ACTIVITY_BEGIN);
-
+printf(MEMBER_BTN_UP);
+printf(MEMBER_BTN_DOWN);
+printf(MEMBER_BTN_SUBMIT);
 printf(MEMBER_LIST_PROJECT_BEGIN);
 get_member_project_activity(1 /*$_SESSION[ACTIVITY_ID]*/, 0 /*$_SESSION[PROJECT_ID]*/);
 printf(MEMBER_LIST_PROJECT_END);
