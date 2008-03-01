@@ -35,8 +35,8 @@ function get_years()
 {
 	printf('<list_year>');
 	$res = getdate();
-	$year = $res['year'] - 5;
-	for ($i = $year; $i < $year + 30; $i++)
+	$year = $res['year'] - 25;
+	for ($i = $year; $i < $year + 50; $i++)
 	{
 		printf('<year id="%d" value="%d"/>', $i, $i);
 	}
