@@ -47,6 +47,8 @@ define('POST_DAY_END', 'member_proj_day_end');
 define('POST_MONTH_END', 'member_proj_month_end');
 define('POST_YEAR_END', 'member_proj_year_end');
 
+define('MEMBER_HISTO_LIST_PROJECT_END', '</member_histo_list_project>');
+define('MEMBER_HISTO_LIST_PROJECT_BEGIN', '<member_histo_list_project>');
 define('MEMBER_LIST_PROJECT_BEGIN', '<member_list_project>');
 define('MEMBER_LIST_BEGIN', '<member_list>');
 define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
@@ -63,10 +65,12 @@ define('MEMBER', 2);
 
 define('BTN_UP', 'btn_up');
 define('BTN_DOWN', 'btn_down');
+define('BTN_DELETE_HISTO', 'btn_delete_histo');
 define('BTN_SUBMIT', 'btn_sumbit');
 define('POST_SELECT', 'selectmember');
 define('POST_KEEP_HISTO','keep_histo');
 define('MEMBER_BTN_UP', '<btn_up post="btn_up"/>');
+define('MEMBER_BTN_DELETE_HISTO', '<btn_delete_histo post="btn_delete_histo"/>');
 define('MEMBER_BTN_DOWN', '<btn_down post="btn_down"/>');
 define('MEMBER_BTN_SUBMIT', '<btn_submit post="btn_sumbit"/>');
 define('MEMBER_POST_SELECT', '<checkbox name="selectmember"/>');
@@ -102,7 +106,8 @@ define('SQL_GET_MEMBER_OUT_PROJECT', 'SELECT usr_id, profil_name, profil_fname, 
 WHERE
 profil_title_id = title_id
 AND profil_usr_id = usr_id
-AND usr_id not in (SELECT member_usr_id FROM tw_member WHERE member_project_id = \'%d\');');
+AND usr_id not in (SELECT member_usr_id FROM tw_member WHERE member_project_id = \'%d\'
+AND (member_date_end = \'0000-00-00\' OR DATEDIFF(CURDATE(), member_date_end) < 0));');
 
 define('SQL_GET_MEMBER_PROJECT', 'SELECT profil_usr_id, profil_name, profil_fname, title_name, member_role_id, usr_login,
  day(member_date_start), month(member_date_start), year(member_date_start),
@@ -113,8 +118,20 @@ profil_usr_id = member_usr_id
 AND profil_usr_id = usr_id
 AND member_project_id = \'%d\'
 AND title_id = profil_title_id
-order by member_date_end, member_date_start, usr_login');
+AND (member_date_end = \'0000-00-00\' OR DATEDIFF(CURDATE(), member_date_end) < 0)
+order by usr_login;');
 
+define('SQL_GET_HISTO_MEMBER_PROJECT', 'SELECT profil_usr_id, profil_name, profil_fname, title_name, member_role_id, usr_login,
+ day(member_date_start), month(member_date_start), year(member_date_start),
+ day(member_date_end), month(member_date_end), year(member_date_end)
+FROM tw_usr, tw_profil, tw_member, tw_title
+WHERE
+profil_usr_id = member_usr_id
+AND profil_usr_id = usr_id
+AND member_project_id = \'%d\'
+AND title_id = profil_title_id
+-- AND (member_date_end != \'0000-00-00\' AND DATEDIFF(CURDATE(), member_date_end) >= 0)
+order by usr_login;');
 
 define('SQL_GET_FIRST_ACTIVITY', 'SELECT activity_id, activity_name, activity_charge_total
 	FROM tw_activity

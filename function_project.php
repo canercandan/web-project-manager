@@ -51,6 +51,37 @@ function get_member_project($id_project)
       }
 }
 
+function get_histo_member_project($id_project)
+{
+	get_full_years();
+	get_full_days();
+	get_full_months();
+	printf('<role_list post="selectrole">');
+	$res = sql_query(SQL_GET_ROLE);
+	if (sql_num_rows($res))
+		while ($tab = sql_fetch_array($res))
+		{
+			printf('<role id="%s" name="%s"/>', htmlentities($tab[0]), htmlentities($tab[1]));
+		}
+	printf('</role_list>');
+	printf(MEMBER_POST_SELECT);
+	$res = sql_query(sprintf(SQL_GET_HISTO_MEMBER_PROJECT, sql_real_escape_string($id_project)));
+	if (sql_num_rows($res))
+    while ($tab = sql_fetch_array($res))
+      {
+		printf(MEMBER_ELEM_PROJECT_PROJ, htmlentities($tab[0]), 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]),
+		POST_DAY_START, htmlentities($tab[6]), POST_MONTH_START, htmlentities($tab[7]), POST_YEAR_START, htmlentities($tab[8]),
+		POST_DAY_END, htmlentities($tab[9]), POST_MONTH_END, htmlentities($tab[10]), POST_YEAR_END, htmlentities($tab[11]),
+		POST_KEY_ID,
+		POST_KEY_DAY_START,
+		POST_KEY_MONTH_START,
+		POST_KEY_YEAR_START,
+		POST_KEY_DAY_END,
+		POST_KEY_MONTH_END,
+		POST_KEY_YEAR_END);
+      }
+}
+
 function remove_tot_member($id_user, $id_project)
 {
 	sql_query(sprintf(SQL_REMOVE_TOT_MEMBER, sql_real_escape_string($id_user), sql_real_escape_string($id_project)));
