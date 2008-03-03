@@ -6,7 +6,7 @@ if (!MAIN || !isset($_SESSION['PROJECT_NAME']))
 require_once('define_project.php');
 require_once('function_activity.php');
 require_once('define_activity.php');
-
+require_once('dategraph.php');
 
 if (isset($_POST[POST_ACTIVITY_NAME]) && isset($_POST[POST_ACTIVITY_DESCRIB]) && isset($_POST[POST_ACTIVITY_CHARGE]) && 
 	$_POST[POST_ACTIVITY_NAME] != "" && $_POST[POST_ACTIVITY_DESCRIB] != "" && $_POST[POST_ACTIVITY_CHARGE] != "" && is_numeric($_POST[POST_ACTIVITY_CHARGE]))
@@ -17,6 +17,8 @@ if (isset($_POST[POST_ACTIVITY_NAME]) && isset($_POST[POST_ACTIVITY_DESCRIB]) &&
 
 
 printf(PROJECT_WINDOW_BEGIN);
+
+print_tab_proj_member_date(1);
 
 if (isset($_SESSION['PROJECT_NAME']))
   {
