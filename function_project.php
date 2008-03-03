@@ -21,7 +21,7 @@ function get_member_out_project($id_project)
 
 function get_member_project($id_project)
 {
-	printf('<role_list>');
+	printf('<role_list post="selectrole">');
 	$res = sql_query(SQL_GET_ROLE);
 	if (sql_num_rows($res))
 		while ($tab = sql_fetch_array($res))
