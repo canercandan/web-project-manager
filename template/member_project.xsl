@@ -43,7 +43,6 @@
       <td><xsl:value-of select="name" /></td>
       <td><xsl:value-of select="fname" /></td>
       <td><xsl:value-of select="title" /></td>
-      <td><xsl:value-of select="role" /></td>
     </tr>
   </xsl:template>
 
@@ -57,9 +56,25 @@
       <td><xsl:value-of select="name" /></td>
       <td><xsl:value-of select="fname" /></td>
       <td><xsl:value-of select="title" /></td>
-      <td><xsl:value-of select="role" /></td>
-      <td><input type="checkbox" name="{level/@post}[{id}]" /></td>
-      <td><input type="checkbox" name="{work/@post}[{id}]" /></td>
+      <td>
+	<xsl:variable name="id" select="id" />
+	<select name="{role/@post}">
+	  <xsl:for-each select="../role_list/role">
+	    <xsl:choose>
+	      <xsl:when test="@id=$id">
+		<option value="{@id}" selected="selected">
+		  <xsl:value-of select="@name" />
+		</option>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<option value="{@id}">
+		  <xsl:value-of select="@name" />
+		</option>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </xsl:for-each>
+	</select>
+      </td>
     </tr>
   </xsl:template>
 
@@ -69,19 +84,32 @@
       <form action="?" method="post">
 	<div class="member_top">
 	  <table class="table">
-	    <caption>Members list of project</caption>
-	    <xsl:apply-templates select="member_list_project" />
+	    <caption>Members list</caption>
+	    <xsl:apply-templates select="member_list" />
 	  </table>
 	</div>
 	<div class="member_middle">
-	  <input type="submit" name="up" value="/\" />
-	  <input type="submit" name="down" value="\/" />
+	  Role<br />
+	  <select name="{member_list_project/role_list/@post}">
+	    <xsl:for-each select="member_list_project/role_list/role">
+	      <option value="{@id}">
+		<xsl:value-of select="@name" />
+	      </option>
+	    </xsl:for-each>
+	  </select>
+	  <br />
+	  <br />
+	  <input type="submit" name="{btn_up/@post}" value="/\" />
+	  <input type="submit" name="{btn_down/@post}" value="\/" />
 	</div>
 	<div class="member_bottom">
 	  <table class="table">
-	    <caption>Member list of activity</caption>
-	    <xsl:apply-templates select="member_list_activity" />
+	    <caption>Member list of project</caption>
+	    <xsl:apply-templates select="member_list_project" />
 	  </table>
+	  <div class="form">
+	    <input type="submit" name="{btn_submit/@post}" value="Update" />
+	  </div>
 	</div>
 	<div class="clear" />
       </form>

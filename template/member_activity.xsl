@@ -77,14 +77,17 @@
 	  </table>
 	</div>
 	<div class="member_middle">
-	  <input type="submit" name="up" value="/\" />
-	  <input type="submit" name="down" value="\/" />
+	  <input type="submit" name="{btn_up/@post}" value="/\" />
+	  <input type="submit" name="{btn_down/@post}" value="\/" />
 	</div>
 	<div class="member_bottom">
 	  <table class="table">
 	    <caption>Member list of activity</caption>
 	    <xsl:apply-templates select="member_list_activity" />
 	  </table>
+	  <div class="form">
+	    <input type="submit" name="{btn_submit/@post}" value="Update" />
+	  </div>
 	</div>
 	<div class="clear" />
       </form>
