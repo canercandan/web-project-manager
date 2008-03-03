@@ -40,7 +40,7 @@ function get_activity_work($id_activity)
 	{
 	  if ($tab[3] >= 0)
 	    {
-	      $work += $tab[3];
+	      $work += ($tab[3] < $tab[2] ? $tab[3] : $tab[2]);
 		  if ($tab[0] != $id_activity)
 			printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge><work>%d</work><percent>%d</percent></activity_work>',
 		     (isset($_SESSION['DEVELOPPED_WORK'][$tab[0]]) ? $_SESSION['DEVELOPPED_WORK'][$tab[0]] : 0),

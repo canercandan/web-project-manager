@@ -3,9 +3,8 @@
 if (!MAIN)
   exit(0);
   
-function get_months()
+function month_lst()
 {
-	printf('<list_month>');
 	printf('<month id="1" value="January"/>');
 	printf('<month id="2" value="February"/>');
 	printf('<month id="3" value="March"/>');
@@ -18,7 +17,31 @@ function get_months()
 	printf('<month id="10" value="October"/>');
 	printf('<month id="11" value="November"/>');
 	printf('<month id="12" value="December"/>');
+} 
+ 
+function get_full_months()
+{
+	printf('<list_month>');
+	printf('<month id="0" value="Month"/>');
+	month_lst();
 	printf('</list_month>');
+} 
+function get_months()
+{
+	printf('<list_month>');
+	month_lst();
+	printf('</list_month>');
+}
+
+function get_full_days()
+{
+	printf('<list_day>');
+	printf('<day id="0" value="Day"/>');
+	for ($i = 1; $i < 32; $i++)
+	{
+		printf('<day id="%d" value="%02d"/>', $i, $i);
+	}
+	printf('</list_day>');
 }
 
 function get_days()
@@ -36,6 +59,19 @@ function get_years()
 	printf('<list_year>');
 	$res = getdate();
 	$year = $res['year'] - 25;
+	for ($i = $year; $i < $year + 50; $i++)
+	{
+		printf('<year id="%d" value="%d"/>', $i, $i);
+	}
+	printf('</list_year>');
+}
+
+function get_full_years()
+{
+	printf('<list_year>');
+	$res = getdate();
+	$year = $res['year'] - 25;
+	printf('<year id="0" value="Year"/>');
 	for ($i = $year; $i < $year + 50; $i++)
 	{
 		printf('<year id="%d" value="%d"/>', $i, $i);

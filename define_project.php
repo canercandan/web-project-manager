@@ -23,7 +23,30 @@ define('INFORMATION_PROJECT_BEGIN', '<information_project>');
 define('INFORMATION_PROJECT_END', '</information_project>');
 
 define('MEMBER_ELEM_PROJ', '<member><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title><login>%s</login></member>');
-define('MEMBER_ELEM_PROJECT_PROJ', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title><role post="modrole">%s</role><login>%s</login></member>');
+define('MEMBER_ELEM_PROJECT_PROJ', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name>
+<fname>%s</fname>
+<title>%s</title>
+<role post="modrole">%s</role>
+<login>%s</login>
+<date_start post_day="%s" day="%d" post_month="%s" month="%d" post_year="%s" year="%d"/>
+<date_end post_day="%s" day="%d" post_month="%s" month="%d" post_year="%s" year="%d"/>
+<key id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
+</member>');
+define('POST_KEY_DAY_START', 'key_member_proj_day_start');
+define('POST_KEY_MONTH_START', 'key_member_proj_month_start');
+define('POST_KEY_YEAR_START', 'key_member_proj_year_start');
+define('POST_KEY_DAY_END', 'key_member_proj_day_end');
+define('POST_KEY_MONTH_END', 'key_member_proj_month_end');
+define('POST_KEY_YEAR_END', 'key_member_proj_year_end');
+define('POST_KEY_ID', 'key_member_proj_id');
+
+define('POST_DAY_START', 'member_proj_day_start');
+define('POST_MONTH_START', 'member_proj_month_start');
+define('POST_YEAR_START', 'member_proj_year_start');
+define('POST_DAY_END', 'member_proj_day_end');
+define('POST_MONTH_END', 'member_proj_month_end');
+define('POST_YEAR_END', 'member_proj_year_end');
+
 define('MEMBER_LIST_PROJECT_BEGIN', '<member_list_project>');
 define('MEMBER_LIST_BEGIN', '<member_list>');
 define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
@@ -37,14 +60,42 @@ define('UNKNOWED_PROJECT', 'Unknowed project');
 define('INFORMATION', 0);
 define('ADD_ACTIVITY', 1);
 define('MEMBER', 2);
+
+define('BTN_UP', 'btn_up');
+define('BTN_DOWN', 'btn_down');
+define('BTN_SUBMIT', 'btn_sumbit');
+define('POST_SELECT', 'selectmember');
+define('POST_KEEP_HISTO','keep_histo');
 define('MEMBER_BTN_UP', '<btn_up post="btn_up"/>');
 define('MEMBER_BTN_DOWN', '<btn_down post="btn_down"/>');
 define('MEMBER_BTN_SUBMIT', '<btn_submit post="btn_sumbit"/>');
 define('MEMBER_POST_SELECT', '<checkbox name="selectmember"/>');
+define('MEMBER_KEEP_HISTO', '<checkbox name="keep_histo"/>');
 
 /*
 ** SQL
 */
+
+define('SQL_CHECK_IN_PROJ', 'SELECT member_usr_id FROM tw_member 
+WHERE member_usr_id = \'%d\'
+AND member_project_id = \'%d\';');
+
+define('SQL_INSERT_MEMBER'
+,'INSERT INTO `techweb`.`tw_member` (
+`member_project_id` ,
+`member_usr_id` ,
+`member_role_id` ,
+`member_date_start` ,
+`member_date_end`
+)
+VALUES (
+\'%d\', \'%d\', NULL, CURDATE(), \'0000-00-00\'
+);');
+
+define('SQL_REMOVE_TOT_MEMBER', 
+'DELETE FROM tw_member
+WHERE member_usr_id = \'%d\'
+AND member_project_id = \'%d\';');
 
 define('SQL_GET_ROLE', 'SELECT role_id, role_name FROM tw_member_role');
 define('SQL_GET_MEMBER_OUT_PROJECT', 'SELECT usr_id, profil_name, profil_fname, title_name, usr_login FROM tw_usr, tw_profil, tw_title
@@ -53,12 +104,16 @@ profil_title_id = title_id
 AND profil_usr_id = usr_id
 AND usr_id not in (SELECT member_usr_id FROM tw_member WHERE member_project_id = \'%d\');');
 
-define('SQL_GET_MEMBER_PROJECT', 'SELECT profil_usr_id, profil_name, profil_fname, title_name, member_role_id, usr_login FROM tw_usr, tw_profil, tw_member, tw_title
+define('SQL_GET_MEMBER_PROJECT', 'SELECT profil_usr_id, profil_name, profil_fname, title_name, member_role_id, usr_login,
+ day(member_date_start), month(member_date_start), year(member_date_start),
+ day(member_date_end), month(member_date_end), year(member_date_end)
+FROM tw_usr, tw_profil, tw_member, tw_title
 WHERE
 profil_usr_id = member_usr_id
 AND profil_usr_id = usr_id
 AND member_project_id = \'%d\'
-AND title_id = profil_title_id;');
+AND title_id = profil_title_id
+order by member_date_end, member_date_start, usr_login');
 
 
 define('SQL_GET_FIRST_ACTIVITY', 'SELECT activity_id, activity_name, activity_charge_total
