@@ -83,12 +83,8 @@ define('ADMIN_MEMBER_SELECT',
 			   profil_fname, 
 			   usr_level_id
 		FROM tw_usr,
-			 tw_profil,
-			 tw_title,
-			 tw_location
-		WHERE tw_usr.usr_id = tw_profil.profil_usr_id
-		AND	tw_profil.profil_location_id = tw_location.location_id
-		AND tw_profil.profil_title_id = tw_title.title_id;');
+			 tw_profil
+		WHERE tw_usr.usr_id = tw_profil.profil_usr_id;');
 
 membre_select_all();
 
