@@ -69,13 +69,13 @@ define('BTN_DOWN', 'btn_down');
 define('BTN_DELETE_HISTO', 'btn_delete_histo');
 define('BTN_SUBMIT', 'btn_sumbit');
 define('POST_SELECT', 'selectmember');
-define('POST_KEEP_HISTO','keep_histo');
+define('BTN_KEEP_HISTO','keep_histo');
 define('MEMBER_BTN_UP', '<btn_up post="btn_up"/>');
 define('MEMBER_BTN_DELETE_HISTO', '<btn_delete_histo post="btn_delete_histo"/>');
 define('MEMBER_BTN_DOWN', '<btn_down post="btn_down"/>');
 define('MEMBER_BTN_SUBMIT', '<btn_submit post="btn_sumbit"/>');
 define('MEMBER_POST_SELECT', '<checkbox name="selectmember"/>');
-define('MEMBER_KEEP_HISTO', '<checkbox name="keep_histo"/>');
+define('MEMBER_KEEP_HISTO', '<btn_histo name="keep_histo"/>');
 
 /*
 ** SQL
