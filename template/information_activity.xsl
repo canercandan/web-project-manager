@@ -2,36 +2,6 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template match="list_day">
-    <select name="@../date/postday">
-      <xsl:for-each select="day">
-	<option value="{@id}">
-	  <xsl:value-of select="@value" />
-	</option>
-      </xsl:for-each>
-    </select>
-  </xsl:template>
-
-  <xsl:template match="list_month">
-    <select name="@../date/postmonth">
-      <xsl:for-each select="month">
-	<option value="{@id}">
-	  <xsl:value-of select="@value" />
-	</option>
-      </xsl:for-each>
-    </select>
-  </xsl:template>
-
-  <xsl:template match="list_year">
-    <select name="@../date/postyear">
-      <xsl:for-each select="year">
-	<option value="{@id}">
-	  <xsl:value-of select="@value" />
-	</option>
-      </xsl:for-each>
-    </select>
-  </xsl:template>
-
   <xsl:template match="information_activity">
     <fieldset>
       <legend>General</legend>
@@ -52,9 +22,7 @@
 	  <hr />
 	  <div class="little">
 	    Date<br />
-	    <xsl:apply-templates select="list_day" />
-	    <xsl:apply-templates select="list_month" />
-	    <xsl:apply-templates select="list_year" />
+	    <xsl:apply-templates select="date" />
 	  </div>
 	  <hr />
 	  <label>

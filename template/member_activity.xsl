@@ -29,6 +29,8 @@
 	<th>Role</th>
 	<th>Administrator</th>
 	<th>Work</th>
+	<th>Date begin</th>
+	<th>Date end</th>
       </tr>
     </thead>
     <tbody>
@@ -62,19 +64,32 @@
       <td><xsl:value-of select="title" /></td>
       <td><xsl:value-of select="role" /></td>
       <td>
-	<!--
 	<xsl:choose>
-	  <xsl:when test="">
-	    <input type="checkbox" name="{level/@post}[{id}]" value="1" />
+	  <xsl:when test="level=1">
+	    <input type="checkbox" name="{level/@post}[{id}]" value="1"
+		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <input type="checkbox" name="{level/@post}[{id}]" value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
-	-->
       </td>
       <td>
-	<input type="checkbox" name="{work/@post}[{id}]" />
+	<xsl:choose>
+	  <xsl:when test="work=1">
+	    <input type="checkbox" name="{work/@post}[{id}]" value="1"
+		   checked="checked" />
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <input type="checkbox" name="{work/@post}[{id}]" value="1" />
+	  </xsl:otherwise>
+	</xsl:choose>
+      </td>
+      <td class="little">
+	<xsl:apply-templates select="date_start" />
+      </td>
+      <td class="little">
+	<xsl:apply-templates select="date_end" />
       </td>
     </tr>
   </xsl:template>

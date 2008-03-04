@@ -24,4 +24,7 @@
   <xsl:import href="./template/member_project.xsl" />
   <xsl:import href="./template/field_location.xsl" />
   <xsl:import href="./template/field_title.xsl" />
+  <xsl:import href="./template/date.xsl" />
+  <xsl:import href="./template/date_start.xsl" />
+  <xsl:import href="./template/date_end.xsl" />
 </xsl:stylesheet>
