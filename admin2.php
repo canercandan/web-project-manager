@@ -24,34 +24,34 @@ else
 
 function membre_select_all()
 {
-	$test = mysql_query(ADMIN_MEMBRE_SELECT);
-	printf(MEMBRE_BEGIN);
-	printf(MEMBRE_NAME, ADMIN_POST_NAME);
-	printf(MEMBRE_BUTTON_SELECT, ADMIN_BUTTON_SELECT, ADMIN_VALUE_SELECT);
-	printf(MEMBRE_BUTTON_UPDATE, ADMIN_BUTTON_UPDATE, ADMIN_VALUE_UPDATE);
-	printf(MEMBRE_BUTTON_DELETE, ADMIN_BUTTON_DELETE, ADMIN_VALUE_DELETE);
+	$test = mysql_query(ADMIN_MEMBER_SELECT);
+	printf(MEMBER_BEGIN);
+	printf(MEMBER_NAME, ADMIN_POST_NAME);
+	printf(MEMBER_BUTTON_SELECT, ADMIN_BUTTON_SELECT, ADMIN_VALUE_SELECT);
+	printf(MEMBER_BUTTON_UPDATE, ADMIN_BUTTON_UPDATE, ADMIN_VALUE_UPDATE);
+	printf(MEMBER_BUTTON_DELETE, ADMIN_BUTTON_DELETE, ADMIN_VALUE_DELETE);
 	while ($row = mysql_fetch_array($test, MYSQL_NUM))
 	{
-		printf(ADMIN_MEMBRE, ADMIN_POST_ID, $row[0], 
+		printf(ADMIN_MEMBER, ADMIN_POST_ID, $row[0], 
 							 ADMIN_POST_LOGIN, $row[1], 
 							 ADMIN_POST_NAME, $row[2], 
 							 ADMIN_POST_FIRST, $row[3], 
 							 ADMIN_USR_LEVEL, $row[4]);
 	}
-	printf(MEMBRE_END);
+	printf(MEMBER_END);
 }
 
 /*
 ** 	define
 */
 
-define('MEMBRE_BEGIN', '<admin_membre_list>');
-define('MEMBRE_END', '</admin_membre_list>');
-define('MEMBRE_NAME', '<admin_membre_name>%s</admin_membre_name>');
+define('MEMBER_BEGIN', '<admin_member_list>');
+define('MEMBER_END', '</admin_member_list>');
+define('MEMBER_NAME', '<admin_member_name>%s</admin_member_name>');
 
-define('MEMBRE_BUTTON_SELECT', '<button_select name=\'%s\' value=\'%s\' />');
-define('MEMBRE_BUTTON_UPDATE', '<button_update name=\'%s\' value=\'%s\' />');
-define('MEMBRE_BUTTON_DELETE', '<button_delete name=\'%s\' value=\'%s\' />');
+define('MEMBER_BUTTON_SELECT', '<button_select name=\'%s\' value=\'%s\' />');
+define('MEMBER_BUTTON_UPDATE', '<button_update name=\'%s\' value=\'%s\' />');
+define('MEMBER_BUTTON_DELETE', '<button_delete name=\'%s\' value=\'%s\' />');
 
 define('ADMIN_POST_NAME', 'adminlistmembre');
 define('ADMIN_BUTTON_SELECT', 'adminbuttonselect');
@@ -68,15 +68,15 @@ define('ADMIN_POST_NAME', 'adminpostname');
 define('ADMIN_POST_FIRST', 'adminpostfirst');
 define('ADMIN_USR_LEVEL', 'adminpostlevel');
 
-define('ADMIN_MEMBRE', '<membre>
+define('ADMIN_MEMBER', '<member>
 							<id post="%s" value="%s" />
 							<login post="%s" value="%s" />
 							<name post="%s" value="%s" />
 							<first_name post="%s" value="%s" />
 							<usr_level post="%s" value="%s" />
-						</membre>');
+						</member>');
 
-define('ADMIN_MEMBRE_SELECT',
+define('ADMIN_MEMBER_SELECT',
 	   'SELECT usr_id,
 			   usr_login, 
 			   profil_name, 
