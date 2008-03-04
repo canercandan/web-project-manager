@@ -26,9 +26,17 @@ function membre_select_all()
 {
 	$test = mysql_query(ADMIN_MEMBRE_SELECT);
 	printf(ADMIN_MEMBRE_BEGIN);
+	printf(ADMIN_MEMBRE_NAME, ADMIN_POST_NAME);
+	printf(ADMIN_MEMBRE_BUTTON, ADMIN_BUTTON_SELECT, ADMIN_VALUE_SELECT);
+	printf(ADMIN_MEMBRE_BUTTON, ADMIN_BUTTON_UPDATE, ADMIN_VALUE_UPDATE);
+	printf(ADMIN_MEMBRE_BUTTON, ADMIN_BUTTON_DELETE, ADMIN_VALUE_DELETE);
 	while ($row = mysql_fetch_array($test, MYSQL_NUM))
 	{
-		printf(ADMIN_MEMBRE, $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7]); 
+		printf(ADMIN_MEMBRE, ADMIN_POST_ID, $row[0], 
+							 ADMIN_POST_LOGIN, $row[1], 
+							 ADMIN_POST_NAME, $row[2], 
+							 ADMIN_POST_FIRST, $row[3], 
+							 ADMIN_USR_LEVEL, $row[4]);
 	}
 	printf(ADMIN_MEMBRE_END);
 }
@@ -38,18 +46,30 @@ function membre_select_all()
 */
 
 define('ADMIN_MEMBRE_BEGIN', '<admin_membre_list>');
-
 define('ADMIN_MEMBRE_END', '</admin_membre_list>');
+define('ADMIN_MEMBRE_NAME', '<admin_membre_name>%s</admin_membre_name>');
+define('ADMIN_MEMBRE_BUTTON', '<admin_button name=\'%s\' value=\'%s\' />');
+
+define('ADMIN_POST_NAME', 'adminlistmembre');
+define('ADMIN_BUTTON_SELECT', 'adminbuttonselect');
+define('ADMIN_BUTTON_UPDATE', 'adminbuttonupdate');
+define('ADMIN_BUTTON_DELETE', 'adminbuttondelete');
+define('ADMIN_VALUE_SELECT', 'Select');
+define('ADMIN_VALUE_UPDATE', 'Update');
+define('ADMIN_VALUE_DELETE', 'Delete');
+
+define('ADMIN_POST_ID', 'adminpostid');
+define('ADMIN_POST_LOGIN', 'adminpostlogin');
+define('ADMIN_POST_NAME', 'adminpostname');
+define('ADMIN_POST_FIRST', 'adminpostfirst');
+define('ADMIN_USR_LEVEL', 'adminpostlevel');
 
 define('ADMIN_MEMBRE', '<membre>
 							<id post="%s" value="%s" />
-							<login>\'%s\'</login>
-							<name>\'%s\'</name>
-							<first_name>\'%s\'</first_name>
-							<title>\'%s\'</title>
-							<email>\'%s\'</email>
-							<location>\'%s\'</location>
-							<usr_level>\'%s\'</usr_level>
+							<login post="%s" value="%s" />
+							<name post="%s" value="%s" />
+							<first_name post="%s" value="%s" />
+							<usr_level post="%s" value="%s" />
 						</membre>');
 
 define('ADMIN_MEMBRE_SELECT',
@@ -57,9 +77,6 @@ define('ADMIN_MEMBRE_SELECT',
 			   usr_login, 
 			   profil_name, 
 			   profil_fname, 
-			   title_name, 
-			   usr_email, 
-			   location_name, 
 			   usr_level_id
 		FROM tw_usr,
 			 tw_profil,
