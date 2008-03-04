@@ -62,6 +62,7 @@
       <td><xsl:value-of select="title" /></td>
       <td><xsl:value-of select="role" /></td>
       <td>
+	<!--
 	<xsl:choose>
 	  <xsl:when test="">
 	    <input type="checkbox" name="{level/@post}[{id}]" value="1" />
@@ -70,6 +71,7 @@
 	    <input type="checkbox" name="{level/@post}[{id}]" value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
+	-->
       </td>
       <td>
 	<input type="checkbox" name="{work/@post}[{id}]" />
