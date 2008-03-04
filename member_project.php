@@ -36,5 +36,5 @@ printf(MEMBER_HISTO_LIST_PROJECT_BEGIN);
 get_histo_member_project($_SESSION['PROJECT_ID']);
 printf(MEMBER_HISTO_LIST_PROJECT_END);
 
-printf(MEMBER_PROJECT_END)
+printf(MEMBER_PROJECT_END);
 ?>

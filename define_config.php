@@ -23,7 +23,7 @@ define('XML_FOOTER',
 	    <autor name="candan_c" />
 	    <autor name="aubry_j" />
 	    <autor name="roser_m" />
-	    <autor name="lazaru_v alias casper_n" />
+	    <autor name="lazaru_v comes back, YEAH!!!" />
 	  </footer>
 	</doc>');
 

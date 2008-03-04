@@ -130,7 +130,7 @@ profil_usr_id = member_usr_id
 AND profil_usr_id = usr_id
 AND member_project_id = \'%d\'
 AND title_id = profil_title_id
--- AND (member_date_end != \'0000-00-00\' AND DATEDIFF(CURDATE(), member_date_end) >= 0)
+AND (member_date_end != DATE(\'0000-00-00\') AND DATEDIFF(CURDATE(), member_date_end) >= 0)
 order by usr_login;');
 
 define('SQL_GET_FIRST_ACTIVITY', 'SELECT activity_id, activity_name, activity_charge_total
