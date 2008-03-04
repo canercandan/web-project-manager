@@ -22,20 +22,23 @@ if ($_POST[PROFIL_POST_LOCATION] && $_POST[PROFIL_POST_NAME] &&
 	exit(0);
   }
 
-if (!$_POST[PROFIL_POST_LOCATION])
-  $error = sprintf(XML_ERROR, PROFIL_LOCATION_ERROR);
-else if (!$_POST[PROFIL_POST_TITLE])
-  $error = sprintf(XML_ERROR, PROFIL_TITLE_ERROR);
-else if (!$_POST[PROFIL_POST_NAME])
-  $error = sprintf(XML_ERROR, PROFIL_NAME_ERROR);
-else if (!$_POST[PROFIL_POST_FNAME])
-  $error = sprintf(XML_ERROR, PROFIL_FNAME_ERROR);
-else if (!$_POST[PROFIL_POST_FPHONE])
-  $error = sprintf(XML_ERROR, PROFIL_FPHONE_ERROR);
-else if (!$_POST[PROFIL_POST_MPHONE])
-  $error = sprintf(XML_ERROR, PROFIL_MPHONE_ERROR);
-else if (!$_POST[PROFIL_POST_ADDRESS])
-  $error = sprintf(XML_ERROR, PROFIL_ADDRESS_ERROR);
+if ($_POST)
+  {
+    if (!$_POST[PROFIL_POST_LOCATION])
+      $error = sprintf(XML_ERROR, PROFIL_LOCATION_ERROR);
+    else if (!$_POST[PROFIL_POST_TITLE])
+      $error = sprintf(XML_ERROR, PROFIL_TITLE_ERROR);
+    else if (!$_POST[PROFIL_POST_NAME])
+      $error = sprintf(XML_ERROR, PROFIL_NAME_ERROR);
+    else if (!$_POST[PROFIL_POST_FNAME])
+      $error = sprintf(XML_ERROR, PROFIL_FNAME_ERROR);
+    else if (!$_POST[PROFIL_POST_FPHONE])
+      $error = sprintf(XML_ERROR, PROFIL_FPHONE_ERROR);
+    else if (!$_POST[PROFIL_POST_MPHONE])
+      $error = sprintf(XML_ERROR, PROFIL_MPHONE_ERROR);
+    else if (!$_POST[PROFIL_POST_ADDRESS])
+      $error = sprintf(XML_ERROR, PROFIL_ADDRESS_ERROR);
+  }
 
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
@@ -44,8 +47,11 @@ if ($_GET[DEBUG])
    printf(XML_HEADER, XML_TEMPLATE);
 printf(PROFIL_BEGIN);
 printf($error);
-printf(PROFIL_FIELD_TITLE, PROFIL_POST_TITLE);
-printf(PROFIL_FIELD_LOCATION, PROFIL_POST_LOCATION);
+printf(PROFIL_FIELD_TITLE_BEGIN, PROFIL_POST_TITLE);
+printf(PROFIL_FIELD_ITEM, 1, "Developpeur");
+printf(PROFIL_FIELD_TITLE_END);
+printf(PROFIL_FIELD_LOCATION_BEGIN, PROFIL_POST_LOCATION);
+printf(PROFIL_FIELD_LOCATION_END);
 printf(PROFIL_FIELD_NAME,
        PROFIL_POST_NAME, $_POST[PROFIL_POST_NAME]);
 printf(PROFIL_FIELD_FNAME,
