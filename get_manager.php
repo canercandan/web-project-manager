@@ -74,6 +74,13 @@ else if (isset($_GET['project']) && isset($_GET['member']))
 	unset($_SESSION['ACTIVITY_MENU']);
 	$_SESSION['PROJECT_MENU'] = MEMBER;
 }
+else if (isset($_GET['project']) && isset($_GET['member_dategraph']))
+{
+	unset($_SESSION['ACTIVITY_NAME']);
+	unset($_SESSION['ACTIVITY_ID']);
+	unset($_SESSION['ACTIVITY_MENU']);
+	$_SESSION['PROJECT_MENU'] = MEMBER_DATEGRAPH;
+}
 else if (isset($_GET['project']) && isset($_GET['add_activity']))
 {
 	unset($_SESSION['ACTIVITY_NAME']);

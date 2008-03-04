@@ -51,6 +51,8 @@ if (isset($_SESSION['ACTIVITY_NAME']))
 				include('informations_project.php');
 			else if ($_SESSION['PROJECT_MENU'] == MEMBER)
 				include('member_project.php');
+			else if ($_SESSION['PROJECT_MENU'] == MEMBER_DATEGRAPH)
+				include('project_member_dategraph.php');
        }
 
      /*

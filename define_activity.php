@@ -85,7 +85,7 @@ define('SQL_ADD_ACTIVITY','INSERT INTO `tw_activity` (
 `activity_describtion`
 )
 VALUES (
-NULL , \'%d\', \'%d\', \'%s\', \'%d\', CURDATE(), NULL, \'%s\'
+NULL , \'%d\', \'%d\', \'%s\', \'%d\', CURDATE(), \'0000-00-00\', \'%s\'
 );');
 
 define('SQL_SELECT_ACTIVITIES', 'SELECT activity_id, activity_name FROM tw_activity 

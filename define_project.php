@@ -62,6 +62,7 @@ define('UNKNOWED_PROJECT', 'Unknowed project');
 define('INFORMATION', 0);
 define('ADD_ACTIVITY', 1);
 define('MEMBER', 2);
+define('MEMBER_DATEGRAPH', 3);
 
 define('BTN_UP', 'btn_up');
 define('BTN_DOWN', 'btn_down');
@@ -93,7 +94,7 @@ define('SQL_INSERT_MEMBER'
 `member_date_end`
 )
 VALUES (
-\'%d\', \'%d\', NULL, CURDATE(), \'0000-00-00\'
+\'%d\', \'%d\', 0, CURDATE(), \'0000-00-00\'
 );');
 
 define('SQL_REMOVE_TOT_MEMBER', 
