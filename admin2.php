@@ -25,11 +25,11 @@ else
 function membre_select_all()
 {
 	$test = mysql_query(ADMIN_MEMBRE_SELECT);
-	printf(ADMIN_MEMBRE_BEGIN);
-	printf(ADMIN_MEMBRE_NAME, ADMIN_POST_NAME);
-	printf(ADMIN_MEMBRE_BUTTON, ADMIN_BUTTON_SELECT, ADMIN_VALUE_SELECT);
-	printf(ADMIN_MEMBRE_BUTTON, ADMIN_BUTTON_UPDATE, ADMIN_VALUE_UPDATE);
-	printf(ADMIN_MEMBRE_BUTTON, ADMIN_BUTTON_DELETE, ADMIN_VALUE_DELETE);
+	printf(MEMBRE_BEGIN);
+	printf(MEMBRE_NAME, ADMIN_POST_NAME);
+	printf(MEMBRE_BUTTON_SELECT, ADMIN_BUTTON_SELECT, ADMIN_VALUE_SELECT);
+	printf(MEMBRE_BUTTON_UPDATE, ADMIN_BUTTON_UPDATE, ADMIN_VALUE_UPDATE);
+	printf(MEMBRE_BUTTON_DELETE, ADMIN_BUTTON_DELETE, ADMIN_VALUE_DELETE);
 	while ($row = mysql_fetch_array($test, MYSQL_NUM))
 	{
 		printf(ADMIN_MEMBRE, ADMIN_POST_ID, $row[0], 
@@ -38,22 +38,26 @@ function membre_select_all()
 							 ADMIN_POST_FIRST, $row[3], 
 							 ADMIN_USR_LEVEL, $row[4]);
 	}
-	printf(ADMIN_MEMBRE_END);
+	printf(MEMBRE_END);
 }
 
 /*
 ** 	define
 */
 
-define('ADMIN_MEMBRE_BEGIN', '<admin_membre_list>');
-define('ADMIN_MEMBRE_END', '</admin_membre_list>');
-define('ADMIN_MEMBRE_NAME', '<admin_membre_name>%s</admin_membre_name>');
-define('ADMIN_MEMBRE_BUTTON', '<admin_button name=\'%s\' value=\'%s\' />');
+define('MEMBRE_BEGIN', '<admin_membre_list>');
+define('MEMBRE_END', '</admin_membre_list>');
+define('MEMBRE_NAME', '<admin_membre_name>%s</admin_membre_name>');
+
+define('MEMBRE_BUTTON_SELECT', '<button_select name=\'%s\' value=\'%s\' />');
+define('MEMBRE_BUTTON_UPDATE', '<button_update name=\'%s\' value=\'%s\' />');
+define('MEMBRE_BUTTON_DELETE', '<button_delete name=\'%s\' value=\'%s\' />');
 
 define('ADMIN_POST_NAME', 'adminlistmembre');
 define('ADMIN_BUTTON_SELECT', 'adminbuttonselect');
 define('ADMIN_BUTTON_UPDATE', 'adminbuttonupdate');
 define('ADMIN_BUTTON_DELETE', 'adminbuttondelete');
+
 define('ADMIN_VALUE_SELECT', 'Select');
 define('ADMIN_VALUE_UPDATE', 'Update');
 define('ADMIN_VALUE_DELETE', 'Delete');
