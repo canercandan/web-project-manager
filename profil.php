@@ -22,7 +22,11 @@ if ($_POST[PROFIL_POST_LOCATION] && $_POST[PROFIL_POST_NAME] &&
 	exit(0);
   }
 
-if (!$_POST[PROFIL_POST_NAME])
+if (!$_POST[PROFIL_POST_LOCATION])
+  $error = sprintf(XML_ERROR, PROFIL_LOCATION_ERROR);
+else if (!$_POST[PROFIL_POST_TITLE])
+  $error = sprintf(XML_ERROR, PROFIL_TITLE_ERROR);
+else if (!$_POST[PROFIL_POST_NAME])
   $error = sprintf(XML_ERROR, PROFIL_NAME_ERROR);
 else if (!$_POST[PROFIL_POST_FNAME])
   $error = sprintf(XML_ERROR, PROFIL_FNAME_ERROR);
@@ -32,10 +36,6 @@ else if (!$_POST[PROFIL_POST_MPHONE])
   $error = sprintf(XML_ERROR, PROFIL_MPHONE_ERROR);
 else if (!$_POST[PROFIL_POST_ADDRESS])
   $error = sprintf(XML_ERROR, PROFIL_ADDRESS_ERROR);
-else if (!$_POST[PROFIL_POST_LOCATION])
-  $error = sprintf(XML_ERROR, PROFIL_LOCATION_ERROR);
-else if (!$_POST[PROFIL_POST_TITLE])
-  $error = sprintf(XML_ERROR, PROFIL_TITLE_ERROR);
 
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])

@@ -55,22 +55,20 @@ define('PROFIL_ADDRESS_ERROR', 'error : no address enter');
 
 define('PROFIL_SQL_SELECT',
        'SELECT *
-	FROM tw_profil
-	WHERE profil_usr_id = (SELECT usr_id
-			       FROM tw_usr
-			       WHERE usr_login = \'%s\');');
+		FROM tw_profil
+		WHERE profil_usr_id = (SELECT usr_id
+							   FROM tw_usr
+							   WHERE usr_login = \'%s\');');
 				   
 define('PROFIL_SQL_UPDATE',
-	   'INSERT INTO tw_profil
-	    (profil_usr_id,
-		 profil_location_id, 
-	     profil_name, 
-		 profil_fname,
-		 profil_fphone,
-		 profil_mphone,
-		 profil_title_id,
-		 profil_perso_adress)
-		VALUES (\'%s\', \'%s\', \'%s\', \'%s\', 
-		        \'%s\', \'%s\', \'%s\', \'%s\');');
+	   'UPDATE tw_profil
+		set profil_location_id = \'%s\',
+	    profil_name = \'%s\', 
+		profil_fname = \'%s\',
+		profil_fphone = \'%s\',
+		profil_mphone = \'%s\',
+		profil_title_id = \'%s\',
+		profil_perso_adress = \'%s\'
+		WHERE profil_usr_id = \'%s\';');
 
 ?>
