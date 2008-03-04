@@ -12,9 +12,9 @@ define('LOCATION_MEMBRE', 'Location:membre.php?ok=1');
 define('PROFIL_BEGIN', '<profil>');
 define('PROFIL_END', '</profil>');
 
-define('PROFIL_FIELD_LOCATION_BEGIN', '<field_location name="%s">');
+define('PROFIL_FIELD_LOCATION_BEGIN', '<field_location name="%s" value="%s">');
 define('PROFIL_FIELD_LOCATION_END', '</field_location>');
-define('PROFIL_FIELD_TITLE_BEGIN', '<field_title name="%s">');
+define('PROFIL_FIELD_TITLE_BEGIN', '<field_title name="%s" value="%s">');
 define('PROFIL_FIELD_TITLE_END', '</field_title>');
 define('PROFIL_FIELD_ITEM',
        '<item id="%s" name="%s" />');
