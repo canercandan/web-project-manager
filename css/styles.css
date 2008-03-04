@@ -73,6 +73,11 @@ input.search
 	width: 70px;
 }
 
+.little2 select
+{
+	width: 55px;
+}
+
 .big textarea
 {
 	margin: 5px;
@@ -83,7 +88,7 @@ input.search
 table.table
 {
 	margin: 10px auto;
-	width: 95%;
+	width: 100%;
 }
 
 .table caption
@@ -390,22 +395,13 @@ h3.blue2
 	background-color: OliveDrab;
 }
 
-.member_top,
-.member_bottom
+.member_list
 {
 	padding: 15px;
 }
 
-.member_top
-{
-}
-
-.member_middle
+.member_bottom
 {
 	padding: 2px;
 	text-align: center;
-}
-
-.member_bottom
-{
 }

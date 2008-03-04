@@ -5,8 +5,8 @@
   <xsl:template match="date_end">
     <xsl:variable name="day_name" select="@postday" />
     <xsl:variable name="day_id" select="@day" />
-    <select name="{$day_name}">
-      <xsl:for-each select="../../list_day/day">
+    <select name="{$day_name}[{../id}]">
+      <xsl:for-each select="../../../../list_day/day">
 	<xsl:choose>
 	  <xsl:when test="$day_id=@id">
 	    <option value="{@id}" selected="selected">
@@ -23,8 +23,8 @@
     </select>
     <xsl:variable name="month_name" select="@postmonth" />
     <xsl:variable name="month_id" select="@month" />
-    <select name="{$month_name}">
-      <xsl:for-each select="../../list_month/month">
+    <select name="{$month_name}[{../id}]">
+      <xsl:for-each select="../../../../list_month/month">
 	<xsl:choose>
 	  <xsl:when test="$month_id=@id">
 	    <option value="{@id}" selected="selected">
@@ -41,8 +41,8 @@
     </select>
     <xsl:variable name="year_name" select="@postyear" />
     <xsl:variable name="year_id" select="@year" />
-    <select name="{$year_name}">
-      <xsl:for-each select="../../list_year/year">
+    <select name="{$year_name}[{../id}]">
+      <xsl:for-each select="../../../../list_year/year">
 	<xsl:choose>
 	  <xsl:when test="$year_id=@id">
 	    <option value="{@id}" selected="selected">

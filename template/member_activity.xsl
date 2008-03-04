@@ -27,7 +27,27 @@
 	<th>First name</th>
 	<th>Title</th>
 	<th>Role</th>
-	<th>Administrator</th>
+	<th>Admin</th>
+	<th>Work</th>
+	<th>Date begin</th>
+	<th>Date end</th>
+      </tr>
+    </thead>
+    <tbody>
+      <xsl:apply-templates select="member" />
+    </tbody>
+  </xsl:template>
+
+  <xsl:template match="member_activity/member_histo_list_activity">
+    <thead>
+      <tr>
+	<th>Select</th>
+	<th>Login</th>
+	<th>Name</th>
+	<th>First name</th>
+	<th>Title</th>
+	<th>Role</th>
+	<th>Admin</th>
 	<th>Work</th>
 	<th>Date begin</th>
 	<th>Date end</th>
@@ -85,10 +105,10 @@
 	  </xsl:otherwise>
 	</xsl:choose>
       </td>
-      <td class="little">
+      <td class="little2">
 	<xsl:apply-templates select="date_start" />
       </td>
-      <td class="little">
+      <td class="little2">
 	<xsl:apply-templates select="date_end" />
       </td>
     </tr>
@@ -98,17 +118,17 @@
     <fieldset>
       <legend>Members activity</legend>
       <form action="?" method="post">
-	<div class="member_top">
+	<div class="member_list">
 	  <table class="table">
 	    <caption>Members list of project</caption>
 	    <xsl:apply-templates select="member_list_project" />
 	  </table>
 	</div>
-	<div class="member_middle">
+	<div class="member_bottom">
 	  <input type="submit" name="{btn_up/@post}" value="/\" />
 	  <input type="submit" name="{btn_down/@post}" value="\/" />
 	</div>
-	<div class="member_bottom">
+	<div class="member_list">
 	  <table class="table">
 	    <caption>Member list of activity</caption>
 	    <xsl:apply-templates select="member_list_activity" />
@@ -117,7 +137,19 @@
 	    <input type="submit" name="{btn_submit/@post}" value="Update" />
 	  </div>
 	</div>
-	<div class="clear" />
+	<div class="member_bottom">
+	  <input type="submit" name="{btn_histo/@post}" value="\/" />
+	</div>
+	<div class="member_list">
+	  <table class="table">
+	    <caption>Member history list of activity</caption>
+	    <xsl:apply-templates select="member_histo_list_activity" />
+	  </table>
+	  <div class="form">
+	    <input type="submit" name="{btn_submit/@post}" value="Update" />
+	    <input type="submit" name="{btn_delete_histo/@post}" value="Delete" />
+	  </div>
+	</div>
       </form>
     </fieldset>
   </xsl:template>

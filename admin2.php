@@ -42,7 +42,7 @@ define('ADMIN_MEMBRE_BEGIN', '<admin_membre_list>');
 define('ADMIN_MEMBRE_END', '</admin_membre_list>');
 
 define('ADMIN_MEMBRE', '<membre>
-							<id>\'%s\'</id>
+							<id post="%s" value="%s" />
 							<login>\'%s\'</login>
 							<name>\'%s\'</name>
 							<first_name>\'%s\'</first_name>
