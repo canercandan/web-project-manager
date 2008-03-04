@@ -89,9 +89,7 @@ function get_activity_informations($id_activity)
 
 function get_member_activity($id_activity, $id_project)
 {
-	get_full_years();
-	get_full_days();
-	get_full_months();
+
   $res = sql_query(sprintf(SQL_GET_MEMBER_ACTIVITY, sql_real_escape_string($id_project),
 			   sql_real_escape_string($id_activity)));
 	printf(MEMBER_POST_SELECT);
@@ -113,9 +111,7 @@ function get_member_activity($id_activity, $id_project)
 
 function get_member_histo_activity($id_activity, $id_project)
 {
-	get_full_years();
-	get_full_days();
-	get_full_months();
+
   $res = sql_query(sprintf(SQL_GET_HISTO_MEMBER_ACTIVITY, sql_real_escape_string($id_project),
 			   sql_real_escape_string($id_activity)));
 	printf(MEMBER_POST_SELECT);

@@ -21,9 +21,6 @@ function get_member_out_project($id_project)
 
 function get_member_project($id_project)
 {
-	get_full_years();
-	get_full_days();
-	get_full_months();
 	printf('<role_list post="selectrole">');
 	$res = sql_query(SQL_GET_ROLE);
 	if (sql_num_rows($res))
@@ -53,9 +50,6 @@ function get_member_project($id_project)
 
 function get_histo_member_project($id_project)
 {
-	get_full_years();
-	get_full_days();
-	get_full_months();
 	printf('<role_list post="selectrole">');
 	$res = sql_query(SQL_GET_ROLE);
 	if (sql_num_rows($res))

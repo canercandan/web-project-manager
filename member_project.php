@@ -2,6 +2,8 @@
 
 require_once('./define_project.php');
 require_once('./function_project.php');
+require_once('function_misc.php');
+
 
 if (isset($_POST[BTN_DOWN]))
 {
@@ -17,6 +19,10 @@ else if (isset($_POST[BTN_UP]))
 		remove_tot_member($value, $_SESSION['PROJECT_ID']);
 	}
 }
+
+	get_full_years();
+	get_full_days();
+	get_full_months();
 printf(MEMBER_PROJECT_BEGIN);
 printf(MEMBER_BTN_UP);
 printf(MEMBER_BTN_DOWN);

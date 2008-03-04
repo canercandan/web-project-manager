@@ -2,7 +2,11 @@
 
 require_once('./define_activity.php');
 require_once('./function_activity.php');
+require_once('function_misc.php');
 
+	get_full_years();
+	get_full_days();
+	get_full_months();
 printf(MEMBER_ACTIVITY_BEGIN);
 printf(MEMBER_BTN_UP);
 printf(MEMBER_BTN_DOWN);
