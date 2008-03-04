@@ -28,8 +28,8 @@ define('MEMBER_ELEM_PROJECT_PROJ', '<member><id>%d</id><moveable>%d</moveable><e
 <title>%s</title>
 <role post="modrole">%s</role>
 <login>%s</login>
-<date_start post_day="%s" day="%d" post_month="%s" month="%d" post_year="%s" year="%d"/>
-<date_end post_day="%s" day="%d" post_month="%s" month="%d" post_year="%s" year="%d"/>
+<date_start postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
+<date_end postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
 <key id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
 </member>');
 define('POST_KEY_DAY_START', 'key_member_proj_day_start');

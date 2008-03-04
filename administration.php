@@ -20,7 +20,7 @@ else
   
 printf(ADMIN_START);
 
-if ((isset($_SESSION[ADMIN_MENU]) && $_SESSION[ADMIN_MENU] == ADMIN_LOCATION))
+if (true || (isset($_SESSION[ADMIN_MENU]) && $_SESSION[ADMIN_MENU] == ADMIN_LOCATION))
   {
     include('add_location.php');
   }

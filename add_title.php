@@ -6,8 +6,8 @@ require_once('function_admin.php');
 printf(ADD_TITLE_START);
 if (isset($_POST['SUBMIT_MOD_TITLE'])
 {
-	printf(XML_MESG, sprintf(TITLE_MODIFIED,));
-	_title($_POST['POST_TITLE_ID'])
+	//printf(XML_MESG, sprintf(TITLE_MODIFIED,));
+	//_title($_POST['POST_TITLE_ID']);
 }
 
 else if (isset($_POST['SUBMIT_DEL_TITLE'] && isset($_POST['POST_TITLE_ID']))
