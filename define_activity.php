@@ -62,6 +62,7 @@ define('ACTIVITY_EDITABLE' , '<editable>%d</editable>');
 define('ERROR_ACTIVITY_NAME', 'error : activity\'s name already used');
 define('ERROR_ACTIVITY_CHARGE', 'error : activity charge invalid');
 
+
 define('ACTIVITY_OK', 'Congratulation, activity added');
 define('CHARGE_NOT_INT', 'The unit of the charge of an activity is \'day per man\', that\'s why the charge must be an integer.');
 define('POST_ACTIVITY_NAME', 'activityname');
@@ -125,7 +126,9 @@ AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), acti
 order by profil_name, profil_fname;
 ');
 
-define('SQL_GET_HISTO_MEMBER_ACTIVITY', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, activity_level, activity_work, usr_login
+define('SQL_GET_HISTO_MEMBER_ACTIVITY', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, activity_level, activity_work, usr_login,
+day(activity_member_date_start), month(activity_member_date_start), year(activity_member_date_start),
+day(activity_member_date_end), month(activity_member_date_end), year(activity_member_date_end)
 FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member, tw_activity_member
 WHERE 
 member_usr_id = usr_id
