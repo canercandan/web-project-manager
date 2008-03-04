@@ -53,6 +53,11 @@ define('PROFIL_ADDRESS_ERROR', 'error : no address enter');
 ** Define profil : sql profil request
 */
 
+define('PROFIL_SQL_PROFIL',
+	   'SELECT *
+		FROM tw_profil
+		WHERE profil_usr_id = \'%s\';');
+
 define('PROFIL_SQL_SELECT',
        'SELECT *
 		FROM tw_profil

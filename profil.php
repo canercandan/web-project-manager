@@ -39,6 +39,8 @@ if ($_POST)
     else if (!$_POST[PROFIL_POST_ADDRESS])
       $error = sprintf(XML_ERROR, PROFIL_ADDRESS_ERROR);
   }
+else
+  select_profil();
 
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
