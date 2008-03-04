@@ -40,8 +40,6 @@ function select_profil()
 {
   $test = sql_query(sprintf(PROFIL_SQL_PROFIL, $_SESSION['USER_ID']));
   $tab = sql_fetch_array($test);
-  if ($tab[1] != 'NULL')
-	$_POST[PROFIL_POST_LOCATION] = $tab[1];
   if ($tab[2] != 'NULL')
 	$_POST[PROFIL_POST_NAME] = $tab[2];
   if ($tab[3] != 'NULL')
@@ -50,9 +48,13 @@ function select_profil()
 	$_POST[PROFIL_POST_FPHONE] = $tab[4];
   if ($tab[5] != 'NULL')
 	$_POST[PROFIL_POST_MPHONE] = $tab[5];
-  if ($tab[6] != 0)
-	$_POST[PROFIL_POST_TITLE] = $tab[6];
   $_POST[PROFIL_POST_ADDRESS] = $tab[7];
+  printf(PROFIL_FIELD_LOCATION_BEGIN, PROFIL_POST_LOCATION, $tab[1]);
+  select_location();
+  printf(PROFIL_FIELD_LOCATION_END);
+  printf(PROFIL_FIELD_TITLE_BEGIN, PROFIL_POST_TITLE, $tab[6]);
+  select_title();
+  printf(PROFIL_FIELD_TITLE_END);
 }
 
 function profil_update()

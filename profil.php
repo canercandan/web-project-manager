@@ -39,8 +39,6 @@ if ($_POST)
     else if (!$_POST[PROFIL_POST_ADDRESS])
       $error = sprintf(XML_ERROR, PROFIL_ADDRESS_ERROR);
   }
-else
-  select_profil();
 
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
@@ -50,14 +48,18 @@ if ($_GET[DEBUG])
 printf(PROFIL_BEGIN);
 printf($error);
 
-printf(PROFIL_FIELD_LOCATION_BEGIN, PROFIL_POST_LOCATION, '');
-select_location();
-printf(PROFIL_FIELD_LOCATION_END);
+if (!$_POST)
+  select_profil();
+else
+  {
+	printf(PROFIL_FIELD_LOCATION_BEGIN, PROFIL_POST_LOCATION, '');
+	select_location();
+	printf(PROFIL_FIELD_LOCATION_END);
 
-printf(PROFIL_FIELD_TITLE_BEGIN, PROFIL_POST_TITLE, '');
-select_title();
-printf(PROFIL_FIELD_TITLE_END);
-
+	printf(PROFIL_FIELD_TITLE_BEGIN, PROFIL_POST_TITLE, '');
+	select_title();
+	printf(PROFIL_FIELD_TITLE_END);
+  }
 printf(PROFIL_FIELD_NAME,
        PROFIL_POST_NAME, $_POST[PROFIL_POST_NAME]);
 printf(PROFIL_FIELD_FNAME,
