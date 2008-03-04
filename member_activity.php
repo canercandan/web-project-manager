@@ -7,13 +7,20 @@ printf(MEMBER_ACTIVITY_BEGIN);
 printf(MEMBER_BTN_UP);
 printf(MEMBER_BTN_DOWN);
 printf(MEMBER_BTN_SUBMIT);
+printf(MEMBER_BTN_DELETE_HISTO);
+printf(MEMBER_KEEP_HISTO);
+
 printf(MEMBER_LIST_PROJECT_BEGIN);
-get_member_project_activity(1 /*$_SESSION[ACTIVITY_ID]*/, 0 /*$_SESSION[PROJECT_ID]*/);
+get_member_project_activity($_SESSION['ACTIVITY_ID'], $_SESSION['PROJECT_ID']);
 printf(MEMBER_LIST_PROJECT_END);
 
 printf(MEMBER_LIST_ACTIVITY_BEGIN);
-get_member_activity(1 /*$_SESSION[ACTIVITY_ID]*/, 0 /*$_SESSION[PROJECT_ID]*/);
+get_member_activity($_SESSION['ACTIVITY_ID'], $_SESSION['PROJECT_ID']);
 printf(MEMBER_LIST_ACTIVITY_END);
 
-printf(MEMBER_ACTIVITY_END)
+printf(MEMBER_HISTO_LIST_ACTIVITY_BEGIN);
+get_member_histo_activity($_SESSION['ACTIVITY_ID'], $_SESSION['PROJECT_ID']);
+printf(MEMBER_HISTO_LIST_ACTIVITY_END);
+
+printf(MEMBER_ACTIVITY_END);
 ?>

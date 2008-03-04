@@ -18,6 +18,8 @@ define('INFORMATION_ACTIVITY_END', '</information_activity>');
 define('MEMBER_ACTIVITY', 0);
 define('INFORMATION_ACTIVITY', 1);
 define('ADD_ACTIVITY_ACTIVITY', 2);
+define('MEMBER_HISTO_LIST_ACTIVITY_BEGIN', '<member_histo_list_activity>');
+define('MEMBER_HISTO_LIST_ACTIVITY_END', '</member_histo_list_activity>');
 define('MEMBER_LIST_PROJECT_BEGIN', '<member_list_project>');
 define('MEMBER_LIST_ACTIVITY_BEGIN', '<member_list_activity>');
 define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
@@ -25,7 +27,25 @@ define('MEMBER_LIST_ACTIVITY_END', '</member_list_activity>');
 define('MEMBER_POST_LEVEL', 'modlevel');
 define('MEMBER_POST_WORK', 'modnwork');
 define('MEMBER_ELEM_PROJECT', '<member><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><login>%s</login></member>');
-define('MEMBER_ELEM_ACTIVITY', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><level post="%s">%d</level><work post="%s">%d</work><login>%s</login></member>');
+define('MEMBER_ELEM_ACTIVITY', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><level post="%s">%d</level><work post="%s">%d</work><login>%s</login>
+<date_start post_day="%s" day="%d" post_month="%s" month="%d" post_year="%s" year="%d"/>
+<date_end post_day="%s" day="%d" post_month="%s" month="%d" post_year="%s" year="%d"/>
+<key id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
+</member>');
+define('POST_KEY_ACT_DAY_START', 'key_member_act_day_start');
+define('POST_KEY_ACT_MONTH_START', 'key_member_act_month_start');
+define('POST_KEY_ACT_YEAR_START', 'key_member_act_year_start');
+define('POST_KEY_ACT_DAY_END', 'key_member_act_day_end');
+define('POST_KEY_ACT_MONTH_END', 'key_member_act_month_end');
+define('POST_KEY_ACT_YEAR_END', 'key_member_act_year_end');
+define('POST_KEY_ACT_ID', 'key_member_act_id');
+
+define('POST_ACT_DAY_START', 'member_act_day_start');
+define('POST_ACT_MONTH_START', 'member_act_month_start');
+define('POST_ACT_YEAR_START', 'member_act_year_start');
+define('POST_ACT_DAY_END', 'member_act_day_end');
+define('POST_ACT_MONTH_END', 'member_act_month_end');
+define('POST_ACT_YEAR_END', 'member_act_year_end');
 
 define('FIELD_ACTIVITY_NAME', '<field_activity_name>%s</field_activity_name>');
 define('FIELD_ACTIVITY_DESCRIB', '<field_activity_describ>%s</field_activity_describ>');
@@ -83,7 +103,9 @@ WHERE activity_id = \'%d\';');
 
 define('SQL_GET_PARENT_ID', 'SELECT activity_parent_id FROM tw_activity WHERE activity_id = \'%d\';');
 
-define('SQL_GET_MEMBER_ACTIVITY', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, activity_level, activity_work, usr_login
+define('SQL_GET_MEMBER_ACTIVITY', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, activity_level, activity_work, usr_login, 
+day(activity_member_date_start), month(activity_member_date_start), year(activity_member_date_start),
+day(activity_member_date_end), month(activity_member_date_end), year(activity_member_date_end)
 FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member, tw_activity_member
 WHERE 
 member_usr_id = usr_id
@@ -99,6 +121,27 @@ AND
 member_usr_id = activity_member_usr_id
 AND
 activity_member_activity_id = \'%d\'
+AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) < 0)
+order by profil_name, profil_fname;
+');
+
+define('SQL_GET_HISTO_MEMBER_ACTIVITY', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, activity_level, activity_work, usr_login
+FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member, tw_activity_member
+WHERE 
+member_usr_id = usr_id
+AND
+usr_id = profil_usr_id
+AND
+profil_title_id = title_id
+AND
+member_role_id = role_id
+AND
+member_project_id = \'%d\'
+AND
+member_usr_id = activity_member_usr_id
+AND
+activity_member_activity_id = \'%d\'
+AND (activity_member_date_end != DATE(\'0000-00-00\') AND DATEDIFF(CURDATE(), activity_member_date_end) >= 0)
 order by profil_name, profil_fname;
 ');
 
@@ -115,7 +158,8 @@ member_role_id = role_id
 AND
 member_project_id = \'%d\'
 AND
-member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHERE activity_member_activity_id = \'%d\')
+member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHERE activity_member_activity_id = \'%d\'
+AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) < 0))
 order by profil_name, profil_fname;
 ');
 

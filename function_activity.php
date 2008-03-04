@@ -89,13 +89,49 @@ function get_activity_informations($id_activity)
 
 function get_member_activity($id_activity, $id_project)
 {
+	get_full_years();
+	get_full_days();
+	get_full_months();
   $res = sql_query(sprintf(SQL_GET_MEMBER_ACTIVITY, sql_real_escape_string($id_project),
 			   sql_real_escape_string($id_activity)));
 	printf(MEMBER_POST_SELECT);
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), MEMBER_POST_LEVEL, htmlentities($tab[5]), MEMBER_POST_WORK, htmlentities($tab[6]), htmlentities($tab[7]));
+	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), MEMBER_POST_LEVEL, htmlentities($tab[5]), MEMBER_POST_WORK, htmlentities($tab[6]), htmlentities($tab[7]),
+		POST_ACT_DAY_START, htmlentities($tab[8]), POST_ACT_MONTH_START, htmlentities($tab[9]), POST_ACT_YEAR_START, htmlentities($tab[10]),
+		POST_ACT_DAY_END, htmlentities($tab[11]), POST_ACT_MONTH_END, htmlentities($tab[12]), POST_ACT_YEAR_END, htmlentities($tab[13]),
+		POST_KEY_ACT_ID,
+		POST_KEY_ACT_DAY_START,
+		POST_KEY_ACT_MONTH_START,
+		POST_KEY_ACT_YEAR_START,
+		POST_KEY_ACT_DAY_END,
+		POST_KEY_ACT_MONTH_END,
+		POST_KEY_ACT_YEAR_END);
+      }
+}
+
+function get_member_histo_activity($id_activity, $id_project)
+{
+	get_full_years();
+	get_full_days();
+	get_full_months();
+  $res = sql_query(sprintf(SQL_GET_HISTO_MEMBER_ACTIVITY, sql_real_escape_string($id_project),
+			   sql_real_escape_string($id_activity)));
+	printf(MEMBER_POST_SELECT);
+  if (sql_num_rows($res))
+    while ($tab = sql_fetch_array($res))
+      {
+	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), MEMBER_POST_LEVEL, htmlentities($tab[5]), MEMBER_POST_WORK, htmlentities($tab[6]), htmlentities($tab[7]),
+		POST_ACT_DAY_START, htmlentities($tab[8]), POST_ACT_MONTH_START, htmlentities($tab[9]), POST_ACT_YEAR_START, htmlentities($tab[10]),
+		POST_ACT_DAY_END, htmlentities($tab[11]), POST_ACT_MONTH_END, htmlentities($tab[12]), POST_ACT_YEAR_END, htmlentities($tab[13]),
+		POST_KEY_ACT_ID,
+		POST_KEY_ACT_DAY_START,
+		POST_KEY_ACT_MONTH_START,
+		POST_KEY_ACT_YEAR_START,
+		POST_KEY_ACT_DAY_END,
+		POST_KEY_ACT_MONTH_END,
+		POST_KEY_ACT_YEAR_END);
       }
 }
 
