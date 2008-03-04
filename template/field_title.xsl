@@ -4,10 +4,20 @@
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="field_title">
     <select name="{@name}">
+      <xsl:variable name="id" select="@value" />
       <xsl:for-each select="item">
-	<option value="{@id}">
-	  <xsl:value-of select="@name" />
-	</option>
+	<xsl:choose>
+	  <xsl:when test="$id=@id">
+	    <option value="{@id}" selected="selected">
+	      <xsl:value-of select="@name" />
+	    </option>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <option value="{@id}">
+	      <xsl:value-of select="@name" />
+	    </option>
+	  </xsl:otherwise>
+	</xsl:choose>
       </xsl:for-each>
     </select>
   </xsl:template>

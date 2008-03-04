@@ -80,7 +80,7 @@
 
   <xsl:template match="member_project">
     <fieldset>
-      <legend>Members activity</legend>
+      <legend>Members project</legend>
       <form action="?" method="post">
 	<div class="member_top">
 	  <table class="table">
