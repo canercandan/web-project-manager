@@ -59,7 +59,15 @@ define('PROFIL_SQL_SELECT',
 		WHERE profil_usr_id = (SELECT usr_id
 							   FROM tw_usr
 							   WHERE usr_login = \'%s\');');
-				   
+
+define('PROFIL_SQL_LOCATION',
+	   'SELECT location_id, location_name
+	    FROM tw_location;');
+
+define('PROFIL_SQL_TITLE',
+	   'SELECT title_id, title_name
+	    FROM tw_title;');
+
 define('PROFIL_SQL_UPDATE',
 	   'UPDATE tw_profil
 		set profil_location_id = \'%s\',

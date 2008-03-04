@@ -73,14 +73,6 @@ define('USR_SQL_SELECT_PROFIL',
 								FROM tw_usr
 								WHERE usr_login = \'%s\' );');
 
-define('USR_SQL_SELECT_LOCATION',
-	   'SELECT location_id, location_name
-	    FROM tw_location;');
-
-define('USR_SQL_SELECT_TITLE',
-	   'SELECT title_id, title_name
-	    FROM tw_title;');
-
 /*
 ** Define user : sql add request
 */
@@ -105,29 +97,4 @@ define('USR_SQL_SESSION_ID',
 	    FROM tw_usr
 		WHERE usr_login = \'%s\';');
 
-/*
-** Define user : sql update request
-
-
-define('USR_SQL_UPDATE_TABLE_USR',
-       'UPDATE tw_usr
-	SET \'%s\' = \'%s\'
-	WHERE usr_login = \'%s\';');
-
-//mysql_insert_id();
-
-define('USR_SQL_UPDATE_TABLE_PROFIL',
-       'UPDATE tw_profil
-	SET \'%s\' = \'%s\'
-	WHERE profil_usr_id = (SELECT usr_profil_id
-			   FROM tw_usr
-			   WHERE usr_login = \'%s\');');
-
-define('USR_SQL_UPDATE_TABLE_LOCATION',
-       'UPDATE tw_location
-	SET \'%s\' = \'%s\'
-	WHERE location_id = (SELECT usr_profil_id
-			     FROM tw_usr
-			     WHERE usr_login = \'%s\');');
-*/
 ?>
