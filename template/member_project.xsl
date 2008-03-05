@@ -82,27 +82,17 @@
     <fieldset>
       <legend>Members project</legend>
       <form action="?" method="post">
-	<div class="member_top">
+	<div class="member_list">
 	  <table class="table">
 	    <caption>Members list</caption>
 	    <xsl:apply-templates select="member_list" />
 	  </table>
 	</div>
-	<div class="member_middle">
-	  Role<br />
-	  <select name="{member_list_project/role_list/@post}">
-	    <xsl:for-each select="member_list_project/role_list/role">
-	      <option value="{@id}">
-		<xsl:value-of select="@name" />
-	      </option>
-	    </xsl:for-each>
-	  </select>
-	  <br />
-	  <br />
+	<div class="member_submit">
 	  <input type="submit" name="{btn_up/@post}" value="/\" />
 	  <input type="submit" name="{btn_down/@post}" value="\/" />
 	</div>
-	<div class="member_bottom">
+	<div class="member_list">
 	  <table class="table">
 	    <caption>Member list of project</caption>
 	    <xsl:apply-templates select="member_list_project" />

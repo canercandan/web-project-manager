@@ -53,6 +53,14 @@
 	  <li><a href="./root.php?project_add=1">Add a project</a></li>
 	</xsl:otherwise>
       </xsl:choose>
+      <xsl:choose>
+	<xsl:when test="../body/admin_member_list">
+	  <li class="on"><a href="./admin2.php">Admin</a></li>
+	</xsl:when>
+	<xsl:otherwise>
+	  <li><a href="./admin2.php">Admin</a></li>
+	</xsl:otherwise>
+      </xsl:choose>
     </ul>
     <div class="clear" />
   </xsl:template>

@@ -27,4 +27,5 @@
   <xsl:import href="./template/date.xsl" />
   <xsl:import href="./template/date_start.xsl" />
   <xsl:import href="./template/date_end.xsl" />
+  <xsl:import href="./template/admin_member_list.xsl" />
 </xsl:stylesheet>

@@ -15,19 +15,19 @@
 	  <fieldset>
 	    <legend>Add a project</legend>
 	    <div class="form">
-	      <xsl:if test="field_name">
-		<label>
-		  Name<br />
-		  <input type="text" name="{field_name}" />
-		</label><br />
-	      </xsl:if>
-	      <xsl:if test="field_descr">
-		<label>
-		  Describe<br />
-		  <textarea name="{field_descr}"></textarea>
-		</label><br />
-	      </xsl:if>
-	      <input type="submit" value="Ok" />
+	      <label>
+		Name<br />
+		<input type="text" name="{field_name}" />
+	      </label>
+	      <hr />
+	      <label>
+		Describe<br />
+		<textarea name="{field_descr}"></textarea>
+	      </label>
+	      <hr />
+	      <label>
+		<input type="submit" value="Ok" />
+	      </label>
 	    </div>
 	  </fieldset>
 	</form>
