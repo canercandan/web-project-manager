@@ -27,7 +27,7 @@ if ($_POST[USR_POST_LOGIN])
 	if (!($profil = usr_profil_check()))
 	  header(HEADER_LOCATION_PROFIL);
 	else
-	  header(HEADER_LOCATION_MEMBRE);
+	  header(HEADER_LOCATION_MEMBER);
 	exit(0);
       }
   }

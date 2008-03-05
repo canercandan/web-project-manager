@@ -6,7 +6,7 @@
 
 define('HEADER_LOCATION_CREATE', 'Location:?ok=1&login=%s');
 define('HEADER_LOCATION_PROFIL', 'Location:profil.php');
-define('HEADER_LOCATION_MEMBRE', 'Location:membre.php');
+define('HEADER_LOCATION_MEMBER', 'Location:member.php');
 
 define('USR_CREATE_BEGIN', '<create>');
 define('USR_CREATE_END', '</create>');
