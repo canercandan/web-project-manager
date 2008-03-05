@@ -86,22 +86,22 @@
       <td>
 	<xsl:choose>
 	  <xsl:when test="level=1">
-	    <input type="checkbox" name="{level/@post}[{id}]" value="1"
+	    <input type="checkbox" name="{level/@post}[{id}][]" value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <input type="checkbox" name="{level/@post}[{id}]" value="1" />
+	    <input type="checkbox" name="{level/@post}[{id}][]" value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
       </td>
       <td>
 	<xsl:choose>
 	  <xsl:when test="work=1">
-	    <input type="checkbox" name="{work/@post}[{id}]" value="1"
+	    <input type="checkbox" name="{work/@post}[{id}][]" value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <input type="checkbox" name="{work/@post}[{id}]" value="1" />
+	    <input type="checkbox" name="{work/@post}[{id}][]" value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
       </td>
@@ -128,22 +128,22 @@
       <td>
 	<xsl:choose>
 	  <xsl:when test="level=1">
-	    <input type="checkbox" name="{level/@post}[{id}]" value="1"
+	    <input type="checkbox" name="{level/@post}[{id}][]" value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <input type="checkbox" name="{level/@post}[{id}]" value="1" />
+	    <input type="checkbox" name="{level/@post}[{id}][]" value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
       </td>
       <td>
 	<xsl:choose>
 	  <xsl:when test="work=1">
-	    <input type="checkbox" name="{work/@post}[{id}]" value="1"
+	    <input type="checkbox" name="{work/@post}[{id}][]" value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <input type="checkbox" name="{work/@post}[{id}]" value="1" />
+	    <input type="checkbox" name="{work/@post}[{id}][]" value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
       </td>
