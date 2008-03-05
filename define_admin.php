@@ -33,15 +33,16 @@ define('LOCATION_START', '<location>');
 define('LOCATION_END', '</location>');
 define('LOCATION_ITEM', '<location><field_name>%s</field_name><field_addr>%s</field_addr><field_id>%s</field_id><id>%d</id><name>%s</name><address>%s</address></location>');
 
-define('MEMBER_BEGIN', '<admin_member_list>');
-define('MEMBER_END', '</admin_member_list>');
-define('MEMBER_NAME', '<admin_member_name>%s</admin_member_name>');
+define('ADMIN2_BEGIN', '<admin>');
+define('ADMIN2_END', '</admin>');
+
+define('MEMBER_LIST_BEGIN', '<member_list>');
+define('MEMBER_LIST_END', '</member_list>');
 
 define('MEMBER_BUTTON_SELECT', '<checkbox name="%s" />');
 define('MEMBER_BUTTON_UPDATE', '<button_update name="%s" />');
 define('MEMBER_BUTTON_DELETE', '<button_delete name="%s" />');
 
-define('ADMIN_POST_NAME', 'adminlistmembre');
 define('ADMIN_BUTTON_SELECT', 'adminbuttonselect');
 define('ADMIN_BUTTON_UPDATE', 'adminbuttonupdate');
 define('ADMIN_BUTTON_DELETE', 'adminbuttondelete');
