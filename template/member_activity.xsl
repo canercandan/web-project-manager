@@ -167,11 +167,13 @@
 	  </table>
 	</div>
 	<div class="member_submit">
-	  <input type="submit" name="{btn_up/@post}" value="/\" />
 	  <input type="submit" name="{btn_down/@post}" value="\/" />
 	</div>
       </form>
       <form action="?" method="post">
+	<div class="member_submit">
+	  <input type="submit" name="{btn_up/@post}" value="/\" />
+	</div>
 	<div class="member_list">
 	  <table class="table">
 	    <caption>Member list of activity</caption>
