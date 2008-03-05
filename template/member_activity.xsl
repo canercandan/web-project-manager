@@ -75,7 +75,8 @@
   <xsl:template match="member_activity/member_list_activity/member">
     <tr>
       <td>
-	<input type="checkbox" name="{../checkbox/@name}[]"
+	<input type="checkbox"
+	       name="{../checkbox/@name}[{key/@unique}][{key/@key_member_act_id}]"
 	       value="{id}" />
       </td>
       <td><xsl:value-of select="login" /></td>
@@ -86,22 +87,30 @@
       <td>
 	<xsl:choose>
 	  <xsl:when test="level=1">
-	    <input type="checkbox" name="{level/@post}[{id}][]" value="1"
+	    <input type="checkbox"
+		   name="{../checkbox/@name}[{key/@unique}][{level/@post}]"
+		   value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <input type="checkbox" name="{level/@post}[{id}][]" value="1" />
+	    <input type="checkbox"
+		   name="{../checkbox/@name}[{key/@unique}][{level/@post}]"
+		   value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
       </td>
       <td>
 	<xsl:choose>
 	  <xsl:when test="work=1">
-	    <input type="checkbox" name="{work/@post}[{id}][]" value="1"
+	    <input type="checkbox"
+		   name="{../checkbox/@name}[{key/@unique}][{work/@post}]"
+		   value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <input type="checkbox" name="{work/@post}[{id}][]" value="1" />
+	    <input type="checkbox"
+		   name="{../checkbox/@name}[{key/@unique}][{work/@post}]"
+		   value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
       </td>
@@ -117,7 +126,8 @@
   <xsl:template match="member_activity/member_histo_list_activity/member">
     <tr>
       <td>
-	<input type="checkbox" name="{../checkbox/@name}[]"
+	<input type="checkbox"
+	       name="{../checkbox/@name}[{key/@unique}][{key/@key_member_act_id}]"
 	       value="{id}" />
       </td>
       <td><xsl:value-of select="login" /></td>
@@ -128,22 +138,30 @@
       <td>
 	<xsl:choose>
 	  <xsl:when test="level=1">
-	    <input type="checkbox" name="{level/@post}[{id}][]" value="1"
+	    <input type="checkbox"
+		   name="{../checkbox/@name}[{key/@unique}][{level/@post}]"
+		   value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <input type="checkbox" name="{level/@post}[{id}][]" value="1" />
+	    <input type="checkbox"
+		   name="{../checkbox/@name}[{key/@unique}][{level/@post}]"
+		   value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
       </td>
       <td>
 	<xsl:choose>
 	  <xsl:when test="work=1">
-	    <input type="checkbox" name="{work/@post}[{id}][]" value="1"
+	    <input type="checkbox"
+		   name="{../checkbox/@name}[{key/@unique}][{work/@post}]"
+		   value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
-	    <input type="checkbox" name="{work/@post}[{id}][]" value="1" />
+	    <input type="checkbox"
+		   name="{../checkbox/@name}[{key/@unique}][{work/@post}]"
+		   value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
       </td>
