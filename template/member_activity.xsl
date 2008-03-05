@@ -76,7 +76,7 @@
     <tr>
       <td>
 	<input type="checkbox"
-	       name="{../checkbox/@name}[{key/@unique}][{key/@key_member_act_id}]"
+	       name="{../checkbox/@name}[{key/@unique}][{key/@id}]"
 	       value="{id}" />
       </td>
       <td><xsl:value-of select="login" /></td>
@@ -126,8 +126,26 @@
   <xsl:template match="member_activity/member_histo_list_activity/member">
     <tr>
       <td>
+	<input type="hidden"
+	       name="{../checkbox/@name}[{key/@unique}][{key/@day_start}]"
+	       value="{date_start/@day}" />
+	<input type="hidden"
+	       name="{../checkbox/@name}[{key/@unique}][{key/@month_start}]"
+	       value="{date_start/@month}" />
+	<input type="hidden"
+	       name="{../checkbox/@name}[{key/@unique}][{key/@year_start}]"
+	       value="{date_start/@year}" />
+	<input type="hidden"
+	       name="{../checkbox/@name}[{key/@unique}][{key/@day_end}]"
+	       value="{date_end/@day}" />
+	<input type="hidden"
+	       name="{../checkbox/@name}[{key/@unique}][{key/@month_end}]"
+	       value="{date_end/@month}" />
+	<input type="hidden"
+	       name="{../checkbox/@name}[{key/@unique}][{key/@year_end}]"
+	       value="{date_end/@year}" />
 	<input type="checkbox"
-	       name="{../checkbox/@name}[{key/@unique}][{key/@key_member_act_id}]"
+	       name="{../checkbox/@name}[{key/@unique}][{key/@id}]"
 	       value="{id}" />
       </td>
       <td><xsl:value-of select="login" /></td>

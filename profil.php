@@ -15,12 +15,12 @@ sql_select_db(SQL_DB, $link);
 
 if ($_POST[PROFIL_POST_LOCATION] && $_POST[PROFIL_POST_NAME] &&
     $_POST[PROFIL_POST_FNAME] && $_POST[PROFIL_POST_FPHONE] &&
-	$_POST[PROFIL_POST_MPHONE] && $_POST[PROFIL_POST_TITLE] &&
-	$_POST[PROFIL_POST_ADDRESS])
+    $_POST[PROFIL_POST_MPHONE] && $_POST[PROFIL_POST_TITLE] &&
+    $_POST[PROFIL_POST_ADDRESS])
   {
-	profil_update();
-	header(LOCATION_MEMBER);
-	exit(0);
+    profil_update();
+    header(LOCATION_MEMBER);
+    exit(0);
   }
 
 if ($_POST)
@@ -52,23 +52,23 @@ printf($error);
 if (!$_POST)
   {
     if (!$_SESSION[SESSION_LOCATION] || !$_SESSION[SESSION_TITLE] ||
-		!$_SESSION[SESSION_NAME] || !$_SESSION[SESSION_FNAME] ||
-		!$_SESSION[SESSION_FPHONE] || !$_SESSION[SESSION_MPHONE] ||
-		!$_SESSION[SESSION_ADDRESS])
+	!$_SESSION[SESSION_NAME] || !$_SESSION[SESSION_FNAME] ||
+	!$_SESSION[SESSION_FPHONE] || !$_SESSION[SESSION_MPHONE] ||
+	!$_SESSION[SESSION_ADDRESS])
       select_profil();
-	else
-	  select_session();
+    else
+      select_session();
   }
-else
-  {
-	printf(PROFIL_FIELD_LOCATION_BEGIN, PROFIL_POST_LOCATION, '');
-	select_location();
-	printf(PROFIL_FIELD_LOCATION_END);
+ else
+   {
+     printf(PROFIL_FIELD_LOCATION_BEGIN, PROFIL_POST_LOCATION, '');
+     select_location();
+     printf(PROFIL_FIELD_LOCATION_END);
 
-	printf(PROFIL_FIELD_TITLE_BEGIN, PROFIL_POST_TITLE, '');
-	select_title();
-	printf(PROFIL_FIELD_TITLE_END);
-  }
+     printf(PROFIL_FIELD_TITLE_BEGIN, PROFIL_POST_TITLE, '');
+     select_title();
+     printf(PROFIL_FIELD_TITLE_END);
+   }
 printf(PROFIL_FIELD_NAME,
        PROFIL_POST_NAME, $_POST[PROFIL_POST_NAME]);
 printf(PROFIL_FIELD_FNAME,

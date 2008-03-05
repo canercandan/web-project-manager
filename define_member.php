@@ -8,6 +8,7 @@ if (!MAIN)
 */
 
 define('HEADER_CONNECT', 'Location:connect.php');
+define('DESTROY', 'deco');
 
 /*
 ** Define member : sql
