@@ -8,18 +8,20 @@ require_once('define_project.php');
 require_once('function_activity.php');
 require_once('function_misc.php');
 
-function get_member_out_project($id_project)
+function get_member_out_project($id_project, $last)
 {
   $res = sql_query(sprintf(SQL_GET_MEMBER_OUT_PROJECT, sql_real_escape_string($id_project)));
   printf(MEMBER_POST_SELECT);
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(MEMBER_ELEM_PROJ, htmlentities($tab[0]), 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]));
-      }
+		printf(MEMBER_ELEM_PROJ, $last, htmlentities($tab[0]), 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]));
+		$last++;
+	  }
+	return ($last);
 }
 
-function get_member_project($id_project)
+function get_member_project($id_project, $last)
 {
 	printf('<role_list post="selectrole">');
 	$res = sql_query(SQL_GET_ROLE);
@@ -38,6 +40,7 @@ function get_member_project($id_project)
 		printf(MEMBER_ELEM_PROJECT_PROJ, htmlentities($tab[0]), 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]),
 		POST_DAY_START, htmlentities($tab[6]), POST_MONTH_START, htmlentities($tab[7]), POST_YEAR_START, htmlentities($tab[8]),
 		POST_DAY_END, htmlentities($tab[9]), POST_MONTH_END, htmlentities($tab[10]), POST_YEAR_END, htmlentities($tab[11]),
+		$last,
 		POST_KEY_ID,
 		POST_KEY_DAY_START,
 		POST_KEY_MONTH_START,
@@ -45,10 +48,12 @@ function get_member_project($id_project)
 		POST_KEY_DAY_END,
 		POST_KEY_MONTH_END,
 		POST_KEY_YEAR_END);
-      }
+		$last++;
+	  }
+	  return ($last);
 }
 
-function get_histo_member_project($id_project)
+function get_histo_member_project($id_project, $last)
 {
 	printf('<role_list post="selectrole">');
 	$res = sql_query(SQL_GET_ROLE);
@@ -66,6 +71,7 @@ function get_histo_member_project($id_project)
 		printf(MEMBER_ELEM_PROJECT_PROJ, htmlentities($tab[0]), 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]),
 		POST_DAY_START, htmlentities($tab[6]), POST_MONTH_START, htmlentities($tab[7]), POST_YEAR_START, htmlentities($tab[8]),
 		POST_DAY_END, htmlentities($tab[9]), POST_MONTH_END, htmlentities($tab[10]), POST_YEAR_END, htmlentities($tab[11]),
+		$last,
 		POST_KEY_ID,
 		POST_KEY_DAY_START,
 		POST_KEY_MONTH_START,
@@ -73,7 +79,9 @@ function get_histo_member_project($id_project)
 		POST_KEY_DAY_END,
 		POST_KEY_MONTH_END,
 		POST_KEY_YEAR_END);
-      }
+		$last++;
+		}
+	return ($last);
 }
 
 function remove_tot_member($id_user, $id_project)

@@ -87,7 +87,7 @@ function get_activity_informations($id_activity)
 	 (($work < $tab[2] ? $work : $tab[2]) * 100) / $tab[2]);
 }
 
-function get_member_activity($id_activity, $id_project)
+function get_member_activity($id_activity, $id_project, $last)
 {
 
   $res = sql_query(sprintf(SQL_GET_MEMBER_ACTIVITY, sql_real_escape_string($id_project),
@@ -99,6 +99,7 @@ function get_member_activity($id_activity, $id_project)
 	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), MEMBER_POST_LEVEL, htmlentities($tab[5]), MEMBER_POST_WORK, htmlentities($tab[6]), htmlentities($tab[7]),
 		POST_ACT_DAY_START, htmlentities($tab[8]), POST_ACT_MONTH_START, htmlentities($tab[9]), POST_ACT_YEAR_START, htmlentities($tab[10]),
 		POST_ACT_DAY_END, htmlentities($tab[11]), POST_ACT_MONTH_END, htmlentities($tab[12]), POST_ACT_YEAR_END, htmlentities($tab[13]),
+		$last,
 		POST_KEY_ACT_ID,
 		POST_KEY_ACT_DAY_START,
 		POST_KEY_ACT_MONTH_START,
@@ -106,10 +107,18 @@ function get_member_activity($id_activity, $id_project)
 		POST_KEY_ACT_DAY_END,
 		POST_KEY_ACT_MONTH_END,
 		POST_KEY_ACT_YEAR_END);
+		$last++;
       }
+	return ($last);
 }
 
-function get_member_histo_activity($id_activity, $id_project)
+function	add_member($id_activity, $id_usr)
+{
+	sql_query(sprintf(SQL_ADD_MEMBER_ACT, sql_real_escape_string($id_activity),
+			   sql_real_escape_string($id_usr)));
+}
+
+function get_member_histo_activity($id_activity, $id_project, $last)
 {
 
   $res = sql_query(sprintf(SQL_GET_HISTO_MEMBER_ACTIVITY, sql_real_escape_string($id_project),
@@ -121,6 +130,7 @@ function get_member_histo_activity($id_activity, $id_project)
 	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), MEMBER_POST_LEVEL, htmlentities($tab[5]), MEMBER_POST_WORK, htmlentities($tab[6]), htmlentities($tab[7]),
 		POST_ACT_DAY_START, htmlentities($tab[8]), POST_ACT_MONTH_START, htmlentities($tab[9]), POST_ACT_YEAR_START, htmlentities($tab[10]),
 		POST_ACT_DAY_END, htmlentities($tab[11]), POST_ACT_MONTH_END, htmlentities($tab[12]), POST_ACT_YEAR_END, htmlentities($tab[13]),
+		$last,
 		POST_KEY_ACT_ID,
 		POST_KEY_ACT_DAY_START,
 		POST_KEY_ACT_MONTH_START,
@@ -128,10 +138,12 @@ function get_member_histo_activity($id_activity, $id_project)
 		POST_KEY_ACT_DAY_END,
 		POST_KEY_ACT_MONTH_END,
 		POST_KEY_ACT_YEAR_END);
-      }
+		$last++;
+	  }
+	return ($last);
 }
 
-function get_member_project_activity($id_activity, $id_project)
+function get_member_project_activity($id_activity, $id_project, $last)
 {
   $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT_ACT, sql_real_escape_string($id_project),
 			   sql_real_escape_string($id_activity)));
@@ -139,8 +151,10 @@ function get_member_project_activity($id_activity, $id_project)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-	  printf(MEMBER_ELEM_PROJECT, $tab[0], 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]));
-      }
+	  printf(MEMBER_ELEM_PROJECT, $last, $tab[0], 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]));
+      $last++;
+	  }
+	return ($last);
 }
 
 function add_activities($id_project, $id_activity, $name, $describ, $charge)

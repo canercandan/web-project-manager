@@ -26,11 +26,11 @@ define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
 define('MEMBER_LIST_ACTIVITY_END', '</member_list_activity>');
 define('MEMBER_POST_LEVEL', 'modlevel');
 define('MEMBER_POST_WORK', 'modnwork');
-define('MEMBER_ELEM_PROJECT', '<member><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><login>%s</login></member>');
+define('MEMBER_ELEM_PROJECT', '<member><key unique="%d"/><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><login>%s</login></member>');
 define('MEMBER_ELEM_ACTIVITY', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><level post="%s">%d</level><work post="%s">%d</work><login>%s</login>
 <date_start postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
 <date_end postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
-<key id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
+<key unique="%d" id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
 </member>');
 define('POST_KEY_ACT_DAY_START', 'key_member_act_day_start');
 define('POST_KEY_ACT_MONTH_START', 'key_member_act_month_start');
@@ -88,6 +88,17 @@ define('SQL_ADD_ACTIVITY','INSERT INTO `tw_activity` (
 VALUES (
 NULL , \'%d\', \'%d\', \'%s\', \'%d\', CURDATE(), \'0000-00-00\', \'%s\'
 );');
+
+define('SQL_ADD_MEMBER_ACT', 'INSERT INTO `tw_activity_member` (
+`activity_member_activity_id` ,
+`activity_member_usr_id` ,
+`activity_level` ,
+`activity_member_date_start` ,
+`activity_member_date_end` ,
+`activity_work`
+)
+VALUES (
+\'%s\', \'%s\', 0, CURDATE(), \'0000-00-00\', 0);');
 
 define('SQL_SELECT_ACTIVITIES', 'SELECT activity_id, activity_name FROM tw_activity 
 WHERE activity_project_id = \'%d\' 

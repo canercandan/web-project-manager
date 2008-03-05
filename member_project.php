@@ -32,14 +32,14 @@ printf(MEMBER_KEEP_HISTO);
 
 printf(MEMBER_LIST_BEGIN);
 
-get_member_out_project($_SESSION['PROJECT_ID']);
+$last = get_member_out_project($_SESSION['PROJECT_ID'], 0);
 printf(MEMBER_LIST_END);
 printf(MEMBER_LIST_PROJECT_BEGIN);
-get_member_project($_SESSION['PROJECT_ID']);
+$last = get_member_project($_SESSION['PROJECT_ID'], $last);
 printf(MEMBER_LIST_PROJECT_END);
 
 printf(MEMBER_HISTO_LIST_PROJECT_BEGIN);
-get_histo_member_project($_SESSION['PROJECT_ID']);
+get_histo_member_project($_SESSION['PROJECT_ID'], $last);
 printf(MEMBER_HISTO_LIST_PROJECT_END);
 
 printf(MEMBER_PROJECT_END);
