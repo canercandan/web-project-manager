@@ -4,6 +4,7 @@ define('MAIN', 1);
 
 require_once('./define_config.php');
 require_once('./define_admin.php');
+require_once('./function_admin.php');
 require_once('./function_sql.php');
 require_once('./function_usr.php');
 
@@ -15,7 +16,7 @@ header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE);
  else
-   printf(XML_HEADER, XML_TEMPLATE);
+  printf(XML_HEADER, XML_TEMPLATE);
 $test = mysql_query(ADMIN_MEMBER_SELECT);
 printf(MEMBER_BEGIN);
 printf(MEMBER_NAME, ADMIN_POST_NAME);

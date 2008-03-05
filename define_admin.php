@@ -51,6 +51,10 @@ define('ADMIN_POST_NAME', 'adminpostname');
 define('ADMIN_POST_FIRST', 'adminpostfirst');
 define('ADMIN_USR_LEVEL', 'adminpostlevel');
 
+define('ADMIN_USER_LEVEL_BEGIN', '<adminuserbegin>');
+define('ADMIN_USER_LEVEL_END', '</adminuserbegin>');
+define('ADMIN_USER', '<level id="%s" name="%s" />');
+
 define('ADMIN_MEMBER',
        '<member>
 	  <id>%s</id>
@@ -99,5 +103,9 @@ define('ADMIN_MEMBER_SELECT',
        'SELECT usr_id, usr_login, profil_name, profil_fname, usr_level_id
 	FROM tw_usr, tw_profil
 	WHERE usr_id = profil_usr_id;');
+	
+define('SQL_USER_LEVEL',
+	   'SELECT *
+	    FROM tw_usr_level;');
 
 ?>
