@@ -25,12 +25,12 @@ function update_title($title_name, $title_id)
 function get_user_level()
 {
   $test = sql_query(SQL_USER_LEVEL);
-  printf(ADMIN_USER_LEVEL_BEGIN);
+  printf(ADMIN_LEVEL_BEGIN);
   while ($row = sql_fetch_array($test))
     {
-      printf(ADMIN_USER, $row[0], $row[1]);
+      printf(ADMIN_ITEM, $row[0], $row[1]);
     }
-  printf(ADMIN_USER_LEVEL_END);
+  printf(ADMIN_LEVEL_END);
 }
 
 function get_location()

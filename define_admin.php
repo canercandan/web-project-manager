@@ -52,9 +52,9 @@ define('ADMIN_POST_NAME', 'adminpostname');
 define('ADMIN_POST_FIRST', 'adminpostfirst');
 define('ADMIN_USR_LEVEL', 'adminpostlevel');
 
-define('ADMIN_USER_LEVEL_BEGIN', '<adminuserbegin>');
-define('ADMIN_USER_LEVEL_END', '</adminuserbegin>');
-define('ADMIN_USER', '<level id="%s" name="%s" />');
+define('ADMIN_LEVEL_BEGIN', '<level>');
+define('ADMIN_LEVEL_END', '</level>');
+define('ADMIN_ITEM', '<item id="%s" name="%s" />');
 
 define('ADMIN_MEMBER',
        '<member>

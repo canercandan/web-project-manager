@@ -36,8 +36,23 @@
 			   value="{first_name/@value}" />
 		  </td>
 		  <td>
-		    <input type="text" name="{usr_level/@post}[{id}]"
-			   value="{usr_level/@value}" />
+		    <select name="{usr_level/@post}[{id}]">
+		      <xsl:variable name="id" select="id" />
+		      <xsl:for-each select="../level/item">
+			<xsl:choose>
+			  <xsl:when test="$id=@id">
+			    <option value="@id" selected="selected">
+			      <xsl:value-of select="@name" />
+			    </option>
+			  </xsl:when>
+			  <xsl:otherwise>
+			    <option value="@id">
+			      <xsl:value-of select="@name" />
+			    </option>
+			  </xsl:otherwise>
+			</xsl:choose>
+		      </xsl:for-each>
+		    </select>
 		  </td>
 		</tr>
 	      </xsl:for-each>
