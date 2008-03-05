@@ -5,6 +5,7 @@ define('MAIN', 1);
 require_once('./define_config.php');
 require_once('./function_sql.php');
 require_once('./function_profil.php');
+require_once('./define_session.php');
 
 session_name(SESS_NAME);
 session_start();
@@ -50,10 +51,10 @@ printf($error);
 
 if (!$_POST)
   {
-    if (!$_SESSION['MEMBER_LOCATION'] || !$_SESSION['MEMBER_TITLE'] ||
-		!$_SESSION['MEMBER_NAME'] || !$_SESSION['MEMBER_FNAME'] ||
-		!$_SESSION['MEMBER_FPHONE'] || !$_SESSION['MEMBER_MPHONE'] ||
-		!$_SESSION['MEMBER_ADDRESSE'])
+    if (!$_SESSION[SESSION_LOCATION] || !$_SESSION[SESSION_TITLE] ||
+		!$_SESSION[SESSION_NAME] || !$_SESSION[SESSION_FNAME] ||
+		!$_SESSION[SESSION_FPHONE] || !$_SESSION[SESSION_MPHONE] ||
+		!$_SESSION[SESSION_ADDRESS])
       select_profil();
 	else
 	  select_session();

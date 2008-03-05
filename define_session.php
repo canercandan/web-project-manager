@@ -1,16 +1,15 @@
 <?php
 
 /*
-Nom des variables de sessions utilisees
-
-PROJECT_MENU (Vivien / Marc)
-PROJECT_ID (Vivien puis/pour Marc)
-PROJECT_NAME (Vivien puis/pour Marc)
-USER_ID (Jordan apres connection)
-USER_LOGIN(Jordan apres connection)
-ACTIVITY_ID (Marc)
-ACTIVITY_NAME (Marc)
-DEVELOPPED_ACTIVITY[%s (ID)] (Marc)
+** Session name
 */
+
+define('SESSION_LOCATION', 'sesslocation');
+define('SESSION_TITLE', 'sesstitle');
+define('SESSION_NAME', 'sessname');
+define('SESSION_FNAME', 'sessfname');
+define('SESSION_FPHONE', 'sessfphone');
+define('SESSION_MPHONE', 'sessmphone');
+define('SESSION_ADDRESS', 'sessaddress');
 
 ?>

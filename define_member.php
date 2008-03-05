@@ -7,7 +7,7 @@ if (!MAIN)
 ** Define member : name
 */
 
-define('MEMBER_POST', '');
+define('HEADER_CONNECT', 'Location:connect.php');
 
 /*
 ** Define member : sql
