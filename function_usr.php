@@ -88,4 +88,17 @@ function usr_session_id()
     return (0);
 }
 
+function session_create()
+{
+  $test = sql_query(sprintf(USR_SQL_SESSION, $_SESSION['USER_ID']));
+  $row = sql_fetch_array($test);
+  $_SESSION['MEMBER_LOCATION'] = $row[0];
+  $_SESSION['MEMBER_TITLE'] = $row[1];
+  $_SESSION['MEMBER_NAME'] = $row[2];
+  $_SESSION['MEMBER_FNAME'] = $row[3];
+  $_SESSION['MEMBER_FPHONE'] = $row[4];
+  $_SESSION['MEMBER_MPHONE'] = $row[5];
+  $_SESSION['MEMBER_ADDRESSE'] = $row[6];
+}
+
 ?>

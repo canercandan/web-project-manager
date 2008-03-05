@@ -96,5 +96,20 @@ define('USR_SQL_SESSION_ID',
 	   'SELECT usr_id
 	    FROM tw_usr
 		WHERE usr_login = \'%s\';');
+		
+define('USR_SQL_SESSION',
+	   'SELECT location_name, 
+	           title_name, 
+			   profil_name, 
+			   profil_fname, 
+			   profil_fphone, 
+			   profil_mphone, 
+			   profil_perso_adress
+		FROM tw_location,
+			 tw_title,
+			 tw_profil
+		WHERE tw_location.location_id = tw_profil.profil_location_id
+		AND tw_title.title_id = tw_profil.profil_title_id
+		AND profil_usr_id = \'%s\';');
 
 ?>

@@ -7,7 +7,7 @@ if (!MAIN)
 ** Define profil : name for xml
 */
 
-define('LOCATION_MEMBRE', 'Location:membre.php?ok=1');
+define('LOCATION_MEMBER', 'Location:member.php');
 
 define('PROFIL_BEGIN', '<profil>');
 define('PROFIL_END', '</profil>');

@@ -18,7 +18,7 @@ if ($_POST[PROFIL_POST_LOCATION] && $_POST[PROFIL_POST_NAME] &&
 	$_POST[PROFIL_POST_ADDRESS])
   {
 	profil_update();
-	header(LOCATION_MEMBRE);
+	header(LOCATION_MEMBER);
 	exit(0);
   }
 
@@ -49,7 +49,15 @@ printf(PROFIL_BEGIN);
 printf($error);
 
 if (!$_POST)
-  select_profil();
+  {
+    if (!$_SESSION['MEMBER_LOCATION'] || !$_SESSION['MEMBER_TITLE'] ||
+		!$_SESSION['MEMBER_NAME'] || !$_SESSION['MEMBER_FNAME'] ||
+		!$_SESSION['MEMBER_FPHONE'] || !$_SESSION['MEMBER_MPHONE'] ||
+		!$_SESSION['MEMBER_ADDRESSE'])
+      select_profil();
+	else
+	  select_session();
+  }
 else
   {
 	printf(PROFIL_FIELD_LOCATION_BEGIN, PROFIL_POST_LOCATION, '');

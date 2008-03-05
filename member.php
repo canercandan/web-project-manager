@@ -5,6 +5,7 @@ define('MAIN', 1);
 require_once('./define_config.php');
 require_once('./function_sql.php');
 require_once('./function_usr.php');
+require_once('./function_member.php');
 
 session_name(SESS_NAME);
 session_start();
