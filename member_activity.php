@@ -64,6 +64,7 @@ if(isset($_POST))
 			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_YEAR_END]);
 		}
 	}
+	var_dump($_POST);
 }
 
 
