@@ -71,15 +71,18 @@ function get_title()
 
 function update_member()
 {
-  foreach($_POST[ADMIN_BUTTON_SELECT] as $id)
+  if ($_POST[ADMIN_BUTTON_SELECT])
     {
-      $login = sql_real_escape_string($_POST[ADMIN_POST_LOGIN][$id]);
-      $name = sql_real_escape_string($_POST[ADMIN_POST_NAME][$id]);
-      $fname = sql_real_escape_string($_POST[ADMIN_POST_FIRST][$id]);
-      $level = sql_real_escape_string($_POST[ADMIN_USR_LEVEL][$id]);
-      sql_query(sprintf(SQL_MEMBER_UPDATE_USR, $login, $level, $id));
-      sql_query(sprintf(SQL_MEMBER_UPDATE_PROFIL, $name, $fname, $id));
-    }
+	  foreach($_POST[ADMIN_BUTTON_SELECT] as $id)
+        {
+		  $login = sql_real_escape_string($_POST[ADMIN_POST_LOGIN][$id]);
+		  $name = sql_real_escape_string($_POST[ADMIN_POST_NAME][$id]);
+		  $fname = sql_real_escape_string($_POST[ADMIN_POST_FIRST][$id]);
+		  $level = sql_real_escape_string($_POST[ADMIN_USR_LEVEL][$id]);
+		  sql_query(sprintf(SQL_MEMBER_UPDATE_USR, $login, $level, $id));
+		  sql_query(sprintf(SQL_MEMBER_UPDATE_PROFIL, $name, $fname, $id));
+	    }
+	}
 }
 
 ?>
