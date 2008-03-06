@@ -170,7 +170,8 @@ define('SQL_UPDATE_MEMBER_ACTIVITY','
 
 define('ERR_DATE_ORDER', 'There are some mistakes with the dates : the date corresponding to the start (%02d/%02d/%04d) must be after the one corresponding to the end (%02d/%02d/%04d)');
 
-define('ERR_OLD_DATE_ORDER', 'There are some mistakes with the dates : the date corresponding to the end of an old entry (%02d/%02d/%04d) must be before the one corresponding to the new start (%02d/%02d/%04d)');
+define('ERR_OLD_DATE_ORDER', 'There are some conflicts with the dates : 
+between new starting date : %02d/%02d/%04d, new ending date : %02d/%02d/%04d and starting date : %02d/%02d/%04d, ending date : %02d/%02d/%04d');
 
 define('ERR_DATE_START_NOT_FULL', 'There are some mistakes with the starting dates : You must define all the field of the starting dates');
 define('ERR_DATE_END_NOT_FULL', 'There are some mistakes with the ending dates : You must define all the field of the ending dates if you have starting to fill them');
@@ -211,9 +212,13 @@ function update_member_activity($id_activity, $id_user, $day_start, $month_start
 			$start = mktime(0, 0, 0, $tab[1], $tab[0], $tab[2]);
 			$end = mktime(0, 0, 0, $tab[4], $tab[3], $tab[5]);
 			
-			if (($start != $old_start) /*&& (	($new_end > $start && ($new_start < $end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] ==0)))
-											|| ($new_end < $end)
-											*/)		
+			if (($start != $old_start) && (
+											($start <= $new_start && ($end > $new_start || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
+											||
+											($start < $new_end && ($end >= $new_end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
+											||
+											($start >= $new_start && ($end <= $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)))
+											)) 	
 			{
 				printf(XML_ERROR, sprintf(ERR_OLD_DATE_ORDER, $tab[3], $tab[4], $tab[5], $new_day_start, $new_month_start, $new_year_start));
 				return;
