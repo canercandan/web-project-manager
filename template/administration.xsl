@@ -2,7 +2,7 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template match="admin/member_list">
+  <xsl:template match="administration/member_list">
       <form action="?" method="post">
 	<div class="member_list">
 	  <table class="table">
@@ -68,7 +68,7 @@
       </form>
   </xsl:template>
 
-  <xsl:template match="admin">
+  <xsl:template match="administration">
     <fieldset>
       <legend>Administration</legend>
       <xsl:apply-templates select="member_list" />
