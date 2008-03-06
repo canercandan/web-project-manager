@@ -60,6 +60,7 @@ printf($error);
 
 if (!$_POST)
   {
+    var_dump($_SESSION[SESSION_LEVEL]);
 	if ($_SESSION[SESSION_LEVEL] == IS_A_ADMIN && $_GET[MEMBER_SELECT])
 	{
 	  admin_select_profil();
