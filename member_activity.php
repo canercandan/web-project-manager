@@ -6,7 +6,7 @@ require_once('function_misc.php');
 
 if(isset($_POST))
 {
-var_dump($_POST);
+//var_dump($_POST);
 	if (isset($_POST[BTN_DOWN]))
 	{
 		foreach($_POST[POST_SELECT] as $value)
