@@ -78,11 +78,10 @@
 	<input type="checkbox"
 	       name="{../checkbox/@name}[]"
 	       value="{key/@unique}" />
-	
 	<input type="hidden"
 	       name="{key/@name}[{key/@unique}][{key/@day_start}]"
 	       value="{date_start/@day}" />
-    <input type="hidden"
+	<input type="hidden"
 	       name="{key/@name}[{key/@unique}][{key/@month_start}]"
 	       value="{date_start/@month}" />
 	<input type="hidden"
@@ -100,8 +99,7 @@
 	<input type="hidden"
 	       name="{key/@name}[{key/@unique}][{key/@id}]"
 	       value="{id}" />
-	   
-	  </td>
+      </td>
       <td><xsl:value-of select="login" /></td>
       <td><xsl:value-of select="name" /></td>
       <td><xsl:value-of select="fname" /></td>
@@ -143,7 +141,6 @@
       <td class="little2">
 	<xsl:apply-templates select="date_end" />
       </td>
-	  
     </tr>
   </xsl:template>
 
@@ -153,11 +150,10 @@
 	<input type="checkbox"
 	       name="{../checkbox/@name}[]"
 	       value="{key/@unique}" />
-	
 	<input type="hidden"
 	       name="{key/@name}[{key/@unique}][{key/@day_start}]"
 	       value="{date_start/@day}" />
-    <input type="hidden"
+	<input type="hidden"
 	       name="{key/@name}[{key/@unique}][{key/@month_start}]"
 	       value="{date_start/@month}" />
 	<input type="hidden"
@@ -175,8 +171,7 @@
 	<input type="hidden"
 	       name="{key/@name}[{key/@unique}][{key/@id}]"
 	       value="{id}" />
-	   
-	  </td>
+      </td>
       <td><xsl:value-of select="login" /></td>
       <td><xsl:value-of select="name" /></td>
       <td><xsl:value-of select="fname" /></td>

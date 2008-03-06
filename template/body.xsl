@@ -88,8 +88,8 @@
 	  <xsl:if test="profil">
 	    <xsl:apply-templates select="profil" />
 	  </xsl:if>
-	  <xsl:if test="admin">
-	    <xsl:apply-templates select="admin" />
+	  <xsl:if test="administration">
+	    <xsl:apply-templates select="administration" />
 	  </xsl:if>
 	</div>
       </xsl:otherwise>

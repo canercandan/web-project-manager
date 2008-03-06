@@ -54,7 +54,7 @@
 	</xsl:otherwise>
       </xsl:choose>
       <xsl:choose>
-	<xsl:when test="../body/admin">
+	<xsl:when test="../body/administration">
 	  <li class="on"><a href="./admin2.php">Admin</a></li>
 	</xsl:when>
 	<xsl:otherwise>

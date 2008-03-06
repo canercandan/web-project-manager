@@ -3,7 +3,7 @@
 if (!MAIN)
   exit(0);
 
-define('ADMIN_START','<administration>');
+define('ADMIN_BEGIN','<administration>');
 define('ADMIN_END','</administration>');
 define('ADD_LOCATION_BEGIN', '<add_location>');
 define('ADD_LOCATION_END', '</add_location>');
@@ -32,9 +32,6 @@ define('POST_LOCATION_MODID', 'modlocid');
 define('LOCATION_START', '<location>');
 define('LOCATION_END', '</location>');
 define('LOCATION_ITEM', '<location><field_name>%s</field_name><field_addr>%s</field_addr><field_id>%s</field_id><id>%d</id><name>%s</name><address>%s</address></location>');
-
-define('ADMIN2_BEGIN', '<admin>');
-define('ADMIN2_END', '</admin>');
 
 define('MEMBER_LIST_BEGIN', '<member_list>');
 define('MEMBER_LIST_END', '</member_list>');

@@ -17,7 +17,7 @@ if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE);
  else
   printf(XML_HEADER, XML_TEMPLATE);
-printf(ADMIN2_BEGIN);
+printf(ADMIN_BEGIN);
 $test = mysql_query(ADMIN_MEMBER_SELECT);
 printf(MEMBER_LIST_BEGIN);
 get_user_level();
@@ -33,7 +33,7 @@ while ($row = mysql_fetch_array($test, MYSQL_NUM))
 	   ADMIN_USR_LEVEL, $row[4]);
   }
 printf(MEMBER_LIST_END);
-printf(ADMIN2_END);
+printf(ADMIN_END);
 printf(XML_FOOTER);
 sql_close($link);
 
