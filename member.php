@@ -6,7 +6,7 @@ require_once('./define_config.php');
 require_once('./function_sql.php');
 require_once('./function_usr.php');
 require_once('./function_member.php');
-require_once('./define_session');
+require_once('./define_session.php');
 
 session_name(SESS_NAME);
 session_start();

@@ -7,7 +7,7 @@ require_once('./define_admin.php');
 require_once('./function_admin.php');
 require_once('./function_sql.php');
 require_once('./function_usr.php');
-require_once('./define_session');
+require_once('./define_session.php');
 
 session_name(SESS_NAME);
 session_start();
@@ -19,6 +19,7 @@ if (!$_SESSION[SESSION_NAME])
     header(LOCATION_EXIT);
 	exit (0);
   }
+
 if($_POST)
   update_member();
 header(HEADER_CONTENT_TYPE);
