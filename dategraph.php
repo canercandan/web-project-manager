@@ -64,7 +64,7 @@ function print_line($length, $name, $dates, $colorbg, $coloractiv)
 
 function	print_date($day, $month, $year)
 {
-	return(sprintf('%02d/%02d/%d', $day, $month, $year));
+	return(sprintf('%02d/%02d/%04d', $day, $month, $year));
 }
 
 function	print_tab_legend($length, $day, $month, $year, $nb)

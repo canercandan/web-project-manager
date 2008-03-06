@@ -131,6 +131,7 @@ function get_information_project($id_project)
 			htmlentities($tab[1]),
 			htmlentities($tab[2]));
 			$work = get_activity_work($tab[0]);
+			$work = $work > $tab[2] ? $tab[2] : $work;
 			printf('<work>%d</work><percent>%d</percent></activity_work>',
 				$work,
 				($work * 100) / $tab[2]);

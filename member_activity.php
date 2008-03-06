@@ -36,6 +36,36 @@ if(isset($_POST))
 			$_POST[POST_ACT_YEAR_END][$value]);
 		}
 	}
+	else if ((isset($_POST[BTN_UP]) || isset($_POST[BTN_DELETE_HISTO])) && isset($_POST[POST_SELECT]))
+	{
+		foreach($_POST[POST_SELECT] as $value)
+		{
+			delete_member_activity($_SESSION['ACTIVITY_ID'], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_ID], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_DAY_START], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_MONTH_START], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_YEAR_START], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_DAY_END], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_MONTH_END], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_YEAR_END]);
+		}
+	}
+	else if (isset($_POST[BTN_DOWN]) && isset($_POST[POST_SELECT]))
+	{
+		var_dump($_POST);
+		foreach($_POST[POST_SELECT] as $value)
+		{
+			move_to_old_member_activity($_SESSION['ACTIVITY_ID'], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_ID], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_DAY_START], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_MONTH_START], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_YEAR_START], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_DAY_END], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_MONTH_END], 
+			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_YEAR_END]);
+		}
+	}
+	var_dump($_POST);
 }
 
 

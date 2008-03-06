@@ -157,6 +157,14 @@ function get_member_project_activity($id_activity, $id_project, $last)
 	return ($last);
 }
 
+define('SQL_DELETE_MEMBER_ACTIVITY','
+											DELETE FROM tw_activity_member 
+																WHERE activity_member_usr_id = \'%d\'
+																	AND activity_member_activity_id = \'%d\'
+																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
+																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
+																	');
+
 define('SQL_UPDATE_MEMBER_ACTIVITY','
 											UPDATE tw_activity_member SET 	activity_level = \'%d\',
 																	activity_work = \'%d\',
@@ -167,7 +175,15 @@ define('SQL_UPDATE_MEMBER_ACTIVITY','
 																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
 																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
 																	');
-
+define('SQL_MOVE_TO_OLD_MEMBER_ACTIVITY','
+											UPDATE tw_activity_member SET
+																	activity_member_date_end = CURDATE()
+																WHERE activity_member_usr_id = \'%d\'
+																	AND activity_member_activity_id = \'%d\'
+																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
+																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
+																	');
+																	
 define('ERR_DATE_ORDER', 'There are some mistakes with the dates : the date corresponding to the start (%02d/%02d/%04d) must be after the one corresponding to the end (%02d/%02d/%04d)');
 
 define('ERR_OLD_DATE_ORDER', '<line>There are some conflicts with the dates :</line>
@@ -183,7 +199,24 @@ define('SQL_GET_DATES_MEMBER_ACTIVITY',
 			day(activity_member_date_end), month(activity_member_date_end), year(activity_member_date_end) FROM tw_activity_member WHERE
 		activity_member_usr_id = \'%d\'
 		AND activity_member_activity_id = \'%d\';
-');												
+');
+
+function move_to_old_member_activity($id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end)
+{
+	sql_query(sprintf(SQL_MOVE_TO_OLD_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
+													sql_real_escape_string($id_activity),
+													sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
+													sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
+}
+
+function delete_member_activity($id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end)
+{
+	sql_query(sprintf(SQL_DELETE_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
+													sql_real_escape_string($id_activity),
+													sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
+													sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
+}
+					
 function update_member_activity($id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end,
 					$work, $admin, $new_day_start, $new_month_start, $new_year_start, $new_day_end, $new_month_end, $new_year_end)
 {
