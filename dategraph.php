@@ -36,8 +36,9 @@ function	print_tab_date($length, $day, $month, $year, $input)
 		print_line($length, $value['name'], $value['dates'], $colorbg, $coloractive);
 		$colorbg++;
 		$colorbg %= 2;
-/*		$colorbg++;
-		$colorbg = $coloractive % 5 + 2;*/
+		$coloractive++;
+		if ($coloractive > 3)
+			$coloractive = 2;
 	}
 	print_tab_legend($length, $day, $month, $year, 4);
 	printf(TAB_DATE_END);
