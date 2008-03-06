@@ -113,4 +113,17 @@ function profil_update()
   $_SESSION[SESSION_TITLE] = $_POST[PROFIL_POST_TITLE];
 }
 
+function admin_profil_update()
+{
+  sql_query(sprintf(PROFIL_SQL_UPDATE,
+		    sql_real_escape_string($_POST[PROFIL_POST_LOCATION]),
+		    sql_real_escape_string($_POST[PROFIL_POST_NAME]),
+		    sql_real_escape_string($_POST[PROFIL_POST_FNAME]),
+		    sql_real_escape_string($_POST[PROFIL_POST_FPHONE]),
+		    sql_real_escape_string($_POST[PROFIL_POST_MPHONE]),
+		    sql_real_escape_string($_POST[PROFIL_POST_TITLE]),
+		    sql_real_escape_string($_POST[PROFIL_POST_ADDRESS]),
+		    sql_real_escape_string($_GET[MEMBER_SELECT])));
+}
+
 ?>

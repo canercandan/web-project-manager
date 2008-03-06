@@ -8,6 +8,7 @@ if (!MAIN)
 */
 
 define('LOCATION_MEMBER', 'Location:member.php');
+define('LOCATION_ADMIN', 'Location:admin2.php');
 
 define('PROFIL_BEGIN', '<profil>');
 define('PROFIL_END', '</profil>');

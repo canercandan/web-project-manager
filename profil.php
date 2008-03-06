@@ -18,8 +18,16 @@ if ($_POST[PROFIL_POST_LOCATION] && $_POST[PROFIL_POST_NAME] &&
     $_POST[PROFIL_POST_MPHONE] && $_POST[PROFIL_POST_TITLE] &&
     $_POST[PROFIL_POST_ADDRESS])
   {
-    profil_update();
-    header(LOCATION_MEMBER);
+    if ($_SESSION[SESSION_LEVEL] == IS_A_ADMIN && $_GET[MEMBER_SELECT])
+	  {
+	    admin_profil_update();
+		header(LOCATION_ADMIN);
+	  }
+	else
+	  {
+        profil_update();
+        header(LOCATION_MEMBER);
+	  }
     exit(0);
   }
 
@@ -52,7 +60,9 @@ printf($error);
 if (!$_POST)
   {
 	if ($_SESSION[SESSION_LEVEL] == IS_A_ADMIN && $_GET[MEMBER_SELECT])
+	{
 	  admin_select_profil();
+	}
     else if (!$_SESSION[SESSION_LOCATION] || !$_SESSION[SESSION_TITLE] ||
 	!$_SESSION[SESSION_NAME] || !$_SESSION[SESSION_FNAME] ||
 	!$_SESSION[SESSION_FPHONE] || !$_SESSION[SESSION_MPHONE] ||
