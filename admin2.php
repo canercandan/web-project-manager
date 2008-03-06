@@ -37,6 +37,7 @@ while ($row = mysql_fetch_array($test, MYSQL_NUM))
   }
 printf(MEMBER_LIST_END);
 printf(ADMIN_END);
+printf(SESSION_DESTROY, DESTROY);
 printf(XML_FOOTER);
 sql_close($link);
 
