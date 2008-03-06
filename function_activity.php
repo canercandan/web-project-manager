@@ -219,7 +219,8 @@ function update_member_activity($id_activity, $id_user, $day_start, $month_start
 											||
 											($start < $new_end && ($end >= $new_end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
 											||
-											($start >= $new_start && ($end <= $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)))
+											($start >= $new_start && !($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0 && ($new_month_end != 0 && $new_day_end != 0 && $new_year_end != 0))
+											&& ($end <= $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)))
 											)) 	
 			{
 				printf(XML_ERROR, sprintf(ERR_OLD_DATE_ORDER,  $new_day_start, $new_month_start, $new_year_start,  

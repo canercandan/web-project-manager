@@ -14,7 +14,7 @@ if(isset($_POST))
 			add_member($_SESSION['ACTIVITY_ID'], $value);
 		}
 	}
-	if (isset($_POST[BTN_UPDATE_MEMBER]) && isset($_POST[POST_SELECT]))
+	if ((isset($_POST[BTN_UPDATE_MEMBER]) || isset($_POST[BTN_UPDATE_HISTO_MEMBER])) && isset($_POST[POST_SELECT]))
 	{
 		foreach($_POST[POST_SELECT] as $value)
 		{
