@@ -77,6 +77,11 @@ function update_member()
 	  $name = sql_real_escape_string($_POST[ADMIN_POST_NAME][$id]);
 	  $fname = sql_real_escape_string($_POST[ADMIN_POST_FIRST][$id]);
 	  $level = sql_real_escape_string($_POST[ADMIN_USR_LEVEL][$id]);
+	  var_dump($login);
+	  var_dump($name);
+	  var_dump($fname);
+	  var_dump($level);
+	  var_dump($id);
 	  sql_query(SQL_MEMBER_UPDATE_USR, $login, $level, $id);
 	  sql_query(SQL_MEMBER_UPDATE_PROFIL, $name, $fname, $id);
     }
