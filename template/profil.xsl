@@ -12,6 +12,9 @@
 	  <xsl:apply-templates select="error" />
 	</xsl:if>
 	<form action="?" method="post">
+	  <xsl:if test="memberselect">
+	    <input type="hidden" name="memberselect" value="{memberselect}" />
+	  </xsl:if>
 	  <fieldset>
 	    <legend>Profil</legend>
 	    <div class="form">

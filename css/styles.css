@@ -123,11 +123,19 @@ table.table
 	width: 100%;
 }
 
-.history div
+.history .name
 {
 	float: left;
-	width: 10%;
-	height: 10px;
+	padding-left: 15px;
+	width: 18%;
+	height: 20px;
+	border-right: 1px solid DarkGray;
+}
+
+.history .col div
+{
+	float: left;
+	height: 20px;
 }
 
 fieldset
