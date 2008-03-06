@@ -28,9 +28,7 @@ function	print_tab_proj_member_date($id_project)
 
 function	print_tab_date($length, $day, $month, $year, $input)
 {
-	$test = (double) (((double) 100.3) / ((double) $length));
-	printf(TAB_DATE_START, $test);
-	var_dump($test);
+	printf(TAB_DATE_START, (double) (((double) 100) / ((double) $length)));
 	$colorbg = 0;
 	$coloractive = 2;
 	foreach ($input as $value)
