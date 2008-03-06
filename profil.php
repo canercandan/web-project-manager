@@ -22,13 +22,14 @@ if ($_POST[PROFIL_POST_LOCATION] && $_POST[PROFIL_POST_NAME] &&
 	  {
 	    admin_profil_update();
 		header(LOCATION_ADMIN);
+		exit(0);
 	  }
 	else
 	  {
         profil_update();
         header(LOCATION_MEMBER);
+		exit(0);
 	  }
-    exit(0);
   }
 
 if ($_POST)
