@@ -59,8 +59,8 @@
 		  <xsl:when test="project_window/member_project">
 		    <xsl:apply-templates select="project_window/member_project" />
 		  </xsl:when>
-		  <xsl:when test="project_window/infomation_project">
-		    <xsl:apply-templates select="project_window/infomation_project" />
+		  <xsl:when test="project_window/information_project">
+		    <xsl:apply-templates select="project_window/information_project" />
 		  </xsl:when>
 		</xsl:choose>
 	      </xsl:otherwise>
