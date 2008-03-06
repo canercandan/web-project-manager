@@ -65,7 +65,7 @@ define('MEMBER', 2);
 define('MEMBER_DATEGRAPH', 3);
 
 define('BTN_UPDATE_MEMBER', 'update_member');
-define('MEMBER_BTN_UPDATE', '<btn_update post="update_member"/>');
+define('MEMBER_BTN_UPDATE', '<btn_update name="update_member"/>');
 define('BTN_UPDATE_HISTO_MEMBER', 'update_histomember');
 define('MEMBER_BTN_HISTO_UPDATE', '<btn_update_histo post="update_histomember"/>');
 define('BTN_UP', 'btn_up');
