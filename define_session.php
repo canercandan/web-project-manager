@@ -4,6 +4,8 @@
 ** Session name
 */
 
+define('LOCATION_EXIT', 'Location:connect.php');
+
 define('SESSION_LOCATION', 'sesslocation');
 define('SESSION_TITLE', 'sesstitle');
 define('SESSION_NAME', 'sessname');

@@ -7,12 +7,18 @@ require_once('./define_admin.php');
 require_once('./function_admin.php');
 require_once('./function_sql.php');
 require_once('./function_usr.php');
+require_once('./define_session');
 
 session_name(SESS_NAME);
 session_start();
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 
+if (!$_SESSION[SESSION_NAME])
+  {
+    header(LOCATION_EXIT);
+	exit (0);
+  }
 if($_POST)
   update_member();
 header(HEADER_CONTENT_TYPE);
