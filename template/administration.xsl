@@ -37,7 +37,7 @@
 		  </td>
 		  <td>
 		    <select name="{usr_level/@post}[{id}]">
-		      <xsl:variable name="id" select="id" />
+		      <xsl:variable name="id" select="usr_level/@value" />
 		      <xsl:for-each select="../level/item">
 			<xsl:choose>
 			  <xsl:when test="$id=@id">
