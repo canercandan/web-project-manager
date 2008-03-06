@@ -17,20 +17,22 @@ if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE);
  else
   printf(XML_HEADER, XML_TEMPLATE);
+if($_POST)
+  update_member();
 printf(ADMIN_BEGIN);
-$test = mysql_query(ADMIN_MEMBER_SELECT);
 printf(MEMBER_LIST_BEGIN);
 get_user_level();
 printf(MEMBER_BUTTON_SELECT, ADMIN_BUTTON_SELECT);
 printf(MEMBER_BUTTON_UPDATE, ADMIN_BUTTON_UPDATE);
 printf(MEMBER_BUTTON_DELETE, ADMIN_BUTTON_DELETE);
+$test = mysql_query(ADMIN_MEMBER_SELECT);
 while ($row = mysql_fetch_array($test, MYSQL_NUM))
   {
     printf(ADMIN_MEMBER, $row[0],
-	   ADMIN_POST_LOGIN, $row[1],
-	   ADMIN_POST_NAME, $row[2],
-	   ADMIN_POST_FIRST, $row[3],
-	   ADMIN_USR_LEVEL, $row[4]);
+		   ADMIN_POST_LOGIN, $row[1],
+		   ADMIN_POST_NAME, $row[2],
+		   ADMIN_POST_FIRST, $row[3],
+		   ADMIN_USR_LEVEL, $row[4]);
   }
 printf(MEMBER_LIST_END);
 printf(ADMIN_END);
