@@ -36,9 +36,30 @@ function select_title()
     }
 }
 
-function select_profil()
+function user_select_profil()
 {
   $test = sql_query(sprintf(PROFIL_SQL_PROFIL, $_SESSION['USER_ID']));
+  $tab = sql_fetch_array($test);
+  if ($tab[2] != 'NULL')
+	$_POST[PROFIL_POST_NAME] = $tab[2];
+  if ($tab[3] != 'NULL')
+	$_POST[PROFIL_POST_FNAME] = $tab[3];
+  if ($tab[4] != 'NULL')
+	$_POST[PROFIL_POST_FPHONE] = $tab[4];
+  if ($tab[5] != 'NULL')
+	$_POST[PROFIL_POST_MPHONE] = $tab[5];
+  $_POST[PROFIL_POST_ADDRESS] = $tab[7];
+  printf(PROFIL_FIELD_LOCATION_BEGIN, PROFIL_POST_LOCATION, $tab[1]);
+  select_location();
+  printf(PROFIL_FIELD_LOCATION_END);
+  printf(PROFIL_FIELD_TITLE_BEGIN, PROFIL_POST_TITLE, $tab[6]);
+  select_title();
+  printf(PROFIL_FIELD_TITLE_END);
+}
+
+function admin_select_profil()
+{
+  $test = sql_query(sprintf(PROFIL_SQL_PROFIL, $_GET[MEMBER_SELECT]);
   $tab = sql_fetch_array($test);
   if ($tab[2] != 'NULL')
 	$_POST[PROFIL_POST_NAME] = $tab[2];

@@ -11,5 +11,6 @@ define('SESSION_FNAME', 'sessfname');
 define('SESSION_FPHONE', 'sessfphone');
 define('SESSION_MPHONE', 'sessmphone');
 define('SESSION_ADDRESS', 'sessaddress');
+define('SESSION_LEVEL', 'sesslevel');
 
 ?>

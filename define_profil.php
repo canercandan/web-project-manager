@@ -49,6 +49,9 @@ define('PROFIL_FPHONE_ERROR', 'error : nophone enter');
 define('PROFIL_MPHONE_ERROR', 'error : no mobile enter');
 define('PROFIL_ADDRESS_ERROR', 'error : no address enter');
 
+define('IS_A_ADMIN', '1');
+define('MEMBER_SELECT', 'memberselect');
+
 /*
 ** Define profil : sql profil request
 */

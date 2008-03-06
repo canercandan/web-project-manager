@@ -99,6 +99,7 @@ function session_create()
   $_SESSION[SESSION_FPHONE] = $row[4];
   $_SESSION[SESSION_MPHONE] = $row[5];
   $_SESSION[SESSION_ADDRESSE] = $row[6];
+  $_SESSION[SESSION_LEVEL] = $row[7];
 }
 
 ?>

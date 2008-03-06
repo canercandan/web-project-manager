@@ -105,12 +105,15 @@ define('USR_SQL_SESSION',
 			   profil_fname, 
 			   profil_fphone, 
 			   profil_mphone, 
-			   profil_perso_adress
+			   profil_perso_adress,
+			   usr_level_id
 		FROM tw_location,
 			 tw_title,
-			 tw_profil
+			 tw_profil,
+			 tw_usr
 		WHERE tw_location.location_id = tw_profil.profil_location_id
 		AND tw_title.title_id = tw_profil.profil_title_id
+		AND tw_usr.usr_id = tw_profil.profil_usr_id
 		AND profil_usr_id = \'%s\';');
 
 ?>

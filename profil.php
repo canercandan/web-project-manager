@@ -51,11 +51,13 @@ printf($error);
 
 if (!$_POST)
   {
-    if (!$_SESSION[SESSION_LOCATION] || !$_SESSION[SESSION_TITLE] ||
+	if ($_SESSION[SESSION_LEVEL] == IS_A_ADMIN && $_GET[MEMBER_SELECT])
+	  admin_select_profil();
+    else if (!$_SESSION[SESSION_LOCATION] || !$_SESSION[SESSION_TITLE] ||
 	!$_SESSION[SESSION_NAME] || !$_SESSION[SESSION_FNAME] ||
 	!$_SESSION[SESSION_FPHONE] || !$_SESSION[SESSION_MPHONE] ||
 	!$_SESSION[SESSION_ADDRESS])
-      select_profil();
+      user_select_profil();
     else
       select_session();
   }
