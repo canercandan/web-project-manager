@@ -3,6 +3,9 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="activity_window">
+    <xsl:if test="error">
+      <xsl:apply-templates select="error" />
+    </xsl:if>
     <xsl:choose>
       <xsl:when test="add_activity">
 	<xsl:apply-templates select="add_activity" />
