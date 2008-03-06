@@ -23,6 +23,7 @@
   <xsl:import href="./template/add_project.xsl" />
   <xsl:import href="./template/member_project.xsl" />
   <xsl:import href="./template/information_project.xsl" />
+  <xsl:import href="./template/project_member_dategraph.xsl" />
   <xsl:import href="./template/field_location.xsl" />
   <xsl:import href="./template/field_title.xsl" />
   <xsl:import href="./template/date.xsl" />

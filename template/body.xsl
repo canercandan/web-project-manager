@@ -24,6 +24,9 @@
 	      <li class="go">
 		<a href="?project=1&amp;add_activity=1">Add an activity</a>
 	      </li>
+	      <li class="go">
+		<a href="?project=1&amp;member_dategraph=1">History</a>
+	      </li>
 	    </ul>
 	  </xsl:if>
 	  <div class="menu blue2">
@@ -61,6 +64,9 @@
 		  </xsl:when>
 		  <xsl:when test="project_window/information_project">
 		    <xsl:apply-templates select="project_window/information_project" />
+		  </xsl:when>
+		  <xsl:when test="project_window/project_member_dategraph">
+		    <xsl:apply-templates select="project_window/project_member_dategraph" />
 		  </xsl:when>
 		</xsl:choose>
 	      </xsl:otherwise>

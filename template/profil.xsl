@@ -11,7 +11,7 @@
 	<xsl:if test="error">
 	  <xsl:apply-templates select="error" />
 	</xsl:if>
-	<form action="./profil.php" method="post">
+	<form action="?" method="post">
 	  <fieldset>
 	    <legend>Profil</legend>
 	    <div class="form">
