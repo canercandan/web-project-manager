@@ -20,6 +20,7 @@ if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE);
  else
   printf(XML_HEADER, XML_TEMPLATE);
+printf(SESSION_DESTROY, DESTROY);
 printf(ADMIN_BEGIN);
 printf(MEMBER_LIST_BEGIN);
 get_user_level();
@@ -37,7 +38,6 @@ while ($row = mysql_fetch_array($test, MYSQL_NUM))
   }
 printf(MEMBER_LIST_END);
 printf(ADMIN_END);
-printf(SESSION_DESTROY, DESTROY);
 printf(XML_FOOTER);
 sql_close($link);
 
