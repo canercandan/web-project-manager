@@ -13,7 +13,7 @@
 	</xsl:if>
 	<form action="?" method="post">
 	  <xsl:if test="memberselect">
-	    <input type="hidden" name="memberselect" value="{memberselect}" />
+	    <input type="hidden" name="{memberselect/@post}" value="{memberselect/@value}" />
 	  </xsl:if>
 	  <fieldset>
 	    <legend>Profil</legend>
