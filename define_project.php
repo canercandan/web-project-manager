@@ -64,16 +64,20 @@ define('ADD_ACTIVITY', 1);
 define('MEMBER', 2);
 define('MEMBER_DATEGRAPH', 3);
 
+define('BTN_UPDATE_MEMBER', 'update_member');
+define('MEMBER_BTN_UPDATE', '<btn_update post="update_member"/>');
+define('BTN_UPDATE_HISTO_MEMBER', 'update_histomember');
+define('MEMBER_BTN_HISTO_UPDATE', '<btn_update_histo post="update_histomember"/>');
 define('BTN_UP', 'btn_up');
 define('BTN_DOWN', 'btn_down');
 define('BTN_DELETE_HISTO', 'btn_delete_histo');
-define('BTN_SUBMIT', 'btn_sumbit');
+define('BTN_SUBMIT', 'btn_submit');
 define('POST_SELECT', 'selectmember');
 define('BTN_KEEP_HISTO','keep_histo');
 define('MEMBER_BTN_UP', '<btn_up post="btn_up"/>');
 define('MEMBER_BTN_DELETE_HISTO', '<btn_delete_histo post="btn_delete_histo"/>');
 define('MEMBER_BTN_DOWN', '<btn_down post="btn_down"/>');
-define('MEMBER_BTN_SUBMIT', '<btn_submit post="btn_sumbit"/>');
+define('MEMBER_BTN_SUBMIT', '<btn_submit post="btn_submit"/>');
 define('MEMBER_POST_SELECT', '<checkbox name="selectmember"/>');
 define('MEMBER_KEEP_HISTO', '<btn_histo name="keep_histo"/>');
 

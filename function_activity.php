@@ -157,6 +157,80 @@ function get_member_project_activity($id_activity, $id_project, $last)
 	return ($last);
 }
 
+define('SQL_UPDATE_MEMBER_ACTIVITY','
+											UPDATE tw_activity_member SET 	activity_level = \'%d\',
+																	activity_work = \'%d\',
+																	activity_member_date_start = DATE(\'%04d-%02d-%02d\'),
+																	activity_member_date_end = DATE(\'%04d-%02d-%02d\')
+																WHERE activity_member_usr_id = \'%d\'
+																	AND activity_member_activity_id = \'%d\'
+																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
+																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
+																	');
+
+define('ERR_DATE_ORDER', 'There are some mistakes with the dates : the date corresponding to the start (%02d/%02d/%04d) must be after the one corresponding to the end (%02d/%02d/%04d)');
+
+define('ERR_OLD_DATE_ORDER', 'There are some mistakes with the dates : the date corresponding to the end of an old entry (%02d/%02d/%04d) must be before the one corresponding to the new start (%02d/%02d/%04d)');
+
+define('ERR_DATE_START_NOT_FULL', 'There are some mistakes with the starting dates : You must define all the field of the starting dates');
+define('ERR_DATE_END_NOT_FULL', 'There are some mistakes with the ending dates : You must define all the field of the ending dates if you have starting to fill them');
+
+define('SQL_GET_DATES_MEMBER_ACTIVITY',
+'	SELECT day(activity_member_date_start), month(activity_member_date_start), year(activity_member_date_start), 
+			day(activity_member_date_end), month(activity_member_date_end), year(activity_member_date_end) FROM tw_activity_member WHERE
+		activity_member_usr_id = \'%d\'
+		AND activity_member_activity_id = \'%d\';
+');												
+function update_member_activity($id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end,
+					$work, $admin, $new_day_start, $new_month_start, $new_year_start, $new_day_end, $new_month_end, $new_year_end)
+{
+	$new_start = mktime(0, 0, 0, $new_month_start, $new_day_start, $new_year_start);
+	$new_end = mktime(0, 0, 0, $new_month_end, $new_day_end, $new_year_end);
+	$old_start = mktime(0, 0, 0, $month_start, $day_start, $year_start);
+	$old_end = mktime(0, 0, 0, $month_end, $day_end, $year_end);
+	if(($new_month_start == 0 || $new_day_start == 0 || $new_year_start == 0))
+	{
+		printf(XML_ERROR, ERR_DATE_START_NOT_FULL);
+	}
+	else if (($new_month_end != 0 || $new_day_end != 0 || $new_year_end != 0) && ($new_month_end == 0 || $new_day_end == 0 || $new_year_end == 0))
+	{
+		printf(XML_ERROR, ERR_DATE_END_NOT_FULL);
+	}
+	else if ($new_month_end != 0 && $new_day_end != 0 && $new_year_end != 0 && 
+	$new_start > $new_end)
+	{
+		printf(XML_ERROR, sprintf(ERR_DATE_ORDER, $new_day_start, $new_month_start, $new_year_start, $new_day_end, $new_month_end, $new_year_end));
+	}
+	else
+	{
+		$res = sql_query(sprintf(SQL_GET_DATES_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
+													sql_real_escape_string($id_activity)));
+		while ($tab = sql_fetch_array($res))
+		{
+			
+			$start = mktime(0, 0, 0, $tab[1], $tab[0], $tab[2]);
+			$end = mktime(0, 0, 0, $tab[4], $tab[3], $tab[5]);
+			
+			if (($start != $old_start) /*&& (	($new_end > $start && ($new_start < $end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] ==0)))
+											|| ($new_end < $end)
+											*/)		
+			{
+				printf(XML_ERROR, sprintf(ERR_OLD_DATE_ORDER, $tab[3], $tab[4], $tab[5], $new_day_start, $new_month_start, $new_year_start));
+				return;
+			}
+		}		
+		sql_query(sprintf(SQL_UPDATE_MEMBER_ACTIVITY, sql_real_escape_string($admin),
+													sql_real_escape_string($work),
+													sql_real_escape_string($new_year_start),sql_real_escape_string($new_month_start),sql_real_escape_string($new_day_start),
+													sql_real_escape_string($new_year_end),sql_real_escape_string($new_month_end),sql_real_escape_string($new_day_end),
+													sql_real_escape_string($id_user),
+													sql_real_escape_string($id_activity),
+													sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
+													sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
+	}
+
+}
+
 function add_activities($id_project, $id_activity, $name, $describ, $charge)
 {
   sql_query(sprintf(SQL_ADD_ACTIVITY, sql_real_escape_string($id_project),

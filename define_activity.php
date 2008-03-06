@@ -26,11 +26,12 @@ define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
 define('MEMBER_LIST_ACTIVITY_END', '</member_list_activity>');
 define('MEMBER_POST_LEVEL', 'modlevel');
 define('MEMBER_POST_WORK', 'modnwork');
-define('MEMBER_ELEM_PROJECT', '<member><key unique="%d"/><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><login>%s</login></member>');
+define('MEMBER_POST_LIST_KEY', 'key');
+define('MEMBER_ELEM_PROJECT', '<member><key name="key" unique="%d"/><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><login>%s</login></member>');
 define('MEMBER_ELEM_ACTIVITY', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name><fname>%s</fname><title>%s</title><role>%s</role><level post="%s">%d</level><work post="%s">%d</work><login>%s</login>
 <date_start postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
 <date_end postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
-<key unique="%d" id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
+<key name="key" unique="%d" id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
 </member>');
 define('POST_KEY_ACT_DAY_START', 'key_member_act_day_start');
 define('POST_KEY_ACT_MONTH_START', 'key_member_act_month_start');
@@ -184,8 +185,8 @@ define('SQL_GET_UNDERACT_WORK',
 	'
 	SELECT activity_id, activity_name, activity_charge_total, SUM(DATEDIFF(CURDATE(), activity_member_date_start)) as "work" FROM tw_activity, tw_activity_member
 	WHERE activity_member_activity_id = activity_id
-	AND CURDATE() > activity_member_date_start
-	AND (activity_member_date_end = DATE(\'0000-00-00\') or CURDATE() < activity_member_date_end)
+	AND DATEDIFF(CURDATE(),activity_member_date_start) > 0
+	AND (activity_member_date_end = DATE(\'0000-00-00\') or DATEDIFF(CURDATE(), activity_member_date_end) < 0)
 	AND activity_id = \'%d\'
 	AND activity_work = 1
 	AND activity_id not in (SELECT DISTINCT activity_parent_id FROM tw_activity)
@@ -193,9 +194,9 @@ define('SQL_GET_UNDERACT_WORK',
 	UNION
 	SELECT activity_id, activity_name, activity_charge_total, SUM(DATEDIFF(activity_member_date_end, activity_member_date_start)) as "work" FROM tw_activity, tw_activity_member
 	WHERE activity_member_activity_id = activity_id
-	AND CURDATE() > activity_member_date_start
+	AND DATEDIFF(CURDATE(), activity_member_date_start) > 0
 	AND activity_member_date_end != DATE(\'0000-00-00\')
-	AND CURDATE() > activity_member_date_end
+	AND DATEDIFF(CURDATE(), activity_member_date_end) >= 0
 	AND activity_id = \'%d\'
 	AND activity_work = 1
 	AND activity_id not in (SELECT DISTINCT activity_parent_id FROM tw_activity)
@@ -206,8 +207,8 @@ define('SQL_GET_UNDERACT_WORK',
 		UNION
 	SELECT activity_id, activity_name, activity_charge_total, SUM(DATEDIFF(CURDATE(), activity_member_date_start)) as "work" FROM tw_activity, tw_activity_member
 	WHERE activity_member_activity_id = activity_id
-	AND CURDATE() > activity_member_date_start
-	AND (activity_member_date_end = DATE(\'0000-00-00\') or CURDATE() < activity_member_date_end)
+	AND DATEDIFF(CURDATE(), activity_member_date_start) > 0
+	AND (activity_member_date_end = DATE(\'0000-00-00\') or DATEDIFF(CURDATE(), activity_member_date_end) < 0)
 	AND activity_parent_id = \'%d\'
 	AND activity_work = 1
 	AND activity_id not in (SELECT DISTINCT activity_parent_id FROM tw_activity)
@@ -215,10 +216,10 @@ define('SQL_GET_UNDERACT_WORK',
 	UNION
 	SELECT activity_id, activity_name, activity_charge_total, SUM(DATEDIFF(activity_member_date_end, activity_member_date_start)) as "work" FROM tw_activity, tw_activity_member
 	WHERE activity_member_activity_id = activity_id
-	AND CURDATE() > activity_member_date_start
+	AND DATEDIFF(CURDATE(), activity_member_date_start) > 0
 	AND activity_work = 1
 	AND activity_member_date_end != DATE(\'0000-00-00\')
-	AND CURDATE() > activity_member_date_end
+	AND DATEDIFF(CURDATE(), activity_member_date_end) >= 0
 	AND activity_parent_id = \'%d\'
 	AND activity_id not in (SELECT DISTINCT activity_parent_id FROM tw_activity)
 	GROUP BY activity_id
@@ -229,7 +230,7 @@ define('SQL_GET_UNDERACT_WORK',
 	UNION
 	SELECT DISTINCT activity_member_activity_id FROM tw_activity_member
 	WHERE
-	CURDATE() > activity_member_date_start
+	DATEDIFF(CURDATE(), activity_member_date_start) > 0
 	AND activity_work = 1
 	)
 	AND activity_parent_id = \'%d\'

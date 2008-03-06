@@ -76,9 +76,32 @@
     <tr>
       <td>
 	<input type="checkbox"
-	       name="{../checkbox/@name}[{key/@unique}][{key/@id}]"
+	       name="{../checkbox/@name}[]"
+	       value="{key/@unique}" />
+	
+	<input type="hidden"
+	       name="{key/@name}[{key/@unique}][{key/@day_start}]"
+	       value="{date_start/@day}" />
+    <input type="hidden"
+	       name="{key/@name}[{key/@unique}][{key/@month_start}]"
+	       value="{date_start/@month}" />
+	<input type="hidden"
+	       name="{key/@name}[{key/@unique}][{key/@year_start}]"
+	       value="{date_start/@year}" />
+	<input type="hidden"
+	       name="{key/@name}[{key/@unique}][{key/@day_end}]"
+	       value="{date_end/@day}" />
+	<input type="hidden"
+	       name="{key/@name}[{key/@unique}][{key/@month_end}]"
+		   value="{date_end/@month}" />
+	<input type="hidden"
+	       name="{key/@name}[{key/@unique}][{key/@year_end}]"
+	       value="{date_end/@year}" />
+	<input type="hidden"
+	       name="{key/@name}[{key/@unique}][{key/@id}]"
 	       value="{id}" />
-      </td>
+	   
+	  </td>
       <td><xsl:value-of select="login" /></td>
       <td><xsl:value-of select="name" /></td>
       <td><xsl:value-of select="fname" /></td>
@@ -88,13 +111,13 @@
 	<xsl:choose>
 	  <xsl:when test="level=1">
 	    <input type="checkbox"
-		   name="{../checkbox/@name}[{key/@unique}][{level/@post}]"
+		   name="{level/@post}[{key/@unique}]"
 		   value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <input type="checkbox"
-		   name="{../checkbox/@name}[{key/@unique}][{level/@post}]"
+		   name="{level/@post}[{key/@unique}]"
 		   value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
@@ -103,13 +126,13 @@
 	<xsl:choose>
 	  <xsl:when test="work=1">
 	    <input type="checkbox"
-		   name="{../checkbox/@name}[{key/@unique}][{work/@post}]"
+		   name="{work/@post}[{key/@unique}]"
 		   value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <input type="checkbox"
-		   name="{../checkbox/@name}[{key/@unique}][{work/@post}]"
+		   name="{work/@post}[{key/@unique}]"
 		   value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
@@ -120,34 +143,40 @@
       <td class="little2">
 	<xsl:apply-templates select="date_end" />
       </td>
+	  
     </tr>
   </xsl:template>
 
   <xsl:template match="member_activity/member_histo_list_activity/member">
-    <tr>
+   <tr>
       <td>
+	<input type="checkbox"
+	       name="{../checkbox/@name}[]"
+	       value="{key/@unique}" />
+	
 	<input type="hidden"
-	       name="{../checkbox/@name}[{key/@unique}][{key/@day_start}]"
+	       name="{key/@name}[{key/@unique}][{key/@day_start}]"
 	       value="{date_start/@day}" />
-	<input type="hidden"
-	       name="{../checkbox/@name}[{key/@unique}][{key/@month_start}]"
+    <input type="hidden"
+	       name="{key/@name}[{key/@unique}][{key/@month_start}]"
 	       value="{date_start/@month}" />
 	<input type="hidden"
-	       name="{../checkbox/@name}[{key/@unique}][{key/@year_start}]"
+	       name="{key/@name}[{key/@unique}][{key/@year_start}]"
 	       value="{date_start/@year}" />
 	<input type="hidden"
-	       name="{../checkbox/@name}[{key/@unique}][{key/@day_end}]"
+	       name="{key/@name}[{key/@unique}][{key/@day_end}]"
 	       value="{date_end/@day}" />
 	<input type="hidden"
-	       name="{../checkbox/@name}[{key/@unique}][{key/@month_end}]"
-	       value="{date_end/@month}" />
+	       name="{key/@name}[{key/@unique}][{key/@month_end}]"
+		   value="{date_end/@month}" />
 	<input type="hidden"
-	       name="{../checkbox/@name}[{key/@unique}][{key/@year_end}]"
+	       name="{key/@name}[{key/@unique}][{key/@year_end}]"
 	       value="{date_end/@year}" />
-	<input type="checkbox"
-	       name="{../checkbox/@name}[{key/@unique}][{key/@id}]"
+	<input type="hidden"
+	       name="{key/@name}[{key/@unique}][{key/@id}]"
 	       value="{id}" />
-      </td>
+	   
+	  </td>
       <td><xsl:value-of select="login" /></td>
       <td><xsl:value-of select="name" /></td>
       <td><xsl:value-of select="fname" /></td>
@@ -157,13 +186,13 @@
 	<xsl:choose>
 	  <xsl:when test="level=1">
 	    <input type="checkbox"
-		   name="{../checkbox/@name}[{key/@unique}][{level/@post}]"
+		   name="{level/@post}[{key/@unique}]"
 		   value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <input type="checkbox"
-		   name="{../checkbox/@name}[{key/@unique}][{level/@post}]"
+		   name="{level/@post}[{key/@unique}]"
 		   value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
@@ -172,13 +201,13 @@
 	<xsl:choose>
 	  <xsl:when test="work=1">
 	    <input type="checkbox"
-		   name="{../checkbox/@name}[{key/@unique}][{work/@post}]"
+		   name="{work/@post}[{key/@unique}]"
 		   value="1"
 		   checked="checked" />
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <input type="checkbox"
-		   name="{../checkbox/@name}[{key/@unique}][{work/@post}]"
+		   name="{work/@post}[{key/@unique}]"
 		   value="1" />
 	  </xsl:otherwise>
 	</xsl:choose>
@@ -198,7 +227,7 @@
       <form action="?" method="post">
 	<div class="member_list">
 	  <table class="table">
-	    <caption>Members list of project</caption>
+	    <caption>Project's members available</caption>
 	    <xsl:apply-templates select="member_list_project" />
 	  </table>
 	</div>
@@ -212,11 +241,11 @@
 	</div>
 	<div class="member_list">
 	  <table class="table">
-	    <caption>Member list of activity</caption>
+	    <caption>Active or future members</caption>
 	    <xsl:apply-templates select="member_list_activity" />
 	  </table>
 	  <div class="form">
-	    <input type="submit" name="{btn_submit/@post}" value="Update" />
+	    <input type="submit" name="{btn_update/@post}" value="Update" />
 	  </div>
 	</div>
 	<div class="member_submit">
@@ -226,11 +255,11 @@
       <form action="?" method="post">
 	<div class="member_list">
 	  <table class="table">
-	    <caption>Member history list of activity</caption>
+	    <caption>Old members' entries</caption>
 	    <xsl:apply-templates select="member_histo_list_activity" />
 	  </table>
 	  <div class="form">
-	    <input type="submit" name="{btn_submit/@post}" value="Update" />
+	    <input type="submit" name="{btn_update_histo/@post}" value="Update" />
 	    <input type="submit" name="{btn_delete_histo/@post}" value="Delete" />
 	  </div>
 	</div>

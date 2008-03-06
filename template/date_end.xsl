@@ -4,7 +4,7 @@
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="date_end">
     <xsl:variable name="day_id" select="@day" />
-    <select name="{../../checkbox/@name}[{../key/@unique}][{@postday}]">
+    <select name="{@postday}[{../key/@unique}]">
       <xsl:for-each select="../../../../list_day/day">
 	<xsl:choose>
 	  <xsl:when test="$day_id=@id">
@@ -21,7 +21,7 @@
       </xsl:for-each>
     </select>
     <xsl:variable name="month_id" select="@month" />
-    <select name="{../../checkbox/@name}[{../key/@unique}][{@postmonth}]">
+    <select name="{@postmonth}[{../key/@unique}]">
       <xsl:for-each select="../../../../list_month/month">
 	<xsl:choose>
 	  <xsl:when test="$month_id=@id">
@@ -38,7 +38,7 @@
       </xsl:for-each>
     </select>
     <xsl:variable name="year_id" select="@year" />
-    <select name="{../../checkbox/@name}[{../key/@unique}][{@postyear}]">
+    <select name="{@postyear}[{../key/@unique}]">
       <xsl:for-each select="../../../../list_year/year">
 	<xsl:choose>
 	  <xsl:when test="$year_id=@id">
