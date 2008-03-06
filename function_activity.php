@@ -164,7 +164,12 @@ define('SQL_DELETE_MEMBER_ACTIVITY','
 																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
 																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
 																	');
-
+define('SQL_CHECK_HISTO','DELETE FROM tw_activity_member
+								WHERE activity_member_usr_id = \'%d\'
+									AND activity_member_activity_id = \'%d\'
+									AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
+									AND activity_member_date_end = CURDATE()');
+									
 define('SQL_UPDATE_MEMBER_ACTIVITY','
 											UPDATE tw_activity_member SET 	activity_level = \'%d\',
 																	activity_work = \'%d\',
@@ -203,6 +208,9 @@ define('SQL_GET_DATES_MEMBER_ACTIVITY',
 
 function move_to_old_member_activity($id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end)
 {
+	sql_query(sprintf(SQL_CHECK_HISTO, sql_real_escape_string($id_user),
+										sql_real_escape_string($id_activity),
+										sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start)));
 	sql_query(sprintf(SQL_MOVE_TO_OLD_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
 													sql_real_escape_string($id_activity),
 													sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
