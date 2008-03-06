@@ -41,12 +41,12 @@
 		      <xsl:for-each select="../level/item">
 			<xsl:choose>
 			  <xsl:when test="$id=@id">
-			    <option value="@id" selected="selected">
+			    <option value="{@id}" selected="selected">
 			      <xsl:value-of select="@name" />
 			    </option>
 			  </xsl:when>
 			  <xsl:otherwise>
-			    <option value="@id">
+			    <option value="{@id}">
 			      <xsl:value-of select="@name" />
 			    </option>
 			  </xsl:otherwise>
