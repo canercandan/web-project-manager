@@ -12,13 +12,14 @@ session_name(SESS_NAME);
 session_start();
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
+
+if($_POST)
+  update_member();
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE);
  else
   printf(XML_HEADER, XML_TEMPLATE);
-if($_POST)
-  update_member();
 printf(ADMIN_BEGIN);
 printf(MEMBER_LIST_BEGIN);
 get_user_level();
