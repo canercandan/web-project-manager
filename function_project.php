@@ -118,14 +118,15 @@ function get_information_project($id_project)
 		htmlentities($tab[6]),
 		htmlentities($tab[7]));
 	}
-	printf('<activity_work><id>%d</id><name>%s</name>', 0, htmlentities($tab[0]));
+	printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name>',(isset($_SESSION['DEVELOPPED_WORK'][0]) ? $_SESSION['DEVELOPPED_WORK'][0] : 0), 0, htmlentities($tab[0]));
 	$tot_work = 0;
 	$tot_charge=0;
 	$res = SQL_QUERY(sprintf(SQL_GET_FIRST_ACTIVITY, sql_real_escape_string($id_project)));
 	if (sql_num_rows($res))
 		while ($tab = sql_fetch_array($res))
 		{
-			printf('<activity_work><id>%d</id><name>%s</name><charge>%d</charge>',
+			printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge>',
+			(isset($_SESSION['DEVELOPPED_WORK'][$tab[0]]) ? $_SESSION['DEVELOPPED_WORK'][$tab[0]] : 0),
 			htmlentities($tab[0]),
 			htmlentities($tab[1]),
 			htmlentities($tab[2]));

@@ -389,10 +389,22 @@ h3.blue2
 {
 	height: 100%;
 	text-align: center;
-	color: LightSteelBlue;
+	color: WhiteSmoke;
 	font-weight: bold;
 	font-size: 0.9em;
 	background-color: OliveDrab;
+	float: left;
+}
+
+.bar .nok
+{
+	height: 100%;
+	text-align: left;
+	padding-left: 1px;
+	color: OliveDrab;
+	font-weight: bold;
+	font-size: 0.9em;
+	background-color: WhiteSmoke;
 }
 
 .member_list

@@ -8,18 +8,30 @@
     <xsl:value-of select="../charge" /> days/man)
     <div class="bar">
       <div class="ok" style="width: {../percent}%">
-	<xsl:value-of select="../percent" />%
-      </div>
+		<xsl:choose>
+		<xsl:when test="../percent&gt;50">
+			<xsl:value-of select="../percent" />%
+		 </xsl:when>
+		</xsl:choose>
+	  </div>
+	  <div class="nok" style="margin-left: {../percent}%">
+		<xsl:choose>
+		<xsl:when test="../percent&lt;50">
+			<xsl:value-of select="../percent" />%
+		 </xsl:when>
+		</xsl:choose>
+	  </div>
+	  <div class="clear"/>
     </div>
   </xsl:template>
 
   <xsl:template match="activity_work">
     <xsl:choose>
       <xsl:when test="developped=1">
-	<li id="work_{id}">
-	  <a href="./root.php?less=1&amp;work_id={id}#work_{id}">
-	    <xsl:choose>
-	      <xsl:when test="activity_work">
+		<li id="work_{id}">
+			<a href="./root.php?less=1&amp;work_id={id}#work_{id}">
+			<xsl:choose>
+			<xsl:when test="activity_work">
 		<img src="./images/icons/less.png" />
 	      </xsl:when>
 	      <xsl:otherwise>
