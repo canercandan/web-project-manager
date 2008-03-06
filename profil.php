@@ -18,7 +18,7 @@ if ($_POST[PROFIL_POST_LOCATION] && $_POST[PROFIL_POST_NAME] &&
     $_POST[PROFIL_POST_MPHONE] && $_POST[PROFIL_POST_TITLE] &&
     $_POST[PROFIL_POST_ADDRESS])
   {
-    if ($_SESSION[SESSION_LEVEL] == IS_A_ADMIN && $_GET[MEMBER_SELECT])
+    if ($_SESSION[SESSION_LEVEL] == IS_A_ADMIN && $_POST[MEMBER_SELECT])
 	  {
 	    admin_profil_update();
 		header(LOCATION_ADMIN);
@@ -57,10 +57,10 @@ if ($_GET[DEBUG])
    printf(XML_HEADER, XML_TEMPLATE);
 printf(PROFIL_BEGIN);
 printf($error);
-
+if ($_GET[MEMBER_SELECT]);
+  printf(XML_MEMBER_SELECT, $_GET[MEMBER_SELECT]);
 if (!$_POST)
   {
-    var_dump($_SESSION[SESSION_LEVEL]);
 	if ($_SESSION[SESSION_LEVEL] == IS_A_ADMIN && $_GET[MEMBER_SELECT])
 	{
 	  admin_select_profil();

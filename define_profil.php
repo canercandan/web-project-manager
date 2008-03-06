@@ -53,6 +53,7 @@ define('PROFIL_ADDRESS_ERROR', 'error : no address enter');
 
 define('IS_A_ADMIN', '1');
 define('MEMBER_SELECT', 'memberselect');
+define('XML_MEMBER_SELECT', '<memberselect>%s</memberselect>');
 
 /*
 ** Define profil : sql profil request
