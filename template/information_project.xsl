@@ -15,7 +15,7 @@
 	  <hr />
 	  <label class="big">
 	    Describe<br />
-	    <textarea name="describ/@post">
+	    <textarea name="{describ/@post}">
 	      <xsl:value-of select="describ" />
 	    </textarea>
 	  </label>

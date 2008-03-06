@@ -3,9 +3,7 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="line[@legend=1]/item">
-    <td>
-      <xsl:value-of select="@legend" />
-    </td>
+    <xsl:value-of select="@legend" />
   </xsl:template>
 
   <xsl:template match="line[@legend=0]/item">
@@ -26,36 +24,35 @@
   </xsl:template>
 
   <xsl:template match="tab_date/line[@legend=1]">
-    <tr class="little">
-      <th>Date</th>
+    <div class="name">Date</div>
+    <div class="col">
       <xsl:apply-templates select="item" />
-    </tr>
+    </div>
   </xsl:template>
 
   <xsl:template match="tab_date/line[@legend=0]">
-    <xsl:for-each select=".">
-      <xsl:choose>
-	<xsl:when test="@colorbg=0">
-	  <div class="name" style="background-color: #eee;">
-	    <xsl:value-of select="@name" />
-	  </div>
-	</xsl:when>
-	<xsl:otherwise>
-	  <div class="name" style="background-color: Window;">
-	    <xsl:value-of select="@name" />
-	  </div>
-	</xsl:otherwise>
-      </xsl:choose>
-      <div class="col">
-	<xsl:apply-templates select="item" />
-	<div class="clear" />
-      </div>
-    </xsl:for-each>
+    <xsl:choose>
+      <xsl:when test="@colorbg=0">
+	<div class="name" style="background-color: #eee;">
+	  <xsl:value-of select="@name" />
+	</div>
+      </xsl:when>
+      <xsl:otherwise>
+	<div class="name" style="background-color: Window;">
+	  <xsl:value-of select="@name" />
+	</div>
+      </xsl:otherwise>
+    </xsl:choose>
+    <div class="col">
+      <xsl:apply-templates select="item" />
+      <div class="clear" />
+    </div>
   </xsl:template>
 
   <xsl:template match="project_member_dategraph/tab_date">
     <div class="history">
       <xsl:apply-templates select="line[@legend=0]" />
+      <xsl:apply-templates select="line[@legend=1]" />
     </div>
   </xsl:template>
 
