@@ -53,6 +53,9 @@ define('ADMIN_LEVEL_BEGIN', '<level>');
 define('ADMIN_LEVEL_END', '</level>');
 define('ADMIN_ITEM', '<item id="%s" name="%s" />');
 
+define('MEMBER_SELECT', 'memberselect');
+define('XML_MEMBER_SELECT', '<memberselect post="%s" value="%s" />');
+
 define('ADMIN_MEMBER',
        '<member>
 		  <id>%s</id>
