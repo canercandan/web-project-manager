@@ -45,7 +45,7 @@ function	print_tab_date($length, $day, $month, $year, $input)
 
 function print_line($length, $name, $dates, $colorbg, $coloractiv)
 {
-	printf(TAB_LINE_START, 0, $name);
+	printf(TAB_LINE_START, 0, $name, $colorbg);
 	for ($i = 0; $i < $length; $i++)
 	{
 		$in = 0;
@@ -70,7 +70,7 @@ function	print_date($day, $month, $year)
 function	print_tab_legend($length, $day, $month, $year, $nb)
 {
 	$step = $length / ($nb - 1);
-	printf(TAB_LINE_START, 1, '');
+	printf(TAB_LINE_START, 1, '', 0);
 	for ($i = 0; $i < $length; $i++)
 	{
 		if ($i % $step == 0)

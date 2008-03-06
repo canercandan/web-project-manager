@@ -4,7 +4,7 @@ define('PROJECT_MEMBER_DATEGRAPH_START', '<project_member_dategraph>');
 define('PROJECT_MEMBER_DATEGRAPH_END', '</project_member_dategraph>');
 
 define('TAB_DATE_START','<tab_date length="%.3f">');
-define('TAB_LINE_START', '<line legend="%d" name="%s">');
+define('TAB_LINE_START', '<line legend="%d" name="%s" colorbg="%d">');
 define('TAB_LINE_END', '</line>');
 define('TAB_DATE_END','</tab_date>');
 define('TAB_ITEM', '<item color="%s" color_text="%s" legend="%s"/>');
