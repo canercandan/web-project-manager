@@ -22,6 +22,7 @@ if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE);
 else
   printf(XML_HEADER, XML_TEMPLATE);
+  printf(SESSION_DESTROY, DESTROY);
 printf(XML_FOOTER);
 sql_close($link);
 

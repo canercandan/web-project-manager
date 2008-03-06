@@ -10,6 +10,8 @@ if (!MAIN)
 define('HEADER_CONNECT', 'Location:connect.php');
 define('DESTROY', 'deco');
 
+define('SESSION_DESTROY', '<sessdestroy post="%s" />');
+
 /*
 ** Define member : sql
 */
