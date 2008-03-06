@@ -7,7 +7,7 @@ define('TAB_DATE_START','<tab_date length="%.3f">');
 define('TAB_LINE_START', '<line legend="%d" name="%s" colorbg="%d">');
 define('TAB_LINE_END', '</line>');
 define('TAB_DATE_END','</tab_date>');
-define('TAB_ITEM', '<item color="%s" color_text="%s" legend="%s"/>');
+define('TAB_ITEM', '<item color="%s" color_text="%s" legend="%s" start="%.3f" width="%.3f"/>');
 
 
 
@@ -27,15 +27,8 @@ WHERE
 project_id = member_project_id
 AND project_id = \'%d\'
 AND member_usr_id = \'%d\'
-AND member_date_end != \'00-00-0000\'
-UNION
-SELECT DATEDIFF(member_date_start, project_date), DATEDIFF(CURDATE(), member_date_start)
-FROM tw_member, tw_project
-WHERE
-project_id = member_project_id
-AND project_id = \'%d\'
-AND member_usr_id = \'%d\'
-AND (member_date_end = \'00-00-0000\');');
+order by member_date_start
+');
 
 define('SQL_GET_PROJECT_DURATION', 'SELECT day(project_date), month(project_date), year(project_date), DATEDIFF(CURDATE(),project_date) FROM tw_project
 WHERE project_id = \'%d\';');

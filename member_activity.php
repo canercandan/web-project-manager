@@ -6,7 +6,6 @@ require_once('function_misc.php');
 
 if(isset($_POST))
 {
-//var_dump($_POST);
 	if (isset($_POST[BTN_DOWN]) && isset($_POST[POST_SELECT]))
 	{
 		foreach($_POST[POST_SELECT] as $value)
@@ -64,7 +63,6 @@ if(isset($_POST))
 			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_YEAR_END]);
 		}
 	}
-	var_dump($_POST);
 }
 
 
