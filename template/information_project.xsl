@@ -26,7 +26,7 @@
 	  </div>
 	  <hr />
 	  <label>
-	    <input type="submit" value="Ok" />
+	    <input type="submit" name="{btn_update/@post}" value="Ok" />
 	  </label>
 	</div>
       </form>
