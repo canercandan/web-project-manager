@@ -9,26 +9,55 @@
 	<div class="form">
 	  <label>
 	    Name<br />
-	    <input type="text" name="{name/@post}"
-		   value="{name}" />
+		<xsl:choose>
+			<xsl:when test="editable=1">
+				<input type="text" name="{name/@post}"
+					value="{name}" />
+			</xsl:when>
+			<xsl:otherwise>
+				<input type="text" name="{name/@post}"
+					value="{name}" disabled="disabled" />
+			</xsl:otherwise>
+		</xsl:choose>
 	  </label>
 	  <hr />
 	  <label class="big">
 	    Describe<br />
-	    <textarea name="{describ/@post}">
-	      <xsl:value-of select="describ" />
-	    </textarea>
+		<xsl:choose>
+			<xsl:when test="editable=1">
+				<textarea name="{describ/@post}">
+					<xsl:value-of select="describ" />
+				</textarea>
+			</xsl:when>
+			<xsl:otherwise>
+				<textarea name="{describ/@post}" disabled="disabled">
+					<xsl:value-of select="describ" />
+				</textarea>
+			</xsl:otherwise>
+		</xsl:choose>
 	  </label>
 	  <hr />
-	  <label>
+	  <label class="little">
 		Charge<br />
-		<input type="text" name="{charge/@post}"
-			value="{charge}" />
+		<xsl:choose>
+			<xsl:when test="editable=1">
+				<input type="text" name="{charge/@post}"
+					value="{charge}" />
+			</xsl:when>
+			<xsl:when test="charge/@editable=1">
+				<input type="text" name="{charge/@post}"
+					value="{charge}" />
+			</xsl:when>
+			<xsl:otherwise>
+				<input type="text" name="{charge/@post}"
+					value="{charge}" disabled="disabled" />
+			</xsl:otherwise>
+		</xsl:choose>
 	  </label>
 	  <hr />
 	  <div class="little">
 	    Date<br />
-	    <xsl:apply-templates select="date" />
+		<xsl:apply-templates select="date" />
 	  </div>
 	  <hr />
 	  <label>
