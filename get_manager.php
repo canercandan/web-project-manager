@@ -23,6 +23,8 @@ if (isset($_GET['project_id']))
 }
 else if (isset($_GET['activity_id']))
 {
+$checked = check_activity(0, $_GET['activity_id']);
+var_dump($checked);
 	if ($_GET['activity_id'] == 0)
 	{
 		unset($_SESSION['ACTIVITY_NAME']);
@@ -31,10 +33,10 @@ else if (isset($_GET['activity_id']))
 		if (!isset($_SESSION['PROJECT_MENU']))
 			$_SESSION['PROJECT_MENU'] = INFORMATION;
 	}
-	else if (($checked = check_activity(0, $_GET['activity_id'])))
+	else if (($checked = check_activity(0, $_GET['activity_id'])) != NULL)
 	{
-		
-		$_SESSION['ACTIVITY_NAME'] = $checked;
+		var_dump($checked);
+		$_SESSION['ACTIVITY_NAME'] = ($checked == "" ? "No name" : $checked);
 		$_SESSION['ACTIVITY_ID'] = $_GET['activity_id'];
 		if (!isset($_SESSION['ACTIVITY_MENU']))
 			$_SESSION['ACTIVITY_MENU'] = INFORMATION_ACTIVITY;

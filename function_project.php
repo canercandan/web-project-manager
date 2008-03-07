@@ -106,7 +106,7 @@ function get_information_project($id_project)
 	get_years();
 	if (sql_num_rows($res))
 	{
-		printf('<editable>disabled</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date postday="moddayproj" day="%d" postmonth="modprojmonth" month="%d" postyear="modprojyear" year="%d"/><autor name="%s" fname="%s" title="%s"/>',
+		printf('<editable>0</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date postday="moddayproj" day="%d" postmonth="modprojmonth" month="%d" postyear="modprojyear" year="%d"/><autor name="%s" fname="%s" title="%s"/>',
 		htmlentities($tab[0]),
 		htmlentities($tab[1]),
 		
@@ -148,7 +148,7 @@ function print_projects_list($id_user)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(PROJECT_ITEM, (isset($_SESSION['PROJECT_ID']) && $_SESSION['PROJECT_ID'] == $tab[1] ? 1 : 0), htmlentities($tab[0]), htmlentities($tab[1]));
+		printf(PROJECT_ITEM, (isset($_SESSION['PROJECT_ID']) && $_SESSION['PROJECT_ID'] == $tab[1] ? 1 : 0), htmlentities($tab[0] == "" ? "No name" : $tab[0]), htmlentities($tab[1]));
       }
 	printf(PROJECT_END);
 }

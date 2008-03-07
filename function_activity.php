@@ -92,7 +92,7 @@ function get_activity_informations($id_activity)
   get_months();
   get_days();
   get_years();
-  printf('<editable>disabled</editable><name post="%s">%s</name><describ post="%s">%s</describ>%s<date postyear="modyear" postmonth="modmonth" postday="modday" day="%s" month="%s" year= "%s"/>', 
+  printf('<editable></editable><name post="%s">%s</name><describ post="%s">%s</describ>%s<date postyear="modyear" postmonth="modmonth" postday="modday" day="%s" month="%s" year= "%s"/>', 
   POST_MOD_ACTIVITY_NAME,
   htmlentities($tab[0]), 
   POST_MOD_ACTIVITY_DESCRIB,
@@ -338,7 +338,7 @@ function print_activities_list($id_project, $id_activity)
       {
 	printf(ACTIVITY_START);
 	printf('<surline>%d</surline>', (isset($_SESSION['ACTIVITY_ID']) && $_SESSION['ACTIVITY_ID'] == $tab[0]) ? 1 : 0);
-	printf(ACTIVITY_TITLE, htmlentities($tab[1]));
+	printf(ACTIVITY_TITLE, htmlentities($tab[1] == "" ? "No name" : $tab[1]));
 	printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]] : 0);
 	printf(ACTIVITY_ID, $tab[0]);
 	print_activities_list($id_project, $tab[0]);

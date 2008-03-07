@@ -60,7 +60,7 @@ define('ACTIVITY_TITLE', '<title>%s</title>');
 define('ACTIVITY_DEV', '<developped>%d</developped>');
 define('ACTIVITY_ID', '<id>%s</id>');
 define('ACTIVITY_EDITABLE' , '<editable>%d</editable>');
-define('ACTIVITY_CHARGE_EDITABLE', '<charge post="%s" editable="%d">%d</charge>');
+define('ACTIVITY_CHARGE_EDITABLE', '<charge post="%s" editable="%s">%d</charge>');
 define('ERROR_ACTIVITY_NAME', 'error : activity\'s name already used');
 define('ERROR_ACTIVITY_CHARGE', 'error : activity charge invalid');
 
