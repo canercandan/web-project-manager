@@ -50,6 +50,9 @@
 		    <li class="go">
 		      <a href="?activity=1&amp;add_activity=1">Add an sub-activity</a>
 		    </li>
+		    <li class="go">
+		      <a href="?activity=1&amp;member_dategraph=1">History</a>
+		    </li>
 		  </ul>
 		</xsl:if>
 		<xsl:apply-templates select="project_window/activity_window" />

@@ -16,6 +16,9 @@
       <xsl:when test="member_activity">
 	<xsl:apply-templates select="member_activity" />
       </xsl:when>
+      <xsl:when test="project_member_dategraph">
+	<xsl:apply-templates select="project_member_dategraph" />
+      </xsl:when>
     </xsl:choose>
   </xsl:template>
 </xsl:stylesheet>
