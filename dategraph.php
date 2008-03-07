@@ -71,7 +71,7 @@ function	print_tab_date($length, $day, $month, $year, $input)
 		if ($coloractive > 3)
 			$coloractive = 2;
 	}
-	print_tab_legend($length, $day, $month, $year, 4);
+	print_tab_legend($length, $day, $month, $year, 3);
 	printf(TAB_DATE_END);
 }
 
