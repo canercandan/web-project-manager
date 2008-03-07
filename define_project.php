@@ -99,7 +99,7 @@ define('SQL_INSERT_MEMBER'
 `member_date_end`
 )
 VALUES (
-\'%d\', \'%d\', 0, CURDATE(), \'0000-00-00\'
+\'%d\', \'%d\', 1, CURDATE(), \'0000-00-00\'
 );');
 
 define('SQL_REMOVE_TOT_MEMBER', 

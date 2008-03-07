@@ -93,7 +93,7 @@ function get_activity_informations($id_activity)
   get_months();
   get_days();
   get_years();
-  printf('<editable>0</editable><name post="%s">%s</name><describ post="%s">%s</describ>%s<date postyear="modyear" postmonth="modmonth" postday="modday" day="%s" month="%s" year= "%s"/>', 
+  printf('<editable>1</editable><name post="%s">%s</name><describ post="%s">%s</describ>%s<date postyear="%s" postmonth="%s" postday="%s" day="%s" month="%s" year= "%s"/>', 
   POST_MOD_ACTIVITY_NAME,
   htmlentities($tab[0]), 
   POST_MOD_ACTIVITY_DESCRIB,
@@ -286,9 +286,8 @@ function update_member_activity($id_activity, $id_user, $day_start, $month_start
 											($start <= $new_start && ($end > $new_start || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
 											||
 											($start < $new_end && ($end >= $new_end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
-											||
-											($start >= $new_start && !($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0 && ($new_month_end != 0 && $new_day_end != 0 && $new_year_end != 0))
-											&& ($end <= $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)))
+										//	||
+										//	($start >= $new_start && ($end <= $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)))
 											)) 	
 			{
 				printf(XML_ERROR, sprintf(ERR_OLD_DATE_ORDER,  $new_day_start, $new_month_start, $new_year_start,  
