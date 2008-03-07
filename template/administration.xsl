@@ -14,6 +14,7 @@
 		<th>Name</th>
 		<th>First Name</th>
 		<th>Level</th>
+		<th>Action</th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -54,6 +55,9 @@
 		      </xsl:for-each>
 		    </select>
 		  </td>
+		  <td>
+		    <a href="./profil.php?memberselect={id}">Profil</a>
+		  </td>
 		</tr>
 	      </xsl:for-each>
 	    </tbody>
@@ -71,6 +75,9 @@
   <xsl:template match="administration">
     <fieldset>
       <legend>Administration</legend>
+      <h3 class="blue2">
+	<a href="./member.php?{../sessdestroy/@post}=1">Deconnection</a>
+      </h3>
       <xsl:apply-templates select="member_list" />
     </fieldset>
   </xsl:template>

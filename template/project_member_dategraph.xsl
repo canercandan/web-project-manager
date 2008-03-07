@@ -3,7 +3,16 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="line[@legend=1]/item">
-    <xsl:value-of select="@legend" />
+    <xsl:choose>
+      <xsl:when test="@legend=''">
+	<div style="background-color: #eee; min-width: {../../@length}%;" />
+      </xsl:when>
+      <xsl:otherwise>
+	<div style="background-color: #eee; min-width: {../../@length}%;">
+	  <xsl:value-of select="@legend" />
+	</div>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="line[@legend=0]/item">
