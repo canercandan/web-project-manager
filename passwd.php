@@ -5,6 +5,7 @@ define('MAIN', 1);
 require_once('./define_config.php');
 require_once('./function_sql.php');
 require_once('./define_passwd.php');
+require_once('./function_passwd.php');
 require_once('./define_session.php');
 require_once('./define_usr.php');
 
@@ -40,12 +41,14 @@ if ($_POST)
 		printf(PASSWD_CONGRATULATION_MESS);
 		printf(USR_CONNECT_BEGIN);
 		printf(USR_FIELD_LOGIN, $_POST[PASSWD_POST_LOGIN]);
-		printf(USR_FIELD_PASSWD, "";
+		printf(USR_FIELD_PASSWD, "");
 		printf(USR_CONNECT_END);
 	  }
   }
 else
   {
+	$test = passwd_generate();
+	echo $test;
     printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, "");
 	printf(PASSWD_EMAIL, PASSWD_POST_EMAIL, "");
   }

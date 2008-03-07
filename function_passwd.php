@@ -14,49 +14,37 @@ function passwd_check()
     return (PASSWD_ERROR_EMAIL);
 }
 
-function passwd_rand()
+function passwd_generate()
 {
-  $var1 = mt_rand(97, 122);
-  $var2 = mt_rand(65, 90);
-  $var3 = mt_rand(58, 64);
-  $var4 = mt_rand(48, 57);
-  $var5 = $var1 - 30;
-  $var6 = $var2 - 10;
-  $var7 = $var3 + 40;
-  $var8 = $var4 + 20;
+  $config['sec']['generator'] = array("C" => array('char' => PASSWD_CHAR,
+								 'min' => 4,
+								 'max' => 6),
+						    "S" => array('char' => PASSWD_SPECIAL,
+								 'min' => 1,
+								 'max' => 2),
+						    "N" => array('char' => PASSWD_NUMBER,
+								 'min' => 2,
+								 'max' => 2));
+  $Password = "";
+  $Generator = $config['sec']['generator'];
+  foreach ($Generator as $Token => $Seed)
+    $Password .= str_repeat($Token, rand($Seed['min'], $Seed['max']));
+  $Password = str_shuffle($Password);
+  $Buffer = array();
+  for ($i = 0; $i < strlen($Password); $i ++)
+    $Buffer[] = $Generator[(string)$Password[$i]]['char'][rand(0, strlen($Generator[$Password[$i]]['char']) - 1)];
+  return (implode("", $Buffer));
 }
 
 function passwd_send()
 {
-  $passwd = passwd_rand(); 
+  $passwd = passwd_generate(); 
   mail(sql_real_escape_string($_POST[PASSWD_POST_EMAIL]), 
        SEND_SUBJECT, 
        sprintf(SEND_MESSAGE, 
 	           sql_real_escape_string($_POST[PASSWD_POST_LOGIN]), 
-			   sql_real_escape_string($_POST[PASSWD_POST_LOGIN])), 
+			   $passwd), 
 	   SEND_HEADERS);
-}
-
-function passwd_generate()
-{
-  $config['security']['password_generator'] = array("C" => array('characters' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-								 'minimum' => 4,
-								 'maximum' => 6),
-						    "S" => array('characters' => "!@()-_=+?*^&",
-								 'minimum' => 1,
-								 'maximum' => 2),
-						    "N" => array('characters' => '1234567890',
-								 'minimum' => 2,
-								 'maximum' => 2));
-  $sMetaPassword = "";
-  $ahPasswordGenerator = $config['security']['password_generator'];
-  foreach ($ahPasswordGenerator as $cToken => $ahPasswordSeed)
-    $sMetaPassword .= str_repeat($cToken, rand($ahPasswordSeed['minimum'], $ahPasswordSeed['maximum']));
-  $sMetaPassword = str_shuffle($sMetaPassword);
-  $arBuffer = array();
-  for ($i = 0; $i < strlen($sMetaPassword); $i ++)
-    $arBuffer[] = $ahPasswordGenerator[(string)$sMetaPassword[$i]]['characters'][rand(0, strlen($ahPasswordGenerator[$sMetaPassword[$i]]['characters']) - 1)];
-  return (implode("", $arBuffer));
 }
 
 ?>

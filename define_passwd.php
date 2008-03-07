@@ -29,6 +29,10 @@ define('SEND_MESSAGE', 'Informations about your account have changed.
 						Passwd -> %s
 						If you want to change this informations, contact a adminitrator.');
 
+define('PASSWD_CHAR', 'abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ');
+define('PASSWD_SPECIAL', "!@()-_=+?*^&");
+define('PASSWD_NUMBER', '1234567890');
+
 /*
 ** Sql
 */
