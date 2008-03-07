@@ -3,7 +3,7 @@
 require_once('./define_activity.php');
 require_once('./function_activity.php');
 
-if (true || isset($_POST[BTN_UPDATE]))
+if (isset($_POST[BTN_UPDATE]))
 {
 	var_dump($_POST);
 }

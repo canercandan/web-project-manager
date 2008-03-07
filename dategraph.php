@@ -20,8 +20,8 @@ function	print_tab_proj_member_date($id_project)
 		$res = sql_query(sprintf(SQL_GET_PROJECT_MEMBER_DURATION, sql_real_escape_string(1), $value['usr_id'], sql_real_escape_string(1), $value['usr_id']));
 		while (($tab = sql_fetch_array($res)))
 		{
-			$new['start'] = $tab[0];
-			$new['end'] = $tab[1] == 'NULL' ? $length : ($tab[0] + $tab[1]);
+			$new['start'] = $tab[0];		
+			$new['end'] = ($tab[1] == NULL) ? ($length - 1) : ($tab[0] + $tab[1]);
 			$input[$key]['dates'][] = $new;
 		}
 	}
@@ -66,11 +66,13 @@ function print_line($length, $name, $dates, $colorbg, $coloractiv)
 	$end = 0;
 	foreach($dates as $value)
 		{
-			printf(TAB_ITEM, $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($value['start'] - $end) * 80) / ((double) $length)));
+			if ($value['start'] - $end > 0) 
+				printf(TAB_ITEM, $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($value['start'] - $end) * 80) / ((double) $length)));
 			$end = $value['end'] + 1;
 			printf(TAB_ITEM, $coloractiv, 0, '', (double) (((double) 80 * $value['start']) / ((double) $length)) + 20, (((double) ($value['end'] - $value['start'] + 1) * 80) / ((double) $length)));   
 		}
-	printf(TAB_ITEM, $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($length - $end) * 80) / ((double) $length)));
+	if ($length - $end > 0)
+		printf(TAB_ITEM, $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($length - $end) * 80) / ((double) $length)));
 	
 	printf(TAB_LINE_END);
 }

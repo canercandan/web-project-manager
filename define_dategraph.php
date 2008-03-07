@@ -27,7 +27,7 @@ WHERE
 project_id = member_project_id
 AND project_id = \'%d\'
 AND member_usr_id = \'%d\'
-order by member_date_start
+order by member_date_start, member_date_end
 ');
 
 define('SQL_GET_PROJECT_DURATION', 'SELECT day(project_date), month(project_date), year(project_date), DATEDIFF(CURDATE(),project_date) FROM tw_project
