@@ -90,7 +90,7 @@ define('SQL_CHECK_CHARGE_EDITABLE',
 FROM tw_activity p LEFT JOIN tw_activity f ON f.activity_parent_id = p.activity_id
 WHERE 
 p.activity_id = \'%d\'
-GROUP BY f.activity_id
+GROUP BY f.activity_id;'
 );
 
 define('SQL_CHECK_ACTIVITY', 'SELECT activity_name FROM tw_activity WHERE activity_id = \'%d\';');
