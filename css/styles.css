@@ -132,16 +132,28 @@ table.table
 
 .history .name
 {
-	float: left;
 	padding-left: 15px;
-	width: 18%;
-	height: 20px;
-	border-right: 1px solid DarkGray;
+	width: 15%;
+	background-color: #eee;
+}
+
+.history .legend
+{
+	border-left: 1px solid DarkGray;
+	background-color: WhiteSmoke;
+}
+
+.history .name,
+.history .legend
+{
+	font-weight: bold;
+	font-size: 0.8em;
 }
 
 .history .col div
 {
 	float: left;
+	padding-top: 3px;
 	height: 20px;
 }
 

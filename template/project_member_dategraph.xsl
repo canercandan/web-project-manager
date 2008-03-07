@@ -3,56 +3,49 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="line[@legend=1]/item">
-    <xsl:choose>
-      <xsl:when test="@legend=''">
-	<div style="background-color: #eee; min-width: {../../@length}%;" />
-      </xsl:when>
-      <xsl:otherwise>
-	<div style="background-color: #eee; min-width: {../../@length}%;">
-	  <xsl:value-of select="@legend" />
-	</div>
-      </xsl:otherwise>
-    </xsl:choose>
+    <div class="legend" style="width: {@width}%;">
+      <xsl:value-of select="@legend" />
+    </div>
   </xsl:template>
 
   <xsl:template match="line[@legend=0]/item">
     <xsl:choose>
       <xsl:when test="@color=1">
-	<div style="background-color: Window; width: {../../@length}%;" />
+	<div style="background-color: LightGrey; width: {@width}%;" />
       </xsl:when>
       <xsl:when test="@color=2">
-	<div style="background-color: LightSteelBlue; width: {../../@length}%;" />
+	<div style="background-color: LightSteelBlue; width: {@width}%;" />
       </xsl:when>
       <xsl:when test="@color=3">
-	<div style="background-color: LightSlateGray; width: {../../@length}%;" />
+	<div style="background-color: LightSlateGray; width: {@width}%;" />
       </xsl:when>
       <xsl:otherwise>
-	<div style="background-color: #eee; width: {../../@length}%;" />
+	<div style="background-color: #eee; width: {@width}%;" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
   <xsl:template match="tab_date/line[@legend=1]">
-    <div class="name">Date</div>
     <div class="col">
+      <div class="name" style="background-color: WhiteSmoke;">Date</div>
       <xsl:apply-templates select="item" />
     </div>
   </xsl:template>
 
   <xsl:template match="tab_date/line[@legend=0]">
-    <xsl:choose>
-      <xsl:when test="@colorbg=0">
-	<div class="name" style="background-color: #eee;">
-	  <xsl:value-of select="@name" />
-	</div>
-      </xsl:when>
-      <xsl:otherwise>
-	<div class="name" style="background-color: Window;">
-	  <xsl:value-of select="@name" />
-	</div>
-      </xsl:otherwise>
-    </xsl:choose>
     <div class="col">
+      <xsl:choose>
+	<xsl:when test="@colorbg=0">
+	  <div class="name" style="background-color: #eee;">
+	    <xsl:value-of select="@name" />
+	  </div>
+	</xsl:when>
+	<xsl:otherwise>
+	  <div class="name" style="background-color: LightGrey;">
+	    <xsl:value-of select="@name" />
+	  </div>
+	</xsl:otherwise>
+      </xsl:choose>
       <xsl:apply-templates select="item" />
       <div class="clear" />
     </div>
