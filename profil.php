@@ -13,6 +13,12 @@ session_start();
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 
+if (!$_SESSION[SESSION_NAME])
+  {
+    header(LOCATION_EXIT);
+	exit (0);
+  }
+
 if ($_POST[PROFIL_POST_LOCATION] && $_POST[PROFIL_POST_NAME] &&
     $_POST[PROFIL_POST_FNAME] && $_POST[PROFIL_POST_FPHONE] &&
     $_POST[PROFIL_POST_MPHONE] && $_POST[PROFIL_POST_TITLE] &&
