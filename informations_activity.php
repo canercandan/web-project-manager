@@ -5,7 +5,7 @@ require_once('./function_activity.php');
 
 if (isset($_POST[BTN_UPDATE]))
 {
-	var_dump($_POST);
+	
 }
 
 printf(INFORMATION_ACTIVITY_BEGIN);

@@ -41,6 +41,7 @@ define('POST_KEY_ACT_MONTH_END', 'key_member_act_month_end');
 define('POST_KEY_ACT_YEAR_END', 'key_member_act_year_end');
 define('POST_KEY_ACT_ID', 'key_member_act_id');
 
+
 define('POST_ACT_DAY_START', 'member_act_day_start');
 define('POST_ACT_MONTH_START', 'member_act_month_start');
 define('POST_ACT_YEAR_START', 'member_act_year_start');
@@ -59,7 +60,7 @@ define('ACTIVITY_TITLE', '<title>%s</title>');
 define('ACTIVITY_DEV', '<developped>%d</developped>');
 define('ACTIVITY_ID', '<id>%s</id>');
 define('ACTIVITY_EDITABLE' , '<editable>%d</editable>');
-
+define('ACTIVITY_CHARGE_EDITABLE', '<charge post="%s" editable="%d">%d</charge>');
 define('ERROR_ACTIVITY_NAME', 'error : activity\'s name already used');
 define('ERROR_ACTIVITY_CHARGE', 'error : activity charge invalid');
 
@@ -73,6 +74,27 @@ define('POST_ACTIVITY_CHARGE', 'activitycharge');
 /*
 ** Define activity sql request
 */
+
+define('SQL_UPDATE_ACTIVITY',
+'UPDATE tw_activity SET
+SET activity_name = \'%s\', activity_describtion = \'%s\',  activity_date_begin = DATE(\'%04d-%02d-%02d\')
+WHERE activity_id = \'%d\';');
+
+define('SQL_UPDATE_ACTIVITY_CHARGE',
+'UPDATE tw_activity SET
+SET activity_name = \'%s\', activity_describtion = \'%s\',  activity_date_begin = DATE(\'%04d-%02d-%02d\'), activity_charge_total = \'%d\'
+WHERE activity_id = \'%d\';');
+
+define('SQL_CHECK_CHARGE_EDITABLE',
+'SQL_GET_ACTIVITY_INFORMATIONS', '
+SELECT p.activity_name, p.activity_describtion, p.activity_charge_total, 
+day(p.activity_date_begin), month(p.activity_date_begin), year(p.activity_date_begin), (count(f.activity_id) = 0)
+FROM tw_activity p, tw_activity f
+WHERE 
+p.activity_id = \'%d\'
+AND f.activity_parent_id = p.activity_id
+GROUP BY f.activity_id;'
+);
 
 define('SQL_CHECK_ACTIVITY', 'SELECT activity_name FROM tw_activity WHERE activity_id = \'%d\';');
 
@@ -178,8 +200,13 @@ AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), acti
 order by profil_name, profil_fname;
 ');
 
-define('SQL_GET_ACTIVITY_INFORMATIONS', 'SELECT activity_name, activity_describtion, activity_charge_total, day(activity_date_begin), month(activity_date_begin), year(activity_date_begin) FROM tw_activity
-WHERE activity_id = \'%d\';');
+define('SQL_GET_ACTIVITY_INFORMATIONS', '
+SELECT p.activity_name, p.activity_describtion, p.activity_charge_total, 
+day(p.activity_date_begin), month(p.activity_date_begin), year(p.activity_date_begin), (count(f.activity_id) = 0)
+FROM tw_activity p LEFT JOIN tw_activity f ON f.activity_parent_id = p.activity_id
+WHERE 
+p.activity_id = \'%d\'
+GROUP BY f.activity_id');
 
 define('SQL_GET_UNDERACT_WORK', 
 	'

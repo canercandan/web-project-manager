@@ -75,12 +75,21 @@ function get_activity_informations($id_activity)
   get_months();
   get_days();
   get_years();
-  printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date postyear="modyear" postmonth="modmonth" postday="modday" day="%s" month="%s" year= "%s"/>', htmlentities($tab[0]), htmlentities($tab[1]), $tab[3], $tab[4], $tab[5]);
-  printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge>',
+  printf('<editable>1</editable><name post="%s">%s</name><describ post="%s">%s</describ>%s<date postyear="modyear" postmonth="modmonth" postday="modday" day="%s" month="%s" year= "%s"/>', 
+  POST_ACTIVITY_NAME,
+  htmlentities($tab[0]), 
+  POST_ACTIVITY_DESCRIB,
+  htmlentities($tab[1]),
+  sprintf(ACTIVITY_CHARGE_EDITABLE, POST_ACTIVITY_CHARGE, $tab[6], $tab[2]),
+  POST_ACT_YEAR_START, POST_MONTH_START, POST_ACT_DAY_START,
+	$tab[3], $tab[4], $tab[5]);
+  
+ printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge>',
 		(isset($_SESSION['DEVELOPPED_WORK'][$id_activity]) ? $_SESSION['DEVELOPPED_WORK'][$id_activity] : 0),
 		$id_activity,
 		htmlentities($tab[0]),
 		$tab[2]);
+		
   $work = get_activity_work($id_activity);
   printf('<work>%d</work><percent>%d</percent></activity_work>',
 	 ($work < $tab[2] ? $work : $tab[2]),
