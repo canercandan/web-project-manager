@@ -21,15 +21,32 @@
 	  <hr />
 	  <label>
 	    Name<br />
-	    <input type="text" name="{name/@post}"
-		   value="{name}" />
+	    <xsl:choose>
+	      <xsl:when test="editable=1">
+		<input type="text" name="{name/@post}"
+		       value="{name}" />
+	      </xsl:when>
+	      <xsl:otherwise>
+		<input type="text" name="{name/@post}"
+		       value="{name}" disabled="disabled" />
+	      </xsl:otherwise>
+	    </xsl:choose>
 	  </label>
 	  <hr />
 	  <label class="big">
 	    Describe<br />
-	    <textarea name="{describ/@post}">
-	      <xsl:value-of select="describ" />
-	    </textarea>
+	    <xsl:choose>
+	      <xsl:when test="editable=1">
+		<textarea name="{describ/@post}">
+		  <xsl:value-of select="describ" />
+		</textarea>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<textarea name="{describ/@post}" disabled="disabled">
+		  <xsl:value-of select="describ" />
+		</textarea>
+	      </xsl:otherwise>
+	    </xsl:choose>
 	  </label>
 	  <hr />
 	  <div class="little">
