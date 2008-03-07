@@ -63,7 +63,7 @@ input[disabled='disabled'],
 textarea[disabled='disabled'],
 select[disabled='disabled']
 {
-	background-color: Window;
+	background-color: LightGrey;
 }
 
 input.search
