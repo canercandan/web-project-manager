@@ -18,9 +18,7 @@ if ($_POST)
       $error = sprintf(XML_ERROR, USR_ERROR_EMAIL_NOTFOUND);
     else if ($login = usr_login_check())
       $error = sprintf(XML_ERROR, USR_ERROR_LOGIN_EXIST);
-    else if (!$login && (!$passwd = usr_repasswd_check()))
-      $error = sprintf(XML_ERROR, USR_ERROR_REPASSWD);
-    else if (!$login && !$passwd && !($email = usr_email_check()))
+    else if (!$login && !($email = usr_email_check()))
       $error = sprintf(XML_ERROR, USR_ERROR_EMAIL);
     else
       {

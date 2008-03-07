@@ -25,8 +25,6 @@ if ($_POST)
       $error = sprintf(XML_ERROR, USR_ERROR_PASSWD);
     else
       {
-	$_SESSION['USER_ID'] = usr_session_id();
-	$_SESSION['USER_LOGIN'] = $_POST[USR_POST_LOGIN];
 	session_create();
 	if (!($profil = usr_profil_check()))
 	  header(HEADER_LOCATION_PROFIL);
@@ -35,6 +33,7 @@ if ($_POST)
 	exit(0);
       }
   }
+
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE);

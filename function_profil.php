@@ -8,7 +8,7 @@ require_once('./define_profil.php');
 function profil_check()
 {
   $test = sql_query(sprintf(PROFIL_SQL_SELECT,
-			    sql_real_escape_string($_SESSION['USER_LOGIN'])));
+			    sql_real_escape_string($_SESSION[SESSION_LOGIN])));
   $tab = sql_fetch_array($test);
   if ($tab[1] == 'NULL' || $tab[2] == 'NULL'
       || $tab[3] == 'NULL' || $tab[4] == 'NULL'
@@ -38,7 +38,7 @@ function select_title()
 
 function user_select_profil()
 {
-  $test = sql_query(sprintf(PROFIL_SQL_PROFIL, $_SESSION['USER_ID']));
+  $test = sql_query(sprintf(PROFIL_SQL_PROFIL, $_SESSION[SESSION_ID]));
   $tab = sql_fetch_array($test);
   if ($tab[2] != 'NULL')
 	$_POST[PROFIL_POST_NAME] = $tab[2];
@@ -103,7 +103,7 @@ function profil_update()
 		    sql_real_escape_string($_POST[PROFIL_POST_MPHONE]),
 		    sql_real_escape_string($_POST[PROFIL_POST_TITLE]),
 		    sql_real_escape_string($_POST[PROFIL_POST_ADDRESS]),
-		    sql_real_escape_string($_SESSION['USER_ID'])));
+		    sql_real_escape_string($_SESSION[SESSEION_ID])));
   $_SESSION[SESSION_NAME] = $_POST[PROFIL_POST_NAME];
   $_SESSION[SESSION_FNAME] = $_POST[PROFIL_POST_FNAME];
   $_SESSION[SESSION_FPHONE] = $_POST[PROFIL_POST_FPHONE];
