@@ -19,15 +19,12 @@ define('PASSWD_ERROR', '<error value"%s" />');
 define('PASSWD_ERROR_LOGIN', 'No login found');
 define('PASSWD_ERROR_EMAIL', 'Wrong email');
 
-define('PASSWD_CONGRATULATION_MESS', '<congratulation value="A email have been send with your new account information." />');
+define('PASSWD_CONGRATULATION_MESS', '<congratulation value="A email will be send in the next 24h with your new account information." />');
 
 define('SEND_SUBJECT', 'Techweb : new password');
 define('SEND_HEADER_TO', 'To: %s <%s>');
 define('SEND_HEADER_FROM', 'From: Techweb <Techweb_Strasbourg@epitech.net>');
-define('SEND_MESSAGE', 'Informations about your account have changed.
-						Your account is :
-						Login -> %s
-						Passwd -> %s');
+define('SEND_MESSAGE', 'Informations about your account : Login -> %s and Password -> %s');
 
 define('PASSWD_CHAR', 'abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ');
 define('PASSWD_SPECIAL', "!@()-_=+?*^&");
