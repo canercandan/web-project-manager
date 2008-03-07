@@ -8,9 +8,11 @@ require_once('./function_usr.php');
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 
-if ($_POST[USR_POST_LOGIN])
+if ($_POST)
   {
-    if (!$_POST[USR_POST_PASSWD])
+    if (!$_POST[USR_POST_LOGIN])
+	  $error = sprintf(XML_ERROR, USR_ERROR_LOGIN_NOTFOUND);
+    else if (!$_POST[USR_POST_PASSWD])
       $error = sprintf(XML_ERROR, USR_ERROR_PASSWD_NOTFOUND);
     else if (!$_POST[USR_POST_REPASSWD])
       $error = sprintf(XML_ERROR, USR_ERROR_REPASSWD_NOTFOUND);
