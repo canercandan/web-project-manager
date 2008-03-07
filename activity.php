@@ -33,6 +33,11 @@ if (isset($_SESSION['ACTIVITY_MENU']))
 	{
 		include('add_activity.php');
 	}
+	if ($_SESSION['ACTIVITY_MENU'] == MEMBER_DATEGRAPH_ACTIVITY)
+	{
+		include('activity_member_dategraph.php');
+	}
+	
 }
 
 printf(ACTIVITY_WINDOW_END);
