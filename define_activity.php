@@ -70,18 +70,23 @@ define('CHARGE_NOT_INT', 'The unit of the charge of an activity is \'day per man
 define('POST_ACTIVITY_NAME', 'activityname');
 define('POST_ACTIVITY_DESCRIB', 'activitydescrib');
 define('POST_ACTIVITY_CHARGE', 'activitycharge');
+define('POST_MOD_ACTIVITY_NAME', 'modactivityname');
+define('POST_MOD_ACTIVITY_DESCRIB', 'modactivitydescrib');
+define('POST_MOD_ACTIVITY_CHARGE', 'modactivitycharge');
 
 /*
 ** Define activity sql request
 */
 
 define('SQL_UPDATE_ACTIVITY',
-'UPDATE tw_activity SET
+'
+UPDATE tw_activity
 SET activity_name = \'%s\', activity_describtion = \'%s\',  activity_date_begin = DATE(\'%04d-%02d-%02d\')
 WHERE activity_id = \'%d\';');
 
 define('SQL_UPDATE_ACTIVITY_CHARGE',
-'UPDATE tw_activity SET
+'
+UPDATE tw_activity
 SET activity_name = \'%s\', activity_describtion = \'%s\',  activity_date_begin = DATE(\'%04d-%02d-%02d\'), activity_charge_total = \'%d\'
 WHERE activity_id = \'%d\';');
 

@@ -73,13 +73,15 @@ function update_activity($id_activity, $name, $describ, $day, $month, $year, $ch
 	$res = sql_query(sprintf(SQL_CHECK_CHARGE_EDITABLE, sql_real_escape_string($id_activity)));
 	if (sql_result($res, 0, 0))
 	{
+		printf(SQL_UPDATE_ACTIVITY_CHARGE, sql_real_escape_string($name), sql_real_escape_string($describ), 
+			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($charge), sql_real_escape_string($id_activity));
 		sql_query(sprintf(SQL_UPDATE_ACTIVITY_CHARGE, sql_real_escape_string($name), sql_real_escape_string($describ), 
-			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($charge)));
+			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($charge), sql_real_escape_string($id_activity)));
 	}
 	else
 	{
 		sql_query(sprintf(SQL_UPDATE_ACTIVITY, sql_real_escape_string($name), sql_real_escape_string($describ), 
-			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
+			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($id_activity)));
 	}
 }
 
@@ -90,12 +92,12 @@ function get_activity_informations($id_activity)
   get_months();
   get_days();
   get_years();
-  printf('<editable>1</editable><name post="%s">%s</name><describ post="%s">%s</describ>%s<date postyear="modyear" postmonth="modmonth" postday="modday" day="%s" month="%s" year= "%s"/>', 
-  POST_ACTIVITY_NAME,
+  printf('<editable>disabled</editable><name post="%s">%s</name><describ post="%s">%s</describ>%s<date postyear="modyear" postmonth="modmonth" postday="modday" day="%s" month="%s" year= "%s"/>', 
+  POST_MOD_ACTIVITY_NAME,
   htmlentities($tab[0]), 
-  POST_ACTIVITY_DESCRIB,
+  POST_MOD_ACTIVITY_DESCRIB,
   htmlentities($tab[1]),
-  sprintf(ACTIVITY_CHARGE_EDITABLE, POST_ACTIVITY_CHARGE, $tab[6], $tab[2]),
+  sprintf(ACTIVITY_CHARGE_EDITABLE, POST_MOD_ACTIVITY_CHARGE, ($tab[6] == 0 ? 'disabled' : ''), $tab[2]),
   POST_ACT_YEAR_START, POST_MONTH_START, POST_ACT_DAY_START,
 	$tab[3], $tab[4], $tab[5]);
   
@@ -108,7 +110,7 @@ function get_activity_informations($id_activity)
   $work = get_activity_work($id_activity);
   printf('<work>%d</work><percent>%d</percent></activity_work>',
 	 ($work < $tab[2] ? $work : $tab[2]),
-	 ($tab[2] == 0 ? 0 : (($work < $tab[2] ? $work : $tab[2]) * 100) / $tab[2]));
+	 ($tab[2] == 0 ? 100 : (($work < $tab[2] ? $work : $tab[2]) * 100) / $tab[2]));
 }
 
 function get_member_activity($id_activity, $id_project, $last)

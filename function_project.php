@@ -106,7 +106,7 @@ function get_information_project($id_project)
 	get_years();
 	if (sql_num_rows($res))
 	{
-		printf('<editable>1</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date postday="moddayproj" day="%d" postmonth="modprojmonth" month="%d" postyear="modprojyear" year="%d"/><autor name="%s" fname="%s" title="%s"/>',
+		printf('<editable>disabled</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date postday="moddayproj" day="%d" postmonth="modprojmonth" month="%d" postyear="modprojyear" year="%d"/><autor name="%s" fname="%s" title="%s"/>',
 		htmlentities($tab[0]),
 		htmlentities($tab[1]),
 		
