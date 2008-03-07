@@ -54,9 +54,11 @@
 	    <xsl:apply-templates select="date" />
 	  </div>
 	  <hr />
-	  <label>
-	    <input type="submit" name="{btn_update/@post}" value="Ok" />
-	  </label>
+	  <xsl:if test="editable=1">
+	    <label>
+	      <input type="submit" name="{btn_update/@post}" value="Ok" />
+	    </label>
+	  </xsl:if>
 	</div>
       </form>
     </fieldset>

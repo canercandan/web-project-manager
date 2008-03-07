@@ -10,24 +10,49 @@
 
   <xsl:template match="line[@legend=0]/item">
     <xsl:choose>
-      <xsl:when test="@color=1">
-	<div style="background-color: LightGrey; width: {@width}%;" />
-      </xsl:when>
-      <xsl:when test="@color=2">
-	<div style="background-color: LightSteelBlue; width: {@width}%;" />
-      </xsl:when>
-      <xsl:when test="@color=3">
-	<div style="background-color: LightSlateGray; width: {@width}%;" />
+      <xsl:when test="@title=1">
+	<xsl:choose>
+	  <xsl:when test="@color=1">
+	    <div style="background-color: LightGrey; width: {@width}%;"
+		 title="{@date_start} - {@date_end}" />
+	  </xsl:when>
+	  <xsl:when test="@color=2">
+	    <div style="background-color: LightSteelBlue; width: {@width}%;"
+		 title="{@date_start} - {@date_end}" />
+	  </xsl:when>
+	  <xsl:when test="@color=3">
+	    <div style="background-color: LightSlateGray; width: {@width}%;"
+		 title="{@date_start} - {@date_end}" />
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <div style="background-color: #eee; width: {@width}%;"
+		 title="{@date_start} - {@date_end}" />
+	  </xsl:otherwise>
+	</xsl:choose>
       </xsl:when>
       <xsl:otherwise>
-	<div style="background-color: #eee; width: {@width}%;" />
+	<xsl:choose>
+	  <xsl:when test="@color=1">
+	    <div style="background-color: LightGrey; width: {@width}%;" />
+	  </xsl:when>
+	  <xsl:when test="@color=2">
+	    <div style="background-color: LightSteelBlue; width: {@width}%;" />
+	  </xsl:when>
+	  <xsl:when test="@color=3">
+	    <div style="background-color: LightSlateGray; width: {@width}%;" />
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <div style="background-color: #eee; width: {@width}%;" />
+	  </xsl:otherwise>
+	</xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
+
   </xsl:template>
 
   <xsl:template match="tab_date/line[@legend=1]">
     <div class="col">
-      <div class="name" style="background-color: WhiteSmoke;">Date</div>
+      <div class="name" style="background-color: WhiteSmoke;" />
       <xsl:apply-templates select="item" />
     </div>
   </xsl:template>

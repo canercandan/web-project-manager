@@ -225,15 +225,12 @@
 	    <caption>Project's members available</caption>
 	    <xsl:apply-templates select="member_list_project" />
 	  </table>
-	</div>
-	<div class="member_submit">
-	  <input type="submit" name="{btn_down/@post}" value="\/" />
+	  <div class="form">
+	    <input type="submit" name="{btn_down/@post}" value="\/" />
+	  </div>
 	</div>
       </form>
       <form action="?" method="post">
-	<div class="member_submit">
-	  <input type="submit" name="{btn_up/@post}" value="/\" />
-	</div>
 	<div class="member_list">
 	  <table class="table">
 	    <caption>Active or future members</caption>
@@ -241,10 +238,11 @@
 	  </table>
 	  <div class="form">
 	    <input type="submit" name="{btn_update/@post}" value="Update" />
+	    <input type="submit" name="{btn_up/@post}" value="/\" />
+	    <input type="submit" name="{btn_histo/@post}" value="\/" />
 	  </div>
 	</div>
 	<div class="member_submit">
-	  <input type="submit" name="{btn_histo/@post}" value="\/" />
 	</div>
       </form>
       <form action="?" method="post">
