@@ -84,3 +84,17 @@ CREATE TABLE IF NOT EXISTS tw_usr_level (
   level_name varchar(30) default NULL,
   PRIMARY KEY  (level_id)
 ) ENGINE=MyISAM;
+
+CREATE TABLE IF NOT EXISTS tw_group (
+`group_id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+`group_name` VARCHAR( 50 ) NOT NULL ,
+`group_descr` VARCHAR( 100 ) NULL ,
+`group_id_usr` INT NOT NULL ,
+PRIMARY KEY ( `group_id` )
+) ENGINE = MYISAM;
+
+CREATE TABLE IF NOT EXISTS tw_appartenance (
+`member_id` INT NOT NULL ,
+`group_id` INT NOT NULL ,
+PRIMARY KEY ( `member_id` , `group_id` )
+) ENGINE = MYISAM;
