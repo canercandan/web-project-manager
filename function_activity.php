@@ -196,7 +196,7 @@ define('SQL_CHECK_HISTO','DELETE FROM tw_activity_member
 									AND activity_member_activity_id = \'%d\'
 									AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
 									AND activity_member_date_end = CURDATE()');
-define('SQL_CHECK_PROJECT_DATE', 'SELECT project_date FROM tw_project WHERE project ');
+define('SQL_CHECK_PROJECT_DATE', 'SELECT ((project_date - DATE(\'%04d-%02d-%02d\')) < 0), DATE_FORMAT(project_date, \'%%d/%%m/%%Y\') FROM tw_project WHERE project_id=\'%d\';');
 									
 define('SQL_UPDATE_MEMBER_ACTIVITY','
 											UPDATE tw_activity_member SET 	activity_level = \'%d\',
@@ -223,7 +223,7 @@ define('ERR_OLD_DATE_ORDER', '<line>There are some conflicts with the dates :</l
 <line>between the new starting date : %02d/%02d/%04d with the new ending date : %s and the starting date : %02d/%02d/%04d with the ending date : %s</line>');
 
 define('PRINT_DATE', '%02d/%02d/%04d');
-
+define('ERR_DATE_PROJECT', 'There are some mistakes with the starting dates : the starting date of the project (%s) is after the new starting date (%02d/%02d/%04d)');
 define('ERR_DATE_START_NOT_FULL', 'There are some mistakes with the starting dates : You must define all the field of the starting dates');
 define('ERR_DATE_END_NOT_FULL', 'There are some mistakes with the ending dates : You must define all the field of the ending dates if you have starting to fill them');
 
@@ -253,7 +253,7 @@ function delete_member_activity($id_activity, $id_user, $day_start, $month_start
 													sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
 }
 					
-function update_member_activity($id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end,
+function update_member_activity($id_project, $id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end,
 					$work, $admin, $new_day_start, $new_month_start, $new_year_start, $new_day_end, $new_month_end, $new_year_end)
 {
 	$new_start = mktime(0, 0, 0, $new_month_start, $new_day_start, $new_year_start);
@@ -275,6 +275,14 @@ function update_member_activity($id_activity, $id_user, $day_start, $month_start
 	}
 	else
 	{
+		$res = sql_query(sprintf(SQL_CHECK_PROJECT_DATE, sql_real_escape_string($new_year_start),sql_real_escape_string($new_month_start),sql_real_escape_string($new_day_start),
+																	$id_project));
+		$tab = sql_fetch_array($res);
+		if ($tab[0] == 0)
+			{
+				printf(XML_ERROR, sprintf(ERR_DATE_PROJECT, $tab[1], $new_day_start, $new_month_start, $new_year_start));
+				return;
+			}
 		$res = sql_query(sprintf(SQL_GET_DATES_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
 													sql_real_escape_string($id_activity)));
 		while ($tab = sql_fetch_array($res))

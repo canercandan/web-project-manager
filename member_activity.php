@@ -17,7 +17,7 @@ if(isset($_POST))
 	{
 		foreach($_POST[POST_SELECT] as $value)
 		{
-			update_member_activity($_SESSION['ACTIVITY_ID'], 
+			update_member_activity($_SESSION['PROJECT_ID'], $_SESSION['ACTIVITY_ID'], 
 			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_ID], 
 			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_DAY_START], 
 			$_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_MONTH_START], 
