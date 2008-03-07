@@ -9,7 +9,14 @@
 	<div class="form">
 	  <label>
 	    Autor<br />
-	    <input type="text" name="{name/@name}" />
+	    <input type="text" value="{autor/@name} {autor/@fname}"
+		   disabled="disabled"/>
+	  </label>
+	  <hr />
+	  <label>
+	    Title<br />
+	    <input type="text" value="{autor/@title}"
+		   disabled="disabled" />
 	  </label>
 	  <hr />
 	  <label>

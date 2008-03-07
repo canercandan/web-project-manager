@@ -59,6 +59,13 @@ input[type='submit']
 	width: 50px;
 }
 
+input[disabled='disabled'],
+textarea[disabled='disabled'],
+select[disabled='disabled']
+{
+	background-color: Window;
+}
+
 input.search
 {
 	padding-left: 15px;
