@@ -94,7 +94,7 @@ PRIMARY KEY ( `group_id` )
 ) ENGINE = MYISAM;
 
 CREATE TABLE IF NOT EXISTS tw_appartenance (
-`member_id` INT NOT NULL ,
+`usr_id` INT NOT NULL ,
 `group_id` INT NOT NULL ,
 PRIMARY KEY ( `member_id` , `group_id` )
 ) ENGINE = MYISAM;
