@@ -92,12 +92,12 @@ function get_activity_informations($id_activity)
   get_months();
   get_days();
   get_years();
-  printf('<editable></editable><name post="%s">%s</name><describ post="%s">%s</describ>%s<date postyear="modyear" postmonth="modmonth" postday="modday" day="%s" month="%s" year= "%s"/>', 
+  printf('<editable>1</editable><name post="%s">%s</name><describ post="%s">%s</describ>%s<date postyear="modyear" postmonth="modmonth" postday="modday" day="%s" month="%s" year= "%s"/>', 
   POST_MOD_ACTIVITY_NAME,
   htmlentities($tab[0]), 
   POST_MOD_ACTIVITY_DESCRIB,
   htmlentities($tab[1]),
-  sprintf(ACTIVITY_CHARGE_EDITABLE, POST_MOD_ACTIVITY_CHARGE, ($tab[6] == 0 ? 'disabled' : ''), $tab[2]),
+  sprintf(ACTIVITY_CHARGE_EDITABLE, POST_MOD_ACTIVITY_CHARGE, $tab[6], $tab[2]),
   POST_ACT_YEAR_START, POST_MONTH_START, POST_ACT_DAY_START,
 	$tab[3], $tab[4], $tab[5]);
   
