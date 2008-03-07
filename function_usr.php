@@ -98,7 +98,7 @@ function usr_session_id()
 
 function session_create()
 {
-  $test = sql_query(sprintf(USR_SQL_SESSION, $_SESSION['USER_ID']));
+  $test = sql_query(sprintf(USR_SQL_SESSION, $_SESSION[SESSION_ID]));
   $row = sql_fetch_array($test);
   $_SESSION[SESSION_ID] = usr_session_id();
   $_SESSION[SESSION_LOGIN] = $_POST[USR_POST_LOGIN];

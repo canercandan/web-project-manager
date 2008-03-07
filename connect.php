@@ -6,6 +6,7 @@ require_once('./define_config.php');
 require_once('./function_sql.php');
 require_once('./function_usr.php');
 require_once('./define_session.php');
+require_once('./define_usr.php');
 
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
