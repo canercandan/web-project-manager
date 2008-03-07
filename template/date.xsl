@@ -2,7 +2,7 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template match="date[editable=0]">
+  <xsl:template match="date[../editable=0]">
     <xsl:variable name="day_id" select="@day" />
     <select name="{@postday}" disabled="disabled">
       <xsl:for-each select="../list_day/day">
@@ -56,7 +56,7 @@
     </select>
   </xsl:template>
 
-  <xsl:template match="date">
+  <xsl:template match="date[../editable=1]">
     <xsl:variable name="day_id" select="@day" />
     <select name="{@postday}">
       <xsl:for-each select="../list_day/day">
