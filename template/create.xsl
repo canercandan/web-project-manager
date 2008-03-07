@@ -24,16 +24,6 @@
 	      </label>
 	      <hr />
 	      <label>
-		Password<br />
-		<input type="password" name="{field_passwd/@name}" />
-	      </label>
-	      <hr />
-	      <label>
-		Repeat password<br />
-		<input type="password" name="{field_repasswd/@name}" />
-	      </label>
-	      <hr />
-	      <label>
 		Email<br />
 		<input type="text" name="{field_email/@name}"
 		       value="{field_email/@value}" />
