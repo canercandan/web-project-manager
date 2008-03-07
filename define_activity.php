@@ -3,6 +3,8 @@
 if (!MAIN)
   exit(0);
 
+  
+define('UNNAMED_ACTIVITY', 'Unnamed activity');
 define('UNKNOWED_ACTIVITY', 'Unknowed activity');
 
 define('ACTIVITY_WINDOW_BEGIN', '<activity_window>');

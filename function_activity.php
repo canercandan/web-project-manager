@@ -10,8 +10,9 @@ require_once('function_misc.php');
 function check_activity($id_user, $id_activity)
 {
 	$res = SQL_QUERY(sprintf(SQL_CHECK_ACTIVITY, sql_real_escape_string($id_activity)));
+	$r = sql_result($res,0, 0);
 	if (sql_num_rows($res))
-		return (sql_result($res,0, 0));
+		return ($r == "" ? UNNAMED_ACTIVITY : $r);
 	else
 		return (null);
 }
@@ -338,7 +339,7 @@ function print_activities_list($id_project, $id_activity)
       {
 	printf(ACTIVITY_START);
 	printf('<surline>%d</surline>', (isset($_SESSION['ACTIVITY_ID']) && $_SESSION['ACTIVITY_ID'] == $tab[0]) ? 1 : 0);
-	printf(ACTIVITY_TITLE, htmlentities($tab[1] == "" ? "No name" : $tab[1]));
+	printf(ACTIVITY_TITLE, htmlentities($tab[1] == "" ? UNNAMED_ACTIVITY : $tab[1]));
 	printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]] : 0);
 	printf(ACTIVITY_ID, $tab[0]);
 	print_activities_list($id_project, $tab[0]);
