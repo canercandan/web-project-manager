@@ -12,11 +12,11 @@
 	    <xsl:choose>
 	      <xsl:when test="editable=1">
 		<input type="text" name="{name/@post}"
-		       value="{name}" />
+		       value="{name}" disabled="disabled" />
 	      </xsl:when>
 	      <xsl:otherwise>
 		<input type="text" name="{name/@post}"
-		       value="{name}" disabled="disabled" />
+		       value="{name}" />
 	      </xsl:otherwise>
 	    </xsl:choose>
 	  </label>
