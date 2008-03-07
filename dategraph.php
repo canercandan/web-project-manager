@@ -100,9 +100,9 @@ function print_line($length, $name, $dates, $colorbg, $coloractiv)
 	foreach($dates as $value)
 		{
 			if ($value['start'] - $end > 0) 
-				printf(TAB_ITEM, $value['date_start'], $value['date_end'], $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($value['start'] - $end) * 80) / ((double) $length)));
+				printf(TAB_ITEM, '', '', $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($value['start'] - $end) * 80) / ((double) $length)));
 			$end = $value['end'] + 1;
-			printf(TAB_ITEM, $value['date_start'], $value['date_end'], $coloractiv, 0, '', (double) (((double) 80 * $value['start']) / ((double) $length)) + 20, (((double) ($value['end'] - $value['start'] + 1) * 80) / ((double) $length)));   
+			printf(TAB_ITEM, $value['date_start'], $value['date_end'] != '' ? $value['date_end'] : DATE_TODAY, $coloractiv, 0, '', (double) (((double) 80 * $value['start']) / ((double) $length)) + 20, (((double) ($value['end'] - $value['start'] + 1) * 80) / ((double) $length)));   
 		}
 	if ($length - $end > 0)
 		printf(TAB_ITEM, '', '', $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($length - $end) * 80) / ((double) $length)));

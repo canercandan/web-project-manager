@@ -8,11 +8,11 @@ define('TAB_LINE_START', '<line legend="%d" name="%s" colorbg="%d">');
 define('TAB_LINE_END', '</line>');
 define('TAB_DATE_END','</tab_date>');
 define('TAB_ITEM', '<item date_start="%s" date_end="%s" color="%s" color_text="%s" legend="%s" start="%.3f" width="%.3f"/>');
-
+define('DATE_TODAY', 'Today');
 
 
 /*
-** Define
+** Define sql
 */
 
 define('SQL_GET_MEMBER_DATE', 'SELECT DISTINCT usr_id, usr_login as "name" FROM tw_usr, tw_member
