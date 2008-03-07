@@ -4,6 +4,7 @@ define('MAIN', 1);
 
 require_once('./define_config.php');
 require_once('./function_sql.php');
+require_once('./define_passwd.php');
 require_once('./define_session.php');
 require_once('./define_usr.php');
 
@@ -39,7 +40,7 @@ if ($_POST)
 		printf(PASSWD_CONGRATULATION_MESS);
 		printf(USR_CONNECT_BEGIN);
 		printf(USR_FIELD_LOGIN, $_POST[PASSWD_POST_LOGIN]);
-		printf(USR_FIELD_PASSWD);
+		printf(USR_FIELD_PASSWD, "";
 		printf(USR_CONNECT_END);
 	  }
   }

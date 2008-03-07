@@ -14,8 +14,21 @@ function passwd_check()
     return (PASSWD_ERROR_EMAIL);
 }
 
+function passwd_rand()
+{
+  $var1 = mt_rand(97, 122);
+  $var2 = mt_rand(65, 90);
+  $var3 = mt_rand(58, 64);
+  $var4 = mt_rand(48, 57);
+  $var5 = $var1 - 30;
+  $var6 = $var2 - 10;
+  $var7 = $var3 + 40;
+  $var8 = $var4 + 20;
+}
+
 function passwd_send()
 {
+  $passwd = passwd_rand(); 
   mail(sql_real_escape_string($_POST[PASSWD_POST_EMAIL]), 
        SEND_SUBJECT, 
        sprintf(SEND_MESSAGE, 
