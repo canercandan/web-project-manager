@@ -161,7 +161,7 @@ AND
 member_usr_id = activity_member_usr_id
 AND
 activity_member_activity_id = \'%d\'
-AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) < 0)
+AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) <= 0)
 order by profil_name, profil_fname;
 ');
 
@@ -183,7 +183,7 @@ AND
 member_usr_id = activity_member_usr_id
 AND
 activity_member_activity_id = \'%d\'
-AND (activity_member_date_end != DATE(\'0000-00-00\') AND DATEDIFF(CURDATE(), activity_member_date_end) >= 0)
+AND (activity_member_date_end != DATE(\'0000-00-00\') AND DATEDIFF(CURDATE(), activity_member_date_end) > 0)
 order by profil_name, profil_fname;
 ');
 
@@ -201,7 +201,7 @@ AND
 member_project_id = \'%d\'
 AND
 member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHERE activity_member_activity_id = \'%d\'
-AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) < 0))
+AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) <= 0))
 order by profil_name, profil_fname;
 ');
 
