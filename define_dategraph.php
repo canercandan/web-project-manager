@@ -7,7 +7,7 @@ define('TAB_DATE_START','<tab_date length="%.3f">');
 define('TAB_LINE_START', '<line legend="%d" name="%s" colorbg="%d">');
 define('TAB_LINE_END', '</line>');
 define('TAB_DATE_END','</tab_date>');
-define('TAB_ITEM', '<item date_start="%s" date_end="%s" color="%s" color_text="%s" legend="%s" start="%.3f" width="%.3f"/>');
+define('TAB_ITEM', '<item title="%s" date_start="%s" date_end="%s" color="%s" color_text="%s" legend="%s" start="%.3f" width="%.3f"/>');
 define('DATE_TODAY', 'Today');
 
 

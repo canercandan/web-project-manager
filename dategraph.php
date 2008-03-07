@@ -100,12 +100,12 @@ function print_line($length, $name, $dates, $colorbg, $coloractiv)
 	foreach($dates as $value)
 		{
 			if ($value['start'] - $end > 0) 
-				printf(TAB_ITEM, '', '', $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($value['start'] - $end) * 80) / ((double) $length)));
+				printf(TAB_ITEM, 0, '', '', $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($value['start'] - $end) * 80) / ((double) $length)));
 			$end = $value['end'] + 1;
-			printf(TAB_ITEM, $value['date_start'], $value['date_end'] != '' ? $value['date_end'] : DATE_TODAY, $coloractiv, 0, '', (double) (((double) 80 * $value['start']) / ((double) $length)) + 20, (((double) ($value['end'] - $value['start'] + 1) * 80) / ((double) $length)));   
+			printf(TAB_ITEM, 1, $value['date_start'], $value['date_end'] != '' ? $value['date_end'] : DATE_TODAY, $coloractiv, 0, '', (double) (((double) 80 * $value['start']) / ((double) $length)) + 20, (((double) ($value['end'] - $value['start'] + 1) * 80) / ((double) $length)));   
 		}
 	if ($length - $end > 0)
-		printf(TAB_ITEM, '', '', $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($length - $end) * 80) / ((double) $length)));
+		printf(TAB_ITEM, 0, '', '', $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($length - $end) * 80) / ((double) $length)));
 	
 	printf(TAB_LINE_END);
 }
@@ -124,7 +124,7 @@ function	print_tab_legend($length, $day, $month, $year, $nb)
 	if ($step >= 1)
 		while ($end < 100)
 		{
-			printf(TAB_ITEM,'','', 0, 0, print_date($day, $month, $year), $end, $width);
+			printf(TAB_ITEM, 0, '','', 0, 0, print_date($day, $month, $year), $end, $width);
 			$end += $width;
 			$day += $step;
 			$tim = mktime(0, 0, 0, (int) $month, (int) $day, (int) $year);			
@@ -135,7 +135,7 @@ function	print_tab_legend($length, $day, $month, $year, $nb)
 		}
 	else
 	{
-		printf(TAB_ITEM,'','', 0, 0, print_date($day, $month, $year), $end, 80);
+		printf(TAB_ITEM, 0, '','', 0, 0, print_date($day, $month, $year), $end, 80);
 	}
 	printf(TAB_LINE_END);
 }
