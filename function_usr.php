@@ -73,10 +73,17 @@ function usr_select_title()
 
 function usr_add()
 {
+  $passwd = passwd_generate(); 
   sql_query(sprintf(USR_SQL_ADD_USR, sql_real_escape_string($_POST[USR_POST_LOGIN]), 
-		    sha1(sql_real_escape_string($_POST[USR_POST_PASSWD])), sql_real_escape_string($_POST[USR_POST_EMAIL])));
+		    sha1($passwd), sql_real_escape_string($_POST[USR_POST_EMAIL])));
   $user = mysql_insert_id();
   sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
+  mail(sql_real_escape_string($_POST[USR_POST_EMAIL]), 
+       SEND_SUBJECT, 
+       sprintf(SEND_MESSAGE, 
+	           sql_real_escape_string($_POST[USR_POST_LOGIN]), 
+			   $passwd), 
+	   SEND_HEADERS);
 }
 
 function usr_session_id()

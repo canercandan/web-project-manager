@@ -26,8 +26,7 @@ define('SEND_HEADERS', 'From : Techweb_Strasbourg@epitech.net');
 define('SEND_MESSAGE', 'Informations about your account have changed.
 						Your account is :
 						Login -> %s
-						Passwd -> %s
-						If you want to change this informations, contact a adminitrator.');
+						Passwd -> %s');
 
 define('PASSWD_CHAR', 'abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ');
 define('PASSWD_SPECIAL', "!@()-_=+?*^&");

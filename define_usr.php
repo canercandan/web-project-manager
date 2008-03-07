@@ -48,7 +48,8 @@ define('USR_ERROR_REPASSWD_NOTFOUND', 'error : password not found');
 define('USR_ERROR_EMAIL_NOTFOUND', 'error : email not found');
 define('USR_ERROR_LOGIN_EXIST', 'error : login already exist');
 
-define('USR_MESG_CREATE_OK', 'congratulation, user create');
+define('USR_MESG_CREATE_OK', 'Congratulation, user create.
+							  An email has been send with your account information');
 define('USR_MESG_CONNECT_OK', 'welcome on techweb');
 
 define('USR_REGEX_EMAIL', '^[a-zA-Z0-9\_\-\.]+\@+[a-zA-Z0-9\_\-\.]+\.[a-zA-Z0-9]{2,4}$');
