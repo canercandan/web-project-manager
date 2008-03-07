@@ -14,4 +14,14 @@ function passwd_check()
     return (PASSWD_ERROR_EMAIL);
 }
 
+function passwd_send()
+{
+  mail(sql_real_escape_string($_POST[PASSWD_POST_EMAIL]), 
+       SEND_SUBJECT, 
+       sprintf(SEND_MESSAGE, 
+	           sql_real_escape_string($_POST[PASSWD_POST_LOGIN]), 
+			   sql_real_escape_string($_POST[PASSWD_POST_LOGIN])), 
+	   SEND_HEADERS);
+}
+
 ?>
