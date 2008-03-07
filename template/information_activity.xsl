@@ -20,6 +20,12 @@
 	    </textarea>
 	  </label>
 	  <hr />
+	  <label>
+		Charge<br />
+		<input type="text" name="{charge/@post}"
+			value="{charge}" />
+	  </label>
+	  <hr />
 	  <div class="little">
 	    Date<br />
 	    <xsl:apply-templates select="date" />

@@ -3,7 +3,7 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="body">
-    <xsl:if test="project">
+    <xsl:if test="project!=''">
       <xsl:apply-templates select="project" />
     </xsl:if>
     <xsl:choose>
