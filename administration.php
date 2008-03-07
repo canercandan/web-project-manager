@@ -4,8 +4,9 @@ define('MAIN', 1);
 
 require_once('./define_admin.php');
 require_once('./define_config.php');
-require_once('function_sql.php');
-require_once('function_admin.php');
+require_once('./function_sql.php');
+require_once('./function_admin.php');
+require_once('./define_session.php');
 
 session_name(SESS_NAME);
 session_start();

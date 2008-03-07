@@ -14,7 +14,7 @@
 	</xsl:otherwise>
       </xsl:choose>
       <xsl:choose>
-	<xsl:when test="level=1">
+	<xsl:when test="@level=1">
 	  <xsl:choose>
 	    <xsl:when test="../body/administration">
 	      <li class="on"><a href="./admin2.php">Admin</a></li>
@@ -24,9 +24,9 @@
 	    </xsl:otherwise>
 	  </xsl:choose>
 	</xsl:when>
-	<xsl:when test="level=2">
+	<xsl:when test="@level=2">
 	</xsl:when>
-	<xsl:when test="level=3">
+	<xsl:when test="@level=3">
 	  <xsl:choose>
 	    <xsl:when test="../body/menu_project">
 	      <li class="on"><a href="./root.php?project_view=1">Project</a></li>
@@ -44,7 +44,7 @@
 	    </xsl:otherwise>
 	  </xsl:choose>
 	</xsl:when>
-	<xsl:when test="level=4">
+	<xsl:when test="@level=4">
 	  <xsl:choose>
 	    <xsl:when test="../body/menu_project">
 	      <li class="on"><a href="./root.php?project_view=1">Project</a></li>
@@ -69,14 +69,6 @@
 	    </xsl:when>
 	    <xsl:otherwise>
 	      <li><a href="./connect.php">Connexion</a></li>
-	    </xsl:otherwise>
-	  </xsl:choose>
-	  <xsl:choose>
-	    <xsl:when test="../body/contact">
-	      <li class="on"><a href="#">Contact</a></li>
-	    </xsl:when>
-	    <xsl:otherwise>
-	      <li><a href="#">Contact</a></li>
 	    </xsl:otherwise>
 	  </xsl:choose>
 	</xsl:otherwise>
