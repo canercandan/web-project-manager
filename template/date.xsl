@@ -2,9 +2,9 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template match="date">
-    <xsl:variable name="day_id" select="@day" />	
-    <select name="{@postday}" disabled="{../editable}">
+  <xsl:template match="date[editable=0]">
+    <xsl:variable name="day_id" select="@day" />
+    <select name="{@postday}" disabled="disabled">
       <xsl:for-each select="../list_day/day">
 	<xsl:choose>
 	  <xsl:when test="$day_id=@id">
@@ -21,7 +21,7 @@
       </xsl:for-each>
     </select>
     <xsl:variable name="month_id" select="@month" />
-    <select name="{@postmonth}" disabled="{../editable}">
+    <select name="{@postmonth}" disabled="disabled">
       <xsl:for-each select="../list_month/month">
 	<xsl:choose>
 	  <xsl:when test="$month_id=@id">
@@ -38,7 +38,61 @@
       </xsl:for-each>
     </select>
     <xsl:variable name="year_id" select="@year" />
-    <select name="{@postyear}" disabled="{../editable}">
+    <select name="{@postyear}" disabled="disabled">
+      <xsl:for-each select="../list_year/year">
+	<xsl:choose>
+	  <xsl:when test="$year_id=@id">
+	    <option value="{@id}" selected="selected">
+	      <xsl:value-of select="@value" />
+	    </option>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <option value="{@id}">
+	      <xsl:value-of select="@value" />
+	    </option>
+	  </xsl:otherwise>
+	</xsl:choose>
+      </xsl:for-each>
+    </select>
+  </xsl:template>
+
+  <xsl:template match="date">
+    <xsl:variable name="day_id" select="@day" />
+    <select name="{@postday}">
+      <xsl:for-each select="../list_day/day">
+	<xsl:choose>
+	  <xsl:when test="$day_id=@id">
+	    <option value="{@id}" selected="selected">
+	      <xsl:value-of select="@value" />
+	    </option>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <option value="{@id}">
+	      <xsl:value-of select="@value" />
+	    </option>
+	  </xsl:otherwise>
+	</xsl:choose>
+      </xsl:for-each>
+    </select>
+    <xsl:variable name="month_id" select="@month" />
+    <select name="{@postmonth}">
+      <xsl:for-each select="../list_month/month">
+	<xsl:choose>
+	  <xsl:when test="$month_id=@id">
+	    <option value="{@id}" selected="selected">
+	      <xsl:value-of select="@value" />
+	    </option>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <option value="{@id}">
+	      <xsl:value-of select="@value" />
+	    </option>
+	  </xsl:otherwise>
+	</xsl:choose>
+      </xsl:for-each>
+    </select>
+    <xsl:variable name="year_id" select="@year" />
+    <select name="{@postyear}">
       <xsl:for-each select="../list_year/year">
 	<xsl:choose>
 	  <xsl:when test="$year_id=@id">
