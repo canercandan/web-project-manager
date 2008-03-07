@@ -7,7 +7,7 @@ define('TAB_DATE_START','<tab_date length="%.3f">');
 define('TAB_LINE_START', '<line legend="%d" name="%s" colorbg="%d">');
 define('TAB_LINE_END', '</line>');
 define('TAB_DATE_END','</tab_date>');
-define('TAB_ITEM', '<item color="%s" color_text="%s" legend="%s" start="%.3f" width="%.3f"/>');
+define('TAB_ITEM', '<item date_start="%s" date_end="%s" color="%s" color_text="%s" legend="%s" start="%.3f" width="%.3f"/>');
 
 
 
@@ -23,7 +23,8 @@ define('SQL_GET_ACTIVITY_MEMBER_DATE', 'SELECT DISTINCT usr_id, usr_login as "na
 WHERE activity_member_usr_id = usr_id 
 AND activity_member_activity_id = \'%d\';');
 
-define('SQL_GET_ACTIVITY_MEMBER_DURATION', 'SELECT DATEDIFF(activity_member_date_start, activity_date_begin), DATEDIFF(activity_member_date_end,activity_member_date_start)
+define('SQL_GET_ACTIVITY_MEMBER_DURATION', 'SELECT DATEDIFF(activity_member_date_start, activity_date_begin), DATEDIFF(activity_member_date_end,activity_member_date_start), 
+DATE_FORMAT(activity_member_date_start, \'%%W %%D %%M %%Y\'), DATE_FORMAT(activity_member_date_end, \'%%W %%D %%M %%Y\')
 FROM tw_activity_member, tw_activity
 WHERE
 activity_id = activity_member_activity_id
@@ -32,7 +33,8 @@ AND activity_member_usr_id = \'%d\'
 order by activity_member_date_start, activity_member_date_end
 ');
 
-define('SQL_GET_PROJECT_MEMBER_DURATION', 'SELECT DATEDIFF(member_date_start,project_date), DATEDIFF(member_date_end,member_date_start)
+define('SQL_GET_PROJECT_MEMBER_DURATION', 'SELECT DATEDIFF(member_date_start,project_date), DATEDIFF(member_date_end,member_date_start), 
+DATE_FORMAT(member_date_start, \'%%W %%D %%M %%Y\'), DATE_FORMAT(member_date_end, \'%%W %%D %%M %%Y\')
 FROM tw_member, tw_project
 WHERE
 project_id = member_project_id

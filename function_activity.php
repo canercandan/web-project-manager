@@ -196,6 +196,7 @@ define('SQL_CHECK_HISTO','DELETE FROM tw_activity_member
 									AND activity_member_activity_id = \'%d\'
 									AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
 									AND activity_member_date_end = CURDATE()');
+define('SQL_CHECK_PROJECT_DATE', 'SELECT project_date FROM tw_project WHERE project ');
 									
 define('SQL_UPDATE_MEMBER_ACTIVITY','
 											UPDATE tw_activity_member SET 	activity_level = \'%d\',

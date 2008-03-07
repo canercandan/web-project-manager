@@ -21,6 +21,8 @@ function	print_tab_act_member_date($id_activity)
 		{
 			$new['start'] = $tab[0];		
 			$new['end'] = ($tab[1] == NULL) ? ($length - 1) : ($tab[0] + $tab[1]);
+			$new['date_start'] = $tab[2];
+			$new['date_end'] = $tab[3];
 			$input[$key]['dates'][] = $new;
 		}
 	}
@@ -50,6 +52,8 @@ function	print_tab_proj_member_date($id_project)
 		{
 			$new['start'] = $tab[0];		
 			$new['end'] = ($tab[1] == NULL) ? ($length - 1) : ($tab[0] + $tab[1]);
+			$new['date_start'] = $tab[2];
+			$new['date_end'] = $tab[3];
 			$input[$key]['dates'][] = $new;
 		}
 	}
@@ -64,7 +68,7 @@ function	print_tab_date($length, $day, $month, $year, $input)
 	$coloractive = 2;
 	foreach ($input as $value)
 	{
-		print_line($length, $value['name'], $value['dates'], $colorbg, $coloractive);
+		print_line($length, htmlentities($value['name']), $value['dates'], $colorbg, $coloractive);
 		$colorbg++;
 		$colorbg %= 2;
 		$coloractive++;
@@ -91,16 +95,17 @@ function print_line($length, $name, $dates, $colorbg, $coloractiv)
 		}
 		printf(TAB_ITEM, ($in ? $coloractiv : $colorbg), 0, '');
 	}*/
+
 	$end = 0;
 	foreach($dates as $value)
 		{
 			if ($value['start'] - $end > 0) 
-				printf(TAB_ITEM, $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($value['start'] - $end) * 80) / ((double) $length)));
+				printf(TAB_ITEM, $value['date_start'], $value['date_end'], $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($value['start'] - $end) * 80) / ((double) $length)));
 			$end = $value['end'] + 1;
-			printf(TAB_ITEM, $coloractiv, 0, '', (double) (((double) 80 * $value['start']) / ((double) $length)) + 20, (((double) ($value['end'] - $value['start'] + 1) * 80) / ((double) $length)));   
+			printf(TAB_ITEM, $value['date_start'], $value['date_end'], $coloractiv, 0, '', (double) (((double) 80 * $value['start']) / ((double) $length)) + 20, (((double) ($value['end'] - $value['start'] + 1) * 80) / ((double) $length)));   
 		}
 	if ($length - $end > 0)
-		printf(TAB_ITEM, $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($length - $end) * 80) / ((double) $length)));
+		printf(TAB_ITEM, '', '', $colorbg, 0, '', (double) (((double) 80 * $end) / ((double) $length)) + 20, (((double) ($length - $end) * 80) / ((double) $length)));
 	
 	printf(TAB_LINE_END);
 }
@@ -119,7 +124,7 @@ function	print_tab_legend($length, $day, $month, $year, $nb)
 	if ($step >= 1)
 		while ($end < 100)
 		{
-			printf(TAB_ITEM, 0, 0, print_date($day, $month, $year), $end, $width);
+			printf(TAB_ITEM,'','', 0, 0, print_date($day, $month, $year), $end, $width);
 			$end += $width;
 			$day += $step;
 			$tim = mktime(0, 0, 0, (int) $month, (int) $day, (int) $year);			
@@ -130,7 +135,7 @@ function	print_tab_legend($length, $day, $month, $year, $nb)
 		}
 	else
 	{
-		printf(TAB_ITEM, 0, 0, print_date($day, $month, $year), $end, 80);
+		printf(TAB_ITEM,'','', 0, 0, print_date($day, $month, $year), $end, 80);
 	}
 	printf(TAB_LINE_END);
 }
