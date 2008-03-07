@@ -11,7 +11,7 @@ if (isset($_POST[BTN_UPDATE]))
 	header('Location:root.php?update=activity');
 			exit(0);
 }
-if (isset($_GET['update']) && $_GET['update'] ==)
+//if (isset($_GET['update']) && $_GET['update'] ==)
 printf(INFORMATION_ACTIVITY_BEGIN);
 printf(MEMBER_BTN_UPDATE);
 get_activity_informations($_SESSION['ACTIVITY_ID']);
