@@ -17,7 +17,6 @@ if (!$_SESSION[SESSION_NAME])
     header(LOCATION_EXIT);
 	exit (0);
   }
-
 if ($_GET[DESTROY])
   {
     session_destroy();
@@ -26,9 +25,9 @@ if ($_GET[DESTROY])
   }
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
-  printf(XML_HEADER, XML_NO_TEMPLATE);
-else
-  printf(XML_HEADER, XML_TEMPLATE);
+  printf(XML_HEADER, XML_NO_TEMPLATE, $_SESSION[SESSION_LEVEL]);
+ else
+   printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
 printf(SESSION_DESTROY, DESTROY);
 printf(XML_FOOTER);
 sql_close($link);

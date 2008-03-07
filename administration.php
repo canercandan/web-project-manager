@@ -13,9 +13,9 @@ $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
-  printf(XML_HEADER, XML_NO_TEMPLATE);
-else
-  printf(XML_HEADER, XML_TEMPLATE);
+  printf(XML_HEADER, XML_NO_TEMPLATE, $_SESSION[SESSION_LEVEL]);
+ else
+   printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
 printf(ADMIN_BEGIN);
 if (true || (isset($_SESSION[ADMIN_MENU])
 	     && $_SESSION[ADMIN_MENU] == ADMIN_LOCATION))

@@ -9,9 +9,6 @@ require_once('./function_passwd.php');
 require_once('./define_session.php');
 require_once('./define_usr.php');
 
-session_name(SESS_NAME);
-session_start();
-
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 
@@ -24,9 +21,9 @@ if ($_POST)
 
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
-  printf(XML_HEADER, XML_NO_TEMPLATE);
-else
-  printf(XML_HEADER, XML_TEMPLATE);
+  printf(XML_HEADER, XML_NO_TEMPLATE, 0);
+ else
+   printf(XML_HEADER, XML_TEMPLATE, 0);
 
 if ($_POST)
   {

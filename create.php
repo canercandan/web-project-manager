@@ -13,7 +13,7 @@ sql_select_db(SQL_DB, $link);
 if ($_POST)
   {
     if (!$_POST[USR_POST_LOGIN])
-	  $error = sprintf(XML_ERROR, USR_ERROR_LOGIN_NOTFOUND);
+      $error = sprintf(XML_ERROR, USR_ERROR_LOGIN_NOTFOUND);
     else if (!$_POST[USR_POST_EMAIL])
       $error = sprintf(XML_ERROR, USR_ERROR_EMAIL_NOTFOUND);
     else if ($login = usr_login_check())
@@ -22,17 +22,17 @@ if ($_POST)
       $error = sprintf(XML_ERROR, USR_ERROR_EMAIL);
     else
       {
-		usr_add();
-		header(sprintf(HEADER_LOCATION_CREATE, $_POST[USR_POST_LOGIN]));
-		exit(0);
+	usr_add();
+	header(sprintf(HEADER_LOCATION_CREATE, $_POST[USR_POST_LOGIN]));
+	exit(0);
       }
   }
 
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
-  printf(XML_HEADER, XML_NO_TEMPLATE);
+  printf(XML_HEADER, XML_NO_TEMPLATE, 0);
  else
-   printf(XML_HEADER, XML_TEMPLATE);
+   printf(XML_HEADER, XML_TEMPLATE, 0);
 if ($_GET['ok'])
   {
     printf(USR_CONNECT_BEGIN);

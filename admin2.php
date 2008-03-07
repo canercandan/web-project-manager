@@ -17,16 +17,16 @@ sql_select_db(SQL_DB, $link);
 if (!$_SESSION[SESSION_NAME] || $_SESSION[SESSION_LEVEL] != IS_A_ADMIN)
   {
     header(LOCATION_EXIT);
-	exit (0);
+    exit (0);
   }
 
 if($_POST)
   update_member();
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
-  printf(XML_HEADER, XML_NO_TEMPLATE);
+  printf(XML_HEADER, XML_NO_TEMPLATE, $_SESSION[SESSION_LEVEL]);
  else
-  printf(XML_HEADER, XML_TEMPLATE);
+   printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
 printf(SESSION_DESTROY, DESTROY);
 printf(ADMIN_BEGIN);
 printf(MEMBER_LIST_BEGIN);
