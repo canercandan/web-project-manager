@@ -14,51 +14,71 @@
 	</xsl:otherwise>
       </xsl:choose>
       <xsl:choose>
-	<xsl:when test="../body/create">
-	  <li class="on"><a href="./create.php">Inscription</a></li>
+	<xsl:when test="level=1">
+	  <xsl:choose>
+	    <xsl:when test="../body/administration">
+	      <li class="on"><a href="./admin2.php">Admin</a></li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li><a href="./admin2.php">Admin</a></li>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:when>
+	<xsl:when test="level=2">
+	</xsl:when>
+	<xsl:when test="level=3">
+	  <xsl:choose>
+	    <xsl:when test="../body/menu_project">
+	      <li class="on"><a href="./root.php?project_view=1">Project</a></li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li><a href="./root.php?project_view=1">Project</a></li>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	  <xsl:choose>
+	    <xsl:when test="../body/add_project">
+	      <li class="on"><a href="./root.php?project_add=1">Add a project</a></li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li><a href="./root.php?project_add=1">Add a project</a></li>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:when>
+	<xsl:when test="level=4">
+	  <xsl:choose>
+	    <xsl:when test="../body/menu_project">
+	      <li class="on"><a href="./root.php?project_view=1">Project</a></li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li><a href="./root.php?project_view=1">Project</a></li>
+	    </xsl:otherwise>
+	  </xsl:choose>
 	</xsl:when>
 	<xsl:otherwise>
-	  <li><a href="./create.php">Inscription</a></li>
-	</xsl:otherwise>
-      </xsl:choose>
-      <xsl:choose>
-	<xsl:when test="../body/connect">
-	  <li class="on"><a href="./connect.php">Connexion</a></li>
-	</xsl:when>
-	<xsl:otherwise>
-	  <li><a href="./connect.php">Connexion</a></li>
-	</xsl:otherwise>
-      </xsl:choose>
-      <xsl:choose>
-	<xsl:when test="../body/contact">
-	  <li class="on"><a href="#">Contact</a></li>
-	</xsl:when>
-	<xsl:otherwise>
-	  <li><a href="#">Contact</a></li>
-	</xsl:otherwise>
-      </xsl:choose>
-      <xsl:choose>
-	<xsl:when test="../body/menu_project">
-	  <li class="on"><a href="./root.php?project_view=1">Project</a></li>
-	</xsl:when>
-	<xsl:otherwise>
-	  <li><a href="./root.php?project_view=1">Project</a></li>
-	</xsl:otherwise>
-      </xsl:choose>
-      <xsl:choose>
-	<xsl:when test="../body/add_project">
-	  <li class="on"><a href="./root.php?project_add=1">Add a project</a></li>
-	</xsl:when>
-	<xsl:otherwise>
-	  <li><a href="./root.php?project_add=1">Add a project</a></li>
-	</xsl:otherwise>
-      </xsl:choose>
-      <xsl:choose>
-	<xsl:when test="../body/administration">
-	  <li class="on"><a href="./admin2.php">Admin</a></li>
-	</xsl:when>
-	<xsl:otherwise>
-	  <li><a href="./admin2.php">Admin</a></li>
+	  <xsl:choose>
+	    <xsl:when test="../body/create">
+	      <li class="on"><a href="./create.php">Inscription</a></li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li><a href="./create.php">Inscription</a></li>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	  <xsl:choose>
+	    <xsl:when test="../body/connect">
+	      <li class="on"><a href="./connect.php">Connexion</a></li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li><a href="./connect.php">Connexion</a></li>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	  <xsl:choose>
+	    <xsl:when test="../body/contact">
+	      <li class="on"><a href="#">Contact</a></li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li><a href="#">Contact</a></li>
+	    </xsl:otherwise>
+	  </xsl:choose>
 	</xsl:otherwise>
       </xsl:choose>
     </ul>
