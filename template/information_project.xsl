@@ -8,6 +8,11 @@
       <form action="?" method="post">
 	<div class="form">
 	  <label>
+	    Autor<br />
+	    <input type="text" name="{name/@name}" />
+	  </label>
+	  <hr />
+	  <label>
 	    Name<br />
 	    <input type="text" name="{name/@post}"
 		   value="{name}" />
