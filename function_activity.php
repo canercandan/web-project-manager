@@ -48,7 +48,7 @@ function get_activity_work($id_activity)
 		     htmlentities($tab[1]),
 		     $tab[2],
 		     ($tab[3] < $tab[2] ? $tab[3] : $tab[2]),
-		     (($tab[3] < $tab[2] ? $tab[3] : $tab[2]) * 100) / $tab[2]);
+		     ($tab[2] == 0 ? 100 : (($tab[3] < $tab[2] ? $tab[3] : $tab[2]) * 100) / $tab[2]));
 	    }
 	  else
 	    {
@@ -61,11 +61,26 @@ function get_activity_work($id_activity)
 	      $work += ($tab[3] < $tab[2] ? $tab[3] : $tab[2]);
 	      printf('<work>%d</work><percent>%d</percent></activity_work>',
 		     ($tab[3] < $tab[2] ? $tab[3] : $tab[2]),
-		     (($tab[3] < $tab[2] ? $tab[3] : $tab[2]) * 100) / $tab[2]);
+		     ($tab[2] == 0 ? 100 : (($tab[3] < $tab[2] ? $tab[3] : $tab[2]) * 100) / $tab[2]));
 	    }
 	}
       return ($work);
     }
+}
+
+function update_activity($id_activity, $name, $describ, $day, $month, $year, $charge)
+{
+	$res = sql_query(sprintf(SQL_CHECK_CHARGE_EDITABLE, sql_real_escape_string($id_activity)));
+	if (sql_result($res, 0, 0))
+	{
+		sql_query(sprintf(SQL_UPDATE_ACTIVITY_CHARGE, sql_real_escape_string($name), sql_real_escape_string($describ), 
+			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($charge)));
+	}
+	else
+	{
+		sql_query(sprintf(SQL_UPDATE_ACTIVITY, sql_real_escape_string($name), sql_real_escape_string($describ), 
+			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
+	}
 }
 
 function get_activity_informations($id_activity)
@@ -93,7 +108,7 @@ function get_activity_informations($id_activity)
   $work = get_activity_work($id_activity);
   printf('<work>%d</work><percent>%d</percent></activity_work>',
 	 ($work < $tab[2] ? $work : $tab[2]),
-	 (($work < $tab[2] ? $work : $tab[2]) * 100) / $tab[2]);
+	 ($tab[2] == 0 ? 0 : (($work < $tab[2] ? $work : $tab[2]) * 100) / $tab[2]));
 }
 
 function get_member_activity($id_activity, $id_project, $last)

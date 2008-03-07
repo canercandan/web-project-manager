@@ -134,11 +134,11 @@ function get_information_project($id_project)
 			$work = $work > $tab[2] ? $tab[2] : $work;
 			printf('<work>%d</work><percent>%d</percent></activity_work>',
 				$work,
-				($work * 100) / $tab[2]);
+				($tab[2] == 0 ? 100 : ($work * 100) / $tab[2]));
 			$tot_charge += $tab[2];
 			$tot_work += $work;
 		}
-	printf('<charge>%d</charge><work>%d</work><percent>%d</percent></activity_work>', $tot_charge, $tot_work, ($tot_work * 100) / $tot_charge);
+	printf('<charge>%d</charge><work>%d</work><percent>%d</percent></activity_work>', $tot_charge, $tot_work, ($tot_charge == 0 ? 100 : ($tot_work * 100) / $tot_charge));
 }
 
 function print_projects_list($id_user)

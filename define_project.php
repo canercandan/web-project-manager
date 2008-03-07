@@ -145,12 +145,10 @@ define('SQL_GET_FIRST_ACTIVITY', 'SELECT activity_id, activity_name, activity_ch
 	activity_project_id = \'%d\'
 	AND activity_parent_id = 0;');
 
-define('SQL_INFORMATION', 'SELECT project_name, project_describ, day(project_date), month(project_date), year(project_date), profil_name, profil_fname, title_name
-FROM tw_profil, tw_title, tw_project
+define('SQL_INFORMATION', 'SELECT f.project_name, f.project_describ, day(f.project_date), month(f.project_date), year(f.project_date), p.profil_name, p.profil_fname, title_name
+FROM tw_project f LEFT JOIN tw_profil p ON f.project_autor_usr_id = p.profil_usr_id LEFT JOIN tw_title ON title_id = p.profil_title_id   
 WHERE
-title_id = profil_title_id
-AND profil_usr_id = project_autor_usr_id
-AND project_id = \'%d\';');
+f.project_id = \'%d\';');
 
 define('SQL_CHECK_PROJECT', 'select project_name from tw_project where project_id = \'%d\';');
 
