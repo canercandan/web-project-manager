@@ -22,7 +22,8 @@ define('PASSWD_ERROR_EMAIL', 'Wrong email');
 define('PASSWD_CONGRATULATION_MESS', '<congratulation value="A email have been send with your new account information." />');
 
 define('SEND_SUBJECT', 'Techweb : new password');
-define('SEND_HEADERS', 'From : Techweb_Strasbourg@epitech.net');
+define('SEND_HEADER_TO', 'To: %s <%s>');
+define('SEND_HEADER_FROM', 'From: Techweb <Techweb_Strasbourg@epitech.net>');
 define('SEND_MESSAGE', 'Informations about your account have changed.
 						Your account is :
 						Login -> %s

@@ -38,13 +38,14 @@ function passwd_generate()
 
 function passwd_send()
 {
-  $passwd = passwd_generate(); 
+  $passwd = passwd_generate();
+  $header = sprintf(SEND_HEADER_TO, $_POST[PASSWD_POST_LOGIN], $_POST[PASSWD_POST_EMAIL]) . "\r\n" . sprintf(SEND_HEADER_FROM);
   mail(sql_real_escape_string($_POST[PASSWD_POST_EMAIL]), 
        SEND_SUBJECT, 
        sprintf(SEND_MESSAGE, 
 	           sql_real_escape_string($_POST[PASSWD_POST_LOGIN]), 
 			   $passwd), 
-	   SEND_HEADERS);
+	   $header);
 }
 
 ?>
