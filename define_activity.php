@@ -86,14 +86,11 @@ SET activity_name = \'%s\', activity_describtion = \'%s\',  activity_date_begin 
 WHERE activity_id = \'%d\';');
 
 define('SQL_CHECK_CHARGE_EDITABLE',
-'SQL_GET_ACTIVITY_INFORMATIONS', '
-SELECT p.activity_name, p.activity_describtion, p.activity_charge_total, 
-day(p.activity_date_begin), month(p.activity_date_begin), year(p.activity_date_begin), (count(f.activity_id) = 0)
-FROM tw_activity p, tw_activity f
+'SELECT (count(f.activity_id) = 0)
+FROM tw_activity p LEFT JOIN tw_activity f ON f.activity_parent_id = p.activity_id
 WHERE 
 p.activity_id = \'%d\'
-AND f.activity_parent_id = p.activity_id
-GROUP BY f.activity_id;'
+GROUP BY f.activity_id
 );
 
 define('SQL_CHECK_ACTIVITY', 'SELECT activity_name FROM tw_activity WHERE activity_id = \'%d\';');
