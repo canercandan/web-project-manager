@@ -5,6 +5,7 @@
 */
 
 define('LOCATION_EXIT', 'Location:connect.php');
+define('IS_A_ADMIN', '1');
 
 define('SESSION_LOCATION', 'sesslocation');
 define('SESSION_TITLE', 'sesstitle');
