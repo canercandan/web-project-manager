@@ -27,9 +27,9 @@ define('SEND_HEADER_FROM', 'From: Techweb <Techweb_Strasbourg@epitech.net>');
 define('SEND_MESSAGE', 
 'Welcome on Techweb.
  
- Informations about your account : 
- Login -> %s 
- Password -> %s');
+Informations about your account : 
+Login -> %s 
+Password -> %s');
 
 define('PASSWD_CHAR', 'abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ');
 define('PASSWD_SPECIAL', "!@()-_=+?*^&");
