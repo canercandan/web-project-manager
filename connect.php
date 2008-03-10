@@ -10,10 +10,12 @@ require_once('./define_usr.php');
 
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
+
+session_name(SESS_NAME);
+session_start();
+	
 if ($_POST)
   {
-    session_name(SESS_NAME);
-    session_start();
     if (!$_POST[USR_POST_LOGIN])
 	  $error = sprintf(XML_ERROR, USR_ERROR_LOGIN_NOTFOUND);
     else if (!$_POST[USR_POST_PASSWD])

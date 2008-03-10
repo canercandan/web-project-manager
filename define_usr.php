@@ -98,7 +98,7 @@ define('USR_SQL_SESSION_ID',
 	   'SELECT usr_id
 	    FROM tw_usr
 		WHERE usr_login = \'%s\';');
-		
+
 define('USR_SQL_SESSION',
 	   'SELECT location_name, 
 	           title_name, 
@@ -108,13 +108,10 @@ define('USR_SQL_SESSION',
 			   profil_mphone, 
 			   profil_perso_adress,
 			   usr_level_id
-		FROM tw_location,
-			 tw_title,
-			 tw_profil,
-			 tw_usr
-		WHERE tw_location.location_id = tw_profil.profil_location_id
-		AND tw_title.title_id = tw_profil.profil_title_id
-		AND tw_usr.usr_id = tw_profil.profil_usr_id
-		AND profil_usr_id = \'%s\';');
+		FROM tw_profil p
+		LEFT JOIN tw_location l ON p.profil_location_id = l.location_id
+		LEFT JOIN tw_title t ON p.profil_title_id = t.title_id
+		LEFT JOIN tw_usr u ON p.profil_usr_id = u.usr_id
+		WHERE u.usr_login = \'%s\';');
 
 ?>
