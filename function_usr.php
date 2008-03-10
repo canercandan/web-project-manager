@@ -33,6 +33,17 @@ function usr_email_check()
   return (0);
 }
 
+function usr_email_exist()
+{
+  $test = sql_query(sprintf(USR_SQL_EMAIL));
+  while ($tab = sql_fetch_array($test))
+    {
+	  if (strcmp($_POST[USR_POST_EMAIL], $tab[0]) == 0)
+	    return (1);
+	}
+  return(0);
+}
+
 function usr_profil_check()
 {
   $test = sql_query(sprintf(USR_SQL_SELECT_PROFIL, $_SESSION[SESSION_ID]));

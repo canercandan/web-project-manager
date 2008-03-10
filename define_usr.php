@@ -47,6 +47,7 @@ define('USR_ERROR_PASSWD_NOTFOUND', 'error : password not found');
 define('USR_ERROR_REPASSWD_NOTFOUND', 'error : password not found');
 define('USR_ERROR_EMAIL_NOTFOUND', 'error : email not found');
 define('USR_ERROR_LOGIN_EXIST', 'error : login already exist');
+define('USR_ERROR_EMAIL_EXIST', 'error : email already used');
 
 define('USR_MESG_CREATE_OK', 'Congratulation, user created.
 							  An email will be send with your account information');
@@ -111,5 +112,13 @@ define('USR_SQL_SESSION',
 		LEFT JOIN tw_title t ON p.profil_title_id = t.title_id
 		LEFT JOIN tw_usr u ON p.profil_usr_id = u.usr_id
 		WHERE u.usr_login = \'%s\';');
+
+/*
+** Define for email
+*/
+
+define('USR_SQL_EMAIL',
+	   'SELECT usr_email
+	    FROM tw_usr;');
 
 ?>

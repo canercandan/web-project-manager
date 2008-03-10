@@ -20,6 +20,8 @@ if ($_POST)
       $error = sprintf(XML_ERROR, USR_ERROR_LOGIN_EXIST);
     else if (!$login && !($email = usr_email_check()))
       $error = sprintf(XML_ERROR, USR_ERROR_EMAIL);
+	else if ($send = usr_email_exist())
+	  $error = sprintf(XML_ERROR, USR_ERROR_EMAIL_EXIST);
     else
       {
 		usr_add();
