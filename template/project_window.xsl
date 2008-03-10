@@ -34,6 +34,12 @@
       </xsl:if>
     </div>
     <div class="box">
+      <xsl:if test="error">
+	<xsl:apply-templates select="error" />
+      </xsl:if>
+      <xsl:if test="mesg">
+	<xsl:apply-templates select="mesg" />
+      </xsl:if>
       <xsl:choose>
 	<xsl:when test="activity_window">
 	  <h2 class="blue3">
