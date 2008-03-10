@@ -38,6 +38,10 @@
 	    <fieldset>
 	      <legend>Member space</legend>
 	      <div>
+		<h3 class="blue2">
+		  <a href="./profil.php">Edit your profil</a>
+		</h3>
+		<br />
 		<xsl:value-of select="memberwelcome/@value" />
 	      </div>
 	    </fieldset>

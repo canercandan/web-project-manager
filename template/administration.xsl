@@ -75,9 +75,6 @@
   <xsl:template match="administration">
     <fieldset>
       <legend>Administration</legend>
-      <h3 class="blue2">
-	<a href="./member.php?{../sessdestroy/@post}=1">Deconnection</a>
-      </h3>
       <xsl:apply-templates select="member_list" />
     </fieldset>
   </xsl:template>
