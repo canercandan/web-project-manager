@@ -50,7 +50,7 @@ define('USR_ERROR_LOGIN_EXIST', 'error : login already exist');
 define('USR_ERROR_EMAIL_EXIST', 'error : email already used');
 
 define('USR_MESG_CREATE_OK', 'Congratulation, user created.
-							  An email will be send with your account information');
+							  An email will be sent with your account information');
 define('USR_MESG_CONNECT_OK', 'Welcome on techweb');
 
 define('USR_REGEX_EMAIL', '^[a-zA-Z0-9\_\-\.]+\@+[a-zA-Z0-9\_\-\.]+\.[a-zA-Z0-9]{2,4}$');
