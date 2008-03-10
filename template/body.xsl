@@ -30,7 +30,9 @@
 	    </ul>
 	  </xsl:if>
 	  <div class="menu blue2">
-	    <xsl:apply-templates select="project_window" />
+	    <xsl:if test="project_window/activity">
+	      <xsl:apply-templates select="project_window/activity" />
+	    </xsl:if>
 	  </div>
 	  <div class="box">
 	    <xsl:choose>

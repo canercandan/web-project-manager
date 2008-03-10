@@ -6,6 +6,9 @@
     <xsl:if test="error">
       <xsl:apply-templates select="error" />
     </xsl:if>
+    <xsl:if test="mesg">
+      <xsl:apply-templates select="mesg" />
+    </xsl:if>
     <xsl:choose>
       <xsl:when test="add_activity">
 	<xsl:apply-templates select="add_activity" />
