@@ -35,7 +35,7 @@ function usr_email_check()
 
 function usr_profil_check()
 {
-  $test = sql_query(sprintf(USR_SQL_SELECT_PROFIL, sql_real_escape_string($_POST[USR_POST_LOGIN])));
+  $test = sql_query(sprintf(USR_SQL_SELECT_PROFIL, $_SESSION[SESSION_ID]));
   $tab = sql_fetch_array($test);
   if ($tab[1] == 'NULL' || $tab[2] == 'NULL' || $tab[3] == 'NULL' || $tab[4] == 'NULL' || $tab[5] == 'NULL' || $tab[6] == '0')
 	return (0);
@@ -108,7 +108,7 @@ function session_create()
   $_SESSION[SESSION_FNAME] = $row[3];
   $_SESSION[SESSION_FPHONE] = $row[4];
   $_SESSION[SESSION_MPHONE] = $row[5];
-  $_SESSION[SESSION_ADDRESSE] = $row[6];
+  $_SESSION[SESSION_ADDRESS] = $row[6];
   $_SESSION[SESSION_LEVEL] = $row[7];
 }
 

@@ -48,9 +48,9 @@ define('USR_ERROR_REPASSWD_NOTFOUND', 'error : password not found');
 define('USR_ERROR_EMAIL_NOTFOUND', 'error : email not found');
 define('USR_ERROR_LOGIN_EXIST', 'error : login already exist');
 
-define('USR_MESG_CREATE_OK', 'Congratulation, user create.
-							  An email has been send with your account information');
-define('USR_MESG_CONNECT_OK', 'welcome on techweb');
+define('USR_MESG_CREATE_OK', 'Congratulation, user created.
+							  An email will be send with your account information');
+define('USR_MESG_CONNECT_OK', 'Welcome on techweb');
 
 define('USR_REGEX_EMAIL', '^[a-zA-Z0-9\_\-\.]+\@+[a-zA-Z0-9\_\-\.]+\.[a-zA-Z0-9]{2,4}$');
 
@@ -71,9 +71,7 @@ define('USR_SQL_SELECT_PASSWD',
 define('USR_SQL_SELECT_PROFIL',
 	   'SELECT *
 	    FROM tw_profil
-		WHERE profil_usr_id = ( SELECT usr_id
-								FROM tw_usr
-								WHERE usr_login = \'%s\' );');
+		WHERE profil_usr_id = %s;');
 
 /*
 ** Define user : sql add request

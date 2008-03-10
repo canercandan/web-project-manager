@@ -20,13 +20,14 @@ if ($_POST)
 	  $error = sprintf(XML_ERROR, USR_ERROR_LOGIN_NOTFOUND);
     else if (!$_POST[USR_POST_PASSWD])
       $error = sprintf(XML_ERROR, USR_ERROR_PASSWD_NOTFOUND);
-    else if (!$login = usr_login_check())
+    else if (!($login = usr_login_check()))
       $error = sprintf(XML_ERROR, USR_ERROR_LOGIN);
-    else if ($login && (!$passwd = usr_passwd_check()))
+    else if ($login && (!($passwd = usr_passwd_check())))
       $error = sprintf(XML_ERROR, USR_ERROR_PASSWD);
     else
       {
 	    session_create();
+		var_dump($_SESSION);
 	    if (!($profil = usr_profil_check()))
 	      header(HEADER_LOCATION_PROFIL);
 	    else

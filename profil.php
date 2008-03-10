@@ -13,7 +13,7 @@ session_start();
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 
-if (!$_SESSION[SESSION_NAME])
+if (!($_SESSION[SESSION_ID]))
   {
     header(LOCATION_EXIT);
 	exit (0);
