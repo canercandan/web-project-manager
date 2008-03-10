@@ -16,6 +16,7 @@ sql_select_db(SQL_DB, $link);
 
 if (!$_SESSION[SESSION_ID] || $_SESSION[SESSION_LEVEL] != IS_A_ADMIN)
   {
+    session_destroy();
     header(LOCATION_EXIT);
     exit (0);
   }

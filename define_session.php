@@ -19,4 +19,7 @@ define('SESSION_MPHONE', 'sessmphone');
 define('SESSION_ADDRESS', 'sessaddress');
 define('SESSION_LEVEL', 'sesslevel');
 
+define('DESTROY', 'deco');
+define('SESSION_DESTROY', '<sessdestroy post="%s" />');
+
 ?>
