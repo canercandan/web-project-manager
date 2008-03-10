@@ -18,7 +18,8 @@ if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE, $_SESSION[SESSION_LEVEL]);
 else
   printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
- 
+printf(SESSION_DESTROY, DESTROY);
+
 include('get_manager.php');
  
 check_admin_create_project();

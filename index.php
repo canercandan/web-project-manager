@@ -16,6 +16,7 @@ if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE, $_SESSION[SESSION_LEVEL]);
 else
   printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
+  printf(SESSION_DESTROY, DESTROY);
 printf('<home>
 	  <mesg>Presentation de TechWEB</mesg>
 	  <location name="location">
