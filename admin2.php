@@ -21,7 +21,11 @@ if (!$_SESSION[SESSION_NAME] || $_SESSION[SESSION_LEVEL] != IS_A_ADMIN)
   }
 
 if($_POST)
-  update_member();
+  {
+    update_member();
+	header(LOCATION_ADMIN);
+	exit (0);
+  }
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE, $_SESSION[SESSION_LEVEL]);

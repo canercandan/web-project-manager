@@ -3,6 +3,8 @@
 if (!MAIN)
   exit(0);
 
+define('LOCATION_ADMIN', 'Location:admin2.php');
+  
 define('ADMIN_BEGIN','<administration>');
 define('ADMIN_END','</administration>');
 define('ADD_LOCATION_BEGIN', '<add_location>');
