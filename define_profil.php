@@ -46,10 +46,17 @@ define('PROFIL_POST_ADDRESS', 'profil_address');
 define('PROFIL_LOCATION_ERROR', 'error : no location select');
 define('PROFIL_TITLE_ERROR', 'error : no title select');
 define('PROFIL_NAME_ERROR', 'error : no name enter');
+define('PROFIL_NAME_ERROR_NOTCHAR', 'error : name invalid');
 define('PROFIL_FNAME_ERROR', 'error : no first name enter');
-define('PROFIL_FPHONE_ERROR', 'error : nophone enter');
+define('PROFIL_FNAME_ERROR_NOTCHAR', 'error : first name invalid');
+define('PROFIL_FPHONE_ERROR', 'error : no phone enter');
+define('PROFIL_FPHONE_ERROR_NOTNUM', 'error : phone invalid');
 define('PROFIL_MPHONE_ERROR', 'error : no mobile enter');
+define('PROFIL_MPHONE_ERROR_NOTNUM', 'error : mobile invalid');
 define('PROFIL_ADDRESS_ERROR', 'error : no address enter');
+
+define('PROFIL_IS_NUMBER', '^[0-9]{10,15}$');
+define('PROFIL_IS_CHAR', '^[a-zA-Z]{1,30}$');
 
 define('MEMBER_SELECT', 'memberselect');
 define('XML_MEMBER_SELECT', '<memberselect post="%s" value="%s" />');

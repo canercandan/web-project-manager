@@ -18,6 +18,21 @@ function profil_check()
     return (1);
 }
 
+function profil_number_check($number)
+{
+  if (ereg(PROFIL_IS_NUMBER, $number) != FALSE)
+    return (1);
+  return (0);
+}
+
+function profil_name_check($name)
+{
+   if (ereg(PROFIL_IS_CHAR, $name) != FALSE)
+    return (1);
+  return (0);
+}
+
+
 function select_location()
 {
   $test = sql_query(sprintf(PROFIL_SQL_LOCATION));

@@ -46,12 +46,20 @@ if ($_POST)
       $error = sprintf(XML_ERROR, PROFIL_TITLE_ERROR);
     else if (!$_POST[PROFIL_POST_NAME])
       $error = sprintf(XML_ERROR, PROFIL_NAME_ERROR);
+	else if (!(profil_name_check($_POST[PROFIL_POST_NAME])))
+	  $error = sprintf(XML_ERROR, PROFIL_NAME_ERROR_NOTCHAR);
     else if (!$_POST[PROFIL_POST_FNAME])
       $error = sprintf(XML_ERROR, PROFIL_FNAME_ERROR);
+	else if (!(profil_name_check($_POST[PROFIL_POST_FNAME])))
+	  $error = sprintf(XML_ERROR, PROFIL_FNAME_ERROR_NOTCHAR);
     else if (!$_POST[PROFIL_POST_FPHONE])
       $error = sprintf(XML_ERROR, PROFIL_FPHONE_ERROR);
+	else if (!(profil_number_check($_POST[PROFIL_POST_FPHONE])))
+	  $error = sprintf(XML_ERROR, PROFIL_FPHONE_ERROR_NOTNUM);
     else if (!$_POST[PROFIL_POST_MPHONE])
       $error = sprintf(XML_ERROR, PROFIL_MPHONE_ERROR);
+	else if (!(profil_number_check($_POST[PROFIL_POST_MPHONE])))
+	  $error = sprintf(XML_ERROR, PROFIL_MPHONE_ERROR_NOTNUM);
     else if (!$_POST[PROFIL_POST_ADDRESS])
       $error = sprintf(XML_ERROR, PROFIL_ADDRESS_ERROR);
   }
