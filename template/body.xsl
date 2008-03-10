@@ -34,6 +34,14 @@
 	  <xsl:if test="administration">
 	    <xsl:apply-templates select="administration" />
 	  </xsl:if>
+	  <xsl:if test="memberwelcome">
+	    <fieldset>
+	      <legend>Member space</legend>
+	      <div>
+		<xsl:value-of select="memberwelcome/@value" />
+	      </div>
+	    </fieldset>
+	  </xsl:if>
 	</div>
       </xsl:otherwise>
     </xsl:choose>
