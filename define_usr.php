@@ -48,6 +48,7 @@ define('USR_ERROR_REPASSWD_NOTFOUND', 'error : password not found');
 define('USR_ERROR_EMAIL_NOTFOUND', 'error : email not found');
 define('USR_ERROR_LOGIN_EXIST', 'error : login already exist');
 define('USR_ERROR_EMAIL_EXIST', 'error : email already used');
+define('USR_ERROR_EMAIL_NOTSEND', 'error : can\'t send email, adress doesn\'t exist');
 
 define('USR_MESG_CREATE_OK', 'Congratulation, user created.
 							  An email will be sent with your account information');
