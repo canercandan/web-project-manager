@@ -15,13 +15,13 @@ sql_select_db(SQL_DB, $link);
 if (!$_SESSION[SESSION_NAME])
   {
     header(LOCATION_EXIT);
-	exit (0);
+    exit(0);
   }
 if ($_GET[DESTROY])
   {
     session_destroy();
     header(HEADER_CONNECT);
-    exit (0);
+    exit(0);
   }
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
