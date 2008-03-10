@@ -103,7 +103,7 @@ function profil_update()
 		    sql_real_escape_string($_POST[PROFIL_POST_MPHONE]),
 		    sql_real_escape_string($_POST[PROFIL_POST_TITLE]),
 		    sql_real_escape_string($_POST[PROFIL_POST_ADDRESS]),
-		    sql_real_escape_string($_SESSION[SESSEION_ID])));
+		    sql_real_escape_string($_SESSION[SESSION_ID])));
   $_SESSION[SESSION_NAME] = $_POST[PROFIL_POST_NAME];
   $_SESSION[SESSION_FNAME] = $_POST[PROFIL_POST_FNAME];
   $_SESSION[SESSION_FPHONE] = $_POST[PROFIL_POST_FPHONE];
