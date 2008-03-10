@@ -68,6 +68,10 @@
 	</div>
       </form>
     </fieldset>
+    <fieldset>
+      <legend>Dependance</legend>
+      <div />
+    </fieldset>
     <xsl:if test="activity_work">
       <fieldset>
 	<legend>Charge</legend>

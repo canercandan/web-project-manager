@@ -35,7 +35,7 @@
     </tbody>
   </xsl:template>
 
-  <xsl:template match="member_list/member">
+  <xsl:template match="member_project/member_list/member">
     <tr>
       <td>
 	<input type="checkbox" name="{../checkbox/@name}[]"
@@ -48,7 +48,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_list_project/member|member_histo_list_project/member">
+  <xsl:template match="member_project/member_list_project/member|member_project/member_histo_list_project/member">
     <tr>
       <td>
 	<input type="checkbox"
@@ -114,7 +114,7 @@
       <form action="?" method="post">
 	<div class="member_list">
 	  <table class="table">
-	    <caption>Project's members</caption>
+	    <caption>Users available</caption>
 	    <xsl:apply-templates select="member_list" />
 	  </table>
 	  <div class="form big">
