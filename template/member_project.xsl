@@ -66,7 +66,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_project/member_list_project/member">
+  <xsl:template match="member_project/member_list_project/member|member_project/member_histo_list_project/member">
     <tr>
       <td>
 	<input type="checkbox"
@@ -99,7 +99,7 @@
       <td><xsl:value-of select="fname" /></td>
       <td><xsl:value-of select="title" /></td>
       <td>
-	<xsl:variable name="id" select="id" />
+	<xsl:variable name="id" select="role" />
 	<select name="{role/@post}[{key/@unique}]">
 	  <xsl:for-each select="../role_list/role">
 	    <xsl:choose>
@@ -126,6 +126,7 @@
     </tr>
   </xsl:template>
 
+  <!--
   <xsl:template match="member_project/member_histo_list_project/member">
     <tr>
       <td>
@@ -185,6 +186,7 @@
       </td>
     </tr>
   </xsl:template>
+-->
 
   <xsl:template match="member_project">
     <fieldset>
@@ -217,7 +219,7 @@
 	<div class="member_list">
 	  <table class="table">
 	    <caption>Old members' entries</caption>
-	    <xsl:apply-templates select="member_project/member_histo_list_project" />
+	    <xsl:apply-templates select="member_histo_list_project" />
 	  </table>
 	  <div class="form big">
 	    <input type="submit" name="{btn_update_histo/@post}" value="Update" />
