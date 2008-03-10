@@ -23,6 +23,7 @@
 	      <li><a href="./admin2.php">Admin</a></li>
 	    </xsl:otherwise>
 	  </xsl:choose>
+	  <li><a href="./member.php?{../body/sessdestroy/@post}=1">Deconnection</a></li>
 	</xsl:when>
 	<xsl:when test="@level=2">
 	</xsl:when>
@@ -43,6 +44,7 @@
 	      <li><a href="./root.php?project_add=1">Add a project</a></li>
 	    </xsl:otherwise>
 	  </xsl:choose>
+	  <li><a href="./member.php?{../body/sessdestroy/@post}=1">Deconnection</a></li>
 	</xsl:when>
 	<xsl:when test="@level=4">
 	  <xsl:choose>
@@ -53,6 +55,7 @@
 	      <li><a href="./root.php?project_view=1">Project</a></li>
 	    </xsl:otherwise>
 	  </xsl:choose>
+	  <li><a href="./member.php?{../body/sessdestroy/@post}=1">Deconnection</a></li>
 	</xsl:when>
 	<xsl:otherwise>
 	  <xsl:choose>
