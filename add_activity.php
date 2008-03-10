@@ -25,9 +25,9 @@ if (isset($_POST[POST_ACTIVITY_NAME]) && isset($_POST[POST_ACTIVITY_CHARGE]))
 		printf(XML_ERROR, FIELD_NOT_FILLED);
 
        }
-	else if ($_POST[POST_ACTIVITY_NAME] == "" || $_POST[POST_ACTIVITY_CHARGE] == "")
+	else if (!is_numeric($_POST[POST_ACTIVITY_CHARGE]))
        {
-		printf(XML_ERROR, FIELD_NOT_FILLED);
+		printf(XML_ERROR, ERR_CHARGE_INT);
 
        }
 }

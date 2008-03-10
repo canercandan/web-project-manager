@@ -23,7 +23,7 @@ define('XML_FOOTER',
 	    <autor name="candan_c" />
 	    <autor name="aubry_j" />
 	    <autor name="roser_m" />
-	    <autor name="lazaru_v comes back, YEAH!!!" />
+	    <autor name="lazaru_v" />
 	  </footer>
 	</doc>');
 
@@ -35,6 +35,7 @@ define('XML_MESG',
 
 define('ADMIN', '<admin>%d</admin>');
 define('FIELD_NOT_FILLED', 'Please fill all the fields');
+define('ERR_CHARGE_INT', 'The unit of the charge is day/man : the charge is an integer');
 
 define('DEBUG', 'debug');
 
