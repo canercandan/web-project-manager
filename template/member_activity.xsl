@@ -226,7 +226,7 @@
 	    <xsl:apply-templates select="member_list_project" />
 	  </table>
 	  <div class="form">
-	    <input type="submit" name="{btn_down/@post}" value="\/" />
+	    <input type="submit" name="{btn_down/@post}" value="Add to active members" />
 	  </div>
 	</div>
       </form>
@@ -238,8 +238,8 @@
 	  </table>
 	  <div class="form">
 	    <input type="submit" name="{btn_update/@post}" value="Update" />
-	    <input type="submit" name="{btn_up/@post}" value="/\" />
-	    <input type="submit" name="{btn_histo/@post}" value="\/" />
+	    <input type="submit" name="{btn_up/@post}" value="Delete" />
+	    <input type="submit" name="{btn_histo/@post}" value="Move to old members" />
 	  </div>
 	</div>
 	<div class="member_submit">
