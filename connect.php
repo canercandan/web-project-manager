@@ -24,12 +24,12 @@ if ($_POST)
       $error = sprintf(XML_ERROR, USR_ERROR_PASSWD);
     else
       {
-	session_create();
-	if (!($profil = usr_profil_check()))
-	  header(HEADER_LOCATION_PROFIL);
-	else
-	  header(HEADER_LOCATION_MEMBER);
-	exit(0);
+	    session_create();
+	    if (!($profil = usr_profil_check()))
+	      header(HEADER_LOCATION_PROFIL);
+	    else
+	      header(HEADER_LOCATION_MEMBER);
+	    exit(0);
       }
   }
 header(HEADER_CONTENT_TYPE);
