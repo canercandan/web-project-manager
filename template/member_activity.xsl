@@ -18,7 +18,7 @@
     </tbody>
   </xsl:template>
 
-  <xsl:template match="member_activity/member_list_activity">
+  <xsl:template match="member_activity/member_list_activity|member_activity/member_histo_list_activity">
     <thead>
       <tr>
 	<th>Select</th>
@@ -38,27 +38,7 @@
     </tbody>
   </xsl:template>
 
-  <xsl:template match="member_activity/member_histo_list_activity">
-    <thead>
-      <tr>
-	<th>Select</th>
-	<th>Login</th>
-	<th>Name</th>
-	<th>First name</th>
-	<th>Title</th>
-	<th>Role</th>
-	<th>Admin</th>
-	<th>Work</th>
-	<th>Date begin</th>
-	<th>Date end</th>
-      </tr>
-    </thead>
-    <tbody>
-      <xsl:apply-templates select="member" />
-    </tbody>
-  </xsl:template>
-
-  <xsl:template match="member_activity/member_list_project/member">
+  <xsl:template match="member_list_project/member">
     <tr>
       <td>
 	<input type="checkbox" name="{../checkbox/@name}[]"
@@ -72,7 +52,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_activity/member_list_activity/member">
+  <xsl:template match="member_list_activity/member|member_histo_list_activity/member">
     <tr>
       <td>
 	<input type="checkbox"
@@ -93,78 +73,6 @@
 	<input type="hidden"
 	       name="{key/@name}[{key/@unique}][{key/@month_end}]"
 		   value="{date_end/@month}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@year_end}]"
-	       value="{date_end/@year}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@id}]"
-	       value="{id}" />
-      </td>
-      <td><xsl:value-of select="login" /></td>
-      <td><xsl:value-of select="name" /></td>
-      <td><xsl:value-of select="fname" /></td>
-      <td><xsl:value-of select="title" /></td>
-      <td><xsl:value-of select="role" /></td>
-      <td>
-	<xsl:choose>
-	  <xsl:when test="level=1">
-	    <input type="checkbox"
-		   name="{level/@post}[{key/@unique}]"
-		   value="1"
-		   checked="checked" />
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <input type="checkbox"
-		   name="{level/@post}[{key/@unique}]"
-		   value="1" />
-	  </xsl:otherwise>
-	</xsl:choose>
-      </td>
-      <td>
-	<xsl:choose>
-	  <xsl:when test="work=1">
-	    <input type="checkbox"
-		   name="{work/@post}[{key/@unique}]"
-		   value="1"
-		   checked="checked" />
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <input type="checkbox"
-		   name="{work/@post}[{key/@unique}]"
-		   value="1" />
-	  </xsl:otherwise>
-	</xsl:choose>
-      </td>
-      <td class="little2">
-	<xsl:apply-templates select="date_start" />
-      </td>
-      <td class="little2">
-	<xsl:apply-templates select="date_end" />
-      </td>
-    </tr>
-  </xsl:template>
-
-  <xsl:template match="member_activity/member_histo_list_activity/member">
-   <tr>
-      <td>
-	<input type="checkbox"
-	       name="{../checkbox/@name}[]"
-	       value="{key/@unique}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@day_start}]"
-	       value="{date_start/@day}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@month_start}]"
-	       value="{date_start/@month}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@year_start}]"
-	       value="{date_start/@year}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@day_end}]"
-	       value="{date_end/@day}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@month_end}]"
-	       value="{date_end/@month}" />
 	<input type="hidden"
 	       name="{key/@name}[{key/@unique}][{key/@year_end}]"
 	       value="{date_end/@year}" />
