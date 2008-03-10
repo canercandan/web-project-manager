@@ -27,7 +27,6 @@ if ($_POST)
     else
       {
 	    session_create();
-		var_dump($_SESSION);
 	    if (!($profil = usr_profil_check()))
 	      header(HEADER_LOCATION_PROFIL);
 	    else
