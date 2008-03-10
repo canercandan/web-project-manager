@@ -100,7 +100,7 @@
       <td><xsl:value-of select="title" /></td>
       <td>
 	<xsl:variable name="id" select="id" />
-	<select name="{role/@post}[{$id}]">
+	<select name="{role/@post}[{key/@unique}]">
 	  <xsl:for-each select="../role_list/role">
 	    <xsl:choose>
 	      <xsl:when test="@id=$id">
