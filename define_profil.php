@@ -56,7 +56,7 @@ define('PROFIL_MPHONE_ERROR_NOTNUM', 'error : mobile invalid');
 define('PROFIL_ADDRESS_ERROR', 'error : no address enter');
 
 define('PROFIL_IS_NUMBER', '^[0-9]{10,15}$');
-define('PROFIL_IS_CHAR', '^[a-zA-Z]{1,30}$');
+define('PROFIL_IS_CHAR', '^[a-zA-Z\ ]{3,30}$');
 
 define('MEMBER_SELECT', 'memberselect');
 define('XML_MEMBER_SELECT', '<memberselect post="%s" value="%s" />');
