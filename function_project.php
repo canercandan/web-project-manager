@@ -48,10 +48,11 @@ function get_member_project($id_project, $last)
 	if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(MEMBER_ELEM_PROJECT_PROJ, htmlentities($tab[0]), 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]),
+		printf(MEMBER_ELEM_PROJECT_PROJ, htmlentities($tab[0]), 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), 
+		POST_ROLE, htmlentities($tab[4]), htmlentities($tab[5]),
 		POST_DAY_START, htmlentities($tab[6]), POST_MONTH_START, htmlentities($tab[7]), POST_YEAR_START, htmlentities($tab[8]),
 		POST_DAY_END, htmlentities($tab[9]), POST_MONTH_END, htmlentities($tab[10]), POST_YEAR_END, htmlentities($tab[11]),
-		$last,
+		POST_LIST_KEY, $last,
 		POST_KEY_ID,
 		POST_KEY_DAY_START,
 		POST_KEY_MONTH_START,
@@ -62,6 +63,21 @@ function get_member_project($id_project, $last)
 		$last++;
 	  }
 	  return ($last);
+}
+
+
+function move_to_old_member_project($id_user, $id_project, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end)
+{
+	$old_start = mktime(0, 0, 0, $month_start, $day_start, $year_start);
+	$cur_date_tab = getdate();
+	$cur_date = mktime(0, 0, 0, $cur_date_tab['mon'], $cur_date_tab['mday'], $cur_date_tab['year']);
+	if ($old_start <=  $cur_date)
+	{
+		sql_query(sprintf(SQL_MOVE_TO_OLD_PROJECT_MEMBER, sql_real_escape_string($id_user),
+													sql_real_escape_string($id_project),
+													sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
+													sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
+	}
 }
 
 function get_histo_member_project($id_project, $last)
@@ -79,10 +95,11 @@ function get_histo_member_project($id_project, $last)
 	if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(MEMBER_ELEM_PROJECT_PROJ, htmlentities($tab[0]), 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]),
+		printf(MEMBER_ELEM_PROJECT_PROJ, htmlentities($tab[0]), 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]),
+		POST_ROLE, htmlentities($tab[4]), htmlentities($tab[5]),
 		POST_DAY_START, htmlentities($tab[6]), POST_MONTH_START, htmlentities($tab[7]), POST_YEAR_START, htmlentities($tab[8]),
 		POST_DAY_END, htmlentities($tab[9]), POST_MONTH_END, htmlentities($tab[10]), POST_YEAR_END, htmlentities($tab[11]),
-		$last,
+		POST_LIST_KEY, $last,
 		POST_KEY_ID,
 		POST_KEY_DAY_START,
 		POST_KEY_MONTH_START,
@@ -95,9 +112,29 @@ function get_histo_member_project($id_project, $last)
 	return ($last);
 }
 
-function remove_tot_member($id_user, $id_project)
+function remove_tot_member($id_user, $id_project, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end)
 {
-	sql_query(sprintf(SQL_REMOVE_TOT_MEMBER, sql_real_escape_string($id_user), sql_real_escape_string($id_project)));
+	sql_query(sprintf(SQL_REMOVE_TOT_MEMBER, sql_real_escape_string($id_user), sql_real_escape_string($id_project),
+								sql_real_escape_string($year_start), sql_real_escape_string($month_start), sql_real_escape_string($day_start),
+								sql_real_escape_string($year_end), sql_real_escape_string($month_end), sql_real_escape_string($day_end)));
+}
+
+
+function update_member_proj($id_user, $id_project, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end,
+							$role, $new_day_start, $new_month_start, $new_year_start, $new_day_end, $new_month_end, $new_year_end)
+{
+	printf(SQL_UPDATE_PROJECT_MEMBER, sql_real_escape_string($role),
+												sql_real_escape_string($new_year_start), sql_real_escape_string($new_month_start), sql_real_escape_string($new_day_start),
+												sql_real_escape_string($new_year_end), sql_real_escape_string($new_month_end), sql_real_escape_string($new_day_end),
+												sql_real_escape_string($id_user), sql_real_escape_string($id_project),
+												sql_real_escape_string($year_start), sql_real_escape_string($month_start), sql_real_escape_string($day_start),
+												sql_real_escape_string($year_end), sql_real_escape_string($month_end), sql_real_escape_string($day_end));
+	sql_query(sprintf(SQL_UPDATE_PROJECT_MEMBER, sql_real_escape_string($role),
+												sql_real_escape_string($new_year_start), sql_real_escape_string($new_month_start), sql_real_escape_string($new_day_start),
+												sql_real_escape_string($new_year_end), sql_real_escape_string($new_month_end), sql_real_escape_string($new_day_end),
+												sql_real_escape_string($id_user), sql_real_escape_string($id_project),
+												sql_real_escape_string($year_start), sql_real_escape_string($month_start), sql_real_escape_string($day_start),
+												sql_real_escape_string($year_end), sql_real_escape_string($month_end), sql_real_escape_string($day_end)));
 }
 
 function put_to_member($id_user, $id_project)

@@ -27,11 +27,11 @@ define('MEMBER_ELEM_PROJ', '<member><key unique="%d"/><id>%d</id><moveable>%d</m
 define('MEMBER_ELEM_PROJECT_PROJ', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name>
 <fname>%s</fname>
 <title>%s</title>
-<role post="modrole">%s</role>
+<role post="%s">%s</role>
 <login>%s</login>
 <date_start postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
 <date_end postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
-<key unique="%d" id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
+<key name="%s" unique="%d" id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
 </member>');
 define('POST_KEY_DAY_START', 'key_member_proj_day_start');
 define('POST_KEY_MONTH_START', 'key_member_proj_month_start');
@@ -40,7 +40,9 @@ define('POST_KEY_DAY_END', 'key_member_proj_day_end');
 define('POST_KEY_MONTH_END', 'key_member_proj_month_end');
 define('POST_KEY_YEAR_END', 'key_member_proj_year_end');
 define('POST_KEY_ID', 'key_member_proj_id');
+define('POST_LIST_KEY', 'key');
 
+define('POST_ROLE', 'modrole');
 define('POST_DAY_START', 'member_proj_day_start');
 define('POST_MONTH_START', 'member_proj_month_start');
 define('POST_YEAR_START', 'member_proj_year_start');
@@ -118,7 +120,29 @@ VALUES (
 define('SQL_REMOVE_TOT_MEMBER', 
 'DELETE FROM tw_member
 WHERE member_usr_id = \'%d\'
-AND member_project_id = \'%d\';');
+AND member_project_id = \'%d\'
+AND DATE(\'%04d-%02d-%02d\') = member_date_start
+AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
+
+define('SQL_UPDATE_PROJECT_MEMBER', 
+'
+UPDATE tw_member SET
+member_role_id = \'%d\',
+member_date_start = DATE(\'%04d-%02d-%02d\'),
+member_date_end = DATE(\'%04d-%02d-%02d\')
+WHERE member_usr_id = \'%d\'
+AND member_project_id = \'%d\'
+AND DATE(\'%04d-%02d-%02d\') = member_date_start
+AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
+
+define('SQL_MOVE_TO_OLD_PROJECT_MEMBER', 
+'
+UPDATE tw_member SET
+member_date_end = CURDATE()
+WHERE member_usr_id = \'%d\'
+AND member_project_id = \'%d\'
+AND DATE(\'%04d-%02d-%02d\') = member_date_start
+AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
 
 define('SQL_GET_ROLE', 'SELECT role_id, role_name FROM tw_member_role');
 define('SQL_GET_MEMBER_OUT_PROJECT', 'SELECT usr_id, profil_name, profil_fname, title_name, usr_login FROM tw_usr, tw_profil, tw_title

@@ -1,9 +1,5 @@
 <?php
 
-/*
-** a completer par viven
-*/
-
 define('MAIN', 1);
 
 require_once('./define_config.php');

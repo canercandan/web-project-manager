@@ -346,6 +346,7 @@ function update_member_activity($id_project, $id_activity, $id_user, $day_start,
 													sql_real_escape_string($id_activity),
 													sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
 													sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
+		
 	}
 
 }
