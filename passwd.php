@@ -15,7 +15,7 @@ sql_select_db(SQL_DB, $link);
 if ($_POST)
   {
 	$error = passwd_check();
-	if (!$error)
+	if ($error != 1)
 	  passwd_send();
   }
 
@@ -44,8 +44,6 @@ if ($_POST)
   }
 else
   {
-	$test = passwd_generate();
-	echo $test;
     printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, "");
 	printf(PASSWD_EMAIL, PASSWD_POST_EMAIL, "");
   }

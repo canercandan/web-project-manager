@@ -16,8 +16,10 @@ define('PASSWD_POST_LOGIN', 'passlogin');
 define('PASSWD_POST_EMAIL', 'passemail');
 
 define('PASSWD_ERROR', '<error value"%s" />');
-define('PASSWD_ERROR_LOGIN', 'No login found');
+define('PASSWD_ERROR_LOGIN', 'Wrong login');
+define('PASSWD_ERROR_LOGIN_NOTFOUND', 'No login found');
 define('PASSWD_ERROR_EMAIL', 'Wrong email');
+define('PASSWD_ERROR_EMAIL_NOTFOUND', 'No email found');
 
 define('PASSWD_CONGRATULATION_MESS', '<congratulation value="A email will be send in the next 24h with your new account information." />');
 
