@@ -12,19 +12,25 @@ require_once('function_misc.php');
 function check_date_subact($day, $month, $year, $id_project, $id_activity)
 {
 	
-	$nb_err = 0;
 	$res = SQL_QUERY(sprintf(SQL_CHECK_SUBACT_DATE, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), 
 													sql_real_escape_string($id_activity), sql_real_escape_string($id_project))); 
 	while (($tab = sql_fetch_array($res)))
 	{
 		if ($tab[3] == 1)
 		{
-			$nb_err++;
-			printf(XML_ERROR, sprintf(ERR_DATE_SUBACTIVITY,$tab[1], $tab[2], $day, $month, $year));
+			SQL_QUERY(sprintf(SQL_UPDATE_DATE_ACT_START, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), $tab[0]));
+			SQL_QUERY(sprintf(SQL_UPDATE_DATE_ACT_END, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), $tab[0],
+										sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
+			sql_query(sprintf(SQL_DELETE_MEMBER_DIFFDATE_END_ACT, $tab[0], sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
+			sql_query(sprintf(SQL_UPDATE_MEMBER_DIFFDATE_START_ACT, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), $tab[0],
+														sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day),
+														sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
+			check_date_subact($day, $month, $year, $id_project, $tab[0]);
 		}
 	}
-	return ($nb_err);
+	return (0);
 }
+
 
 function check_activity($id_user, $id_activity)
 {
@@ -230,13 +236,19 @@ function get_member_project_activity($id_activity, $id_project, $last)
 
 function move_to_old_member_activity($id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end)
 {
-	sql_query(sprintf(SQL_CHECK_HISTO, sql_real_escape_string($id_user),
+	$old_start = mktime(0, 0, 0, $month_start, $day_start, $year_start);
+	$cur_date_tab = getdate();
+	$cur_date = mktime(0, 0, 0, $cur_date_tab['mon'], $cur_date_tab['mday'], $cur_date_tab['year']);
+	if ($old_start <=  $cur_date)
+	{
+		sql_query(sprintf(SQL_CHECK_HISTO, sql_real_escape_string($id_user),
 										sql_real_escape_string($id_activity),
 										sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start)));
-	sql_query(sprintf(SQL_MOVE_TO_OLD_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
+		sql_query(sprintf(SQL_MOVE_TO_OLD_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
 													sql_real_escape_string($id_activity),
 													sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
 													sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
+	}
 }
 
 function delete_member_activity($id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end)

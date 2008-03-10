@@ -232,7 +232,7 @@ AND
 member_usr_id = activity_member_usr_id
 AND
 activity_member_activity_id = \'%d\'
-AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) <= 0)
+AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) < 0)
 order by profil_name, profil_fname;
 ');
 
@@ -254,7 +254,7 @@ AND
 member_usr_id = activity_member_usr_id
 AND
 activity_member_activity_id = \'%d\'
-AND (activity_member_date_end != DATE(\'0000-00-00\') AND DATEDIFF(CURDATE(), activity_member_date_end) > 0)
+AND (activity_member_date_end != DATE(\'0000-00-00\') AND DATEDIFF(CURDATE(), activity_member_date_end) >= 0)
 order by profil_name, profil_fname;
 ');
 
@@ -373,6 +373,20 @@ define('SQL_CHECK_SUBACT_DATE','
 SELECT activity_id, activity_name, DATE_FORMAT(activity_date_begin, \'%%d/%%m/%%Y\'), (DATEDIFF(DATE(\'%04d-%02d-%02d\'), activity_date_begin) > 0) FROM tw_activity
 WHERE activity_parent_id = \'%d\' AND activity_project_id = \'%d\';');
 
+define('SQL_UPDATE_DATE_ACT_START',
+'UPDATE tw_activity SET activity_date_begin = DATE(\'%04d-%02d-%02d\')
+WHERE
+activity_id = \'%d\';');
+
+define('SQL_UPDATE_DATE_ACT_END',
+'
+UPDATE tw_activity SET activity_date_end = DATE(\'%04d-%02d-%02d\')
+WHERE
+activity_id = \'%d\'
+AND
+DATEDIFF(DATE(\'%04d-%02d-%02d\'), activity_date_end) > 0;
+');
+
 define('SQL_UPDATE_MEMBER_DIFFDATE_START_ACT','
 UPDATE tw_activity_member
 SET activity_member_date_start = DATE(\'%04d-%02d-%02d\')
@@ -381,7 +395,7 @@ activity_member_activity_id = \'%d\'
 AND
 DATEDIFF(DATE(\'%04d-%02d-%02d\'), activity_member_date_start) > 0
 AND 
-DATEDIFF(DATE(\'%04d-%02d-%02d\'), activity_member_date_end) <= 0; 
+(activity_member_date_end = DATE(\'000-00-00\') OR DATEDIFF(DATE(\'%04d-%02d-%02d\'), activity_member_date_end) <= 0); 
 ');
 
 define('SQL_DELETE_MEMBER_DIFFDATE_END_ACT','
@@ -391,5 +405,6 @@ activity_member_activity_id = \'%d\'
 AND
 DATEDIFF(DATE(\'%04d-%02d-%02d\'), activity_member_date_end) > 0; 
 ');
+
 
 ?>

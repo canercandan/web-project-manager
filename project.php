@@ -8,15 +8,6 @@ require_once('function_activity.php');
 require_once('define_activity.php');
 //require_once('dategraph.php');
 
-
-if (isset($_POST[POST_ACTIVITY_NAME]) && isset($_POST[POST_ACTIVITY_DESCRIB]) && isset($_POST[POST_ACTIVITY_CHARGE]) && 
-	$_POST[POST_ACTIVITY_NAME] != "" && $_POST[POST_ACTIVITY_CHARGE] != "" && is_numeric($_POST[POST_ACTIVITY_CHARGE]))
-       {
-			add_activities($_SESSION['PROJECT_ID'] , (isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 0), $_POST[POST_ACTIVITY_NAME], $_POST[POST_ACTIVITY_DESCRIB], $_POST[POST_ACTIVITY_CHARGE]);
-			$_SESSION['ACTIVITY_ADDED'] = 1;
-       }
-
-
 printf(PROJECT_WINDOW_BEGIN);
 
 //print_tab_proj_member_date(1);

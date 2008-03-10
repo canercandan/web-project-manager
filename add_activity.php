@@ -30,13 +30,7 @@ if (isset($_POST[POST_ACTIVITY_NAME]) && isset($_POST[POST_ACTIVITY_CHARGE]))
 		printf(XML_ERROR, FIELD_NOT_FILLED);
 
        }
-     else if (isset($_SESSION['ACTIVITY_ADDED']))
-       {
-			unset($_SESSION['ACTIVITY_ADDED']);
-			header('Location:root.php?creation=activity');
-			exit(0);
-       }
-   }
+}
 
 printf(ADD_ACTIVITY_END);
 
