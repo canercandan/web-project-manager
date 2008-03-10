@@ -9,35 +9,7 @@
     <xsl:choose>
       <xsl:when test="project_window">
 	<div class="box2">
-	  <h2 class="blue2">
-	    <xsl:value-of select="project_window/name" />
-	  </h2>
-	  <xsl:if test="project_window/admin">
-	    <h3 class="blue1">Project Menu</h3>
-	    <ul class="line">
-	      <li class="go">
-		<a href="?project=1&amp;information=1">Information</a>
-	      </li>
-	      <li class="go">
-		<a href="?project=1&amp;member=1">Membres</a>
-	      </li>
-	      <li class="go">
-		<a href="?project=1&amp;add_activity=1">Add an activity</a>
-	      </li>
-	      <li class="go">
-		<a href="?project=1&amp;member_dategraph=1">History</a>
-	      </li>
-	    </ul>
-	  </xsl:if>
-	  <div class="menu blue2">
-	    <xsl:if test="project_window/activity">
-	      <xsl:apply-templates select="project_window/activity" />
-	    </xsl:if>
-	  </div>
-	  <div class="box">
-	    <xsl:apply-templates select="project_window" />
-	  </div>
-	  <div class="clear" />
+	  <xsl:apply-templates select="project_window" />
 	</div>
       </xsl:when>
       <xsl:when test="add_project">
