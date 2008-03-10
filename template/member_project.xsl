@@ -195,36 +195,33 @@
 	    <caption>Project's members</caption>
 	    <xsl:apply-templates select="member_list" />
 	  </table>
-	</div>
-	<div class="member_submit">
-	  <input type="submit" name="{btn_down/@post}" value="\/" />
+	  <div class="form big">
+	    <input type="submit" name="{btn_down/@post}" value="Add to active members" />
+	  </div>
 	</div>
       </form>
       <form action="?" method="post">
-	<div class="member_submit">
-	  <input type="submit" name="{btn_up/@post}" value="/\" />
-	</div>
 	<div class="member_list">
 	  <table class="table">
 	    <caption>Active or future members</caption>
 	    <xsl:apply-templates select="member_list_project" />
 	  </table>
-	  <div class="form">
-	    <input type="submit" name="{btn_submit/@post}" value="Update" />
+	  <div class="form big">
+	    <input type="submit" name="{btn_update/@post}" value="Update" />
+	    <input type="submit" name="{btn_up/@post}" value="Delete" />
+	    <input type="submit" name="{btn_histo/@post}" value="Move to old members" />
 	  </div>
 	</div>
       </form>
       <form action="?" method="post">
-	<div class="member_submit">
-	  <input type="submit" name="{btn_up/@post}" value="/\" />
-	</div>
 	<div class="member_list">
 	  <table class="table">
 	    <caption>Old members' entries</caption>
 	    <xsl:apply-templates select="member_project/member_histo_list_project" />
 	  </table>
-	  <div class="form">
-	    <input type="submit" name="{btn_submit/@post}" value="Update" />
+	  <div class="form big">
+	    <input type="submit" name="{btn_update_histo/@post}" value="Update" />
+	    <input type="submit" name="{btn_delete_histo/@post}" value="Delete" />
 	  </div>
 	</div>
       </form>

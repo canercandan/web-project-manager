@@ -225,7 +225,7 @@
 	    <caption>Project's members available</caption>
 	    <xsl:apply-templates select="member_list_project" />
 	  </table>
-	  <div class="form">
+	  <div class="form big">
 	    <input type="submit" name="{btn_down/@post}" value="Add to active members" />
 	  </div>
 	</div>
@@ -236,7 +236,7 @@
 	    <caption>Active or future members</caption>
 	    <xsl:apply-templates select="member_list_activity" />
 	  </table>
-	  <div class="form">
+	  <div class="form big">
 	    <input type="submit" name="{btn_update/@post}" value="Update" />
 	    <input type="submit" name="{btn_up/@post}" value="Delete" />
 	    <input type="submit" name="{btn_histo/@post}" value="Move to old members" />
@@ -251,7 +251,7 @@
 	    <caption>Old members' entries</caption>
 	    <xsl:apply-templates select="member_histo_list_activity" />
 	  </table>
-	  <div class="form">
+	  <div class="form big">
 	    <input type="submit" name="{btn_update_histo/@post}" value="Update" />
 	    <input type="submit" name="{btn_delete_histo/@post}" value="Delete" />
 	  </div>

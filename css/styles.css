@@ -92,6 +92,11 @@ input.search
 	height: 150px;
 }
 
+.big input[type='submit']
+{
+	width: 170px;
+}
+
 table.table
 {
 	margin: 10px auto;

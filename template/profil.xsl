@@ -54,8 +54,9 @@
 	      <hr />
 	      <label>
 		Address personal<br />
-		<input type="text" name="{field_address/@name}"
-		       value="{field_address/@value}" />
+		<textarea name="{field_address/@name}">
+		  <xsl:value-of select="field_address/@value" />
+		</textarea>
 	      </label>
 	      <hr />
 	      <label>
