@@ -23,6 +23,22 @@
 	      <li><a href="./admin2.php">Admin</a></li>
 	    </xsl:otherwise>
 	  </xsl:choose>
+	  <xsl:choose>
+	    <xsl:when test="../body/menu_project">
+	      <li class="on"><a href="./root.php?project_view=1">Project</a></li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li><a href="./root.php?project_view=1">Project</a></li>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	  <xsl:choose>
+	    <xsl:when test="../body/add_project">
+	      <li class="on"><a href="./root.php?project_add=1">Add a project</a></li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li><a href="./root.php?project_add=1">Add a project</a></li>
+	    </xsl:otherwise>
+	  </xsl:choose>
 	  <li><a href="./member.php?{../body/sessdestroy/@post}=1">Deconnection</a></li>
 	</xsl:when>
 	<xsl:when test="@level=2">
