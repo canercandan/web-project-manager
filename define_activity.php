@@ -69,6 +69,7 @@ define('ERROR_ACTIVITY_CHARGE', 'error : activity charge invalid');
 
 
 define('ACTIVITY_OK', 'Congratulation, activity added');
+define('ACTIVITY_UPDATED', 'Congratulation, activity updated');
 define('CHARGE_NOT_INT', 'The unit of the charge of an activity is \'day per man\', that\'s why the charge must be an integer.');
 define('POST_ACTIVITY_NAME', 'activityname');
 define('POST_ACTIVITY_DESCRIB', 'activitydescrib');
@@ -76,11 +77,81 @@ define('POST_ACTIVITY_CHARGE', 'activitycharge');
 define('POST_MOD_ACTIVITY_NAME', 'modactivityname');
 define('POST_MOD_ACTIVITY_DESCRIB', 'modactivitydescrib');
 define('POST_MOD_ACTIVITY_CHARGE', 'modactivitycharge');
+define('PRINT_DATE', '%02d/%02d/%04d');
+
+define('ERR_DATE_ORDER', 'There are some mistakes with the dates : the date corresponding to the start (%02d/%02d/%04d) must be after the one corresponding to the end (%02d/%02d/%04d)');
+define('ERR_OLD_DATE_ORDER', '<line>There are some conflicts with the dates :</line>
+<line>between the new starting date : %02d/%02d/%04d with the new ending date : %s and the starting date : %02d/%02d/%04d with the ending date : %s</line>');
+define('ERR_DATE_PROJECT', 'There are some mistakes with the starting date : the starting date of the project (%s) is after the new starting date (%02d/%02d/%04d)');
+define('ERR_DATE_ACTIVITY', 'There are some mistakes with the starting date : the starting date of the activity (%s) is after the new starting date (%02d/%02d/%04d)');
+define('ERR_DATE_START_NOT_FULL', 'There are some mistakes with the starting dates : You must define all the field of the starting dates');
+define('ERR_DATE_END_NOT_FULL', 'There are some mistakes with the ending dates : You must define all the field of the ending dates if you have starting to fill them');
+define('ERR_DATE_SUBACTIVITY', 'The starting date of the subactivity %s : %s is before the new starting date (%02d/%02d/%04d)');
+define('ERR_DATE_MEMBER_PROJACT', 'There are some mistakes with the dates : the member %s was not in the project/parent activity during the whole time between %s and %s');
 
 /*
 ** Define activity sql request
 */
 
+define('SQL_DELETE_MEMBER_ACTIVITY','
+											DELETE FROM tw_activity_member 
+																WHERE activity_member_usr_id = \'%d\'
+																	AND activity_member_activity_id = \'%d\'
+																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
+																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
+																	');
+define('SQL_CHECK_HISTO','DELETE FROM tw_activity_member
+								WHERE activity_member_usr_id = \'%d\'
+									AND activity_member_activity_id = \'%d\'
+									AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
+									AND activity_member_date_end = CURDATE()');
+define('SQL_CHECK_ACTIVITY_DATE', 'SELECT ((activity_date_begin - DATE(\'%04d-%02d-%02d\')) <= 0), DATE_FORMAT(activity_date_begin, \'%%d/%%m/%%Y\') FROM tw_activity WHERE activity_id=\'%d\';');
+
+define('SQL_CHECK_PROJECT_DATE', 'SELECT ((project_date - DATE(\'%04d-%02d-%02d\')) <= 0), DATE_FORMAT(project_date, \'%%d/%%m/%%Y\') FROM tw_project WHERE project_id=\'%d\';');
+									
+define('SQL_UPDATE_MEMBER_ACTIVITY','
+											UPDATE tw_activity_member SET 	activity_level = \'%d\',
+																	activity_work = \'%d\',
+																	activity_member_date_start = DATE(\'%04d-%02d-%02d\'),
+																	activity_member_date_end = DATE(\'%04d-%02d-%02d\')
+																WHERE activity_member_usr_id = \'%d\'
+																	AND activity_member_activity_id = \'%d\'
+																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
+																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
+																	');
+define('SQL_MOVE_TO_OLD_MEMBER_ACTIVITY','
+											UPDATE tw_activity_member SET
+																	activity_member_date_end = CURDATE()
+																WHERE activity_member_usr_id = \'%d\'
+																	AND activity_member_activity_id = \'%d\'
+																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
+																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
+																	');
+															
+
+define('SQL_GET_DATES_MEMBER_ACTIVITY',
+'	SELECT day(activity_member_date_start), month(activity_member_date_start), year(activity_member_date_start), 
+			day(activity_member_date_end), month(activity_member_date_end), year(activity_member_date_end) FROM tw_activity_member WHERE
+		activity_member_usr_id = \'%d\'
+		AND activity_member_activity_id = \'%d\';
+');
+define('SQL_GET_DATES_MEMBER_PROJECT',
+'	SELECT day(member_date_start), month(member_date_start), year(member_date_start), 
+			day(member_date_end), month(member_date_end), year(member_date_end), usr_login FROM tw_member, tw_usr, tw_activity WHERE
+		member_usr_id = \'%d\'
+		AND usr_id = member_usr_id
+		AND member_project_id = \'%d\'
+		AND activity_id = \'%d\'
+		AND activity_parent_id = 0
+	UNION
+	SELECT day(activity_member_date_start), month(activity_member_date_start), year(activity_member_date_start), 
+			day(activity_member_date_end), month(activity_member_date_end), year(activity_member_date_end), usr_login FROM tw_activity_member, tw_usr, tw_activity WHERE
+		activity_member_usr_id = \'%d\'
+		AND usr_id = activity_member_usr_id
+		AND activity_member_activity_id = activity_parent_id
+		AND activity_id = \'%d\'
+		AND activity_parent_id != 0;
+');
 define('SQL_UPDATE_ACTIVITY',
 '
 UPDATE tw_activity
@@ -188,8 +259,12 @@ order by profil_name, profil_fname;
 ');
 
 define('SQL_GET_MEMBER_PROJECT_ACT', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, usr_login
-FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member
+FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member, tw_activity
 WHERE 
+activity_id = \'%d\'
+AND
+activity_parent_id = 0
+AND
 member_usr_id = usr_id
 AND
 usr_id = profil_usr_id
@@ -202,7 +277,32 @@ member_project_id = \'%d\'
 AND
 member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHERE activity_member_activity_id = \'%d\'
 AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) <= 0))
-order by profil_name, profil_fname;
+
+UNION
+
+SELECT usr_id, profil_name, profil_fname, title_name, role_name, usr_login
+FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member, tw_activity, tw_activity_member
+WHERE 
+activity_id = \'%d\'
+AND
+activity_parent_id != 0
+AND
+activity_member_activity_id = activity_parent_id
+AND
+activity_member_usr_id = usr_id
+AND
+member_usr_id = usr_id
+AND
+usr_id = profil_usr_id
+AND
+profil_title_id = title_id
+AND
+member_role_id = role_id
+AND
+member_project_id = \'%d\'
+AND
+member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHERE activity_member_activity_id = \'%d\'
+AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) <= 0))
 ');
 
 define('SQL_GET_ACTIVITY_INFORMATIONS', '
@@ -268,5 +368,28 @@ define('SQL_GET_UNDERACT_WORK',
 	AND activity_parent_id = \'%d\'
 	GROUP BY activity_id;'
 	);
+	
+define('SQL_CHECK_SUBACT_DATE','
+SELECT activity_id, activity_name, DATE_FORMAT(activity_date_begin, \'%%d/%%m/%%Y\'), (DATEDIFF(DATE(\'%04d-%02d-%02d\'), activity_date_begin) > 0) FROM tw_activity
+WHERE activity_parent_id = \'%d\' AND activity_project_id = \'%d\';');
+
+define('SQL_UPDATE_MEMBER_DIFFDATE_START_ACT','
+UPDATE tw_activity_member
+SET activity_member_date_start = DATE(\'%04d-%02d-%02d\')
+WHERE
+activity_member_activity_id = \'%d\'
+AND
+DATEDIFF(DATE(\'%04d-%02d-%02d\'), activity_member_date_start) > 0
+AND 
+DATEDIFF(DATE(\'%04d-%02d-%02d\'), activity_member_date_end) <= 0; 
+');
+
+define('SQL_DELETE_MEMBER_DIFFDATE_END_ACT','
+DELETE FROM tw_activity_member
+WHERE
+activity_member_activity_id = \'%d\'
+AND
+DATEDIFF(DATE(\'%04d-%02d-%02d\'), activity_member_date_end) > 0; 
+');
 
 ?>

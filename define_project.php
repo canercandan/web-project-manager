@@ -21,6 +21,7 @@ define('MEMBER_PROJECT_BEGIN', '<member_project>');
 define('MEMBER_PROJECT_END', '</member_project>');
 define('INFORMATION_PROJECT_BEGIN', '<information_project>');
 define('INFORMATION_PROJECT_END', '</information_project>');
+define('UNNAMED_PROJECT', 'Unnamed project');
 
 define('MEMBER_ELEM_PROJ', '<member><key unique="%d"/><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title><login>%s</login></member>');
 define('MEMBER_ELEM_PROJECT_PROJ', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name>
@@ -58,6 +59,9 @@ define('FIELD_PROJECT_NAME', '<field_name>%s</field_name>');
 define('FIELD_PROJECT_DESCRIB', '<field_descr>%s</field_descr>');
 define('POST_PROJECT_NAME', 'projname');
 define('POST_PROJECT_DESCRIB', 'projdescr');
+define('POST_PROJECT_DAY', 'projday');
+define('POST_PROJECT_MONTH', 'projmonth');
+define('POST_PROJECT_YEAR', 'projyear');
 define('UNKNOWED_PROJECT', 'Unknowed project');
 define('INFORMATION', 0);
 define('ADD_ACTIVITY', 1);
@@ -89,6 +93,15 @@ define('MEMBER_KEEP_HISTO', '<btn_histo post="keep_histo"/>');
 define('SQL_CHECK_IN_PROJ', 'SELECT member_usr_id FROM tw_member 
 WHERE member_usr_id = \'%d\'
 AND member_project_id = \'%d\';');
+
+define('SQL_UPDATE_PROJECT','
+UPDATE tw_project 
+SET
+project_name = \'%s\',
+project_describ = \'%s\',
+project_date = DATE(\'%04d-%02d-%02d\')
+WHERE
+project_id = \'%d\';');
 
 define('SQL_INSERT_MEMBER'
 ,'INSERT INTO `techweb`.`tw_member` (

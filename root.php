@@ -35,7 +35,7 @@ if (isset($_SESSION['ROOT_MENU']))
 	if ($_SESSION['ROOT_MENU'] == ADD_PROJECT) 
 		include('add_project.php');
 }
-else if (isset($_SESSION['PROJECT_NAME']))
+else if (isset($_SESSION['PROJECT_ID']))
 	{
 		printf(MENU_PROJECT);
 		include('project.php');

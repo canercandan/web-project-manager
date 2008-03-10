@@ -7,6 +7,25 @@ require_once('./define_activity.php');
 require_once('./function_sql.php');
 require_once('function_misc.php');
 
+
+
+function check_date_subact($day, $month, $year, $id_project, $id_activity)
+{
+	
+	$nb_err = 0;
+	$res = SQL_QUERY(sprintf(SQL_CHECK_SUBACT_DATE, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), 
+													sql_real_escape_string($id_activity), sql_real_escape_string($id_project))); 
+	while (($tab = sql_fetch_array($res)))
+	{
+		if ($tab[3] == 1)
+		{
+			$nb_err++;
+			printf(XML_ERROR, sprintf(ERR_DATE_SUBACTIVITY,$tab[1], $tab[2], $day, $month, $year));
+		}
+	}
+	return ($nb_err);
+}
+
 function check_activity($id_user, $id_activity)
 {
 	$res = SQL_QUERY(sprintf(SQL_CHECK_ACTIVITY, sql_real_escape_string($id_activity)));
@@ -69,8 +88,22 @@ function get_activity_work($id_activity)
     }
 }
 
-function update_activity($id_activity, $name, $describ, $day, $month, $year, $charge)
+function update_activity($id_project, $id_activity, $name, $describ, $day, $month, $year, $charge)
 {
+
+	if (check_date_subact($day, $month, $year, $id_project, $id_activity) > 0)
+	{
+		return (1);
+	}
+	$res = sql_query(sprintf(SQL_CHECK_PROJECT_DATE, sql_real_escape_string($year),sql_real_escape_string($month),sql_real_escape_string($day),
+																	$id_project));
+	$tab = sql_fetch_array($res);
+	if ($tab[0] == 0)
+		{
+			printf(XML_ERROR, sprintf(ERR_DATE_PROJECT, $tab[1], $day, $month, $year));
+			return (1);
+		}
+			
 	$res = sql_query(sprintf(SQL_CHECK_CHARGE_EDITABLE, sql_real_escape_string($id_activity)));
 	if (sql_result($res, 0, 0))
 	{
@@ -78,12 +111,19 @@ function update_activity($id_activity, $name, $describ, $day, $month, $year, $ch
 			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($charge), sql_real_escape_string($id_activity));
 		sql_query(sprintf(SQL_UPDATE_ACTIVITY_CHARGE, sql_real_escape_string($name), sql_real_escape_string($describ), 
 			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($charge), sql_real_escape_string($id_activity)));
+		update_charge(sql_result(sql_query(sprintf(SQL_GET_PARENT_ID, sql_real_escape_string($id_activity))), 0, 0));
 	}
 	else
 	{
 		sql_query(sprintf(SQL_UPDATE_ACTIVITY, sql_real_escape_string($name), sql_real_escape_string($describ), 
 			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($id_activity)));
 	}
+	sql_query(sprintf(SQL_DELETE_MEMBER_DIFFDATE_END_ACT, sql_real_escape_string($id_activity), sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
+	sql_query(sprintf(SQL_UPDATE_MEMBER_DIFFDATE_START_ACT, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($id_activity),
+														sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day),
+														sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)
+														));
+	return (0);
 }
 
 function get_activity_informations($id_activity)
@@ -172,8 +212,12 @@ function get_member_histo_activity($id_activity, $id_project, $last)
 
 function get_member_project_activity($id_activity, $id_project, $last)
 {
-  $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT_ACT, sql_real_escape_string($id_project),
-			   sql_real_escape_string($id_activity)));
+  $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT_ACT, 
+				sql_real_escape_string($id_activity), sql_real_escape_string($id_project),
+				sql_real_escape_string($id_activity),
+				sql_real_escape_string($id_activity), sql_real_escape_string($id_project),
+				sql_real_escape_string($id_activity)
+				));
   printf(MEMBER_POST_SELECT);
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
@@ -183,56 +227,6 @@ function get_member_project_activity($id_activity, $id_project, $last)
 	  }
 	return ($last);
 }
-
-define('SQL_DELETE_MEMBER_ACTIVITY','
-											DELETE FROM tw_activity_member 
-																WHERE activity_member_usr_id = \'%d\'
-																	AND activity_member_activity_id = \'%d\'
-																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
-																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
-																	');
-define('SQL_CHECK_HISTO','DELETE FROM tw_activity_member
-								WHERE activity_member_usr_id = \'%d\'
-									AND activity_member_activity_id = \'%d\'
-									AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
-									AND activity_member_date_end = CURDATE()');
-define('SQL_CHECK_PROJECT_DATE', 'SELECT ((project_date - DATE(\'%04d-%02d-%02d\')) < 0), DATE_FORMAT(project_date, \'%%d/%%m/%%Y\') FROM tw_project WHERE project_id=\'%d\';');
-									
-define('SQL_UPDATE_MEMBER_ACTIVITY','
-											UPDATE tw_activity_member SET 	activity_level = \'%d\',
-																	activity_work = \'%d\',
-																	activity_member_date_start = DATE(\'%04d-%02d-%02d\'),
-																	activity_member_date_end = DATE(\'%04d-%02d-%02d\')
-																WHERE activity_member_usr_id = \'%d\'
-																	AND activity_member_activity_id = \'%d\'
-																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
-																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
-																	');
-define('SQL_MOVE_TO_OLD_MEMBER_ACTIVITY','
-											UPDATE tw_activity_member SET
-																	activity_member_date_end = CURDATE()
-																WHERE activity_member_usr_id = \'%d\'
-																	AND activity_member_activity_id = \'%d\'
-																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
-																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
-																	');
-																	
-define('ERR_DATE_ORDER', 'There are some mistakes with the dates : the date corresponding to the start (%02d/%02d/%04d) must be after the one corresponding to the end (%02d/%02d/%04d)');
-
-define('ERR_OLD_DATE_ORDER', '<line>There are some conflicts with the dates :</line>
-<line>between the new starting date : %02d/%02d/%04d with the new ending date : %s and the starting date : %02d/%02d/%04d with the ending date : %s</line>');
-
-define('PRINT_DATE', '%02d/%02d/%04d');
-define('ERR_DATE_PROJECT', 'There are some mistakes with the starting dates : the starting date of the project (%s) is after the new starting date (%02d/%02d/%04d)');
-define('ERR_DATE_START_NOT_FULL', 'There are some mistakes with the starting dates : You must define all the field of the starting dates');
-define('ERR_DATE_END_NOT_FULL', 'There are some mistakes with the ending dates : You must define all the field of the ending dates if you have starting to fill them');
-
-define('SQL_GET_DATES_MEMBER_ACTIVITY',
-'	SELECT day(activity_member_date_start), month(activity_member_date_start), year(activity_member_date_start), 
-			day(activity_member_date_end), month(activity_member_date_end), year(activity_member_date_end) FROM tw_activity_member WHERE
-		activity_member_usr_id = \'%d\'
-		AND activity_member_activity_id = \'%d\';
-');
 
 function move_to_old_member_activity($id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end)
 {
@@ -275,14 +269,40 @@ function update_member_activity($id_project, $id_activity, $id_user, $day_start,
 	}
 	else
 	{
-		$res = sql_query(sprintf(SQL_CHECK_PROJECT_DATE, sql_real_escape_string($new_year_start),sql_real_escape_string($new_month_start),sql_real_escape_string($new_day_start),
-																	$id_project));
+		$res = sql_query(sprintf(SQL_CHECK_ACTIVITY_DATE, sql_real_escape_string($new_year_start),sql_real_escape_string($new_month_start),sql_real_escape_string($new_day_start),
+																	$id_activity));
 		$tab = sql_fetch_array($res);
 		if ($tab[0] == 0)
 			{
-				printf(XML_ERROR, sprintf(ERR_DATE_PROJECT, $tab[1], $new_day_start, $new_month_start, $new_year_start));
+				printf(XML_ERROR, sprintf(ERR_DATE_ACTIVITY, htmlentities($tab[1]), $new_day_start, $new_month_start, $new_year_start));
 				return;
 			}
+			
+		$res = sql_query(sprintf(SQL_GET_DATES_MEMBER_PROJECT, sql_real_escape_string($id_user),
+													sql_real_escape_string($id_project), sql_real_escape_string($id_activity), 
+													sql_real_escape_string($id_user), sql_real_escape_string($id_activity)));
+		$nok = true;
+		$log = 'Unknowed';
+		while ($tab = sql_fetch_array($res))
+		{
+			$log = $tab[6];
+			$start = mktime(0, 0, 0, $tab[1], $tab[0], $tab[2]);
+			$end = mktime(0, 0, 0, $tab[4], $tab[3], $tab[5]);
+			if ($start <= $new_start && ($end >= $new_start || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)) &&
+				($start <= $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0))  && ($end >= $new_end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
+				{
+						$nok = false;
+				}
+		}
+		
+		if ($nok)
+		{
+			printf(XML_ERROR, sprintf (ERR_DATE_MEMBER_PROJACT, htmlentities($log), 
+			sprintf(PRINT_DATE, $new_day_start, $new_month_start, $new_year_start),
+			new_month_end == 0 ? 'today' :sprintf(PRINT_DATE, $new_day_end, $new_month_end, $new_year_end)));
+			return;
+		}
+													
 		$res = sql_query(sprintf(SQL_GET_DATES_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
 													sql_real_escape_string($id_activity)));
 		while ($tab = sql_fetch_array($res))
@@ -294,9 +314,9 @@ function update_member_activity($id_project, $id_activity, $id_user, $day_start,
 			if (($start != $old_start) && (
 											($start <= $new_start && ($end > $new_start || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
 											||
-											($start < $new_end && ($end >= $new_end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
+											(($start < $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)) && ($end >= $new_end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
 											||
-											($start > $new_start && ($end <= $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)))
+											($start > $new_start && (($end <= $new_end && !($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)) || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)))
 											)) 	
 			{
 				printf(XML_ERROR, sprintf(ERR_OLD_DATE_ORDER,  $new_day_start, $new_month_start, $new_year_start,  

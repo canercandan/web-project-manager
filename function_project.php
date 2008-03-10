@@ -8,6 +8,17 @@ require_once('define_project.php');
 require_once('function_activity.php');
 require_once('function_misc.php');
 
+function update_project($id_project, $name, $describ, $day, $month, $year)
+{
+	if (check_date_subact($day, $month, $year, $id_project, 0) > 0)
+	{
+		return (1);
+	}
+	sql_query(sprintf(SQL_UPDATE_PROJECT, sql_real_escape_string($name), sql_real_escape_string($describ),
+	sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($id_project)));
+	return (0);
+}
+
 function get_member_out_project($id_project, $last)
 {
   $res = sql_query(sprintf(SQL_GET_MEMBER_OUT_PROJECT, sql_real_escape_string($id_project)));
@@ -106,12 +117,20 @@ function get_information_project($id_project)
 	get_years();
 	if (sql_num_rows($res))
 	{
-		printf('<editable>0</editable><name post="modname">%s</name><describ post="moddescrib">%s</describ><date postday="moddayproj" day="%d" postmonth="modprojmonth" month="%d" postyear="modprojyear" year="%d"/><autor name="%s" fname="%s" title="%s"/>',
+		printf('<editable>1</editable><name post="%s">%s</name>
+		<describ post="%s">%s</describ>
+		<date postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/><autor name="%s" fname="%s" title="%s"/>',
+		POST_PROJECT_NAME,
 		htmlentities($tab[0]),
+		
+		POST_PROJECT_DESCRIB,
 		htmlentities($tab[1]),
 		
+		POST_PROJECT_DAY,
 		htmlentities($tab[2]),
+		POST_PROJECT_MONTH,
 		htmlentities($tab[3]),
+		POST_PROJECT_YEAR,
 		htmlentities($tab[4]),
 		
 		htmlentities($tab[5]),
@@ -148,7 +167,7 @@ function print_projects_list($id_user)
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-		printf(PROJECT_ITEM, (isset($_SESSION['PROJECT_ID']) && $_SESSION['PROJECT_ID'] == $tab[1] ? 1 : 0), htmlentities($tab[0] == "" ? "No name" : $tab[0]), htmlentities($tab[1]));
+		printf(PROJECT_ITEM, (isset($_SESSION['PROJECT_ID']) && $_SESSION['PROJECT_ID'] == $tab[1] ? 1 : 0), htmlentities($tab[0] == "" ? UNNAMED_PROJECT : $tab[0]), htmlentities($tab[1]));
       }
 	printf(PROJECT_END);
 }
@@ -157,7 +176,10 @@ function check_project($id_user, $id_project)
 {
 	$res = SQL_QUERY(sprintf(SQL_CHECK_PROJECT, sql_real_escape_string($id_project)));
 	if (sql_num_rows($res))
-		return (sql_result($res,0, 0));
+	{
+		$name = sql_result($res,0, 0);
+		return ($name == "" ? UNNAMED_PROJECT : $name);
+	}
 	else
 		return (null);
 }
