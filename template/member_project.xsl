@@ -146,7 +146,7 @@
 	       value="{date_end/@day}" />
 	<input type="hidden"
 	       name="{key/@name}[{key/@unique}][{key/@month_end}]"
-		   value="{date_end/@month}" />
+	       value="{date_end/@month}" />
 	<input type="hidden"
 	       name="{key/@name}[{key/@unique}][{key/@year_end}]"
 	       value="{date_end/@year}" />
