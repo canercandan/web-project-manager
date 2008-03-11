@@ -18,17 +18,17 @@ if (!$_SESSION[SESSION_ID] || $_SESSION[SESSION_LEVEL] != IS_A_ADMIN)
   {
     session_destroy();
     header(LOCATION_EXIT);
-    exit (0);
+    exit(0);
   }
 
 if($_POST)
   {
-    if ($_POST[USR_DELETE])
+    if ($_POST[ADMIN_BUTTON_DELETE])
       delete_member();
-	else
-	  update_member();
-	header(LOCATION_ADMIN);
-	exit (0);
+    else if ($_POST[ADMIN_BUTTON_UPDATE])
+      update_member();
+    header(LOCATION_ADMIN);
+    exit(0);
   }
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
