@@ -75,7 +75,6 @@ function update_member()
     {
 	  foreach($_POST[ADMIN_BUTTON_SELECT] as $id)
         {
-		  var_dump($id);
 		  $login = sql_real_escape_string($_POST[ADMIN_POST_LOGIN][$id]);
 		  $name = sql_real_escape_string($_POST[ADMIN_POST_NAME][$id]);
 		  $fname = sql_real_escape_string($_POST[ADMIN_POST_FIRST][$id]);
