@@ -28,7 +28,7 @@ else if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_MOD_ACTIVITY_NAME]) && i
 }
 else if (isset($_POST[POST_PROJECT_NAME]) && isset($_POST[POST_PROJECT_DESCRIB]) && $_SESSION['ROOT_MENU'] == ADD_PROJECT && $_POST[POST_PROJECT_NAME] != "")
 {
-	add_project(/*$_SESSION['USER_ID']*/ 0, $_POST[POST_PROJECT_NAME], $_POST[POST_PROJECT_DESCRIB]);
+	add_project($_SESSION[SESSION_ID], $_POST[POST_PROJECT_NAME], $_POST[POST_PROJECT_DESCRIB]);
 	header('Location:root.php?creation=project');
 	exit(0);
 }
