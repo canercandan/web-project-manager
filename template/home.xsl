@@ -7,11 +7,6 @@
       <legend>Presentation</legend>
       <div>
         <xsl:value-of select="mesg" />
-	<br />
-	<br />
-	location: <xsl:apply-templates select="location" />
-	<br />
-	title: <xsl:apply-templates select="title" />
       </div>
     </fieldset>
   </xsl:template>

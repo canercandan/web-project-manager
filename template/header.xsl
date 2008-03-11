@@ -45,6 +45,14 @@
 	</xsl:when>
 	<xsl:when test="@level=3">
 	  <xsl:choose>
+	    <xsl:when test="../body/member">
+	      <li class="on"><a href="./member.php">Member</a></li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li><a href="./member.php">Member</a></li>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	  <xsl:choose>
 	    <xsl:when test="../body/menu_project">
 	      <li class="on"><a href="./root.php?project_view=1">Project</a></li>
 	    </xsl:when>
@@ -69,6 +77,14 @@
 	    </xsl:when>
 	    <xsl:otherwise>
 	      <li><a href="./root.php?project_view=1">Project</a></li>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	  <xsl:choose>
+	    <xsl:when test="../body/member">
+	      <li class="on"><a href="./member.php">Member</a></li>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <li><a href="./member.php">Member</a></li>
 	    </xsl:otherwise>
 	  </xsl:choose>
 	  <li><a href="./member.php?{../body/sessdestroy/@post}=1">Deconnection</a></li>
