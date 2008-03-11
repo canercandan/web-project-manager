@@ -29,7 +29,9 @@ if ($_GET[DEBUG])
  else
    printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
 printf(SESSION_DESTROY, DESTROY);
+printf(MEMBER_BEGIN);
 printf(MEMBER_WELCOME);
+printf(MEMBER_END);
 printf(XML_FOOTER);
 sql_close($link);
 

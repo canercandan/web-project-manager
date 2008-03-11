@@ -9,6 +9,9 @@ if (!MAIN)
 
 define('HEADER_CONNECT', 'Location:connect.php');
 
+define('MEMBER_BEGIN', '<member>');
+define('MEMBER_END', '</member>');
+
 define('DESTROY', 'deco');
 define('SESSION_DESTROY', '<sessdestroy post="%s" />');
 
