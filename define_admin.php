@@ -58,7 +58,7 @@ define('ADMIN_ITEM', '<item id="%s" name="%s" />');
 define('MEMBER_SELECT', 'memberselect');
 define('XML_MEMBER_SELECT', '<memberselect post="%s" value="%s" />');
 
-define('ADMIN_USR_DELTE', '<deleteusr post="%s" />');
+define('ADMIN_USR_DELETE', '<deleteusr post="%s" />');
 define('USR_DELETE', 'delete_usr');
 
 define('ADMIN_MEMBER',
