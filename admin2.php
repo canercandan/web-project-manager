@@ -36,7 +36,7 @@ if ($_GET[DEBUG])
  else
    printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
 printf(SESSION_DESTROY, DESTROY);
-printf(ADMIN_USR_DELETE, USR_DELTE);
+printf(ADMIN_USR_DELETE, USR_DELETE);
 printf(ADMIN_BEGIN);
 printf(MEMBER_LIST_BEGIN);
 get_user_level();
