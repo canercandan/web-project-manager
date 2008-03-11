@@ -135,6 +135,6 @@ define('SQL_DELETE_USR_PROFIL',
 	    WHERE profil_usr_id = %s;');
 		
 define('SQL_DELETE_USR',
-	   'DELETE FROM tw_user
+	   'DELETE FROM tw_usr
 		WHERE usr_id = %s;');
 ?>
