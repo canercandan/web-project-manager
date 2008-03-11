@@ -58,6 +58,9 @@ define('ADMIN_ITEM', '<item id="%s" name="%s" />');
 define('MEMBER_SELECT', 'memberselect');
 define('XML_MEMBER_SELECT', '<memberselect post="%s" value="%s" />');
 
+define('ADMIN_USR_DELTE', '<deleteusr post="%s" />');
+define('USR_DELETE', 'delete_usr');
+
 define('ADMIN_MEMBER',
        '<member>
 		  <id>%s</id>
@@ -126,4 +129,12 @@ define('SQL_MEMBER_UPDATE_PROFIL',
 	    SET profil_name = \'%s\',
 			profil_fname = \'%s\'
 		WHERE profil_usr_id = \'%s\';');
+		
+define('SQL_DELETE_USR_PROFIL',
+	   'DELETE FROM tw_profil
+	    WHERE profil_usr_id = %s;');
+		
+define('SQL_DELETE_USR',
+	   'DELETE FROM tw_user
+		WHERE usr_id = %s;');
 ?>

@@ -75,12 +75,25 @@ function update_member()
     {
 	  foreach($_POST[ADMIN_BUTTON_SELECT] as $id)
         {
+		  var_dump($id);
 		  $login = sql_real_escape_string($_POST[ADMIN_POST_LOGIN][$id]);
 		  $name = sql_real_escape_string($_POST[ADMIN_POST_NAME][$id]);
 		  $fname = sql_real_escape_string($_POST[ADMIN_POST_FIRST][$id]);
 		  $level = sql_real_escape_string($_POST[ADMIN_USR_LEVEL][$id]);
 		  sql_query(sprintf(SQL_MEMBER_UPDATE_USR, $login, $level, $id));
 		  sql_query(sprintf(SQL_MEMBER_UPDATE_PROFIL, $name, $fname, $id));
+	    }
+	}
+}
+
+function delete_member()
+{
+  if ($_POST[ADMIN_BUTTON_SELECT])
+    {
+	  foreach($_POST[ADMIN_BUTTON_SELECT] as $id)
+        {
+		  sql_query(sprintf(SQL_DELETE_USR_PROFIL, $id));
+		  sql_query(sprintf(SQL_DELETE_USR, $id));
 	    }
 	}
 }

@@ -23,7 +23,10 @@ if (!$_SESSION[SESSION_ID] || $_SESSION[SESSION_LEVEL] != IS_A_ADMIN)
 
 if($_POST)
   {
-    update_member();
+    if ($_POST[USR_DELETE])
+      delete_member();
+	else
+	  update_member();
 	header(LOCATION_ADMIN);
 	exit (0);
   }
@@ -33,6 +36,7 @@ if ($_GET[DEBUG])
  else
    printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
 printf(SESSION_DESTROY, DESTROY);
+printf(ADMIN_USR_DELTE, USR_DELTE);
 printf(ADMIN_BEGIN);
 printf(MEMBER_LIST_BEGIN);
 get_user_level();
