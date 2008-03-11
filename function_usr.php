@@ -92,7 +92,7 @@ function usr_add()
 	           sql_real_escape_string($_POST[USR_POST_LOGIN]), 
 			   $passwd), 
 	   $header);
-  if ($mail == FALSE)
+  if ($mail == FALSE || !$mail)
     return (0);
   else
     {
