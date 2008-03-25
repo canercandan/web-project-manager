@@ -26,8 +26,8 @@ else if ($_GET[DESTROY])
   }
 else
   {
-	member_list_add();
-	member_list_del();
+	//member_list_add();
+	//member_list_del();
   }
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
