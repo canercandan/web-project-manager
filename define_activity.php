@@ -135,23 +135,6 @@ define('SQL_GET_DATES_MEMBER_ACTIVITY',
 		activity_member_usr_id = \'%d\'
 		AND activity_member_activity_id = \'%d\';
 ');
-define('SQL_GET_DATES_MEMBER_PROJECT',
-'	SELECT day(member_date_start), month(member_date_start), year(member_date_start), 
-			day(member_date_end), month(member_date_end), year(member_date_end), usr_login FROM tw_member, tw_usr, tw_activity WHERE
-		member_usr_id = \'%d\'
-		AND usr_id = member_usr_id
-		AND member_project_id = \'%d\'
-		AND activity_id = \'%d\'
-		AND activity_parent_id = 0
-	UNION
-	SELECT day(activity_member_date_start), month(activity_member_date_start), year(activity_member_date_start), 
-			day(activity_member_date_end), month(activity_member_date_end), year(activity_member_date_end), usr_login FROM tw_activity_member, tw_usr, tw_activity WHERE
-		activity_member_usr_id = \'%d\'
-		AND usr_id = activity_member_usr_id
-		AND activity_member_activity_id = activity_parent_id
-		AND activity_id = \'%d\'
-		AND activity_parent_id != 0;
-');
 define('SQL_UPDATE_ACTIVITY',
 '
 UPDATE tw_activity
