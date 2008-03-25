@@ -52,9 +52,6 @@ define('POST_ACT_DAY_END', 'member_act_day_end');
 define('POST_ACT_MONTH_END', 'member_act_month_end');
 define('POST_ACT_YEAR_END', 'member_act_year_end');
 
-define('FIELD_ACTIVITY_NAME', '<field_activity_name>%s</field_activity_name>');
-define('FIELD_ACTIVITY_DESCRIB', '<field_activity_describ>%s</field_activity_describ>');
-define('FIELD_ACTIVITY_CHARGE', '<field_activity_charge>%s</field_activity_charge>');
 
 define('ACTIVITY_NAME', '<activity_name>%s</activity_name>');
 define('ACTIVITY_DESCRIB', '<activity_describ>%s</activity_describ>');
@@ -68,8 +65,6 @@ define('ERROR_ACTIVITY_NAME', 'error : activity\'s name already used');
 define('ERROR_ACTIVITY_CHARGE', 'error : activity charge invalid');
 
 
-define('ACTIVITY_OK', 'Congratulation, activity added');
-define('ACTIVITY_UPDATED', 'Congratulation, activity updated');
 define('CHARGE_NOT_INT', 'The unit of the charge of an activity is \'day per man\', that\'s why the charge must be an integer.');
 define('POST_ACTIVITY_NAME', 'activityname');
 define('POST_ACTIVITY_DESCRIB', 'activitydescrib');
@@ -288,13 +283,7 @@ member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHER
 AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) <= 0))
 ');
 
-define('SQL_GET_ACTIVITY_INFORMATIONS', '
-SELECT p.activity_name, p.activity_describtion, p.activity_charge_total, 
-day(p.activity_date_begin), month(p.activity_date_begin), year(p.activity_date_begin), (count(f.activity_id) = 0)
-FROM tw_activity p LEFT JOIN tw_activity f ON f.activity_parent_id = p.activity_id
-WHERE 
-p.activity_id = \'%d\'
-GROUP BY f.activity_id');
+
 
 define('SQL_GET_UNDERACT_WORK', 
 	'

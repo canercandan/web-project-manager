@@ -9,7 +9,7 @@ require_once('./define_informations_project.php');
 
 if (isset($_GET['update']) && $_GET['update'] == 'project')
 {
-	printf(XML_MESG, ACTIVITY_UPDATED);
+	printf(XML_MESG, PROJECT_UPDATED);
 }
 
 printf(INFORMATION_PROJECT_BEGIN);

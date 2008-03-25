@@ -3,6 +3,9 @@
 if (!MAIN)
   exit(0);
 
+
+define('PROJECT_OK', 'Congratulation, project added');
+define('PROJECT_UPDATED', 'Congratulation, project updated');
 define('POST_PROJECT_DAY', 'projday');
 define('POST_PROJECT_MONTH', 'projmonth');
 define('POST_PROJECT_YEAR', 'projyear');
