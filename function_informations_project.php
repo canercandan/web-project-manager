@@ -58,7 +58,7 @@ function new_update_project($id_project, $name, $describ, $day, $month, $year,
   return (0);
 }
 
-function new_add_project($id_user, $name, $describ, $day, $month, $year
+function new_add_project($id_user, $name, $describ, $day, $month, $year,
 							$day_end, $month_end, $year_end)
 {
   sql_query(sprintf(SQL_NEW_ADD_PROJECT, sql_real_escape_string($id_user),
