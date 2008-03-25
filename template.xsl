@@ -31,4 +31,5 @@
   <xsl:import href="./template/date_end.xsl" />
   <xsl:import href="./template/administration.xsl" />
   <xsl:import href="./template/member.xsl" />
+  <xsl:import href="./template/information_dependance_activity.xsl" />
 </xsl:stylesheet>

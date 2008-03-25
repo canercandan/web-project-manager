@@ -56,7 +56,7 @@
     </select>
   </xsl:template>
 
-  <xsl:template match="date[../editable=1]">
+  <xsl:template match="date[../editable=1]|field_date|field_date_end|dateend">
     <xsl:variable name="day_id" select="@day" />
     <select name="{@postday}">
       <xsl:for-each select="../list_day/day">

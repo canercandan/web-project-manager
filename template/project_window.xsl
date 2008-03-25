@@ -18,9 +18,11 @@
 	<li class="go">
 	  <a href="?project=1&amp;add_activity=1">Add an activity</a>
 	</li>
+	<!--
 	<li class="go">
 	  <a href="?project=1&amp;member_dategraph=1">History</a>
 	</li>
+	-->
 	<li class="go">
 	  <a href="?project=1&amp;delete_project=1">Remove</a>
 	</li>

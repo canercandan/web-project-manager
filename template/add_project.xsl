@@ -25,6 +25,16 @@
 		<textarea name="{field_descr}"></textarea>
 	      </label>
 	      <hr />
+	      <div class="little">
+		Date start<br />
+		<xsl:apply-templates select="field_date" />
+	      </div>
+	      <hr />
+	      <div class="little">
+		Date end<br />
+		<xsl:apply-templates select="field_date_end" />
+	      </div>
+	      <hr />
 	      <label>
 		<input type="submit" value="Ok" />
 	      </label>

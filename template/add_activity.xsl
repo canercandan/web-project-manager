@@ -28,7 +28,19 @@
 	    <input type="text" name="{field_activity_charge}" />
 	  </label>
 	  <hr />
-	  <input type="submit" value="Ok" />
+	  <div class="little">
+	    Date start<br />
+	    <xsl:apply-templates select="field_date" />
+	  </div>
+	  <hr />
+	  <div class="little">
+	    Date end<br />
+	    <xsl:apply-templates select="field_date_end" />
+	  </div>
+	  <hr />
+	  <label>
+	    <input type="submit" value="Ok" />
+	  </label>
 	</div>
       </fieldset>
     </form>

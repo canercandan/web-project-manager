@@ -50,8 +50,13 @@
 	  </label>
 	  <hr />
 	  <div class="little">
-	    Date<br />
+	    Date start<br />
 	    <xsl:apply-templates select="date" />
+	  </div>
+	  <hr />
+	  <div class="little">
+	    Date end<br />
+	    <xsl:apply-templates select="dateend" />
 	  </div>
 	  <hr />
 	  <xsl:if test="editable=1">

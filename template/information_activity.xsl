@@ -56,8 +56,13 @@
 	  </label>
 	  <hr />
 	  <div class="little">
-	    Date<br />
+	    Date start<br />
 	    <xsl:apply-templates select="date" />
+	  </div>
+	  <hr />
+	  <div class="little">
+	    Date end<br />
+	    <xsl:apply-templates select="dateend" />
 	  </div>
 	  <hr />
 	  <label>
@@ -70,7 +75,9 @@
     </fieldset>
     <fieldset>
       <legend>Dependance</legend>
-      <div />
+      <div>
+	<xsl:apply-templates select="information_dependance_activity" />
+      </div>
     </fieldset>
     <xsl:if test="activity_work">
       <fieldset>
