@@ -10,12 +10,10 @@ define('UNKNOWED_ACTIVITY', 'Unknowed activity');
 define('ACTIVITY_WINDOW_BEGIN', '<activity_window>');
 define('ACTIVITY_WINDOW_END', '</activity_window>');
 
-define('ADD_ACTIVITY_BEGIN', '<add_activity>');
-define('ADD_ACTIVITY_END', '</add_activity>');
+
 define('MEMBER_ACTIVITY_BEGIN', '<member_activity>');
 define('MEMBER_ACTIVITY_END', '</member_activity>');
-define('INFORMATION_ACTIVITY_BEGIN', '<information_activity>');
-define('INFORMATION_ACTIVITY_END', '</information_activity>');
+
 
 define('MEMBER_ACTIVITY', 0);
 define('INFORMATION_ACTIVITY', 1);
