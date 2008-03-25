@@ -105,17 +105,10 @@ define('SQL_UPDATE_PROJECT',
 		project_date = DATE(\'%04d-%02d-%02d\')
 	WHERE	project_id = \'%d\';');
 
-define('SQL_INSERT_MEMBER'
-,'INSERT INTO `techweb`.`tw_member` (
-`member_project_id` ,
-`member_usr_id` ,
-`member_role_id` ,
-`member_date_start` ,
-`member_date_end`
-)
-VALUES (
-\'%d\', \'%d\', 1, CURDATE(), \'0000-00-00\'
-);');
+define('SQL_INSERT_MEMBER',
+       'INSERT INTO tw_member
+	(member_project_id, member_usr_id, member_role_id)
+	VALUES (\'%d\', \'%d\', 2);');
 
 define('SQL_REMOVE_TOT_MEMBER', 
 'DELETE FROM tw_member

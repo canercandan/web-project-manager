@@ -26,8 +26,10 @@
 	<th>First name</th>
 	<th>Title</th>
 	<th>Role</th>
+	<!--
 	<th>Date begin</th>
 	<th>Date end</th>
+	-->
       </tr>
     </thead>
     <tbody>
@@ -99,12 +101,14 @@
 	  </xsl:for-each>
 	</select>
       </td>
+      <!--
       <td class="little2">
 	<xsl:apply-templates select="date_start" />
       </td>
       <td class="little2">
 	<xsl:apply-templates select="date_end" />
       </td>
+      -->
     </tr>
   </xsl:template>
 
@@ -118,23 +122,26 @@
 	    <xsl:apply-templates select="member_list" />
 	  </table>
 	  <div class="form big">
-	    <input type="submit" name="{btn_down/@post}" value="Add to active members" />
+	    <!--<input type="submit" name="{btn_down/@post}" value="Add to active members" />-->
+	    <input type="submit" name="{btn_down/@post}" value="Add to members" />
 	  </div>
 	</div>
       </form>
       <form action="?" method="post">
 	<div class="member_list">
 	  <table class="table">
-	    <caption>Active or future members</caption>
+	    <!--<caption>Active or future members</caption>-->
+	    <caption>Members</caption>
 	    <xsl:apply-templates select="member_list_project" />
 	  </table>
 	  <div class="form big">
 	    <input type="submit" name="{btn_update/@post}" value="Update" />
 	    <input type="submit" name="{btn_up/@post}" value="Delete" />
-	    <input type="submit" name="{btn_histo/@post}" value="Move to old members" />
+	    <!--<input type="submit" name="{btn_histo/@post}" value="Move to old members" />-->
 	  </div>
 	</div>
       </form>
+      <!--
       <form action="?" method="post">
 	<div class="member_list">
 	  <table class="table">
@@ -147,6 +154,7 @@
 	  </div>
 	</div>
       </form>
+      -->
     </fieldset>
   </xsl:template>
 </xsl:stylesheet>
