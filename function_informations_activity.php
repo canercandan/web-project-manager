@@ -48,7 +48,7 @@ function new_add_activities($id_project, $id_activity, $name, $describ, $charge,
 {
 	if (date_order($month, $day, $year, $month_end, $day_end, $year_end))
 	{	
-		printf(XML_ERROR, sprintf(ERR_NEW_DATE_ORDER, $day, $month, $year, $day_end, $month_end, $year_end))
+		printf(XML_ERROR, sprintf(ERR_NEW_DATE_ORDER, $day, $month, $year, $day_end, $month_end, $year_end));
 		return (1);
 	}
 	else
