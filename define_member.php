@@ -17,8 +17,11 @@ define('SESSION_DESTROY', '<sessdestroy post="%s" />');
 
 define('MEMBER_WELCOME', '<memberwelcome value="Welcome on Techweb" />');
 
-define('MEMBER_PROJECT_HEADER', '<memberproject value="Member project">%s</memberproject>');
-define('MEMBER_CHARGE_HEADER', '<membercharge value="Member charge">%s</membercharge>');
+define('MEMBER_PROJECT_BEGIN', '<memberproject>');
+define('MEMBER_PROJECT_END', '</memberproject>');
+
+define('MEMBER_CHARGE_BEGIN', '<membercharge value="Member charge">');
+define('MEMBER_CHARGE_END', '</membercharge>');
 
 define('MEMBER_LIST', '<member v_name="%s" v_answer="%s" v_type="%s" />');
 
@@ -27,9 +30,9 @@ define('MEMBER_LIST', '<member v_name="%s" v_answer="%s" v_type="%s" />');
 */
 
 define('MEMBER_SQL_LIST_ALL',
-	   'SELECT DISTINCT member_usr_id, member_role
+	   'SELECT DISTINCT member_usr_id, member_role_id
 	    FROM tw_member
-		WHERE member_role = 2
-		OR member_role = 3;');
+		WHERE member_role_id = 2
+		OR member_role_id = 3;');
 
 ?>

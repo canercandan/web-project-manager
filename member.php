@@ -7,6 +7,7 @@ require_once('./function_sql.php');
 require_once('./function_usr.php');
 require_once('./function_member.php');
 require_once('./define_session.php');
+require_once('./define_member.php');
 
 session_name(SESS_NAME);
 session_start();
@@ -27,10 +28,11 @@ header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE, $_SESSION[SESSION_LEVEL]);
  else
-   printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
+  printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
 printf(SESSION_DESTROY, DESTROY);
 printf(MEMBER_BEGIN);
 printf(MEMBER_WELCOME);
+//member_project_list();
 printf(MEMBER_END);
 printf(XML_FOOTER);
 sql_close($link);
