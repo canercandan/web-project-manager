@@ -2,6 +2,14 @@
 
 if (!MAIN)
   exit(0);
+
+function date_order($month_start, $day_start, $year_start, $month_end, $day_end, $year_end)
+{
+	$start = mktime(0, 0, 0, $month_start, $day_start, $year_start);
+	$end = mktime(0, 0, 0, $month_end, $day_end, $year_end);
+	
+	return ($month_end != 0 && $day_end != 0 && $year_end != 0 && ($month_start != 0 && $day_start != 0 && $year_start != 0) && $start > $end);
+}
   
 function month_lst()
 {

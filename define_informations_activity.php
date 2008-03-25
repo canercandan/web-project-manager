@@ -27,7 +27,10 @@ define('FIELD_ACTIVITY_CHARGE', '<field_activity_charge value="%s">%s</field_act
 define('FIELD_ACTIVITY_DATE', '<field_date postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>');
 define('FIELD_ACTIVITY_DATE_END', '<field_date_end postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>');
 
-  
+define('ERR_NEW_DATE_ORDER', 'There are some mistakes with the dates : the date corresponding to the start (%02d/%02d/%04d) must be after the one corresponding to the end (%02d/%02d/%04d)');
+define('ERR_NEW_DATE_PROJECT', 'There are some mistakes with the dates : the dates of the project are : %s - %s');
+
+
 define('SQL_GET_NEW_ACTIVITY_INFORMATIONS', '
 SELECT p.activity_name, p.activity_describtion, p.activity_charge_total, 
 day(p.activity_date_begin), month(p.activity_date_begin), year(p.activity_date_begin),
@@ -58,5 +61,16 @@ VALUES (
 NULL , \'%d\', \'%d\', \'%s\', \'%d\', \'%04d-%02d-%02d\', \'%04d-%02d-%02d\', \'%s\'
 );');
 
+define('SQL_GET_CHARGE', 'SELECT SUM(activity_charge_total) 
+	FROM tw_activity 
+	WHERE activity_parent_id = \'%d\';');
+
+define('SQL_UPDATE_CHARGE', 'UPDATE tw_activity 
+SET activity_charge_total = \'%d\' 
+WHERE activity_id = \'%d\';');
+
+define('SQL_NEW_CHECK_PROJECT_DATE', 'SELECT (DATEDIFF(project_date,DATE(\'%04d-%02d-%02d\')) <= 0), (DATEDIFF(DATE(\'%04d-%02d-%02d\'), project_date_end) <= 0), 
+												DATE_FORMAT(project_date, \'%%d/%%m/%%Y\'), DATE_FORMAT(project_date_end, \'%%d/%%m/%%Y\')  
+									FROM tw_project WHERE project_id=\'%d\';');
 
 ?>

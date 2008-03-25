@@ -100,7 +100,6 @@ define('SQL_CHECK_HISTO','DELETE FROM tw_activity_member
 									AND activity_member_date_end = CURDATE()');
 define('SQL_CHECK_ACTIVITY_DATE', 'SELECT ((activity_date_begin - DATE(\'%04d-%02d-%02d\')) <= 0), DATE_FORMAT(activity_date_begin, \'%%d/%%m/%%Y\') FROM tw_activity WHERE activity_id=\'%d\';');
 
-define('SQL_CHECK_PROJECT_DATE', 'SELECT ((project_date - DATE(\'%04d-%02d-%02d\')) <= 0), DATE_FORMAT(project_date, \'%%d/%%m/%%Y\') FROM tw_project WHERE project_id=\'%d\';');
 									
 define('SQL_UPDATE_MEMBER_ACTIVITY','
 											UPDATE tw_activity_member SET 	activity_level = \'%d\',
@@ -166,6 +165,7 @@ WHERE activity_project_id = \'%d\'
 and activity_parent_id = \'%d\'
 order by activity_name;');
 
+/*
 define('SQL_GET_CHARGE', 'SELECT SUM(activity_charge_total) 
 	FROM tw_activity 
 	WHERE activity_parent_id = \'%d\';');
@@ -173,6 +173,7 @@ define('SQL_GET_CHARGE', 'SELECT SUM(activity_charge_total)
 define('SQL_UPDATE_CHARGE', 'UPDATE tw_activity 
 SET activity_charge_total = \'%d\' 
 WHERE activity_id = \'%d\';');
+*/
 
 define('SQL_GET_PARENT_ID', 'SELECT activity_parent_id FROM tw_activity WHERE activity_id = \'%d\';');
 

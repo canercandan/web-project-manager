@@ -42,11 +42,27 @@ function print_activities_list_dependance($id_project, $id_activity, $id_root_ac
       }
 }
 
-function add_activities($id_project, $id_activity, $name, $describ, $charge, $day, $month, $year,
+function new_add_activities($id_project, $id_activity, $name, $describ, $charge, $day, $month, $year,
 							$day_end, $month_end, $year_end)
 
 {
-  sql_query(sprintf(SQL_NEW_ADD_ACTIVITY, sql_real_escape_string($id_project),
+	if (date_order($month, $day, $year, $month_end, $day_end, $year_end))
+	{	
+		printf(XML_ERROR, sprintf(ERR_NEW_DATE_ORDER, $day, $month, $year, $day_end, $month_end, $year_end))
+		return (1);
+	}
+	else
+	{
+		$res = sql_query(sprintf(SQL_NEW_CHECK_PROJECT_DATE, sql_real_escape_string($year),sql_real_escape_string($month),sql_real_escape_string($day),
+															sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end),
+															$id_project));
+		$tab = sql_fetch_array($res);
+		if ($tab[0] == 0 || $tab[1] == 0)
+		{
+			printf(XML_ERROR, sprintf(ERR_NEW_DATE_PROJECT, $tab[2], $tab[3]));
+			return (1);
+		}	
+		sql_query(sprintf(SQL_NEW_ADD_ACTIVITY, sql_real_escape_string($id_project),
 		    sql_real_escape_string($id_activity),
 		    sql_real_escape_string($name),
 		    sql_real_escape_string($charge),
@@ -57,7 +73,9 @@ function add_activities($id_project, $id_activity, $name, $describ, $charge, $da
 		    sql_real_escape_string($month_end),
 		    sql_real_escape_string($day_end),
 		    sql_real_escape_string($describ)));
-  update_charge($id_activity);
+		update_charge($id_activity);
+	}
+	return (0);
 }
 
 function update_charge($id_activity)
