@@ -58,11 +58,18 @@ function new_update_project($id_project, $name, $describ, $day, $month, $year
   return (0);
 }
 
-function new_add_project($id_user, $name, $describ)
+function new_add_project($id_user, $name, $describ, $day, $month, $year
+							$day_end, $month_end, $year_end)
 {
   sql_query(sprintf(SQL_NEW_ADD_PROJECT, sql_real_escape_string($id_user),
 		    sql_real_escape_string($name),
-		    sql_real_escape_string($describ)));
+		    sql_real_escape_string($describ),
+		    sql_real_escape_string($year),
+		    sql_real_escape_string($month),
+		    sql_real_escape_string($day),
+			sql_real_escape_string($year_end),
+		    sql_real_escape_string($month_end),
+		    sql_real_escape_string($day_end)));
 }
 
 
