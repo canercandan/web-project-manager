@@ -30,8 +30,12 @@ define('MEMBER_LIST_CHARGE', '<member name="%s" answer="%s" answertype="%s" />')
 ** Define member : sql
 */
 
-define('MEMBER_SQL_LIST_ALL',
+define('MEMBER_SQL_LIST_PROJECT',
 	   'SELECT usr_login
+	    FROM tw_usr;');
+
+define('MEMBER_SQL_LIST_CHARGE',
+	   'SELECT usr_login, usr_login
 	    FROM tw_usr;');
 
 ?>
