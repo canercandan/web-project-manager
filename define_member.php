@@ -18,13 +18,16 @@ define('SESSION_DESTROY', '<sessdestroy post="%s" />');
 define('MEMBER_WELCOME', '<memberwelcome value="Welcome on Techweb" />');
 
 define('MEMBER_PROJECT_BEGIN', '<memberproject value="Member project">');
-define('MEMBER_PROJECT_END', '</memberproject>');
+define('MEMBER_PROJECT_END', '%s</memberproject>');
 
 define('MEMBER_CHARGE_BEGIN', '<membercharge value="Member charge">');
-define('MEMBER_CHARGE_END', '</membercharge>');
+define('MEMBER_CHARGE_END', '%s</membercharge>');
 
-define('MEMBER_LIST_PROJECT', '<member name="%s" />');
-define('MEMBER_LIST_CHARGE', '<member name="%s" answer="%s" answertype="%s" />');
+define('MEMBER_ANSWER_BEGIN', '<memberanswer value="Member answer">');
+define('MEMBER_ANSWER_END', '%s</memberanswer>');
+
+define('MEMBER_NAME', '%s<member name="%s" />');
+define('MEMBER_LIST', '%s<member name="%s" answer="%s" />');
 
 /*
 ** Define member : sql
@@ -32,10 +35,19 @@ define('MEMBER_LIST_CHARGE', '<member name="%s" answer="%s" answertype="%s" />')
 
 define('MEMBER_SQL_LIST_PROJECT',
 	   'SELECT usr_login
-	    FROM tw_usr;');
+	    FROM tw_usr
+		WHERE usr_level_id = 4
+		OR usr_level_id = 3;');
 
 define('MEMBER_SQL_LIST_CHARGE',
-	   'SELECT usr_login, usr_login
-	    FROM tw_usr;');
+	   'SELECT usr_login, activity_member_activity_id
+	    FROM tw_usr, tw_activity_member
+		WHERE usr_id = activity_member_usr_id;');
 
+define('MEMBER_SQL_LISR_ANSWER',
+	   'SELECT activity_name, activity_usr_answer_id
+	    FROM tw_activity, tw_activity_usr
+		WHERE activity_usr_activity_id = activity_id
+		AND activity_usr_usr_id = $_SESSION[SESSION_ID]
+		AND activity_usr_answer_id >= 0');
 ?>

@@ -7,6 +7,8 @@
 define('LOCATION_EXIT', 'Location:connect.php');
 define('IS_A_ROOT', '1');
 define('IS_AN_ADMIN', '2');
+define('IS_A_CHIEF', '3');
+define('IS_A_WORKER', '4');
 
 define('SESSION_ID', 'sessid');
 define('SESSION_LOGIN', 'sesslogin');
