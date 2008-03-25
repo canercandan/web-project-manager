@@ -14,9 +14,8 @@ printf(INFORMATION_ACTIVITY_BEGIN);
 printf(MEMBER_BTN_UPDATE);
 get_new_activity_informations($_SESSION['ACTIVITY_ID']);
 
-
-
 printf(INFORMATION_DEPENDANCE_ACTIVITY_BEGIN);
+printf(MEMBER_BTN_UPDATE);
 printf(ACTIVITY_LIST_START);
 print_activities_list_dependance($_SESSION['PROJECT_ID'], 0, $_SESSION['ACTIVITY_ID']);
 printf(ACTIVITY_LIST_END);

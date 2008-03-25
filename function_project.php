@@ -8,6 +8,7 @@ require_once('define_project.php');
 require_once('function_activity.php');
 require_once('function_misc.php');
 
+/*
 function update_project($id_project, $name, $describ, $day, $month, $year)
 {
   if (check_date_subact($day, $month, $year, $id_project, 0) > 0)
@@ -23,6 +24,7 @@ function update_project($id_project, $name, $describ, $day, $month, $year)
 		    sql_real_escape_string($id_project)));
   return (0);
 }
+*/
 
 /*
 function get_member_out_project($id_project, $last)
@@ -231,13 +233,14 @@ function check_project($id_user, $id_project)
     return (null);
 }
 
+/*
 function add_project($id_user, $name, $describ)
 {
   sql_query(sprintf(SQL_ADD_PROJECT, sql_real_escape_string($id_user),
 		    sql_real_escape_string($name),
 		    sql_real_escape_string($describ)));
 }
-
+*/
 function check_admin_for_project($id_project)
 {
   printf(ADMIN,1);

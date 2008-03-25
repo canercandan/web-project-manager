@@ -100,13 +100,6 @@ define('SQL_CHECK_IN_PROJ',
 	WHERE	member_usr_id = \'%d\'
 		AND member_project_id = \'%d\';');
 
-define('SQL_UPDATE_PROJECT',
-       'UPDATE	tw_project
-	SET	project_name = \'%s\',
-		project_describ = \'%s\',
-		project_date = DATE(\'%04d-%02d-%02d\')
-	WHERE	project_id = \'%d\';');
-
 /*
 define('SQL_INSERT_MEMBER',
        'INSERT INTO tw_member
@@ -203,16 +196,7 @@ define('SQL_SELECT_PROJECT',
 				  FROM tw_member
 				  WHERE member_usr_id = \'%d\'));');
 
-define('SQL_ADD_PROJECT', 'INSERT INTO `tw_project` (
-`project_id` ,
-`project_autor_usr_id` ,
-`project_name` ,
-`project_describ` ,
-`project_date`
-)
-VALUES (
-NULL , \'%d\', \'%s\', \'%s\', CURDATE()
-);');
+
 
 define('SQL_CHECK_AUTOR_PROJECT',
        'SELECT	project_id

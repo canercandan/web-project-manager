@@ -25,4 +25,24 @@ FROM tw_project f LEFT JOIN tw_profil p ON f.project_autor_usr_id = p.profil_usr
 WHERE
 f.project_id = \'%d\';');
 
+define('SQL_NEW_UPDATE_PROJECT',
+       'UPDATE	tw_project
+	SET	project_name = \'%s\',
+		project_describ = \'%s\',
+		project_date = DATE(\'%04d-%02d-%02d\')
+		project_date_end = DATE(\'%04d-%02d-%02d\')
+	WHERE	project_id = \'%d\';');
+
+define('SQL_NEW_ADD_PROJECT', 'INSERT INTO `tw_project` (
+`project_id` ,
+`project_autor_usr_id` ,
+`project_name` ,
+`project_describ` ,
+`project_date`,
+project_date_end
+)
+VALUES (
+NULL , \'%d\', \'%s\', \'%s\', DATE(\'%04d-%02d-%02d\'), DATE(\'%04d-%02d-%02d\')
+);');
+
 ?>
