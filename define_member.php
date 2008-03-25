@@ -47,9 +47,9 @@ define('MEMBER_SQL_LIST_PROJECT',
 		OR usr_level_id = 3;');
 
 define('MEMBER_SQL_LIST_CHARGE',
-	   'SELECT usr_login, activity_member_activity_id
-	    FROM tw_usr, tw_activity_member
-		WHERE usr_id = activity_member_usr_id;');
+	   'SELECT usr_login, activity_usr_activity_id
+	    FROM tw_usr, tw_activity_usr
+		WHERE usr_id = activity_usr_usr_id;');
 
 define('MEMBER_SQL_LIST_ANSWER',
 	   'SELECT activity_name, activity_usr_answer_id

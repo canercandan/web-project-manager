@@ -37,6 +37,7 @@ if ($_GET[DEBUG])
 printf(SESSION_DESTROY, DESTROY);
 printf(MEMBER_BEGIN);
 printf(MEMBER_WELCOME);
+/*
 if ($_SESSION[SESSION_LEVEL] != IS_A_WORKER)
   {
 	member_list_project();
@@ -46,6 +47,7 @@ else
   {
     member_list_answer();
   }
+  */
 printf(MEMBER_END);
 printf(XML_FOOTER);
 sql_close($link);
