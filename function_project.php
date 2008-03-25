@@ -124,7 +124,7 @@ function remove_tot_member($id_user, $id_project, $day_start, $month_start, $yea
 		    sql_real_escape_string($year_end), sql_real_escape_string($month_end), sql_real_escape_string($day_end)));
 }
 
-
+/*
 function update_member_proj($id_user, $id_project, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end,
 			    $role, $new_day_start, $new_month_start, $new_year_start, $new_day_end, $new_month_end, $new_year_end)
 {
@@ -141,6 +141,7 @@ function update_member_proj($id_user, $id_project, $day_start, $month_start, $ye
 		    sql_real_escape_string($year_start), sql_real_escape_string($month_start), sql_real_escape_string($day_start),
 		    sql_real_escape_string($year_end), sql_real_escape_string($month_end), sql_real_escape_string($day_end)));
 }
+*/
 
 /*
 function put_to_member($id_user, $id_project)
@@ -152,17 +153,6 @@ function put_to_member($id_user, $id_project)
     }
 }
 */
-
-function	put_to_member($id_user, $id_project)
-{
-  $res = sql_query(sprintf(SQL_CHECK_IN_PROJ),
-		   sql_real_escape_string($id_user),
-		   sql_real_escape_string($id_project));
-  if (!sql_num_rows($res))
-    sql_query(sprintf(SQL_INSERT_MEMBER,
-		      sql_real_escape_string($id_project),
-		      sql_real_escape_string($id_user)));
-}
 
 function get_information_project($id_project)
 {

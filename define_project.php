@@ -105,10 +105,12 @@ define('SQL_UPDATE_PROJECT',
 		project_date = DATE(\'%04d-%02d-%02d\')
 	WHERE	project_id = \'%d\';');
 
+/*
 define('SQL_INSERT_MEMBER',
        'INSERT INTO tw_member
 	(member_project_id, member_usr_id, member_role_id)
 	VALUES (\'%d\', \'%d\', 2);');
+*/
 
 define('SQL_REMOVE_TOT_MEMBER', 
 'DELETE FROM tw_member
@@ -117,16 +119,16 @@ AND member_project_id = \'%d\'
 AND DATE(\'%04d-%02d-%02d\') = member_date_start
 AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
 
-define('SQL_UPDATE_PROJECT_MEMBER', 
-'
-UPDATE tw_member SET
-member_role_id = \'%d\',
-member_date_start = DATE(\'%04d-%02d-%02d\'),
-member_date_end = DATE(\'%04d-%02d-%02d\')
-WHERE member_usr_id = \'%d\'
-AND member_project_id = \'%d\'
-AND DATE(\'%04d-%02d-%02d\') = member_date_start
-AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
+/*
+define('SQL_UPDATE_PROJECT_MEMBER',
+       'UPDATE	tw_member
+	SET	member_role_id = \'%d\',
+		member_date_start = DATE(\'%04d-%02d-%02d\'),
+		member_date_end = DATE(\'%04d-%02d-%02d\')
+	WHERE	member_usr_id = \'%d\'
+		AND member_project_id = \'%d\'
+		AND DATE(\'%04d-%02d-%02d\') = member_date_start
+		AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
 
 define('SQL_MOVE_TO_OLD_PROJECT_MEMBER', 
 '
@@ -136,6 +138,7 @@ WHERE member_usr_id = \'%d\'
 AND member_project_id = \'%d\'
 AND DATE(\'%04d-%02d-%02d\') = member_date_start
 AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
+*/
 
 define('SQL_GET_ROLE', 'SELECT role_id, role_name FROM tw_member_role');
 define('SQL_GET_MEMBER_OUT_PROJECT', 'SELECT usr_id, profil_name, profil_fname, title_name, usr_login FROM tw_usr, tw_profil, tw_title
