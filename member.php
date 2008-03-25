@@ -18,11 +18,16 @@ if (!$_SESSION[SESSION_ID])
     header(LOCATION_EXIT);
     exit(0);
   }
-if ($_GET[DESTROY])
+else if ($_GET[DESTROY])
   {
     session_destroy();
     header(HEADER_CONNECT);
     exit(0);
+  }
+else
+  {
+	member_list_add();
+	member_list_del();
   }
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
@@ -32,7 +37,6 @@ if ($_GET[DEBUG])
 printf(SESSION_DESTROY, DESTROY);
 printf(MEMBER_BEGIN);
 printf(MEMBER_WELCOME);
-/*
 if ($_SESSION[SESSION_LEVEL] != IS_A_WORKER)
   {
 	member_list_project();
@@ -42,7 +46,6 @@ else
   {
     member_list_answer();
   }
-  */
 printf(MEMBER_END);
 printf(XML_FOOTER);
 sql_close($link);

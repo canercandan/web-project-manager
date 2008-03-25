@@ -41,4 +41,31 @@ function member_list_answer()
   printf($answer);
 }
 
+function member_list_add()
+{
+  if ($_POST[MEMBER_BUTTON_SELECT_ADD])
+    {
+      foreach($_POST[MEMBER_ADD_NAME] as $name)
+	    {
+	      $test = sql_query(MEMBER_SQL_LIST_ADD, 
+					        sql_real_escape_string($_POST[MEMBER_ADD_NAME]),
+					        sql_real_escape_string($_POST[MEMBER_ADD_ACTIVITY]),
+							0);
+		}
+	}
+}
+
+function member_list_del()
+{
+  if ($_POST[MEMBER_BUTTON_SELECT_DEL])
+    {
+      foreach($_POST[MEMBER_ADD_NAME] as $name)
+	    {
+	      $test = sql_query(MEMBER_SQL_LIST_DEL, 
+					        sql_real_escape_string($_POST[MEMBER_ADD_NAME]),
+					        sql_real_escape_string($_POST[MEMBER_ADD_ACTIVITY]));
+		}
+	}
+}
+
 ?>
