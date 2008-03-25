@@ -23,6 +23,7 @@ define('INFORMATION_PROJECT_BEGIN', '<information_project>');
 define('INFORMATION_PROJECT_END', '</information_project>');
 define('UNNAMED_PROJECT', 'Unnamed project');
 
+/*
 define('MEMBER_ELEM_PROJ', '<member><key unique="%d"/><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title><login>%s</login></member>');
 define('MEMBER_ELEM_PROJECT_PROJ', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name>
 <fname>%s</fname>
@@ -33,6 +34,8 @@ define('MEMBER_ELEM_PROJECT_PROJ', '<member><id>%d</id><moveable>%d</moveable><e
 <date_end postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
 <key name="%s" unique="%d" id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
 </member>');
+*/
+
 define('POST_KEY_DAY_START', 'key_member_proj_day_start');
 define('POST_KEY_MONTH_START', 'key_member_proj_month_start');
 define('POST_KEY_YEAR_START', 'key_member_proj_year_start');
@@ -109,7 +112,6 @@ define('SQL_INSERT_MEMBER',
        'INSERT INTO tw_member
 	(member_project_id, member_usr_id, member_role_id)
 	VALUES (\'%d\', \'%d\', 2);');
-*/
 
 define('SQL_REMOVE_TOT_MEMBER', 
 'DELETE FROM tw_member
@@ -118,7 +120,6 @@ AND member_project_id = \'%d\'
 AND DATE(\'%04d-%02d-%02d\') = member_date_start
 AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
 
-/*
 define('SQL_UPDATE_PROJECT_MEMBER',
        'UPDATE	tw_member
 	SET	member_role_id = \'%d\',
@@ -140,6 +141,8 @@ AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
 */
 
 define('SQL_GET_ROLE', 'SELECT role_id, role_name FROM tw_member_role');
+
+/*
 define('SQL_GET_MEMBER_OUT_PROJECT', 'SELECT usr_id, profil_name, profil_fname, title_name, usr_login FROM tw_usr, tw_profil, tw_title
 WHERE
 profil_title_id = title_id
@@ -170,6 +173,7 @@ AND member_project_id = \'%d\'
 AND title_id = profil_title_id
 AND (member_date_end != DATE(\'0000-00-00\') AND DATEDIFF(CURDATE(), member_date_end) >= 0)
 order by usr_login;');
+*/
 
 define('SQL_GET_FIRST_ACTIVITY', 'SELECT activity_id, activity_name, activity_charge_total
 	FROM tw_activity
