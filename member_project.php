@@ -3,20 +3,20 @@
 require_once('./function_member_project.php');
 require_once('./function_misc.php');
 
-if (isset($_POST[BTN_DOWN]) && isset($_POST[POST_SELECTMEMBER]))
+if (isset($_POST[BTN_DOWN]) && isset($_POST[POST_SELECT]))
   {
-    foreach($_POST[POST_SELECTMEMBER] as $value)
+    foreach($_POST[POST_SELECT] as $value)
       put_to_member_project($value, $_SESSION['PROJECT_ID']);
   }
- else if (isset($_POST[BTN_UP]) && isset($_POST[POST_SELECTMEMBER]))
+ else if (isset($_POST[BTN_UP]) && isset($_POST[POST_SELECT]))
    {
-     foreach ($_POST[POST_SELECTMEMBER] as $value)
+     foreach ($_POST[POST_SELECT] as $value)
        remove_member_project($_POST[POST_LIST_KEY][$value][POST_KEY_ID],
 			     $_SESSION['PROJECT_ID']);
    }
- else if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_SELECTMEMBER]))
+ else if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_SELECT]))
    {
-     foreach($_POST[POST_SELECTMEMBER] as $value)
+     foreach($_POST[POST_SELECT] as $value)
        update_member_project($_POST[POST_LIST_KEY][$value][POST_KEY_ID],
 			     $_SESSION['PROJECT_ID'],
 			     $_POST[POST_ROLE][$value]);

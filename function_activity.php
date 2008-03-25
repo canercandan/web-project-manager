@@ -5,41 +5,37 @@ if (!MAIN)
 
 require_once('./define_activity.php');
 require_once('./function_sql.php');
-require_once('function_misc.php');
-
-
+require_once('./function_misc.php');
 
 function check_date_subact($day, $month, $year, $id_project, $id_activity)
 {
-	
-	$res = SQL_QUERY(sprintf(SQL_CHECK_SUBACT_DATE, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), 
-													sql_real_escape_string($id_activity), sql_real_escape_string($id_project))); 
-	while (($tab = sql_fetch_array($res)))
+  $res = sql_query(sprintf(SQL_CHECK_SUBACT_DATE, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), 
+			   sql_real_escape_string($id_activity), sql_real_escape_string($id_project))); 
+  while (($tab = sql_fetch_array($res)))
+    {
+      if ($tab[3] == 1)
 	{
-		if ($tab[3] == 1)
-		{
-			SQL_QUERY(sprintf(SQL_UPDATE_DATE_ACT_START, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), $tab[0]));
-			SQL_QUERY(sprintf(SQL_UPDATE_DATE_ACT_END, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), $tab[0],
-										sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
-			sql_query(sprintf(SQL_DELETE_MEMBER_DIFFDATE_END_ACT, $tab[0], sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
-			sql_query(sprintf(SQL_UPDATE_MEMBER_DIFFDATE_START_ACT, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), $tab[0],
-														sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day),
-														sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
-			check_date_subact($day, $month, $year, $id_project, $tab[0]);
-		}
+	  SQL_QUERY(sprintf(SQL_UPDATE_DATE_ACT_START, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), $tab[0]));
+	  SQL_QUERY(sprintf(SQL_UPDATE_DATE_ACT_END, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), $tab[0],
+			    sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
+	  sql_query(sprintf(SQL_DELETE_MEMBER_DIFFDATE_END_ACT, $tab[0], sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
+	  sql_query(sprintf(SQL_UPDATE_MEMBER_DIFFDATE_START_ACT, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), $tab[0],
+			    sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day),
+			    sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
+	  check_date_subact($day, $month, $year, $id_project, $tab[0]);
 	}
-	return (0);
+    }
+  return (0);
 }
-
 
 function check_activity($id_user, $id_activity)
 {
-	$res = SQL_QUERY(sprintf(SQL_CHECK_ACTIVITY, sql_real_escape_string($id_activity)));
-	$r = sql_result($res,0, 0);
-	if (sql_num_rows($res))
-		return ($r == "" ? UNNAMED_ACTIVITY : $r);
-	else
-		return (null);
+  $res = SQL_QUERY(sprintf(SQL_CHECK_ACTIVITY, sql_real_escape_string($id_activity)));
+  $r = sql_result($res,0, 0);
+  if (sql_num_rows($res))
+    return ($r == "" ? UNNAMED_ACTIVITY : $r);
+  else
+    return (null);
 }
 
 function check_admin_for_activity($id_activity)
@@ -67,22 +63,22 @@ function get_activity_work($id_activity)
 	  if ($tab[3] >= 0)
 	    {
 	      $work += ($tab[3] < $tab[2] ? $tab[3] : $tab[2]);
-		  if ($tab[0] != $id_activity)
-			printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge><work>%d</work><percent>%d</percent></activity_work>',
-		     (isset($_SESSION['DEVELOPPED_WORK'][$tab[0]]) ? $_SESSION['DEVELOPPED_WORK'][$tab[0]] : 0),
-			 $tab[0],
-		     htmlentities($tab[1]),
-		     $tab[2],
-		     ($tab[3] < $tab[2] ? $tab[3] : $tab[2]),
-		     ($tab[2] == 0 ? 100 : (($tab[3] < $tab[2] ? $tab[3] : $tab[2]) * 100) / $tab[2]));
+	      if ($tab[0] != $id_activity)
+		printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge><work>%d</work><percent>%d</percent></activity_work>',
+		       (isset($_SESSION['DEVELOPPED_WORK'][$tab[0]]) ? $_SESSION['DEVELOPPED_WORK'][$tab[0]] : 0),
+		       $tab[0],
+		       htmlentities($tab[1]),
+		       $tab[2],
+		       ($tab[3] < $tab[2] ? $tab[3] : $tab[2]),
+		       ($tab[2] == 0 ? 100 : (($tab[3] < $tab[2] ? $tab[3] : $tab[2]) * 100) / $tab[2]));
 	    }
 	  else
 	    {
 	      printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge>',
-				(isset($_SESSION['DEVELOPPED_WORK'][$tab[0]]) ? $_SESSION['DEVELOPPED_WORK'][$tab[0]] : 0),
-				$tab[0],
-				htmlentities($tab[1]),
-				$tab[2]);
+		     (isset($_SESSION['DEVELOPPED_WORK'][$tab[0]]) ? $_SESSION['DEVELOPPED_WORK'][$tab[0]] : 0),
+		     $tab[0],
+		     htmlentities($tab[1]),
+		     $tab[2]);
 	      $tab[3] = get_activity_work($tab[0]);
 	      $work += ($tab[3] < $tab[2] ? $tab[3] : $tab[2]);
 	      printf('<work>%d</work><percent>%d</percent></activity_work>',
@@ -94,8 +90,6 @@ function get_activity_work($id_activity)
     }
 }
 
-
-
 function get_activity_informations($id_activity)
 {
   $res = sql_query(sprintf(SQL_GET_ACTIVITY_INFORMATIONS, sql_real_escape_string($id_activity)));
@@ -104,218 +98,208 @@ function get_activity_informations($id_activity)
   get_days();
   get_years();
   printf('<editable>1</editable><name post="%s">%s</name><describ post="%s">%s</describ>%s<date postyear="%s" postmonth="%s" postday="%s" day="%s" month="%s" year= "%s"/>', 
-  POST_MOD_ACTIVITY_NAME,
-  htmlentities($tab[0]), 
-  POST_MOD_ACTIVITY_DESCRIB,
-  htmlentities($tab[1]),
-  sprintf(ACTIVITY_CHARGE_EDITABLE, POST_MOD_ACTIVITY_CHARGE, $tab[6], $tab[2]),
-  POST_ACT_YEAR_START, POST_MONTH_START, POST_ACT_DAY_START,
-	$tab[3], $tab[4], $tab[5]);
-  
- printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge>',
-		(isset($_SESSION['DEVELOPPED_WORK'][$id_activity]) ? $_SESSION['DEVELOPPED_WORK'][$id_activity] : 0),
-		$id_activity,
-		htmlentities($tab[0]),
-		$tab[2]);
-		
+	 POST_MOD_ACTIVITY_NAME,
+	 htmlentities($tab[0]), 
+	 POST_MOD_ACTIVITY_DESCRIB,
+	 htmlentities($tab[1]),
+	 sprintf(ACTIVITY_CHARGE_EDITABLE, POST_MOD_ACTIVITY_CHARGE, $tab[6], $tab[2]),
+	 POST_ACT_YEAR_START, POST_MONTH_START, POST_ACT_DAY_START,
+	 $tab[3], $tab[4], $tab[5]);
+  printf('<activity_work><developped>%d</developped><id>%d</id><name>%s</name><charge>%d</charge>',
+	 (isset($_SESSION['DEVELOPPED_WORK'][$id_activity]) ? $_SESSION['DEVELOPPED_WORK'][$id_activity] : 0),
+	 $id_activity,
+	 htmlentities($tab[0]),
+	 $tab[2]);
   $work = get_activity_work($id_activity);
   printf('<work>%d</work><percent>%d</percent></activity_work>',
 	 ($work < $tab[2] ? $work : $tab[2]),
 	 ($tab[2] == 0 ? 100 : (($work < $tab[2] ? $work : $tab[2]) * 100) / $tab[2]));
 }
 
+/*
 function get_member_activity($id_activity, $id_project, $last)
 {
 
   $res = sql_query(sprintf(SQL_GET_MEMBER_ACTIVITY, sql_real_escape_string($id_project),
 			   sql_real_escape_string($id_activity)));
-	printf(MEMBER_POST_SELECT);
-  if (sql_num_rows($res))
-    while ($tab = sql_fetch_array($res))
-      {
-	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), MEMBER_POST_LEVEL, htmlentities($tab[5]), MEMBER_POST_WORK, htmlentities($tab[6]), htmlentities($tab[7]),
-		POST_ACT_DAY_START, htmlentities($tab[8]), POST_ACT_MONTH_START, htmlentities($tab[9]), POST_ACT_YEAR_START, htmlentities($tab[10]),
-		POST_ACT_DAY_END, htmlentities($tab[11]), POST_ACT_MONTH_END, htmlentities($tab[12]), POST_ACT_YEAR_END, htmlentities($tab[13]),
-		$last,
-		POST_KEY_ACT_ID,
-		POST_KEY_ACT_DAY_START,
-		POST_KEY_ACT_MONTH_START,
-		POST_KEY_ACT_YEAR_START,
-		POST_KEY_ACT_DAY_END,
-		POST_KEY_ACT_MONTH_END,
-		POST_KEY_ACT_YEAR_END);
-		$last++;
-      }
-	return ($last);
-}
-
-function	add_member($id_activity, $id_usr)
-{
-	sql_query(sprintf(SQL_ADD_MEMBER_ACT, sql_real_escape_string($id_activity),
-			   sql_real_escape_string($id_usr)));
-}
-
-function get_member_histo_activity($id_activity, $id_project, $last)
-{
-
-  $res = sql_query(sprintf(SQL_GET_HISTO_MEMBER_ACTIVITY, sql_real_escape_string($id_project),
-			   sql_real_escape_string($id_activity)));
-	printf(MEMBER_POST_SELECT);
-  if (sql_num_rows($res))
-    while ($tab = sql_fetch_array($res))
-      {
-	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), MEMBER_POST_LEVEL, htmlentities($tab[5]), MEMBER_POST_WORK, htmlentities($tab[6]), htmlentities($tab[7]),
-		POST_ACT_DAY_START, htmlentities($tab[8]), POST_ACT_MONTH_START, htmlentities($tab[9]), POST_ACT_YEAR_START, htmlentities($tab[10]),
-		POST_ACT_DAY_END, htmlentities($tab[11]), POST_ACT_MONTH_END, htmlentities($tab[12]), POST_ACT_YEAR_END, htmlentities($tab[13]),
-		$last,
-		POST_KEY_ACT_ID,
-		POST_KEY_ACT_DAY_START,
-		POST_KEY_ACT_MONTH_START,
-		POST_KEY_ACT_YEAR_START,
-		POST_KEY_ACT_DAY_END,
-		POST_KEY_ACT_MONTH_END,
-		POST_KEY_ACT_YEAR_END);
-		$last++;
-	  }
-	return ($last);
-}
-
-function get_member_project_activity($id_activity, $id_project, $last)
-{
-  $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT_ACT, 
-				sql_real_escape_string($id_activity), sql_real_escape_string($id_project),
-				sql_real_escape_string($id_activity),
-				sql_real_escape_string($id_activity), sql_real_escape_string($id_project),
-				sql_real_escape_string($id_activity)
-				));
   printf(MEMBER_POST_SELECT);
   if (sql_num_rows($res))
     while ($tab = sql_fetch_array($res))
       {
-	  printf(MEMBER_ELEM_PROJECT, $last, $tab[0], 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]));
-      $last++;
-	  }
-	return ($last);
+	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), MEMBER_POST_LEVEL, htmlentities($tab[5]), MEMBER_POST_WORK, htmlentities($tab[6]), htmlentities($tab[7]),
+	       POST_ACT_DAY_START, htmlentities($tab[8]), POST_ACT_MONTH_START, htmlentities($tab[9]), POST_ACT_YEAR_START, htmlentities($tab[10]),
+	       POST_ACT_DAY_END, htmlentities($tab[11]), POST_ACT_MONTH_END, htmlentities($tab[12]), POST_ACT_YEAR_END, htmlentities($tab[13]),
+	       $last,
+	       POST_KEY_ACT_ID,
+	       POST_KEY_ACT_DAY_START,
+	       POST_KEY_ACT_MONTH_START,
+	       POST_KEY_ACT_YEAR_START,
+	       POST_KEY_ACT_DAY_END,
+	       POST_KEY_ACT_MONTH_END,
+	       POST_KEY_ACT_YEAR_END);
+	$last++;
+      }
+  return ($last);
+}
+
+function	add_member($id_activity, $id_usr)
+{
+  sql_query(sprintf(SQL_ADD_MEMBER_ACT, sql_real_escape_string($id_activity),
+		    sql_real_escape_string($id_usr)));
+}
+
+function get_member_histo_activity($id_activity, $id_project, $last)
+{
+  $res = sql_query(sprintf(SQL_GET_HISTO_MEMBER_ACTIVITY, sql_real_escape_string($id_project),
+			   sql_real_escape_string($id_activity)));
+  printf(MEMBER_POST_SELECT);
+  if (sql_num_rows($res))
+    while ($tab = sql_fetch_array($res))
+      {
+	printf(MEMBER_ELEM_ACTIVITY, $tab[0], 0, 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), MEMBER_POST_LEVEL, htmlentities($tab[5]), MEMBER_POST_WORK, htmlentities($tab[6]), htmlentities($tab[7]),
+	       POST_ACT_DAY_START, htmlentities($tab[8]), POST_ACT_MONTH_START, htmlentities($tab[9]), POST_ACT_YEAR_START, htmlentities($tab[10]),
+	       POST_ACT_DAY_END, htmlentities($tab[11]), POST_ACT_MONTH_END, htmlentities($tab[12]), POST_ACT_YEAR_END, htmlentities($tab[13]),
+	       $last,
+	       POST_KEY_ACT_ID,
+	       POST_KEY_ACT_DAY_START,
+	       POST_KEY_ACT_MONTH_START,
+	       POST_KEY_ACT_YEAR_START,
+	       POST_KEY_ACT_DAY_END,
+	       POST_KEY_ACT_MONTH_END,
+	       POST_KEY_ACT_YEAR_END);
+	$last++;
+      }
+  return ($last);
+}
+
+function get_member_project_activity($id_activity, $id_project, $last)
+{
+  $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT_ACT,
+			   sql_real_escape_string($id_activity), sql_real_escape_string($id_project),
+			   sql_real_escape_string($id_activity),
+			   sql_real_escape_string($id_activity), sql_real_escape_string($id_project),
+			   sql_real_escape_string($id_activity)
+			   ));
+  printf(MEMBER_POST_SELECT);
+  if (sql_num_rows($res))
+    while ($tab = sql_fetch_array($res))
+      {
+	printf(MEMBER_ELEM_PROJECT, $last, $tab[0], 0, htmlentities($tab[1]), htmlentities($tab[2]), htmlentities($tab[3]), htmlentities($tab[4]), htmlentities($tab[5]));
+	$last++;
+      }
+  return ($last);
 }
 
 function move_to_old_member_activity($id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end)
 {
-	$old_start = mktime(0, 0, 0, $month_start, $day_start, $year_start);
-	$cur_date_tab = getdate();
-	$cur_date = mktime(0, 0, 0, $cur_date_tab['mon'], $cur_date_tab['mday'], $cur_date_tab['year']);
-	if ($old_start <=  $cur_date)
-	{
-		sql_query(sprintf(SQL_CHECK_HISTO, sql_real_escape_string($id_user),
-										sql_real_escape_string($id_activity),
-										sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start)));
-		sql_query(sprintf(SQL_MOVE_TO_OLD_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
-													sql_real_escape_string($id_activity),
-													sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
-													sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
-	}
+  $old_start = mktime(0, 0, 0, $month_start, $day_start, $year_start);
+  $cur_date_tab = getdate();
+  $cur_date = mktime(0, 0, 0, $cur_date_tab['mon'], $cur_date_tab['mday'], $cur_date_tab['year']);
+  if ($old_start <=  $cur_date)
+    {
+      sql_query(sprintf(SQL_CHECK_HISTO, sql_real_escape_string($id_user),
+			sql_real_escape_string($id_activity),
+			sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start)));
+      sql_query(sprintf(SQL_MOVE_TO_OLD_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
+			sql_real_escape_string($id_activity),
+			sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
+			sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
+    }
 }
 
 function delete_member_activity($id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end)
 {
-	sql_query(sprintf(SQL_DELETE_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
-													sql_real_escape_string($id_activity),
-													sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
-													sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
+  sql_query(sprintf(SQL_DELETE_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
+		    sql_real_escape_string($id_activity),
+		    sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
+		    sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
 }
-					
+
 function update_member_activity($id_project, $id_activity, $id_user, $day_start, $month_start, $year_start, $day_end, $month_end, $year_end,
-					$work, $admin, $new_day_start, $new_month_start, $new_year_start, $new_day_end, $new_month_end, $new_year_end)
+				$work, $admin, $new_day_start, $new_month_start, $new_year_start, $new_day_end, $new_month_end, $new_year_end)
 {
-	$new_start = mktime(0, 0, 0, $new_month_start, $new_day_start, $new_year_start);
-	$new_end = mktime(0, 0, 0, $new_month_end, $new_day_end, $new_year_end);
-	$old_start = mktime(0, 0, 0, $month_start, $day_start, $year_start);
-	$old_end = mktime(0, 0, 0, $month_end, $day_end, $year_end);
-	if(($new_month_start == 0 || $new_day_start == 0 || $new_year_start == 0))
+  $new_start = mktime(0, 0, 0, $new_month_start, $new_day_start, $new_year_start);
+  $new_end = mktime(0, 0, 0, $new_month_end, $new_day_end, $new_year_end);
+  $old_start = mktime(0, 0, 0, $month_start, $day_start, $year_start);
+  $old_end = mktime(0, 0, 0, $month_end, $day_end, $year_end);
+  if(($new_month_start == 0 || $new_day_start == 0 || $new_year_start == 0))
+    {
+      printf(XML_ERROR, ERR_DATE_START_NOT_FULL);
+    }
+  else if (($new_month_end != 0 || $new_day_end != 0 || $new_year_end != 0) && ($new_month_end == 0 || $new_day_end == 0 || $new_year_end == 0))
+    {
+      printf(XML_ERROR, ERR_DATE_END_NOT_FULL);
+    }
+  else if ($new_month_end != 0 && $new_day_end != 0 && $new_year_end != 0 && 
+	   $new_start > $new_end)
+    {
+      printf(XML_ERROR, sprintf(ERR_DATE_ORDER, $new_day_start, $new_month_start, $new_year_start, $new_day_end, $new_month_end, $new_year_end));
+    }
+  else
+    {
+      $res = sql_query(sprintf(SQL_CHECK_ACTIVITY_DATE, sql_real_escape_string($new_year_start),sql_real_escape_string($new_month_start),sql_real_escape_string($new_day_start),
+			       $id_activity));
+      $tab = sql_fetch_array($res);
+      if ($tab[0] == 0)
 	{
-		printf(XML_ERROR, ERR_DATE_START_NOT_FULL);
+	  printf(XML_ERROR, sprintf(ERR_DATE_ACTIVITY, htmlentities($tab[1]), $new_day_start, $new_month_start, $new_year_start));
+	  return;
 	}
-	else if (($new_month_end != 0 || $new_day_end != 0 || $new_year_end != 0) && ($new_month_end == 0 || $new_day_end == 0 || $new_year_end == 0))
+      $res = sql_query(sprintf(SQL_GET_DATES_MEMBER_PROJECT, sql_real_escape_string($id_user),
+			       sql_real_escape_string($id_project), sql_real_escape_string($id_activity), 
+			       sql_real_escape_string($id_user), sql_real_escape_string($id_activity)));
+      $nok = true;
+      $log = 'Unknowed';
+      while ($tab = sql_fetch_array($res))
 	{
-		printf(XML_ERROR, ERR_DATE_END_NOT_FULL);
+	  $log = $tab[6];
+	  $start = mktime(0, 0, 0, $tab[1], $tab[0], $tab[2]);
+	  $end = mktime(0, 0, 0, $tab[4], $tab[3], $tab[5]);
+	  if ($start <= $new_start && ($end >= $new_start || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)) &&
+	      ($start <= $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0))  && ($end >= $new_end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
+	    {
+	      $nok = false;
+	    }
 	}
-	else if ($new_month_end != 0 && $new_day_end != 0 && $new_year_end != 0 && 
-	$new_start > $new_end)
+      if ($nok)
 	{
-		printf(XML_ERROR, sprintf(ERR_DATE_ORDER, $new_day_start, $new_month_start, $new_year_start, $new_day_end, $new_month_end, $new_year_end));
+	  printf(XML_ERROR, sprintf (ERR_DATE_MEMBER_PROJACT, htmlentities($log), 
+				     sprintf(PRINT_DATE, $new_day_start, $new_month_start, $new_year_start),
+				     new_month_end == 0 ? 'today' :sprintf(PRINT_DATE, $new_day_end, $new_month_end, $new_year_end)));
+	  return;
 	}
-	else
+      $res = sql_query(sprintf(SQL_GET_DATES_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
+			       sql_real_escape_string($id_activity)));
+      while ($tab = sql_fetch_array($res))
 	{
-		$res = sql_query(sprintf(SQL_CHECK_ACTIVITY_DATE, sql_real_escape_string($new_year_start),sql_real_escape_string($new_month_start),sql_real_escape_string($new_day_start),
-																	$id_activity));
-		$tab = sql_fetch_array($res);
-		if ($tab[0] == 0)
-			{
-				printf(XML_ERROR, sprintf(ERR_DATE_ACTIVITY, htmlentities($tab[1]), $new_day_start, $new_month_start, $new_year_start));
-				return;
-			}
-			
-		$res = sql_query(sprintf(SQL_GET_DATES_MEMBER_PROJECT, sql_real_escape_string($id_user),
-													sql_real_escape_string($id_project), sql_real_escape_string($id_activity), 
-													sql_real_escape_string($id_user), sql_real_escape_string($id_activity)));
-		$nok = true;
-		$log = 'Unknowed';
-		while ($tab = sql_fetch_array($res))
-		{
-			$log = $tab[6];
-			$start = mktime(0, 0, 0, $tab[1], $tab[0], $tab[2]);
-			$end = mktime(0, 0, 0, $tab[4], $tab[3], $tab[5]);
-			if ($start <= $new_start && ($end >= $new_start || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)) &&
-				($start <= $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0))  && ($end >= $new_end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
-				{
-						$nok = false;
-				}
-		}
-		
-		if ($nok)
-		{
-			printf(XML_ERROR, sprintf (ERR_DATE_MEMBER_PROJACT, htmlentities($log), 
-			sprintf(PRINT_DATE, $new_day_start, $new_month_start, $new_year_start),
-			new_month_end == 0 ? 'today' :sprintf(PRINT_DATE, $new_day_end, $new_month_end, $new_year_end)));
-			return;
-		}
-													
-		$res = sql_query(sprintf(SQL_GET_DATES_MEMBER_ACTIVITY, sql_real_escape_string($id_user),
-													sql_real_escape_string($id_activity)));
-		while ($tab = sql_fetch_array($res))
-		{
-			
-			$start = mktime(0, 0, 0, $tab[1], $tab[0], $tab[2]);
-			$end = mktime(0, 0, 0, $tab[4], $tab[3], $tab[5]);
-			
-			if (($start != $old_start) && (
-											($start <= $new_start && ($end > $new_start || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
-											||
-											(($start < $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)) && ($end >= $new_end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
-											||
-											($start > $new_start && (($end <= $new_end && !($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)) || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)))
-											)) 	
-			{
-				printf(XML_ERROR, sprintf(ERR_OLD_DATE_ORDER,  $new_day_start, $new_month_start, $new_year_start,  
-																			($new_day_end == 0 ? 'today' : sprintf(PRINT_DATE,$new_day_end, $new_month_end, $new_year_end)),
-																			$tab[0], $tab[1], $tab[2],
-																			($tab[3] == 0 ? 'today' : sprintf(PRINT_DATE,$tab[3], $tab[4], $tab[5]))));
-				return;
-			}
-		}		
-		sql_query(sprintf(SQL_UPDATE_MEMBER_ACTIVITY, sql_real_escape_string($admin),
-													sql_real_escape_string($work),
-													sql_real_escape_string($new_year_start),sql_real_escape_string($new_month_start),sql_real_escape_string($new_day_start),
-													sql_real_escape_string($new_year_end),sql_real_escape_string($new_month_end),sql_real_escape_string($new_day_end),
-													sql_real_escape_string($id_user),
-													sql_real_escape_string($id_activity),
-													sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
-													sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
-		
+	  $start = mktime(0, 0, 0, $tab[1], $tab[0], $tab[2]);
+	  $end = mktime(0, 0, 0, $tab[4], $tab[3], $tab[5]);
+	  if (($start != $old_start) && (
+					 ($start <= $new_start && ($end > $new_start || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
+					 ||
+					 (($start < $new_end || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)) && ($end >= $new_end || ($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)))
+					 ||
+					 ($start > $new_start && (($end <= $new_end && !($tab[4] == 0 && $tab[3] == 0 && $tab[5] == 0)) || ($new_month_end == 0 && $new_day_end == 0 && $new_year_end == 0)))
+					 ))
+	    {
+	      printf(XML_ERROR, sprintf(ERR_OLD_DATE_ORDER,  $new_day_start, $new_month_start, $new_year_start,  
+					($new_day_end == 0 ? 'today' : sprintf(PRINT_DATE,$new_day_end, $new_month_end, $new_year_end)),
+					$tab[0], $tab[1], $tab[2],
+					($tab[3] == 0 ? 'today' : sprintf(PRINT_DATE,$tab[3], $tab[4], $tab[5]))));
+	      return;
+	    }
 	}
-
+      sql_query(sprintf(SQL_UPDATE_MEMBER_ACTIVITY, sql_real_escape_string($admin),
+			sql_real_escape_string($work),
+			sql_real_escape_string($new_year_start),sql_real_escape_string($new_month_start),sql_real_escape_string($new_day_start),
+			sql_real_escape_string($new_year_end),sql_real_escape_string($new_month_end),sql_real_escape_string($new_day_end),
+			sql_real_escape_string($id_user),
+			sql_real_escape_string($id_activity),
+			sql_real_escape_string($year_start),sql_real_escape_string($month_start),sql_real_escape_string($day_start),
+			sql_real_escape_string($year_end),sql_real_escape_string($month_end),sql_real_escape_string($day_end)));
+    }
 }
-
-
+*/
 
 function print_activities_list($id_project, $id_activity)
 {

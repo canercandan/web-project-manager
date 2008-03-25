@@ -14,29 +14,29 @@ define('MEMBER_LIST_END', '</member_list>');
 
 define('MEMBER_ELEM_PROJ',
        '<member>
-	  <key unique="%d" />
-	  <id>%d</id>
-	  <moveable>%d</moveable>
-	  <name>%s</name>
-	  <fname>%s</fname>
-	  <title>%s</title>
-	  <login>%s</login>
+		<key unique="%d" />
+		<id>%d</id>
+		<moveable>%d</moveable>
+		<name>%s</name>
+		<fname>%s</fname>
+		<title>%s</title>
+		<login>%s</login>
 	</member>');
 
 define('MEMBER_ELEM_PROJECT_PROJ',
        '<member>
-	  <id>%d</id>
-	  <moveable>%d</moveable>
-	  <editable>%d</editable>
-	  <name>%s</name>
-	  <fname>%s</fname>
-	  <title>%s</title>
-	  <role post="%s">%s</role>
-	  <login>%s</login>
-	  <key name="%s" unique="%d" id="%s" />
+		<id>%d</id>
+		<moveable>%d</moveable>
+		<editable>%d</editable>
+		<name>%s</name>
+		<fname>%s</fname>
+		<title>%s</title>
+		<role post="%s">%s</role>
+		<login>%s</login>
+		<key name="%s" unique="%d" id="%s" />
 	</member>');
 
-define('MEMBER_ROLE_LIST_BEGIN', '<role_list post="selectrole">');
+define('MEMBER_ROLE_LIST_BEGIN', '<role_list post="%s">');
 define('MEMBER_ROLE_LIST_END', '</role_list>');
 define('MEMBER_ROLE_ITEM', '<role id="%s" name="%s" />');
 define('MEMBER_POST_SELECT', '<checkbox name="%s" />');
@@ -50,10 +50,11 @@ define('BTN_DOWN', 'btn_down');
 define('BTN_SUBMIT', 'btn_submit');
 define('BTN_UPDATE','update');
 
-define('POST_SELECTMEMBER', 'selectmember');
+define('POST_SELECT', 'selectmember');
 define('POST_KEY_ID', 'key_member_proj_id');
 define('POST_LIST_KEY', 'key');
 define('POST_ROLE', 'modrole');
+define('POST_ROLE_LIST', 'selectrole');
 
 /*
 ** SQL
