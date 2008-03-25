@@ -21,6 +21,9 @@
 	<li class="go">
 	  <a href="?project=1&amp;member_dategraph=1">History</a>
 	</li>
+	<li class="go">
+	  <a href="?project=1&amp;delete_project=1">Remove</a>
+	</li>
       </ul>
     </xsl:if>
     <div class="menu blue2">

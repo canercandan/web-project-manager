@@ -21,30 +21,28 @@ else
 printf(SESSION_DESTROY, DESTROY);
 
 include('get_manager.php');
- 
-check_admin_create_project();
 
+check_admin_create_project();
 
 // if ....  projet selectionne
 // right window = project window (project menu, activity list ... )
 
 if (isset($_SESSION['ROOT_MENU']))
-{
-	if ($_SESSION['ROOT_MENU'] == ADD_PROJECT) 
-		include('add_project.php');
-}
-else if (isset($_SESSION['PROJECT_ID']))
-	{
-		printf(MENU_PROJECT);
-		include('project.php');
-	}
-else 
-{
-	printf(MENU_PROJECT);
-}
+  {
+    if ($_SESSION['ROOT_MENU'] == ADD_PROJECT) 
+      include('add_project.php');
+  }
+ else if (isset($_SESSION['PROJECT_ID']))
+   {
+     printf(MENU_PROJECT);
+     include('project.php');
+   }
+ else
+   {
+     printf(MENU_PROJECT);
+   }
 
-
-print_projects_list(0);
+print_projects_list($_SESSION[SESSION_ID]);
 printf(XML_FOOTER);
 
 ?>

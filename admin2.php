@@ -14,7 +14,9 @@ session_start();
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 
-if (!$_SESSION[SESSION_ID] || $_SESSION[SESSION_LEVEL] != IS_A_ADMIN)
+if (!$_SESSION[SESSION_ID]
+    || ($_SESSION[SESSION_LEVEL] != IS_A_ROOT
+	&& $_SESSION[SESSION_LEVEL] != IS_AN_ADMIN))
   {
     session_destroy();
     header(LOCATION_EXIT);

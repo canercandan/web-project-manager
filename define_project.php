@@ -92,18 +92,18 @@ define('MEMBER_KEEP_HISTO', '<btn_histo post="keep_histo"/>');
 ** SQL
 */
 
-define('SQL_CHECK_IN_PROJ', 'SELECT member_usr_id FROM tw_member 
-WHERE member_usr_id = \'%d\'
-AND member_project_id = \'%d\';');
+define('SQL_CHECK_IN_PROJ',
+       'SELECT	member_usr_id
+	FROM	tw_member
+	WHERE	member_usr_id = \'%d\'
+		AND member_project_id = \'%d\';');
 
-define('SQL_UPDATE_PROJECT','
-UPDATE tw_project 
-SET
-project_name = \'%s\',
-project_describ = \'%s\',
-project_date = DATE(\'%04d-%02d-%02d\')
-WHERE
-project_id = \'%d\';');
+define('SQL_UPDATE_PROJECT',
+       'UPDATE	tw_project
+	SET	project_name = \'%s\',
+		project_describ = \'%s\',
+		project_date = DATE(\'%04d-%02d-%02d\')
+	WHERE	project_id = \'%d\';');
 
 define('SQL_INSERT_MEMBER'
 ,'INSERT INTO `techweb`.`tw_member` (
@@ -187,13 +187,22 @@ FROM tw_project f LEFT JOIN tw_profil p ON f.project_autor_usr_id = p.profil_usr
 WHERE
 f.project_id = \'%d\';');
 
-define('SQL_CHECK_PROJECT', 'select project_name from tw_project where project_id = \'%d\';');
+define('SQL_CHECK_PROJECT',
+       'SELECT	project_name
+	FROM	tw_project
+	WHERE	project_id = \'%d\'
+		AND (project_autor_usr_id = \'%d\'
+		     OR project_id IN (SELECT	member_project_id
+				       FROM	tw_member
+				       WHERE	member_usr_id = \'%d\'));');
 
-define('SQL_SELECT_PROJECT', 'select project_name, project_id from tw_project');
-	/*	tw_membre
-		WHERE
-		membre_usr_id = \'%d\' AND member_project_id = project_id');
-	*/
+define('SQL_SELECT_PROJECT',
+       'SELECT	project_name, project_id
+	FROM	tw_project
+	WHERE	(project_autor_usr_id = \'%d\'
+		OR project_id IN (SELECT member_project_id
+				  FROM tw_member
+				  WHERE member_usr_id = \'%d\'));');
 
 define('SQL_ADD_PROJECT', 'INSERT INTO `tw_project` (
 `project_id` ,
@@ -205,5 +214,23 @@ define('SQL_ADD_PROJECT', 'INSERT INTO `tw_project` (
 VALUES (
 NULL , \'%d\', \'%s\', \'%s\', CURDATE()
 );');
+
+define('SQL_CHECK_AUTOR_PROJECT',
+       'SELECT	project_id
+	FROM	tw_project
+	WHERE	project_id = \'%d\'
+		AND project_autor_usr_id = \'%d\';');
+
+define('SQL_DELETE_PROJECT',
+       'DELETE FROM	tw_project
+	WHERE	project_id = \'%d\';');
+
+define('SQL_DELETE_PROJECT_MEMBER',
+       'DELETE FROM	tw_member
+	WHERE	member_project_id = \'%d\';');
+
+define('SQL_DELETE_PROJECT_ACTIVITY',
+       'DELETE FROM	tw_activity
+	WHERE	activity_project_id = \'%d\';');
 
 ?>

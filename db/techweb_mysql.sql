@@ -39,6 +39,8 @@ CREATE TABLE IF NOT EXISTS tw_member (
 CREATE TABLE IF NOT EXISTS tw_member_role (
   role_id INT NOT NULL auto_increment,
   role_name varchar(30) default NULL,
+  role_read INT default 0,
+  role_write INT default 0,
   PRIMARY KEY  (role_id)
 ) ENGINE=MyISAM;
 
