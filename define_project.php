@@ -57,8 +57,7 @@ define('MEMBER_LIST_BEGIN', '<member_list>');
 define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
 define('MEMBER_LIST_END', '</member_list>');
 define('PROJECT_OK', 'Congratulation, project added');
-define('FIELD_PROJECT_NAME', '<field_name>%s</field_name>');
-define('FIELD_PROJECT_DESCRIB', '<field_descr>%s</field_descr>');
+
 define('POST_PROJECT_NAME', 'projname');
 define('POST_PROJECT_DESCRIB', 'projdescr');
 define('POST_PROJECT_DAY', 'projday');
