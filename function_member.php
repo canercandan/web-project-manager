@@ -11,9 +11,9 @@ function member_project_list()
   $answer = sprintf(MEMBER_PROJECT_BEGIN); 
   while ($tab = sql_fetch_array($test))
     {
-	  $answer = $answer . sprintf(MEMBER_LIST, $tab[0], $tab[1], 0);
+	  $answer = $answer . sprintf(MEMBER_LIST_PROJECT, $tab[0]);
 	}
-  $answer = sprintf(MEMBER_PROJECT_END);
+  $answer = $answer . sprintf(MEMBER_PROJECT_END);
   printf($answer);
 }
 

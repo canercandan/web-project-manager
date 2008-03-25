@@ -32,7 +32,7 @@ if ($_GET[DEBUG])
 printf(SESSION_DESTROY, DESTROY);
 printf(MEMBER_BEGIN);
 printf(MEMBER_WELCOME);
-//member_project_list();
+member_project_list();
 printf(MEMBER_END);
 printf(XML_FOOTER);
 sql_close($link);
