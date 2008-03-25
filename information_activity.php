@@ -20,7 +20,7 @@ if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE, 0);
 else
   printf(XML_HEADER, XML_TEMPLATE, 0);
-
+printf(INFO_ACTIVITY_BEGIN);
 if ($_SESSION[SESSION_LEVEL] == IS_A_CHIEF)
   {
     info_list_add();
@@ -34,7 +34,7 @@ else
     info_list_update();
     info_list_answer();
   }
-
+printf(INFO_ACTIVITY_END);
 printf(XML_FOOTER);
 sql_close($link);
 ?>
