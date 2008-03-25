@@ -21,6 +21,7 @@ define('ADD_ACTIVITY_ACTIVITY', 2);
 define('MEMBER_DATEGRAPH_ACTIVITY', 3);
 define('MEMBER_HISTO_LIST_ACTIVITY_BEGIN', '<member_histo_list_activity>');
 define('MEMBER_HISTO_LIST_ACTIVITY_END', '</member_histo_list_activity>');
+/*
 define('MEMBER_LIST_PROJECT_BEGIN', '<member_list_project>');
 define('MEMBER_LIST_ACTIVITY_BEGIN', '<member_list_activity>');
 define('MEMBER_LIST_PROJECT_END', '</member_list_project>');
@@ -34,6 +35,7 @@ define('MEMBER_ELEM_ACTIVITY', '<member><id>%d</id><moveable>%d</moveable><edita
 <date_end postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
 <key name="key" unique="%d" id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
 </member>');
+*/
 define('POST_KEY_ACT_DAY_START', 'key_member_act_day_start');
 define('POST_KEY_ACT_MONTH_START', 'key_member_act_month_start');
 define('POST_KEY_ACT_YEAR_START', 'key_member_act_year_start');
@@ -86,6 +88,7 @@ define('ERR_DATE_MEMBER_PROJACT', 'There are some mistakes with the dates : the 
 ** Define activity sql request
 */
 
+/*
 define('SQL_DELETE_MEMBER_ACTIVITY','
 											DELETE FROM tw_activity_member 
 																WHERE activity_member_usr_id = \'%d\'
@@ -98,9 +101,12 @@ define('SQL_CHECK_HISTO','DELETE FROM tw_activity_member
 									AND activity_member_activity_id = \'%d\'
 									AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
 									AND activity_member_date_end = CURDATE()');
+*/
+
 define('SQL_CHECK_ACTIVITY_DATE', 'SELECT ((activity_date_begin - DATE(\'%04d-%02d-%02d\')) <= 0), DATE_FORMAT(activity_date_begin, \'%%d/%%m/%%Y\') FROM tw_activity WHERE activity_id=\'%d\';');
 
-									
+
+/*
 define('SQL_UPDATE_MEMBER_ACTIVITY','
 											UPDATE tw_activity_member SET 	activity_level = \'%d\',
 																	activity_work = \'%d\',
@@ -111,6 +117,9 @@ define('SQL_UPDATE_MEMBER_ACTIVITY','
 																	AND activity_member_date_start = DATE(\'%04d-%02d-%02d\')
 																	AND activity_member_date_end = DATE(\'%04d-%02d-%02d\');
 																	');
+
+*/
+
 define('SQL_MOVE_TO_OLD_MEMBER_ACTIVITY','
 											UPDATE tw_activity_member SET
 																	activity_member_date_end = CURDATE()
@@ -149,6 +158,7 @@ GROUP BY f.activity_id;'
 
 define('SQL_CHECK_ACTIVITY', 'SELECT activity_name FROM tw_activity WHERE activity_id = \'%d\';');
 
+/*
 define('SQL_ADD_MEMBER_ACT', 'INSERT INTO `tw_activity_member` (
 `activity_member_activity_id` ,
 `activity_member_usr_id` ,
@@ -159,6 +169,7 @@ define('SQL_ADD_MEMBER_ACT', 'INSERT INTO `tw_activity_member` (
 )
 VALUES (
 \'%s\', \'%s\', 0, CURDATE(), \'0000-00-00\', 0);');
+*/
 
 define('SQL_SELECT_ACTIVITIES', 'SELECT activity_id, activity_name FROM tw_activity 
 WHERE activity_project_id = \'%d\' 
@@ -177,6 +188,7 @@ WHERE activity_id = \'%d\';');
 
 define('SQL_GET_PARENT_ID', 'SELECT activity_parent_id FROM tw_activity WHERE activity_id = \'%d\';');
 
+/*
 define('SQL_GET_MEMBER_ACTIVITY', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, activity_level, activity_work, usr_login, 
 day(activity_member_date_start), month(activity_member_date_start), year(activity_member_date_start),
 day(activity_member_date_end), month(activity_member_date_end), year(activity_member_date_end)
@@ -267,7 +279,7 @@ AND
 member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHERE activity_member_activity_id = \'%d\'
 AND (activity_member_date_end = DATE(\'0000-00-00\') OR DATEDIFF(CURDATE(), activity_member_date_end) <= 0))
 ');
-
+*/
 
 
 define('SQL_GET_UNDERACT_WORK', 
