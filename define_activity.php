@@ -150,20 +150,6 @@ GROUP BY f.activity_id;'
 
 define('SQL_CHECK_ACTIVITY', 'SELECT activity_name FROM tw_activity WHERE activity_id = \'%d\';');
 
-define('SQL_ADD_ACTIVITY','INSERT INTO `tw_activity` (
-`activity_id` ,
-`activity_project_id` ,
-`activity_parent_id` ,
-`activity_name` ,
-`activity_charge_total` ,
-`activity_date_begin` ,
-`activity_date_end` ,
-`activity_describtion`
-)
-VALUES (
-NULL , \'%d\', \'%d\', \'%s\', \'%d\', CURDATE(), \'0000-00-00\', \'%s\'
-);');
-
 define('SQL_ADD_MEMBER_ACT', 'INSERT INTO `tw_activity_member` (
 `activity_member_activity_id` ,
 `activity_member_usr_id` ,

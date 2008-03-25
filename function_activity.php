@@ -94,43 +94,7 @@ function get_activity_work($id_activity)
     }
 }
 
-function update_activity($id_project, $id_activity, $name, $describ, $day, $month, $year, $charge)
-{
 
-	if (check_date_subact($day, $month, $year, $id_project, $id_activity) > 0)
-	{
-		return (1);
-	}
-	$res = sql_query(sprintf(SQL_CHECK_PROJECT_DATE, sql_real_escape_string($year),sql_real_escape_string($month),sql_real_escape_string($day),
-																	$id_project));
-	$tab = sql_fetch_array($res);
-	if ($tab[0] == 0)
-		{
-			printf(XML_ERROR, sprintf(ERR_DATE_PROJECT, $tab[1], $day, $month, $year));
-			return (1);
-		}
-			
-	$res = sql_query(sprintf(SQL_CHECK_CHARGE_EDITABLE, sql_real_escape_string($id_activity)));
-	if (sql_result($res, 0, 0))
-	{
-		printf(SQL_UPDATE_ACTIVITY_CHARGE, sql_real_escape_string($name), sql_real_escape_string($describ), 
-			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($charge), sql_real_escape_string($id_activity));
-		sql_query(sprintf(SQL_UPDATE_ACTIVITY_CHARGE, sql_real_escape_string($name), sql_real_escape_string($describ), 
-			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($charge), sql_real_escape_string($id_activity)));
-		update_charge(sql_result(sql_query(sprintf(SQL_GET_PARENT_ID, sql_real_escape_string($id_activity))), 0, 0));
-	}
-	else
-	{
-		sql_query(sprintf(SQL_UPDATE_ACTIVITY, sql_real_escape_string($name), sql_real_escape_string($describ), 
-			sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($id_activity)));
-	}
-	sql_query(sprintf(SQL_DELETE_MEMBER_DIFFDATE_END_ACT, sql_real_escape_string($id_activity), sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)));
-	sql_query(sprintf(SQL_UPDATE_MEMBER_DIFFDATE_START_ACT, sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day), sql_real_escape_string($id_activity),
-														sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day),
-														sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day)
-														));
-	return (0);
-}
 
 function get_activity_informations($id_activity)
 {
@@ -351,26 +315,7 @@ function update_member_activity($id_project, $id_activity, $id_user, $day_start,
 
 }
 
-function add_activities($id_project, $id_activity, $name, $describ, $charge)
-{
-  sql_query(sprintf(SQL_ADD_ACTIVITY, sql_real_escape_string($id_project),
-		    sql_real_escape_string($id_activity),
-		    sql_real_escape_string($name),
-		    sql_real_escape_string($charge),
-		    sql_real_escape_string($describ)));
-  update_charge($id_activity);
-}
 
-function update_charge($id_activity)
-{
-  if ($id_activity != 0)
-    {
-      $res = sql_query(sprintf(SQL_GET_CHARGE, sql_real_escape_string($id_activity)));
-      sql_query(sprintf(SQL_UPDATE_CHARGE, sql_result($res, 0, 0), sql_real_escape_string($id_activity)));
-      $res = sql_query(sprintf(SQL_GET_PARENT_ID, sql_real_escape_string($id_activity)));
-      update_charge(sql_result($res, 0, 0));
-    }
-}
 
 function print_activities_list($id_project, $id_activity)
 {

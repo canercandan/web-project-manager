@@ -44,4 +44,19 @@ WHERE activity_project_id = \'%d\'
 and activity_parent_id = \'%d\'
 order by activity_name;');
 
+define('SQL_NEW_ADD_ACTIVITY','INSERT INTO `tw_activity` (
+`activity_id` ,
+`activity_project_id` ,
+`activity_parent_id` ,
+`activity_name` ,
+`activity_charge_total` ,
+`activity_date_begin` ,
+`activity_date_end` ,
+`activity_describtion`
+)
+VALUES (
+NULL , \'%d\', \'%d\', \'%s\', \'%d\', \'%04d-%02d-%02d\', \'%04d-%02d-%02d\', \'%s\'
+);');
+
+
 ?>

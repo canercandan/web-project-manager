@@ -38,7 +38,7 @@ function get_new_information_project($id_project)
 	}
 }
 
-function new_update_project($id_project, $name, $describ, $day, $month, $year
+function new_update_project($id_project, $name, $describ, $day, $month, $year,
 							$day_end, $month_end, $year_end)
 {
   if (check_date_subact($day, $month, $year, $id_project, 0) > 0)
