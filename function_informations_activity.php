@@ -42,7 +42,7 @@ function print_activities_list_dependance($id_project, $id_activity, $id_root_ac
       }
 }
 
-function add_activities($id_project, $id_activity, $name, $describ, $charge, $day, $month, $year
+function add_activities($id_project, $id_activity, $name, $describ, $charge, $day, $month, $year,
 							$day_end, $month_end, $year_end)
 
 {
