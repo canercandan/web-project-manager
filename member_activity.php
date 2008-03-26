@@ -14,7 +14,8 @@ if (isset($_POST[BTN_DOWN]) && isset($_POST[POST_SELECT]))
        update_member_activity($_SESSION['ACTIVITY_ID'],
 			      $_POST[MEMBER_POST_LIST_KEY][$value][POST_KEY_ACT_ID],
 			      (isset($_POST[MEMBER_POST_WORK][$value]) ? 1 : 0),
-			      (isset($_POST[MEMBER_POST_LEVEL][$value]) ? 1 : 0));
+			      (isset($_POST[MEMBER_POST_LEVEL][$value]) ? 1 : 0),
+			      $_POST[MEMBER_POST_HOUR][$value]);
    }
  else if (isset($_POST[BTN_UP]) && isset($_POST[POST_SELECT]))
    {

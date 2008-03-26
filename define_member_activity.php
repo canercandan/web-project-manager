@@ -46,12 +46,14 @@ define('MEMBER_ELEM_ACTIVITY',
 		<role>%s</role>
 		<level post="%s">%d</level>
 		<work post="%s">%d</work>
+		<hour post="%s">%d</hour>
 		<login>%s</login>
 		<key name="%s" unique="%d" id="%s" />
 	</member>');
 
 define('MEMBER_POST_LEVEL', 'modlevel');
 define('MEMBER_POST_WORK', 'modnwork');
+define('MEMBER_POST_HOUR', 'hour');
 define('MEMBER_POST_LIST_KEY', 'key');
 
 /*
@@ -61,13 +63,14 @@ define('MEMBER_POST_LIST_KEY', 'key');
 define('SQL_ADD_MEMBER_ACTIVITY',
        'INSERT INTO	tw_activity_member
 	(activity_member_activity_id, activity_member_usr_id,
-	 activity_level, activity_work)
-	VALUES (\'%s\', \'%s\', 0, 0);');
+	 activity_level, activity_work, activity_hour_work)
+	VALUES (\'%s\', \'%s\', 0, 0, 0);');
 
 define('SQL_UPDATE_MEMBER_ACTIVITY',
        'UPDATE	tw_activity_member
 	SET	activity_level = \'%d\',
-		activity_work = \'%d\'
+		activity_work = \'%d\',
+		activity_hour_work = \'%d\'
 	WHERE	activity_member_usr_id = \'%d\'
 		AND activity_member_activity_id = \'%d\';');
 
@@ -121,7 +124,7 @@ member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHER
 
 define('SQL_GET_MEMBER_ACTIVITY',
        'SELECT	usr_id, profil_name, profil_fname, title_name, role_name,
-		activity_level, activity_work, usr_login
+		activity_level, activity_work, activity_hour_work, usr_login
 	FROM	tw_profil, tw_usr, tw_title, tw_member_role,
 		tw_member, tw_activity_member
 	WHERE	member_usr_id = usr_id

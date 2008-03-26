@@ -12,16 +12,19 @@ function	put_to_member_activity($id_act, $id_user)
 		    sql_real_escape_string($id_user)));
 }
 
-function	update_member_activity($id_act, $id_user, $work, $admin)
+function	update_member_activity($id_act, $id_user, $work,
+				       $admin, $hour)
 {
   printf(SQL_UPDATE_MEMBER_ACTIVITY,
 	 sql_real_escape_string($admin),
 	 sql_real_escape_string($work),
+	 sql_real_escape_string($hour),
 	 sql_real_escape_string($id_user),
 	 sql_real_escape_string($id_act));
   sql_query(sprintf(SQL_UPDATE_MEMBER_ACTIVITY,
 		    sql_real_escape_string($admin),
 		    sql_real_escape_string($work),
+		    sql_real_escape_string($hour),
 		    sql_real_escape_string($id_user),
 		    sql_real_escape_string($id_act)));
 }
@@ -81,7 +84,9 @@ function	get_member_activity($id_act, $id_proj, $last)
 	     htmlentities($tab[5]),
 	     MEMBER_POST_WORK,
 	     htmlentities($tab[6]),
+	     MEMBER_POST_HOUR,
 	     htmlentities($tab[7]),
+	     htmlentities($tab[8]),
 	     MEMBER_POST_LIST_KEY,
 	     $last,
 	     POST_KEY_ACT_ID);
