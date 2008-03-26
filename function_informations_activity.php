@@ -45,7 +45,7 @@ function print_activities_list_dependance($id_project, $id_activity, $id_root_ac
 		printf(ACTIVITY_START);
 		printf('<depend post="%s" value="%s"/>', POST_ACTIVITY_DEPEND, $tab[2]);
 		printf(ACTIVITY_TITLE, htmlentities($tab[1] == "" ? UNNAMED_ACTIVITY : $tab[1]));
-		printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_DEPEND_ACTIVITY'][$tab[0]]) ? $_SESSION['DEVELOPPED_DEPEND_ACTIVITY'][$tab[0]] : 0);
+		printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]] : 0);
 		printf(ACTIVITY_ID, $tab[0]);
 		print_activities_list_dependance($id_project, $tab[0], $id_root_activity);
 		printf(ACTIVITY_END);

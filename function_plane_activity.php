@@ -19,6 +19,8 @@ WHERE activity_id = \'%d\' and activity_project_id = \'%d\'
 AND activity_member_activity_id = activity_id
 GROUP BY activity_id;');
 
+//define('SQL_GET_CHILD', 'SELECT activity_id WHERE ')
+
 function	get_activity_start($id_activity, $id_project)
 {
 	$res = sql_query(sprintf(SQL_GET_DATE_START, sql_real_escape_string($id_activity), sql_real_escape_string($id_project)));
