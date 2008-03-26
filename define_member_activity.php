@@ -76,21 +76,48 @@ define('SQL_REMOVE_MEMBER_ACTIVITY',
 	WHERE	activity_member_usr_id = \'%d\'
 		AND activity_member_activity_id = \'%d\';');
 
-define('SQL_GET_MEMBER_PROJECT_ACT',
-       'SELECT	usr_id, profil_name, profil_fname, title_name,
-		role_name, usr_login
-	FROM	tw_profil, tw_usr, tw_title, tw_member_role,
-		tw_member, tw_activity
-	WHERE	member_usr_id = usr_id
-		AND usr_id = profil_usr_id
-		AND profil_title_id = title_id
-		AND member_role_id = role_id
-		AND activity_id = \'%d\'
-		AND activity_parent_id = \'0\'
-		AND member_project_id = \'%d\'
-		AND usr_id NOT IN (	SELECT	activity_member_usr_id
-					FROM	tw_activity_member
-					WHERE	activity_member_activity_id = \'%d\');');
+define('SQL_GET_MEMBER_PROJECT_ACT', 'SELECT usr_id, profil_name, profil_fname, title_name, role_name, usr_login
+FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member, tw_activity
+WHERE 
+activity_id = \'%d\'
+AND
+activity_parent_id = 0
+AND
+member_usr_id = usr_id
+AND
+usr_id = profil_usr_id
+AND
+profil_title_id = title_id
+AND
+member_role_id = role_id
+AND
+member_project_id = \'%d\'
+AND
+member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHERE activity_member_activity_id = \'%d\')
+UNION
+SELECT usr_id, profil_name, profil_fname, title_name, role_name, usr_login
+FROM tw_profil, tw_usr, tw_title, tw_member_role, tw_member, tw_activity, tw_activity_member
+WHERE 
+activity_id = \'%d\'
+AND
+activity_parent_id != 0
+AND
+activity_member_activity_id = activity_parent_id
+AND
+activity_member_usr_id = usr_id
+AND
+member_usr_id = usr_id
+AND
+usr_id = profil_usr_id
+AND
+profil_title_id = title_id
+AND
+member_role_id = role_id
+AND
+member_project_id = \'%d\'
+AND
+member_usr_id not in (SELECT activity_member_usr_id FROM tw_activity_member WHERE activity_member_activity_id = \'%d\')
+');
 
 define('SQL_GET_MEMBER_ACTIVITY',
        'SELECT	usr_id, profil_name, profil_fname, title_name, role_name,

@@ -36,8 +36,9 @@ function	remove_member_activity($id_act, $id_user)
 function	get_member_project_activity($id_act, $id_proj, $last)
 {
   $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT_ACT,
+			   sql_real_escape_string($id_act), sql_real_escape_string($id_proj),
 			   sql_real_escape_string($id_act),
-			   sql_real_escape_string($id_proj),
+			   sql_real_escape_string($id_act), sql_real_escape_string($id_proj),
 			   sql_real_escape_string($id_act)));
   printf(MEMBER_POST_SELECT, POST_SELECT);
   if (!sql_num_rows($res))
