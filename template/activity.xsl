@@ -5,11 +5,11 @@
   <xsl:template match="activity/depend">
     <xsl:choose>
       <xsl:when test="@value=1">
-	<input type="checkbox" name="{@post}" value="1"
+	<input type="checkbox" name="{@post}[{../id}]" value="1"
 	       checked="checked" />
       </xsl:when>
       <xsl:otherwise>
-	<input type="checkbox" name="{@post}" value="1" />
+	<input type="checkbox" name="{@post}[{../id}]" value="1" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
