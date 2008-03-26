@@ -140,9 +140,10 @@ function	get_activity_start($id_activity, $id_project)
 		else
 			{
 				$tab = get_parent_date_start($id_activity);
+				
 				if ($tab == null)
 				{
-					$res = sql_query(sprintf(SQL_GET_DATE_PROJECT_START, sql_real_escape_string($id_activity), sql_real_escape_string($id_project)));
+					$res = sql_query(sprintf(SQL_GET_DATE_PROJECT_START, sql_real_escape_string($id_project)));
 					$tab = sql_fetch_array($res);
 				}
 				$day_start = $tab[0];
