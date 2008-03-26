@@ -50,14 +50,20 @@
 	  </label>
 	  <hr />
 	  <div class="little">
-	    Date start<br />
+	    Start date<br />
 	    <xsl:apply-templates select="date" />
 	  </div>
 	  <hr />
 	  <div class="little">
-	    Date end<br />
+	    End date<br />
 	    <xsl:apply-templates select="dateend" />
 	  </div>
+	  <hr />
+	  <label class="little">
+	    Hour per day<br />
+	    <input type="text" name="{field_hour_day}"
+		   value="{field_hour_day/@value}" />
+	  </label>
 	  <hr />
 	  <xsl:if test="editable=1">
 	    <label>

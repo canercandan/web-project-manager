@@ -17,12 +17,15 @@
 	    <div class="form">
 	      <label>
 		Name<br />
-		<input type="text" name="{field_name}" />
+		<input type="text" name="{field_name}"
+		       value="{field_name/@value}" />
 	      </label>
 	      <hr />
 	      <label>
 		Describe<br />
-		<textarea name="{field_descr}"></textarea>
+		<textarea name="{field_descr}">
+		  <xsl:value-of select="field_descr/@value" />
+		</textarea>
 	      </label>
 	      <hr />
 	      <div class="little">
@@ -34,6 +37,12 @@
 		Date end<br />
 		<xsl:apply-templates select="field_date_end" />
 	      </div>
+	      <hr />
+	      <label class="little">
+		Hour per day<br />
+		<input type="text" name="{field_hour_day}"
+		       value="{field_hour_day/@value}" />
+	      </label>
 	      <hr />
 	      <label>
 		<input type="submit" value="Ok" />

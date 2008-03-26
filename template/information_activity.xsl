@@ -2,7 +2,7 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template match="field_estimate_date_start|field_estimate_date_end">
+  <xsl:template match="information_activity/field_estimate_date_start|information_activity/field_estimate_date_end">
     <xsl:choose>
       <xsl:when test="@ok=0">
 	<input type="text" value="{@value}" disabled="disabled"

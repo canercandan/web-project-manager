@@ -13,7 +13,7 @@
 	  <a href="?project=1&amp;information=1">Information</a>
 	</li>
 	<li class="go">
-	  <a href="?project=1&amp;member=1">Membres</a>
+	  <a href="?project=1&amp;member=1">Members</a>
 	</li>
 	<li class="go">
 	  <a href="?project=1&amp;add_activity=1">Add an activity</a>
@@ -57,14 +57,16 @@
 		<a href="?activity=1&amp;information=1">Information</a>
 	      </li>
 	      <li class="go">
-		<a href="?activity=1&amp;member=1">Membres</a>
+		<a href="?activity=1&amp;member=1">Members</a>
 	      </li>
 	      <li class="go">
 		<a href="?activity=1&amp;add_activity=1">Add an sub-activity</a>
 	      </li>
+	      <!--
 	      <li class="go">
 		<a href="?activity=1&amp;member_dategraph=1">History</a>
 	      </li>
+	      -->
 	    </ul>
 	  </xsl:if>
 	  <xsl:apply-templates select="activity_window" />
