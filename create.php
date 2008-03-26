@@ -5,7 +5,6 @@ require_once('./define_config.php');
 require_once('./function_sql.php');
 require_once('./function_usr.php');
 require_once('./function_passwd.php');
-require_once('./define_passwd.php');
 
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
@@ -20,17 +19,16 @@ if ($_POST)
       $error = sprintf(XML_ERROR, USR_ERROR_LOGIN_EXIST);
     else if (!$login && !($email = usr_email_check()))
       $error = sprintf(XML_ERROR, USR_ERROR_EMAIL);
-	//else if ($exist = usr_email_exist())
-	  //$error = sprintf(XML_ERROR, USR_ERROR_EMAIL_EXIST);
+    //else if ($exist = usr_email_exist())
+    //$error = sprintf(XML_ERROR, USR_ERROR_EMAIL_EXIST);
     else if (!($send = usr_add()))
-	  $error = sprintf(XML_ERROR, USR_ERROR_EMAIL_NOTSEND);
-	else 
-	  {
-		header(sprintf(HEADER_LOCATION_CREATE, $_POST[USR_POST_LOGIN]));
-		exit(0);
+      $error = sprintf(XML_ERROR, USR_ERROR_EMAIL_NOTSEND);
+    else
+      {
+	header(sprintf(HEADER_LOCATION_CREATE, $_POST[USR_POST_LOGIN]));
+	exit(0);
       }
   }
-
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE, 0);

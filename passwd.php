@@ -4,7 +4,6 @@ define('MAIN', 1);
 
 require_once('./define_config.php');
 require_once('./function_sql.php');
-require_once('./define_passwd.php');
 require_once('./function_passwd.php');
 require_once('./define_session.php');
 require_once('./define_usr.php');
@@ -14,11 +13,10 @@ sql_select_db(SQL_DB, $link);
 
 if ($_POST)
   {
-	$error = passwd_check();
-	if ($error != 1)
-	  passwd_send();
+    $error = passwd_check();
+    if ($error != 1)
+      passwd_send();
   }
-
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE, 0);

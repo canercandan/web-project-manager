@@ -85,23 +85,28 @@ function usr_select_title()
 function usr_add()
 {
   $passwd = passwd_generate();
-  $header = sprintf(SEND_HEADER_TO, $_POST[USR_POST_LOGIN], $_POST[USR_POST_EMAIL]) . "\r\n" . sprintf(SEND_HEADER_FROM);
-  $mail = @mail(sql_real_escape_string($_POST[USR_POST_EMAIL]), 
-       SEND_SUBJECT, 
-       sprintf(SEND_MESSAGE, 
-	           sql_real_escape_string($_POST[USR_POST_LOGIN]), 
-			   $passwd), 
-	   $header);
+  $header = sprintf(SEND_HEADER,
+		    sprintf(SEND_HEADER_TO,
+			    $_POST[USR_POST_LOGIN],
+			    $_POST[USR_POST_EMAIL]),
+		    sprintf(SEND_HEADER_FROM));
+  $mail = @mail(sql_real_escape_string($_POST[USR_POST_EMAIL]),
+		SEND_SUBJECT,
+		sprintf(SEND_MESSAGE,
+			sql_real_escape_string($_POST[USR_POST_LOGIN]),
+			$passwd),
+		$header);
   if ($mail == FALSE || !$mail)
     return (0);
   else
     {
-	   sql_query(sprintf(USR_SQL_ADD_USR, sql_real_escape_string($_POST[USR_POST_LOGIN]), 
-		    sha1($passwd), sql_real_escape_string($_POST[USR_POST_EMAIL])));
-	   $user = mysql_insert_id();
-       sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
-	   return (1);
-	}
+      sql_query(sprintf(USR_SQL_ADD_USR, sql_real_escape_string($_POST[USR_POST_LOGIN]), 
+			sha1($passwd), sql_real_escape_string($_POST[USR_POST_EMAIL])));
+      $user = mysql_insert_id();
+      sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
+      //var_dump($passwd);
+      return (1);
+    }
 }
 
 function usr_session_id()
@@ -127,6 +132,11 @@ function session_create()
   $_SESSION[SESSION_MPHONE] = $row[5];
   $_SESSION[SESSION_ADDRESS] = $row[6];
   $_SESSION[SESSION_LEVEL] = $row[7];
+}
+
+function	regenerate_passwd()
+{
+  
 }
 
 ?>

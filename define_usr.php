@@ -90,6 +90,11 @@ define('USR_SQL_ADD_PROFIL',
 	(profil_usr_id)
 	VALUES(\'%s\');');
 
+define('USR_SQL_UPDATE_USR',
+       'UPDATE	tw_usr
+	SET	usr_passwd = \'%s\'
+	WHERE	usr_id = \'%d\';');
+
 /*
 ** Define user : sql session request
 */

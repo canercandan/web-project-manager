@@ -10,6 +10,10 @@
 	  <a href="./profil.php">Edit your profil</a>
 	</h3>
 	<br />
+	<h3 class="blue2">
+	  <a href="./passwd.php">Regenerate password</a>
+	</h3>
+	<br />
 	<xsl:value-of select="memberwelcome/@value" />
       </div>
     </fieldset>

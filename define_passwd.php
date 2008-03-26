@@ -26,6 +26,7 @@ define('PASSWD_CONGRATULATION_MESS', '<congratulation value="A email will be sen
 define('SEND_SUBJECT', 'Techweb : new password');
 define('SEND_HEADER_TO', 'To: %s <%s>');
 define('SEND_HEADER_FROM', 'From: Techweb <Techweb_Strasbourg@epitech.net>');
+define('SEND_HEADER', '%s\r\n%s');
 define('SEND_MESSAGE', 
 'Welcome on Techweb.
  

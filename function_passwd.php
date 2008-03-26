@@ -3,6 +3,8 @@
 if (!MAIN)
   exit(0);
 
+require_once('./define_passwd.php');
+
 function passwd_check()
 {
   if (!$_POST[PASSWD_POST_LOGIN])
@@ -22,14 +24,14 @@ function passwd_check()
 function passwd_generate()
 {
   $config['sec']['generator'] = array("C" => array('char' => PASSWD_CHAR,
-								 'min' => 4,
-								 'max' => 6),
-						    "S" => array('char' => PASSWD_SPECIAL,
-								 'min' => 1,
-								 'max' => 2),
-						    "N" => array('char' => PASSWD_NUMBER,
-								 'min' => 2,
-								 'max' => 2));
+						   'min' => 4,
+						   'max' => 6),
+				      "S" => array('char' => PASSWD_SPECIAL,
+						   'min' => 1,
+						   'max' => 2),
+				      "N" => array('char' => PASSWD_NUMBER,
+						   'min' => 2,
+						   'max' => 2));
   $Password = "";
   $Generator = $config['sec']['generator'];
   foreach ($Generator as $Token => $Seed)
@@ -44,13 +46,18 @@ function passwd_generate()
 function passwd_send()
 {
   $passwd = passwd_generate();
-  $header = sprintf(SEND_HEADER_TO, $_POST[PASSWD_POST_LOGIN], $_POST[PASSWD_POST_EMAIL]) . "\r\n" . sprintf(SEND_HEADER_FROM);
-  mail(sql_real_escape_string($_POST[PASSWD_POST_EMAIL]), 
-       SEND_SUBJECT, 
-       sprintf(SEND_MESSAGE, 
-	           sql_real_escape_string($_POST[PASSWD_POST_LOGIN]), 
-			   $passwd), 
-	   $header);
+  $header = sprintf(SEND_HEADER,
+		    sprintf(SEND_HEADER_TO,
+			    $_POST[PASSWD_POST_LOGIN],
+			    $_POST[PASSWD_POST_EMAIL]),
+		    sprintf(SEND_HEADER_FROM));
+  var_dump($passwd);
+  mail(sql_real_escape_string($_POST[PASSWD_POST_EMAIL]),
+       SEND_SUBJECT,
+       sprintf(SEND_MESSAGE,
+	       sql_real_escape_string($_POST[PASSWD_POST_LOGIN]),
+	       $passwd),
+       $header);
 }
 
 ?>

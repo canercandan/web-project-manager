@@ -65,6 +65,11 @@
 		   value="{hour_day}" />
 	  </label>
 	  <hr />
+	  <label class="little">
+	    Charge<br />
+	    <input type="text" value="{charge/@value}" disabled="disabled" />
+	  </label>
+	  <hr />
 	  <xsl:if test="editable=1">
 	    <label>
 	      <input type="submit" name="{btn_update/@post}" value="Ok" />
