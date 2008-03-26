@@ -2,6 +2,18 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="activity/depend">
+    <xsl:choose>
+      <xsl:when test="@value=1">
+	<input type="checkbox" name="{@post}" value="1"
+	       checked="checked" />
+      </xsl:when>
+      <xsl:otherwise>
+	<input type="checkbox" name="{@post}" value="1" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template match="activity/title">
     <a href="./root.php?activity_id={../id}#activity_{../id}"
        id="activity_{../id}">
@@ -23,6 +35,7 @@
       <xsl:choose>
 	<xsl:when test="developped=1">
 	  <li>
+	    <xsl:apply-templates select="depend" />
 	    <a href="./root.php?less=1&amp;activity={id}#activity_{id}">
 	      <xsl:choose>
 		<xsl:when test="activity">
@@ -43,6 +56,7 @@
 	</xsl:when>
 	<xsl:otherwise>
 	  <li>
+	    <xsl:apply-templates select="depend" />
 	    <xsl:choose>
 	      <xsl:when test="activity">
 		<a href="./root.php?more=1&amp;activity={id}#activity_{id}">

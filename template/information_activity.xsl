@@ -2,6 +2,18 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="field_estimate_date_start|field_estimate_date_end">
+    <xsl:choose>
+      <xsl:when test="@ok=0">
+	<input type="text" value="{@value}" disabled="disabled"
+	       style="background-color: Red; color: White;" />
+      </xsl:when>
+      <xsl:otherwise>
+	<input type="text" value="{@value}" disabled="disabled" />
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template match="information_activity">
     <fieldset>
       <legend>General</legend>
@@ -56,13 +68,23 @@
 	  </label>
 	  <hr />
 	  <div class="little">
-	    Date start<br />
+	    Start date<br />
 	    <xsl:apply-templates select="date" />
 	  </div>
 	  <hr />
 	  <div class="little">
-	    Date end<br />
+	    End date<br />
 	    <xsl:apply-templates select="dateend" />
+	  </div>
+	  <hr />
+	  <div class="little">
+	    Start date estimation<br />
+	    <xsl:apply-templates select="field_estimate_date_start" />
+	  </div>
+	  <hr />
+	  <div class="little">
+	    End date estimation<br />
+	    <xsl:apply-templates select="field_estimate_date_end" />
 	  </div>
 	  <hr />
 	  <label>
