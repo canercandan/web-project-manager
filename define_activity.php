@@ -136,25 +136,10 @@ define('SQL_GET_DATES_MEMBER_ACTIVITY',
 		activity_member_usr_id = \'%d\'
 		AND activity_member_activity_id = \'%d\';
 ');
-define('SQL_UPDATE_ACTIVITY',
-'
-UPDATE tw_activity
-SET activity_name = \'%s\', activity_describtion = \'%s\',  activity_date_begin = DATE(\'%04d-%02d-%02d\')
-WHERE activity_id = \'%d\';');
 
-define('SQL_UPDATE_ACTIVITY_CHARGE',
-'
-UPDATE tw_activity
-SET activity_name = \'%s\', activity_describtion = \'%s\',  activity_date_begin = DATE(\'%04d-%02d-%02d\'), activity_charge_total = \'%d\'
-WHERE activity_id = \'%d\';');
 
-define('SQL_CHECK_CHARGE_EDITABLE',
-'SELECT (count(f.activity_id) = 0)
-FROM tw_activity p LEFT JOIN tw_activity f ON f.activity_parent_id = p.activity_id
-WHERE 
-p.activity_id = \'%d\'
-GROUP BY f.activity_id;'
-);
+
+
 
 define('SQL_CHECK_ACTIVITY', 'SELECT activity_name FROM tw_activity WHERE activity_id = \'%d\';');
 

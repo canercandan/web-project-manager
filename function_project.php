@@ -154,7 +154,7 @@ function put_to_member($id_user, $id_project)
     }
 }
 */
-
+/*
 function get_information_project($id_project)
 {
   $res = SQL_QUERY(sprintf(SQL_INFORMATION, sql_real_escape_string($id_project)));
@@ -203,7 +203,7 @@ function get_information_project($id_project)
       }
   printf('<charge>%d</charge><work>%d</work><percent>%d</percent></activity_work>', $tot_charge, $tot_work, ($tot_charge == 0 ? 100 : ($tot_work * 100) / $tot_charge));
 }
-
+*/
 function print_projects_list($id_user)
 {
   $res = SQL_QUERY(sprintf(SQL_SELECT_PROJECT,

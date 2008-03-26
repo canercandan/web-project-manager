@@ -1,5 +1,9 @@
 <?php
 
+require_once('./function_sql.php');
+require_once('./define_informations_project.php');
+require_once('function_misc.php');
+
 if (!MAIN)
   exit(0);
 
@@ -35,16 +39,24 @@ function get_new_information_project($id_project)
 		htmlentities($tab[8]),
 		htmlentities($tab[9]),
 		htmlentities($tab[10]));
+		$res = SQL_QUERY(sprintf(SQL_GET_PROJECT_CHARGE, sql_real_escape_string($id_project)));
+	    printf('<charge value="%s"/>', sql_result($res, 0, 0));
 	}
+	
+
 }
 
 function new_update_project($id_project, $name, $describ, $day, $month, $year,
 							$day_end, $month_end, $year_end)
 {
-  if (check_date_subact($day, $month, $year, $id_project, 0) > 0)
-    {
-      return (1);
-    }
+	if (date_order($month, $day, $year, $month_end, $day_end, $year_end))
+	{	
+		$_SESSION['date_start'] = sprintf('%02d/%02d/%04d', $day, $month, $year);
+		$_SESSION['date_end'] = sprintf('%02d/%02d/%04d', $day_end, $month_end, $year_end);
+		header(sprintf('Location:root.php?error=date_order'));
+		exit(0);
+	}
+	else
   sql_query(sprintf(SQL_NEW_UPDATE_PROJECT,
 		    sql_real_escape_string($name),
 		    sql_real_escape_string($describ),
@@ -61,6 +73,14 @@ function new_update_project($id_project, $name, $describ, $day, $month, $year,
 function new_add_project($id_user, $name, $describ, $day, $month, $year,
 							$day_end, $month_end, $year_end)
 {
+	if (date_order($month, $day, $year, $month_end, $day_end, $year_end))
+	{	
+		$_SESSION['date_start'] = sprintf('%02d/%02d/%04d', $day, $month, $year);
+		$_SESSION['date_end'] = sprintf('%02d/%02d/%04d', $day_end, $month_end, $year_end);
+		header(sprintf('Location:root.php?error=date_order'));
+		exit(0);
+	}
+	else
   sql_query(sprintf(SQL_NEW_ADD_PROJECT, sql_real_escape_string($id_user),
 		    sql_real_escape_string($name),
 		    sql_real_escape_string($describ),
@@ -70,6 +90,7 @@ function new_add_project($id_user, $name, $describ, $day, $month, $year,
 			sql_real_escape_string($year_end),
 		    sql_real_escape_string($month_end),
 		    sql_real_escape_string($day_end)));
+	return (0);
 }
 
 

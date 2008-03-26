@@ -9,6 +9,18 @@ if (isset($_GET['update']) && $_GET['update'] == 'activity')
 {
 	printf(XML_MESG, ACTIVITY_UPDATED);
 }
+if (isset($_SESSION['date_start']) &&isset($_SESSION['date_end']) && isset($_GET['error']) && $_GET['error'] == 'project_date')
+{
+	printf(XML_ERROR, sprintf(ERR_NEW_DATE_PROJECT, htmlentities($_SESSION['date_start']), htmlentities($_SESSION['date_end'])));
+	unset($_SESSION['date_start']);
+	unset($_SESSION['date_end']);
+}
+if (isset($_SESSION['date_start']) &&isset($_SESSION['date_end']) && isset($_GET['error']) && $_GET['error'] == 'date_order')
+{
+	printf(XML_ERROR, sprintf(ERR_NEW_DATE_ORDER, $_SESSION['date_start'], $_SESSION['date_end']));
+	unset($_SESSION['date_start']);
+	unset($_SESSION['date_end']);
+}	
 
 printf(INFORMATION_ACTIVITY_BEGIN);
 printf(MEMBER_BTN_UPDATE);

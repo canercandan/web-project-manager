@@ -1,8 +1,10 @@
 <?php
 
 require_once('function_informations_project.php');
+require_once('function_informations_activity.php');
 require_once('function_project.php');
 require_once('function_activity.php');
+
 
 if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_PROJECT_NAME]) && isset($_POST[POST_PROJECT_DESCRIB])
 	&& isset($_POST[POST_PROJECT_DAY]) && isset($_POST[POST_PROJECT_MONTH]) && isset($_POST[POST_PROJECT_YEAR])
@@ -17,12 +19,13 @@ if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_PROJECT_NAME]) && isset($_POS
 		exit(0);
       }
   }
- else if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_MOD_ACTIVITY_NAME]) && isset($_POST[POST_MOD_ACTIVITY_DESCRIB]) && isset($_POST[POST_ACT_DAY_START])
-	  && isset($_POST[POST_MONTH_START]) && isset($_POST[POST_ACT_YEAR_START])  && isset($_POST[POST_MOD_ACTIVITY_CHARGE]))
+else if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_MOD_ACTIVITY_NAME]) && isset($_POST[POST_MOD_ACTIVITY_DESCRIB])
+	  && isset($_POST[POST_ACTIVITY_YEAR]) && isset($_POST[POST_ACTIVITY_MONTH])  && isset($_POST[POST_ACTIVITY_DAY])
+	  && isset($_POST[POST_ACTIVITY_YEAR_END]) && isset($_POST[POST_ACTIVITY_MONTH_END])  && isset($_POST[POST_ACTIVITY_DAY_END]))
    {
-     $err = update_activity($_SESSION['PROJECT_ID'], $_SESSION['ACTIVITY_ID'], $_POST[POST_MOD_ACTIVITY_NAME], $_POST[POST_MOD_ACTIVITY_DESCRIB], 
-			    $_POST[POST_ACT_DAY_START], $_POST[POST_MONTH_START], $_POST[POST_ACT_YEAR_START], 
-			    $_POST[POST_MOD_ACTIVITY_CHARGE]);
+     $err = new_update_activity($_SESSION['PROJECT_ID'], $_SESSION['ACTIVITY_ID'], $_POST[POST_MOD_ACTIVITY_NAME], $_POST[POST_MOD_ACTIVITY_DESCRIB], 
+			    $_POST[POST_ACTIVITY_DAY], $_POST[POST_ACTIVITY_MONTH], $_POST[POST_ACTIVITY_YEAR], $_POST[POST_MOD_ACTIVITY_CHARGE],
+				$_POST[POST_ACTIVITY_DAY_END], $_POST[POST_ACTIVITY_MONTH_END], $_POST[POST_ACTIVITY_YEAR_END]);
      if (!$err)
        {
 	 header(sprintf('Location:root.php?activity_id=%s&update=activity', $_SESSION['ACTIVITY_ID']));
@@ -40,9 +43,14 @@ if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_PROJECT_NAME]) && isset($_POS
      exit(0);
 	}
  else if (isset($_POST[POST_ACTIVITY_NAME]) && isset($_POST[POST_ACTIVITY_DESCRIB]) && isset($_POST[POST_ACTIVITY_CHARGE]) && 
-	  $_POST[POST_ACTIVITY_NAME] != "" && $_POST[POST_ACTIVITY_CHARGE] != "" && is_numeric($_POST[POST_ACTIVITY_CHARGE]))
-   {
-     add_activities($_SESSION['PROJECT_ID'] , (isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 0), $_POST[POST_ACTIVITY_NAME], $_POST[POST_ACTIVITY_DESCRIB], $_POST[POST_ACTIVITY_CHARGE]);
+	  $_POST[POST_ACTIVITY_NAME] != "" && $_POST[POST_ACTIVITY_CHARGE] != "" && is_numeric($_POST[POST_ACTIVITY_CHARGE])
+		&& isset($_POST[POST_ACTIVITY_YEAR]) && isset($_POST[POST_ACTIVITY_MONTH])  && isset($_POST[POST_ACTIVITY_DAY])
+		&& isset($_POST[POST_ACTIVITY_YEAR_END]) && isset($_POST[POST_ACTIVITY_MONTH_END])  && isset($_POST[POST_ACTIVITY_DAY_END]))
+	{
+     new_add_activities($_SESSION['PROJECT_ID'] , (isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 0), $_POST[POST_ACTIVITY_NAME], $_POST[POST_ACTIVITY_DESCRIB], 
+		$_POST[POST_ACTIVITY_CHARGE],
+		$_POST[POST_PROJECT_DAY], $_POST[POST_PROJECT_MONTH], $_POST[POST_PROJECT_YEAR],
+		$_POST[POST_PROJECT_DAY_END], $_POST[POST_PROJECT_MONTH_END], $_POST[POST_PROJECT_YEAR_END]);
      header('Location:root.php?creation=activity');
      exit(0);
    }
