@@ -132,9 +132,9 @@ define('SQL_MEMBER_UPDATE_PROFIL',
 		
 define('SQL_DELETE_USR_PROFIL',
 	   'DELETE FROM tw_profil
-	    WHERE profil_usr_id = %s;');
+	    WHERE profil_usr_id = \'%s\';');
 		
 define('SQL_DELETE_USR',
 	   'DELETE FROM tw_usr
-		WHERE usr_id = %s;');
+		WHERE usr_id = \'%s\';');
 ?>

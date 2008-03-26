@@ -73,7 +73,7 @@ define('USR_SQL_SELECT_PASSWD',
 define('USR_SQL_SELECT_PROFIL',
 	   'SELECT *
 	    FROM tw_profil
-		WHERE profil_usr_id = %s;');
+		WHERE profil_usr_id = \'%s\';');
 
 /*
 ** Define user : sql add request

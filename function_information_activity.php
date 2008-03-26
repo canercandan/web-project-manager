@@ -61,12 +61,12 @@ function info_list_add()
 {
   if ($_POST[INFO_BUTTON_ADD])
     {
-      foreach($_POST[INFO_POST_NAME] as $name)
+      foreach($_POST[INFO_POST_USR] as $name)
 	    {
-	      $test = sql_query(INFO_SQL_LIST_ADD,
-					        sql_real_escape_string($_POST[INFO_POST_NAME]),
-					        sql_real_escape_string($_POST[INFO_POST_ACTIVITY]),
-							0);
+	      $test = sql_query(sprintf(INFO_SQL_LIST_ADD,
+								    sql_real_escape_string($_POST[INFO_POST_USR]),
+									sql_real_escape_string($_POST[INFO_POST_ACTIVITY]),
+									0));
 		}
 	}
 }
@@ -75,11 +75,11 @@ function info_list_del()
 {
   if ($_POST[INFO_BUTTON_DEL])
     {
-      foreach($_POST[INFO_POST_NAME] as $name)
+      foreach($_POST[INFO_POST_USR] as $name)
 	    {
-	      $test = sql_query(INFO_SQL_LIST_DEL, 
-					        sql_real_escape_string($_POST[INFO_POST_NAME]),
-					        sql_real_escape_string($_POST[INFO_POST_ACTIVITY]));
+	      $test = sql_query(sprintf(INFO_SQL_LIST_DEL, 
+									sql_real_escape_string($_POST[INFO_POST_USR]),
+									sql_real_escape_string($_POST[INFO_POST_ACTIVITY])));
 		}
 	}
 }
@@ -90,10 +90,10 @@ function info_list_update()
     {
 	  foreach($_POST[INFO_POST_NAME] as $name)
 	    {
-	      $test = sql_query(INFO_SQL_LIST_UPDATE, 
-					        sql_real_escape_string($_POST[INFO_POST_ANSWER]),
-					        sql_real_escape_string($_POST[INFO_POST_NAME]),
-					        sql_real_escape_string($_POST[INFO_POST_ACTIVITY]));
+	      $test = sql_query(sprintf(INFO_SQL_LIST_UPDATE, 
+									sql_real_escape_string($_POST[INFO_POST_ANSWER]),
+									sql_real_escape_string($_POST[INFO_POST_USR]),
+									sql_real_escape_string($_POST[INFO_POST_ACTIVITY])));
 		}
 	}
 }
