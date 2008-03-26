@@ -4,22 +4,23 @@
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="infoactivity">
     <xsl:choose>
-	<xsl:when test="infoproject">
+	  <xsl:when test="infoproject">
 	  <xsl:apply-templates select="infoproject" />
 	    <div class="member_list">
-	    <table class="table">
-	      <caption>Member project</caption>
-	      <thead>
-	        <tr>
-			  <th>Select</th>
-			  <th>Member</th>
-			  <th>Action</th>
-	        </tr>
-	      </thead>
-	    </table>
-	  </div>
-	<xsl:when test="infocharge">
-	  <xsl:template match="infocharge">
+	      <table class="table">
+	        <caption>Member project</caption>
+	        <thead>
+	          <tr>
+				<th>Select</th>
+				<th>Member</th>
+				<th>Action</th>
+	          </tr>
+			</thead>
+	      </table>
+		</div>
+	  </xsl:when>
+	  <xsl:when test="infocharge">
+	  <xsl:apply-templates select="infocharge">
 	    <div class="member_list">
 	      <table class="table">
 	        <caption>Member Charge</caption>
@@ -34,8 +35,10 @@
 	        </thead>
 	      </table>
 	    </div>
-	<xsl:when test="infoanswer">
-	  <xsl:template match="infoanswer">
+	  </xsl:apply-templates>
+	  </xsl:when>
+	  <xsl:when test="infoanswer">
+	  <xsl:apply-templates select="infoanswer">
 	    <div class="member_list">
 	      <table class="table">
 	        <caption>Member project</caption>
@@ -49,6 +52,8 @@
 	        </thead>
 	      </table>
 	    </div>
-    <xsl:apply-templates select="infoproject" />
-    </xsl:template>
+	  </xsl:apply-templates>
+	</xsl:when>
+	</xsl:choose>
+  </xsl:template>
 </xsl:stylesheet>
