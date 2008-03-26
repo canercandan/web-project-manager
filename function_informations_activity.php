@@ -162,12 +162,6 @@ function new_update_activity($id_project, $id_activity, $name, $describ, $day, $
 		$res = sql_query(sprintf(SQL_NEW_CHECK_CHARGE_EDITABLE, sql_real_escape_string($id_activity)));
 		if (sql_result($res, 0, 0))
 		{
-		printf('
-		');
-		printf(SQL_NEW_UPDATE_ACTIVITY_CHARGE, sql_real_escape_string($name), sql_real_escape_string($describ), 
-				sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day),
-				sql_real_escape_string($year_end), sql_real_escape_string($month_end), sql_real_escape_string($day_end),
-				sql_real_escape_string($charge), sql_real_escape_string($id_activity));
 			sql_query(sprintf(SQL_NEW_UPDATE_ACTIVITY_CHARGE, sql_real_escape_string($name), sql_real_escape_string($describ), 
 				sql_real_escape_string($year), sql_real_escape_string($month), sql_real_escape_string($day),
 				sql_real_escape_string($year_end), sql_real_escape_string($month_end), sql_real_escape_string($day_end),
