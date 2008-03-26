@@ -3,7 +3,7 @@
 if (!MAIN)
   exit(0);
 
-require_once('./define_information_activity.php');
+require_once('./define_charge.php');
 
 function info_list_project()
 {
@@ -46,15 +46,18 @@ function info_list_average()
 {
   $test = sql_query(sprintf(INFO_SQL_LIST_AVERAGE, 
 							$_SESSION['ACTIVITY_ID']));
-  foreach($test as $value)
+  while($value = sql_fetch_array($test))
     {
-	  if ($value > 0)
+	  if ($value[0] > 0)
 	    {
-	      $sum = $sum + $value;
+	      $sum = $sum + $value[0];
 		  $number = $number + 1;
 		}
 	}
-  printf(INFO_AVERAGE, ($sum / $number));
+  if (number > 0)
+    printf(INFO_AVERAGE, ($sum / $number));
+  else
+    printf(INFO_AVERAGE, "0");
 }
 
 function info_list_add()
