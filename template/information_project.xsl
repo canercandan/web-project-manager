@@ -61,8 +61,8 @@
 	  <hr />
 	  <label class="little">
 	    Hour per day<br />
-	    <input type="text" name="{field_hour_day}"
-		   value="{field_hour_day/@value}" />
+	    <input type="text" name="{hour_day/@post}"
+		   value="{hour_day}" />
 	  </label>
 	  <hr />
 	  <xsl:if test="editable=1">
