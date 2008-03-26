@@ -78,7 +78,7 @@ function	get_activity_start($id_activity, $id_project)
 		while (($tab = sql_fetch_array($res)))
 			{
 				$tmp = get_activity_start($tab[0], $id_project);
-				if ($tmp['date'] == -1 || $tmp['date'] < $resultat['date'])
+				if ($tmp['date'] < $resultat['date'])
 				{
 					$resultat = $tmp;
 				}
@@ -168,7 +168,7 @@ function	get_activity_end($start, $id_activity, $id_project)
 		while (($tab = sql_fetch_array($res)))
 			{
 				$tmp = get_activity_end(get_activity_start($tab[0], $id_project), $tab[0], $id_project);
-				if ($tmp['date'] == -1 || $tmp['date'] > $resultat['date'])
+				if ($resultat['date'] != -1 && ($tmp['date'] == -1 || $tmp['date'] > $resultat['date']))
 				{
 					$resultat = $tmp;
 				}
