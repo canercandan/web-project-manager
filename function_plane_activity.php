@@ -35,6 +35,7 @@ FROM tw_project WHERE project_id = \'%d\';');
 define('SQL_GET_LEN_DAY', 'SELECT activity_charge_total / count(activity_member_usr_id) FROM tw_activity, tw_activity_member
 WHERE activity_id = \'%d\' and activity_project_id = \'%d\'
 AND activity_member_activity_id = activity_id
+AND activity_work = 1
 GROUP BY activity_id;');
 
 define('SQL_GET_CHILD', 'SELECT activity_id FROM tw_activity WHERE activity_parent_id = \'%d\';');
@@ -77,7 +78,7 @@ function	get_activity_start($id_activity, $id_project)
 		while (($tab = sql_fetch_array($res)))
 			{
 				$tmp = get_activity_start($tab[0], $id_project);
-				if ($tmp[date] < $resultat[date])
+				if ($tmp['date'] < $resultat['date'])
 				{
 					$resultat = $tmp;
 				}
@@ -124,6 +125,7 @@ function	get_activity_start($id_activity, $id_project)
 				$resultat['ok'] = false;
 				$resultat['date'] = -1;
 			}
+			else
 			{
 				$resultat['ok'] = true;
 				$resultat['date'] = $end_all_depend;
@@ -162,11 +164,11 @@ function	get_activity_end($start, $id_activity, $id_project)
 	if (sql_num_rows($res))
 	{
 		$tab = sql_fetch_array($res);
-		$resultat = get_activity_end($tab[0], $id_project);
+		$resultat = get_activity_end(get_activity_start($tab[0], $id_project), $tab[0], $id_project);
 		while (($tab = sql_fetch_array($res)))
 			{
-				$tmp = get_activity_end($tab[0], $id_project);
-				if ($tmp[date] == -1 || $tmp[date] > $resultat[date])
+				$tmp = get_activity_end(get_activity_start($tab[0], $id_project), $tab[0], $id_project);
+				if ($tmp['date'] == -1 || $tmp['date'] > $resultat['date'])
 				{
 					$resultat = $tmp;
 				}
