@@ -121,4 +121,10 @@ p.activity_id = \'%d\'
 GROUP BY f.activity_id;'
 );
 
+define('SQL_GET_ACTIVITY_DEPEND',
+       'SELECT	activity_dependance_activity_id,
+		activity_dependance_dependof_id
+	FROM	tw_activity_dependance
+	WHERE	activity_dependance_activity_id = \'%d\';');
+
 ?>

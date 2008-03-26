@@ -187,14 +187,14 @@ function new_update_activity($id_project, $id_activity, $name, $describ, $day, $
 
 function	add_dependance($id_activity, $id_dependof)
 {
-	$res = sql_query(sprintf(SQL_CHECK_DEPENDANCE,  sql_real_escape_string($id_activity), sql_real_escape_string($id_dependof)));
-	if (!sql_num_rows($res))
-		sql_query(sprintf(SQL_ADD_DEPENDANCE,  sql_real_escape_string($id_activity), sql_real_escape_string($id_dependof)));
+  $res = sql_query(sprintf(SQL_CHECK_DEPENDANCE,  sql_real_escape_string($id_activity), sql_real_escape_string($id_dependof)));
+  if (!sql_num_rows($res))
+    sql_query(sprintf(SQL_ADD_DEPENDANCE,  sql_real_escape_string($id_activity), sql_real_escape_string($id_dependof)));
 }
 
 function	remove_dependance($id_activity, $id_dependof)
 {
-	sql_query(sprintf(SQL_REMOVE_DEPENDANCE,  sql_real_escape_string($id_activity), sql_real_escape_string($id_dependof)));	
+  sql_query(sprintf(SQL_REMOVE_DEPENDANCE,  sql_real_escape_string($id_activity), sql_real_escape_string($id_dependof)));	
 }
-  
+
 ?>
