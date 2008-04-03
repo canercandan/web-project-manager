@@ -90,12 +90,14 @@ function usr_add()
 			    $_POST[USR_POST_LOGIN],
 			    $_POST[USR_POST_EMAIL]),
 		    sprintf(SEND_HEADER_FROM));
+  /*
   $mail = @mail(sql_real_escape_string($_POST[USR_POST_EMAIL]),
 		SEND_SUBJECT,
 		sprintf(SEND_MESSAGE,
 			sql_real_escape_string($_POST[USR_POST_LOGIN]),
 			$passwd),
 		$header);
+  */
   if ($mail == FALSE || !$mail)
     return (0);
   else
