@@ -29,6 +29,12 @@
 	      </label>
 	      <hr />
 	      <label>
+		Email<br />
+		<input type="text" name="{field_email/@name}"
+		       value="{field_email/@value}" />
+	      </label>
+	      <hr />
+	      <label>
 		Last Name<br />
 		<input type="text" name="{field_name/@name}"
 		       value="{field_name/@value}" />

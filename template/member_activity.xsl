@@ -18,25 +18,6 @@
     </tbody>
   </xsl:template>
 
-  <xsl:template match="member_activity/member_list_activity[/doc/header/@level=1|/doc/header/@level=2]">
-    <thead>
-      <tr>
-	<th class="little" />
-	<th>Username</th>
-	<th>Last Name</th>
-	<th>First name</th>
-	<th>Title</th>
-	<th>Role</th>
-	<th>Admin</th>
-	<th>Work</th>
-	<th>Work hour</th>
-      </tr>
-    </thead>
-    <tbody>
-      <xsl:apply-templates select="member" />
-    </tbody>
-  </xsl:template>
-
   <xsl:template match="member_activity/member_list_activity[/doc/header/@level=4]">
     <thead>
       <tr>
@@ -53,7 +34,7 @@
     </thead>
     <tbody>
       <xsl:variable name="id" select="/doc/header/@id" />
-      <xsl:apply-templates select="member[@id=$id]" />
+      <xsl:apply-templates select="member" />
     </tbody>
   </xsl:template>
 
@@ -71,7 +52,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_activity/member_list_activity/member">
+  <xsl:template match="member_activity/member_list_activity/member[/doc/header/@id=$id]">
     <tr>
       <td>
 	<input type="checkbox"
@@ -123,7 +104,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_activity[/doc/header/@level=1|/doc/header/@level=2]">
+  <xsl:template match="member_activity[/doc/header/@level=1]|member_activity[/doc/header/@level=2]">
     <fieldset>
       <legend>Activity's members</legend>
       <form action="?" method="post">
@@ -155,19 +136,22 @@
   </xsl:template>
 
   <xsl:template match="member_activity[/doc/header/@level=4]">
-    <form action="?" method="post">
-      <div class="member_list">
-	<table class="table">
-	  <caption>Active or future members</caption>
-	  <xsl:apply-templates select="member_list_activity" />
-	</table>
-	<div class="form big">
-	  <input type="submit" name="{btn_update/@post}" value="Update" />
-	  <input type="submit" name="{btn_up/@post}" value="Delete" />
+    <fieldset>
+      <legend>Activity's members</legend>
+      <form action="?" method="post">
+	<div class="member_list">
+	  <table class="table">
+	    <caption>Active or future members</caption>
+	    <xsl:apply-templates select="member_list_activity" />
+	  </table>
+	  <div class="form big">
+	    <input type="submit" name="{btn_update/@post}" value="Update" />
+	    <input type="submit" name="{btn_up/@post}" value="Delete" />
+	  </div>
 	</div>
-      </div>
-      <div class="member_submit">
-      </div>
-    </form>
+	<div class="member_submit">
+	</div>
+      </form>
+    </fieldset>
   </xsl:template>
 </xsl:stylesheet>
