@@ -153,10 +153,10 @@ function admin_profil_update()
 		    sql_real_escape_string($_POST[PROFIL_POST_MPHONE]),
 		    sql_real_escape_string($_POST[PROFIL_POST_TITLE]),
 		    sql_real_escape_string($_POST[PROFIL_POST_ADDRESS]),
-		    sql_real_escape_string($_GET[MEMBER_SELECT])));
+		    sql_real_escape_string($_POST[MEMBER_SELECT])));
   sql_query(sprintf(PROFIL_SQL_UPDATE_EMAIL,
 		    sql_real_escape_string($_POST[PROFIL_POST_EMAIL]),
-			sql_real_escape_string($_GET[MEMBER_SELECT])));
+			sql_real_escape_string($_POST[MEMBER_SELECT])));
 }
 
 ?>

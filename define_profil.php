@@ -110,6 +110,6 @@ define('PROFIL_SQL_UPDATE',
 define('PROFIL_SQL_UPDATE_EMAIL',
 	   'UPDATE tw_usr
 	    SET usr_email = \'%s\'
-		WHERE profil_usr_id = \'%s\';');
+		WHERE usr_id = \'%s\';');
 
 ?>
