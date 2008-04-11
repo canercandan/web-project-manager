@@ -25,6 +25,7 @@ if ($_GET[DEBUG])
    printf(XML_HEADER, XML_TEMPLATE,
 	  $_SESSIN[SESSION_LEVEL], $_SESSION[SESSION_ID]);
 
+printf(PASSWD_BEGIN);
 if ($_POST)
   {
     if ($error != 1)
@@ -47,6 +48,7 @@ if ($_POST)
      printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, "");
      printf(PASSWD_EMAIL, PASSWD_POST_EMAIL, "");
    }
+printf(PASSWD_END);
 printf(XML_FOOTER);
 sql_close($link);
 
