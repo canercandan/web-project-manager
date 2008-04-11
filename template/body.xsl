@@ -37,6 +37,9 @@
 	  <xsl:if test="member">
 	    <xsl:apply-templates select="member" />
 	  </xsl:if>
+	  <xsl:if test="passwd">
+	    <xsl:apply-templates select="passwd" />
+	  </xsl:if>
 	</div>
       </xsl:otherwise>
     </xsl:choose>
