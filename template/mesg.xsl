@@ -6,7 +6,16 @@
     <fieldset>
       <legend>Confirmation</legend>
       <div class="mesg">
-	<xsl:value-of select="." />
+	<xsl:choose>
+	  <xsl:when test="line">
+	    <xsl:for-each select="line">
+	      <xsl:value-of select="." /><br />
+	    </xsl:for-each>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:value-of select="." />
+	  </xsl:otherwise>
+	</xsl:choose>
       </div>
     </fieldset>
   </xsl:template>
