@@ -13,7 +13,7 @@ sql_select_db(SQL_DB, $link);
 
 session_name(SESS_NAME);
 session_start();
-	
+
 if ($_POST)
   {
     if (!$_POST[USR_POST_LOGIN])
@@ -36,9 +36,9 @@ if ($_POST)
   }
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
-  printf(XML_HEADER, XML_NO_TEMPLATE, 0);
+  printf(XML_HEADER, XML_NO_TEMPLATE, 0, 0);
 else
-  printf(XML_HEADER, XML_TEMPLATE, 0);
+  printf(XML_HEADER, XML_TEMPLATE, 0, 0);
 if (!$_GET['ok'])
   {
     printf(USR_CONNECT_BEGIN);

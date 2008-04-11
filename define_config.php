@@ -9,7 +9,7 @@ define('XML_HEADER',
        '<?xml version="1.0" encoding="iso-8859-1"?>
 	%s
 	<doc>
-	  <header level="%d" />
+	  <header level="%d" id="%d" />
 	  <body>');
 
 define('XML_TEMPLATE',

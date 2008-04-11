@@ -15,9 +15,11 @@ sql_select_db(SQL_DB, $link);
 include('post_manager.php');
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
-  printf(XML_HEADER, XML_NO_TEMPLATE, $_SESSION[SESSION_LEVEL]);
+  printf(XML_HEADER, XML_NO_TEMPLATE,
+	 $_SESSION[SESSION_LEVEL], $_SESSION[SESSION_ID]);
 else
-  printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
+  printf(XML_HEADER, XML_TEMPLATE,
+	 $_SESSION[SESSION_LEVEL], $_SESSION[SESSION_ID]);
 printf(SESSION_DESTROY, DESTROY);
 
 include('get_manager.php');

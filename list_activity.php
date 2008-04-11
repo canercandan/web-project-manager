@@ -10,9 +10,11 @@ require_once('./function_sql.php');
 //sql_select_db(SQL_DB, $link);
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
-  printf(XML_HEADER, XML_NO_TEMPLATE);
+  printf(XML_HEADER, XML_NO_TEMPLATE,
+	 $_SESSION[SESSION_LEVEL], $_SESSION[SESSION_ID]);
 else
-  printf(XML_HEADER, XML_TEMPLATE);
+  printf(XML_HEADER, XML_TEMPLATE,
+	 $_SESSION[SESSION_LEVEL], $_SESSION[SESSION_ID]);
 define('PROJECT_BEGIN', '<project>');
 define('PROJECT_END', '</project>');
 define('ACTIVITY_CONTENT',
