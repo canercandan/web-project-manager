@@ -9,15 +9,15 @@ function passwd_check()
 {
   if (!$_POST[PASSWD_POST_LOGIN])
     return (PASSWD_ERROR_LOGIN_NOTFOUND);
-  if (!$_POST[PASSWD_ERROR_EMAIL])
+  if (!$_POST[PASSWD_POST_EMAIL])
     return (PASSWD_ERROR_EMAIL_NOTFOUND);
   $test = sql_query(sprintf(PASSWD_GET_INFO, $_POST[PASSWD_POST_LOGIN]));
   if (!(sql_num_rows($test)))
-    return (PASSWD_ERROR_LOGIN);
+    return (PASSWD_ERROR_PASSWD);
   if (ereg(PASSWD_REGEX_EMAIL, $_POST[USR_POST_EMAIL]) == FALSE)
-    return (PASSWD_ERROR_EMAIL);
+    return (PASSWD_ERROR_PASSWD);
   if (strcmp($_POST[USR_POST_EMAIL], sql_result(0, 0)) != 0)
-    return (PASSWD_ERROR_EMAIL);
+    return (PASSWD_ERROR_PASSWD);
   return (1);
 }
 

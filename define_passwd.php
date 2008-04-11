@@ -19,10 +19,9 @@ define('PASSWD_BEGIN', '<passwd>');
 define('PASSWD_END', '</passwd>');
 
 define('PASSWD_ERROR', '<error>%s</error>');
-define('PASSWD_ERROR_LOGIN', 'Wrong login');
 define('PASSWD_ERROR_LOGIN_NOTFOUND', 'No login found');
-define('PASSWD_ERROR_EMAIL', 'Wrong email');
 define('PASSWD_ERROR_EMAIL_NOTFOUND', 'No email found');
+define('PASSWD_ERROR_PASSWD', 'Wrong login or email');
 
 define('PASSWD_CONGRATULATION_MESS', '<congratulation value="A email will be send in the next 24h with your new account information." />');
 
@@ -46,7 +45,7 @@ define('PASSWD_NUMBER', '1234567890');
 */
 
 define('PASSWD_GET_INFO', 'SELECT usr_email
-						   FROM tw_user
+						   FROM tw_usr
 						   WHERE usr_login = \'%s\';');
 
 ?>
