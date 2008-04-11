@@ -27,14 +27,17 @@ function get_project_activity_plan($id_project)
 	{
 		while(($tab = sql_fetch_array($res)))
 		{
-			$tab_result['name'][$tab[0]] = $tab[1];
-			$tab_result['work'][$tab[0]] = $tab[2];
-			$tab_result = get_activity_start($tab[0], $id_project, $tab_result);
-			$start = $tab_result['start'][$tab[0]];
-			$tab_result = get_activity_end($start, $id_activity, $id_project, $tab_result);
+			if (strlen($tab[1]))
+			{
+				$tab_result['name'][$tab[0]] = $tab[1];
+				$tab_result['work'][$tab[0]] = $tab[2];
+				$tab_result = get_activity_start($tab[0], $id_project, $tab_result);
+				$start = $tab_result['start'][$tab[0]];
+				$tab_result = get_activity_end($start, $id_activity, $id_project, $tab_result);
+			}
 		}
+		//asort($tab_result['start']);
 	}
-	asort($tab_result['start']);
 	return($tab_result);
 }
 
@@ -106,15 +109,21 @@ function show_gant($id_project)
 	$start = mktime(0, 0, 0, $tab[0], $tab[1], $tab[2]);
 	printf(TAB_DATE_START, $tab[6]);
 	$tab_result = get_project_activity_plan($id_project);
-	$i = 1;
-	foreach($tab_result['start'] as $key => $value)
+	if ($tab_result)
 	{
-		$i++;
-		print_line($tab_result, $key, 0, $i % 2, $len, $start);
-		print_line($tab_result, $key, 1, $i % 2, $len, $start);
-		print_line($tab_result, $key, 0, $i % 2, $len, $start);
+		$i = 1;
+		foreach($tab_result['start'] as $key => $value)
+		{
+			if (strlen($tab_result['name'][$key]))
+			{
+				$i++;
+				print_line($tab_result, $key, 0, $i % 2, $len, $start);
+				print_line($tab_result, $key, 1, $i % 2, $len, $start);
+				print_line($tab_result, $key, 0, $i % 2, $len, $start);
+			}
+		}
+		print_tab_legend($tab[6], $tab[0], $tab[1], $tab[2], 3);
 	}
-	print_tab_legend($tab[6], $tab[0], $tab[1], $tab[2], 3);
 	printf(TAB_DATE_END);
 }
 

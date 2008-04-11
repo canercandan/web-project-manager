@@ -118,7 +118,10 @@ function	get_activity_start($id_activity, $id_project, $tab_result)
 				break;
 			$end_dependof[] = $tmp['date'];
 		}
-		$end_all_depend = max($end_dependof);
+		if (isset($end_dependof))
+			$end_all_depend = max($end_dependof);
+		else
+			$end_all_depend = -1;
 		if ($day_start != 0 && $month_start != 0 && $year_start != 0)
 		{
 			if (!$tmp['ok'] || $start < $end_all_depend)
