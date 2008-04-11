@@ -19,6 +19,13 @@ if ($_POST)
     if ($error == 1)
       passwd_send();
   }
+if ($_SESSION[SESSION_ID])
+  { 
+	regenerate_passwd();
+	header(HEADER_LOCATION_PASSWD_CHANGED);
+	session_destroy();
+	exit (0);
+  }
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE,
@@ -26,27 +33,18 @@ if ($_GET[DEBUG])
  else
    printf(XML_HEADER, XML_TEMPLATE,
 	  $_SESSIN[SESSION_LEVEL], $_SESSION[SESSION_ID]);
-
-if ($_SESSION[SESSION_ID])
-  {
-    
-	regenerate_passwd();
-	printf(PASSWD_CONGRATULATION_MESS);
-	session_destroy();
-	exit (0);
-  }
-else if ($_POST)
+if ($_POST)
   {
     if ($error != 1)
       {
 	    printf(PASSWD_BEGIN);
-        printf(PASSWD_ERROR, $error);
+        printf(XML_ERROR, $error);
 		printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, $_POST[PASSWD_POST_LOGIN]);
 		printf(PASSWD_EMAIL, PASSWD_POST_EMAIL, $_POST[PASSWD_POST_EMAIL]);
 		printf(PASSWD_END);
       }
     else
-		printf(PASSWD_CONGRATULATION_MESS);
+		printf(XML_MESG, PASSWD_CONGRATULATION_MESS);
   }
 else if (!$_POST)
   {
