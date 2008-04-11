@@ -32,4 +32,5 @@
   <xsl:import href="./template/administration.xsl" />
   <xsl:import href="./template/member.xsl" />
   <xsl:import href="./template/information_dependance_activity.xsl" />
+  <xsl:import href="./template/passwd.xsl" />
 </xsl:stylesheet>
