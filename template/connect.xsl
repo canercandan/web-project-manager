@@ -27,6 +27,7 @@
 	  <div>
 	    <a href="./passwd.php">Password forgot ?</a>
 	  </div>
+	  <hr />
           <input type="submit" value="Sign in" />
         </div>
       </fieldset>
