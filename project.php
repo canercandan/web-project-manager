@@ -37,7 +37,9 @@ if (isset($_SESSION['ACTIVITY_NAME']))
        {
 	 // window at the right of the project menu = add activity to this project
 	 if ($_SESSION['PROJECT_MENU'] == ADD_ACTIVITY)
-	   include('add_activity.php');
+		include('add_activity.php');
+	 if ($_SESSION['PROJECT_MENU'] == GANT) 
+	  include('gant.php');
 	 else if ($_SESSION['PROJECT_MENU'] == INFORMATION)
 	   include('informations_project.php');
 	 else if ($_SESSION['PROJECT_MENU'] == MEMBER)

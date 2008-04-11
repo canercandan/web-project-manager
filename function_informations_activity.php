@@ -28,8 +28,10 @@ function get_new_activity_informations($id_activity)
 POST_ACTIVITY_YEAR_END, POST_ACTIVITY_MONTH_END, POST_ACTIVITY_DAY_END,
 	$tab[6], $tab[7], $tab[8]);
 	
-	$start = get_activity_start($id_activity, $_SESSION['PROJECT_ID']);
-	$end = get_activity_end($start, $id_activity, $_SESSION['PROJECT_ID']);
+	$tab = get_activity_start($id_activity, $_SESSION['PROJECT_ID'], null);
+	$start = $tab['start'][$id_activity];
+	$tab = get_activity_end($start, $id_activity, $_SESSION['PROJECT_ID'], $tab);
+	$end = $tab['end'][$id_activity];
 	$dstart = getdate($start['date']);
 	$dend = getdate($end['date']);
 	printf(FIELD_ESTIMATE_DATE_START, $start['ok'] ? 1 : 0, $start['date'] == -1 ? 'Unevaluable' : sprintf('%02d/%02d/%04d', $dstart['mday'], $dstart['mon'], $dstart['year']));

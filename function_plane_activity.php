@@ -68,22 +68,34 @@ function get_parent_date_end($id_activity)
 		return ($tab);
 }
 
-function	get_activity_start($id_activity, $id_project)
+function	get_activity_start($id_activity, $id_project, $tab_result) 
 {
+
+	if (isset($tab_result['start']))
+		{
+			foreach($tab_result['start'] as $key => $value)
+			{
+				if ($key == $id_activity)
+					return ($tab_result);
+			}
+		}
 	$res = sql_query(sprintf(SQL_GET_CHILD, sql_real_escape_string($id_activity)));
 	if (sql_num_rows($res))
 	{
 		$tab = sql_fetch_array($res);
-		$resultat = get_activity_start($tab[0], $id_project);
+		$tab_result = get_activity_start($tab[0], $id_project, $tab_result);
+		$resultat = $tab_result['start'][$tab[0]];
 		while (($tab = sql_fetch_array($res)))
 			{
-				$tmp = get_activity_start($tab[0], $id_project);
+				$tab_result = get_activity_start($tab[0], $id_project, $tab_result);
+				$tmp = $tab_result['start'][$tab[0]];
 				if ($tmp['date'] < $resultat['date'])
 				{
 					$resultat = $tmp;
 				}
 			}
-		return ($resultat);
+		$tab_result['start'][$id_activity] = $resultat;
+		return ($tab_result);
 	}
 	$res = sql_query(sprintf(SQL_GET_DATE_START, sql_real_escape_string($id_activity), sql_real_escape_string($id_project)));
 	$tab = sql_fetch_array($res);
@@ -99,7 +111,9 @@ function	get_activity_start($id_activity, $id_project)
 			$id_dependof[] = $tab[0];
 		foreach ($id_dependof as $id)
 		{
-			$tmp = get_activity_end(get_activity_start($id, $id_project), $id, $id_project);
+			$tab_result = get_activity_start($id, $id_project, $tab_result);
+			$tab_result = get_activity_end($tab_result['start'][$id], $id, $id_project, $tab_result);
+			$tmp = $tab_result['end'][$id];
 			if (!$tmp['ok'])
 				break;
 			$end_dependof[] = $tmp['date'];
@@ -142,7 +156,6 @@ function	get_activity_start($id_activity, $id_project)
 		else
 			{
 				$tab = get_parent_date_start($id_activity);
-				
 				if ($tab == null)
 				{
 					$res = sql_query(sprintf(SQL_GET_DATE_PROJECT_START, sql_real_escape_string($id_project)));
@@ -155,25 +168,40 @@ function	get_activity_start($id_activity, $id_project)
 				$resultat['date'] = mktime(0, 0, 0, $month_start, $day_start, $year_start);
 			}
 	}
-	return ($resultat);
+	$tab_result['start'][$id_activity] = $resultat;
+
+	return ($tab_result);
 }
 
-function	get_activity_end($start, $id_activity, $id_project)
+function	get_activity_end($start, $id_activity, $id_project, $tab_result)
 {
+	if (isset($tab_result['end']))
+		{
+			foreach($tab_result['end'] as $key => $value)
+			{
+				if ($key == $id_activity)
+					return ($tab_result);
+			}
+		}
 	$res = sql_query(sprintf(SQL_GET_CHILD, sql_real_escape_string($id_activity)));
 	if (sql_num_rows($res))
 	{
 		$tab = sql_fetch_array($res);
-		$resultat = get_activity_end(get_activity_start($tab[0], $id_project), $tab[0], $id_project);
+		$tab_result = get_activity_start($tab[0], $id_project, $tab_result);
+		$tab_result = get_activity_end($tab_result['start'][$tab[0]], $tab[0], $id_project, $tab_result);
+		$resultat = $tab_result['end'][$tab[0]];
 		while (($tab = sql_fetch_array($res)))
 			{
-				$tmp = get_activity_end(get_activity_start($tab[0], $id_project), $tab[0], $id_project);
+				$tab_result = get_activity_start($tab[0], $id_project, $tab_result);
+				$tab_result = get_activity_end($tab_result['start'][$tab[0]], $tab[0], $id_project, $tab_result);
+				$tmp = $tab_result['end'][$tab[0]];
 				if ($resultat['date'] != -1 && ($tmp['date'] == -1 || $tmp['date'] > $resultat['date']))
 				{
 					$resultat = $tmp;
 				}
 			}
-		return ($resultat);
+		$tab_result['end'][$id_activity] = $resultat;
+		return ($tab_result);
 	}
 	if (!$start['ok'])
 	{
@@ -209,7 +237,9 @@ function	get_activity_end($start, $id_activity, $id_project)
 			$resultat['ok'] = (mktime(0, 0, 0, $month_start, $day_start, $year_start) >= $resultat['date']);
 		}
 	}
-	return ($resultat);	
+	$tab_result['end'][$id_activity] = $resultat;
+	return ($tab_result);
 }
+
  
 ?>

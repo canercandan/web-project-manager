@@ -66,6 +66,13 @@ if (isset($_GET['project_id']))
      unset($_SESSION['ACTIVITY_MENU']);
      $_SESSION['PROJECT_MENU'] = INFORMATION;
    }
+  else if (isset($_GET['project']) && isset($_GET['gantt']))
+   {
+     unset($_SESSION['ACTIVITY_NAME']);
+     unset($_SESSION['ACTIVITY_ID']);
+     unset($_SESSION['ACTIVITY_MENU']);
+     $_SESSION['PROJECT_MENU'] = GANT;
+   }
  else if (isset($_GET['project']) && isset($_GET['member']))
    {
      unset($_SESSION['ACTIVITY_NAME']);
