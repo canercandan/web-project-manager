@@ -15,11 +15,4 @@ define('MEMBER_END', '</member>');
 define('DESTROY', 'deco');
 define('SESSION_DESTROY', '<sessdestroy post="%s" />');
 
-/*
-** Sql request
-*/
-
-define('MEMBER_NEW_PASSWD', 'UPDATE tw_user
-							 SET usr_passwd = \'%s\'
-							 WHERE login = $_SESSION[SESSION_LOGIN];');
 ?>

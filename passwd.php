@@ -27,7 +27,15 @@ if ($_GET[DEBUG])
    printf(XML_HEADER, XML_TEMPLATE,
 	  $_SESSIN[SESSION_LEVEL], $_SESSION[SESSION_ID]);
 
-if ($_POST)
+if ($_SESSION[SESSION_ID])
+  {
+    
+	regenerate_passwd();
+	printf(PASSWD_CONGRATULATION_MESS);
+	session_destroy();
+	exit (0);
+  }
+else if ($_POST)
   {
     if ($error != 1)
       {
@@ -40,7 +48,7 @@ if ($_POST)
     else
 		printf(PASSWD_CONGRATULATION_MESS);
   }
-if (!$_POST)
+else if (!$_POST)
   {
     printf(PASSWD_BEGIN);
     printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, "");

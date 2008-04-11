@@ -52,4 +52,8 @@ define('PASSWD_INSERT_PASSWD', 'UPDATE tw_usr
 								SET usr_passwd = \'%s\'
 								WHERE usr_login = \'%s\';');
 
+define('MEMBER_NEW_PASSWD', 'UPDATE tw_user
+							 SET usr_passwd = \'%s\'
+							 WHERE login = $_SESSION[SESSION_LOGIN];');
+
 ?>
