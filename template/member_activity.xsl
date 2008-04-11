@@ -131,6 +131,9 @@
 	<div class="member_submit">
 	</div>
       </form>
+      <xsl:if test="/doc/header/@level=4">
+	You're a simple user.
+      </xsl:if>
     </fieldset>
   </xsl:template>
 </xsl:stylesheet>
