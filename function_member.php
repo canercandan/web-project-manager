@@ -17,7 +17,7 @@ function regenerate_passwd()
 	       sql_real_escape_string($_SESSION[SESSION_LOGIN]),
 	       $passwd),
        $header);
-  $test = sql_query(sprintf(MEMBER_NEW_PASSWD, sha1($passwd));
+  $test = sql_query(sprintf(MEMBER_NEW_PASSWD, sha1($passwd)));
 }
 
 ?>
