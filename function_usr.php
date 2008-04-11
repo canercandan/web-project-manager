@@ -126,7 +126,7 @@ function session_create()
   $row = sql_fetch_array($test);
   $_SESSION[SESSION_ID] = usr_session_id();
   $_SESSION[SESSION_LOGIN] = $_POST[USR_POST_LOGIN];
-  $_SESSION[SESSION_EMAIL] = $row[0]
+  $_SESSION[SESSION_EMAIL] = $row[0];
   $_SESSION[SESSION_LOCATION] = $row[1];
   $_SESSION[SESSION_TITLE] = $row[2];
   $_SESSION[SESSION_NAME] = $row[3];
