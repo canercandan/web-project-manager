@@ -105,7 +105,8 @@ define('USR_SQL_SESSION_ID',
 		WHERE usr_login = \'%s\';');
 
 define('USR_SQL_SESSION',
-	   'SELECT location_name, 
+	   'SELECT usr_email,
+			   location_name, 
 	           title_name, 
 			   profil_name, 
 			   profil_fname, 

@@ -126,19 +126,15 @@ function session_create()
   $row = sql_fetch_array($test);
   $_SESSION[SESSION_ID] = usr_session_id();
   $_SESSION[SESSION_LOGIN] = $_POST[USR_POST_LOGIN];
-  $_SESSION[SESSION_LOCATION] = $row[0];
-  $_SESSION[SESSION_TITLE] = $row[1];
-  $_SESSION[SESSION_NAME] = $row[2];
-  $_SESSION[SESSION_FNAME] = $row[3];
-  $_SESSION[SESSION_FPHONE] = $row[4];
-  $_SESSION[SESSION_MPHONE] = $row[5];
-  $_SESSION[SESSION_ADDRESS] = $row[6];
-  $_SESSION[SESSION_LEVEL] = $row[7];
-}
-
-function	regenerate_passwd()
-{
-  
+  $_SESSION[SESSION_EMAIL] = $row[0]
+  $_SESSION[SESSION_LOCATION] = $row[1];
+  $_SESSION[SESSION_TITLE] = $row[2];
+  $_SESSION[SESSION_NAME] = $row[3];
+  $_SESSION[SESSION_FNAME] = $row[4];
+  $_SESSION[SESSION_FPHONE] = $row[5];
+  $_SESSION[SESSION_MPHONE] = $row[6];
+  $_SESSION[SESSION_ADDRESS] = $row[7];
+  $_SESSION[SESSION_LEVEL] = $row[8];
 }
 
 ?>

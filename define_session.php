@@ -12,6 +12,7 @@ define('IS_A_WORKER', '4');
 
 define('SESSION_ID', 'sessid');
 define('SESSION_LOGIN', 'sesslogin');
+define('SESSION_EMAIL', 'sessemail');
 define('SESSION_LOCATION', 'sesslocation');
 define('SESSION_TITLE', 'sesstitle');
 define('SESSION_NAME', 'sessname');

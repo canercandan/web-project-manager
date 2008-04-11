@@ -4,7 +4,7 @@ define('MAIN', 1);
 
 require_once('./define_config.php');
 require_once('./function_sql.php');
-require_once('./function_usr.php');
+require_once('./function_passwd.php');
 require_once('./function_member.php');
 require_once('./define_session.php');
 require_once('./define_member.php');

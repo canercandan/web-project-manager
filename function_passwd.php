@@ -64,4 +64,5 @@ function passwd_send()
 							sha1($passwd),
 							sql_real_escape_string($_POST[PASSWD_POST_LOGIN])));
 }
+
 ?>
