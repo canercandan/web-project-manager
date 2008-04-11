@@ -60,6 +60,8 @@ if ($_POST)
       $error = sprintf(XML_ERROR, PROFIL_MPHONE_ERROR_NOTNUM);
     else if (!$_POST[PROFIL_POST_ADDRESS])
       $error = sprintf(XML_ERROR, PROFIL_ADDRESS_ERROR);
+	else if (!$_POST[PROFIL_POST_EMAIL])
+	  $error = sprintf(XML_ERROR, PROFIL_EMAIL_ERROR_NOTFOUND);
   }
 
 header(HEADER_CONTENT_TYPE);
@@ -83,7 +85,7 @@ if (!$_POST)
     else if (!$_SESSION[SESSION_LOCATION] || !$_SESSION[SESSION_TITLE] ||
 	     !$_SESSION[SESSION_NAME] || !$_SESSION[SESSION_FNAME] ||
 	     !$_SESSION[SESSION_FPHONE] || !$_SESSION[SESSION_MPHONE] ||
-	     !$_SESSION[SESSION_ADDRESS])
+	     !$_SESSION[SESSION_ADDRESS] || !$_SESSION[SESSION_EMAIL])
       user_select_profil();
     else
       select_session();
@@ -108,6 +110,8 @@ printf(PROFIL_FIELD_MPHONE,
        PROFIL_POST_MPHONE, $_POST[PROFIL_POST_MPHONE]);
 printf(PROFIL_FIELD_ADDRESS,
        PROFIL_POST_ADDRESS, $_POST[PROFIL_POST_ADDRESS]);
+printf(PROFIL_FIELD_EMAIL,
+       PROFIL_POST_EMAIL, $_POST[PROFIL_POST_EMAIL]);
 printf(PROFIL_END);
 printf(XML_FOOTER);
 sql_close($link);

@@ -30,6 +30,8 @@ define('PROFIL_FIELD_MPHONE',
        '<field_mphone name="%s" value="%s" />');
 define('PROFIL_FIELD_ADDRESS',
        '<field_address name="%s" value="%s" />');
+define('PROFIL_FIELD_EMAIL',
+	   '<field_email name="%s" value="%s" />');
 
 /*
 ** Define profil : name for request
@@ -42,6 +44,7 @@ define('PROFIL_POST_FNAME', 'profil_fname');
 define('PROFIL_POST_FPHONE', 'profil_fphone');
 define('PROFIL_POST_MPHONE', 'profil_mphone');
 define('PROFIL_POST_ADDRESS', 'profil_address');
+define('PROFIL_POST_EMAIL', 'profil_email');
 
 define('PROFIL_LOCATION_ERROR', 'error : no location select');
 define('PROFIL_TITLE_ERROR', 'error : no title select');
@@ -54,6 +57,8 @@ define('PROFIL_FPHONE_ERROR_NOTNUM', 'error : phone invalid');
 define('PROFIL_MPHONE_ERROR', 'error : no mobile enter');
 define('PROFIL_MPHONE_ERROR_NOTNUM', 'error : mobile invalid');
 define('PROFIL_ADDRESS_ERROR', 'error : no address enter');
+define('PROFIL_EMAIL_ERROR_NOTFOUND', 'error : no email enter');
+define('PROFIL_EMAIL_ERROR', 'error : invalid email enter');
 
 define('PROFIL_IS_NUMBER', '^[0-9]{10,15}$');
 define('PROFIL_IS_CHAR', '^[a-zA-Z\ ]{3,30}$');
@@ -87,13 +92,18 @@ define('PROFIL_SQL_TITLE',
 
 define('PROFIL_SQL_UPDATE',
 	   'UPDATE tw_profil
-		set profil_location_id = \'%s\',
+		SET profil_location_id = \'%s\',
 	    profil_name = \'%s\', 
 		profil_fname = \'%s\',
 		profil_fphone = \'%s\',
 		profil_mphone = \'%s\',
 		profil_title_id = \'%s\',
 		profil_perso_adress = \'%s\'
+		WHERE profil_usr_id = \'%s\';');
+
+define('PROFIL_SQL_UPDATE_EMAIL',
+	   'UPDATE tw_usr
+	    SET usr_email = \'%s\'
 		WHERE profil_usr_id = \'%s\';');
 
 ?>

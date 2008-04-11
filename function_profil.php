@@ -126,6 +126,10 @@ function profil_update()
   $_SESSION[SESSION_ADDRESS] = $_POST[PROFIL_POST_ADDRESS];
   $_SESSION[SESSION_LOCATION] = $_POST[PROFIL_POST_LOCATION];
   $_SESSION[SESSION_TITLE] = $_POST[PROFIL_POST_TITLE];
+  sql_query(sprintf(PROFIL_SQL_UPDATE_EMAIL,
+		    sql_real_escape_string($_POST[PROFIL_POST_EMAIL]),
+			sql_real_escape_string($_SESSION[SESSION_ID])));
+  $_SESSION[SESSION_EMAIL] = $_POST[PROFIL_POST_EMAIL];
 }
 
 function admin_profil_update()
@@ -139,6 +143,9 @@ function admin_profil_update()
 		    sql_real_escape_string($_POST[PROFIL_POST_TITLE]),
 		    sql_real_escape_string($_POST[PROFIL_POST_ADDRESS]),
 		    sql_real_escape_string($_POST[MEMBER_SELECT])));
+  sql_query(sprintf(PROFIL_SQL_UPDATE_EMAIL,
+		    sql_real_escape_string($_POST[PROFIL_POST_EMAIL]),
+			sql_real_escape_string($_POST[MEMBER_SELECT])));
 }
 
 ?>
