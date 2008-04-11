@@ -18,7 +18,7 @@
     </tbody>
   </xsl:template>
 
-  <xsl:template match="member_activity/member_list_activity">
+  <xsl:template match="member_activity/member_list_activity[/doc/header/@level=1|/doc/header/@level=2]">
     <thead>
       <tr>
 	<th class="little" />
@@ -34,6 +34,26 @@
     </thead>
     <tbody>
       <xsl:apply-templates select="member" />
+    </tbody>
+  </xsl:template>
+
+  <xsl:template match="member_activity/member_list_activity[/doc/header/@level=4]">
+    <thead>
+      <tr>
+	<th class="little" />
+	<th>Username</th>
+	<th>Last Name</th>
+	<th>First name</th>
+	<th>Title</th>
+	<th>Role</th>
+	<th>Admin</th>
+	<th>Work</th>
+	<th>Work hour</th>
+      </tr>
+    </thead>
+    <tbody>
+      <xsl:variable name="id" select="/doc/header/@id" />
+      <xsl:apply-templates select="member[@id=$id]" />
     </tbody>
   </xsl:template>
 
@@ -103,7 +123,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_activity[/doc/header/@level=1]">
+  <xsl:template match="member_activity[/doc/header/@level=1|/doc/header/@level=2]">
     <fieldset>
       <legend>Activity's members</legend>
       <form action="?" method="post">

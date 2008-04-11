@@ -7,6 +7,7 @@ require_once('./function_sql.php');
 require_once('./function_usr.php');
 require_once('./define_session.php');
 require_once('./define_usr.php');
+require_once('./define_passwd.php');
 
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
@@ -42,6 +43,8 @@ else
 if (!$_GET['ok'])
   {
     printf(USR_CONNECT_BEGIN);
+    if ($_GET['passwd'])
+      printf(XML_MESG, PASSWD_CONGRATULATION_MESS);
     printf(USR_FIELD_LOGIN,
 	   USR_POST_LOGIN, $_POST[USR_POST_LOGIN]);
     printf(USR_FIELD_PASSWD, USR_POST_PASSWD);

@@ -7,6 +7,8 @@ if (!MAIN)
 ** Name
 */
 
+define('HEADER_LOCATION_PASSWD_CHANGED', 'Location:connect.php?passwd=1');
+
 define('PASSWD_REGEX_EMAIL', '^[a-zA-Z0-9\_\-\.]+\@+[a-zA-Z0-9\_\-\.]+\.[a-zA-Z0-9]{2,4}$');
 
 define('PASSWD_LOGIN', '<passwdlogin post="%s" value="" />');
@@ -18,12 +20,11 @@ define('PASSWD_POST_EMAIL', 'passemail');
 define('PASSWD_BEGIN', '<passwd>');
 define('PASSWD_END', '</passwd>');
 
-define('PASSWD_ERROR', '<error>%s</error>');
 define('PASSWD_ERROR_LOGIN_NOTFOUND', 'No login found');
 define('PASSWD_ERROR_EMAIL_NOTFOUND', 'No email found');
 define('PASSWD_ERROR_PASSWD', 'Wrong login or email');
 
-define('PASSWD_CONGRATULATION_MESS', '<mesg>A email will be send in the next 24h with your new account information</mesg>');
+define('PASSWD_CONGRATULATION_MESS', 'A email will be send in the next 24h with your new account information');
 
 define('SEND_SUBJECT', 'Techweb : new password');
 define('SEND_HEADER_TO', 'To: %s <%s>');
