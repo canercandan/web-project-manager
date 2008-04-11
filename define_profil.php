@@ -79,7 +79,7 @@ define('PROFIL_SQL_PROFIL',
 define('PROFIL_SQL_PROFIL_EMAIL',
 	   'SELECT usr_email
 		FROM tw_usr
-		WHERE profil_usr_id = \'%s\';');
+		WHERE usr_id = \'%s\';');
 
 define('PROFIL_SQL_SELECT',
        'SELECT *

@@ -80,7 +80,6 @@ function user_select_profil()
 
 function admin_select_profil()
 {
-  printf(PROFIL_SQL_PROFIL, $_GET[MEMBER_SELECT]);
   $test = sql_query(sprintf(PROFIL_SQL_PROFIL, $_GET[MEMBER_SELECT]));
   $tab = sql_fetch_array($test);
   if ($tab[2] != 'NULL')
