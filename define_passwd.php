@@ -48,4 +48,8 @@ define('PASSWD_GET_INFO', 'SELECT usr_email
 						   FROM tw_usr
 						   WHERE usr_login = \'%s\';');
 
+define('PASSWD_INSERT_PASSWD', 'UPDATE tw_usr
+								SET usr_passwd = \'%s\'
+								WHERE usr_login = \'%s\';');
+
 ?>

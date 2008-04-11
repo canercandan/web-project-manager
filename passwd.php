@@ -10,6 +10,8 @@ require_once('./define_usr.php');
 
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
+session_name(SESS_NAME);
+session_start();
 
 if ($_POST)
   {
@@ -37,17 +39,15 @@ if ($_POST)
     else
       {
 		printf(PASSWD_CONGRATULATION_MESS);
-		printf(USR_CONNECT_BEGIN);
-		printf(USR_FIELD_LOGIN, $_POST[PASSWD_POST_LOGIN]);
-		printf(USR_FIELD_PASSWD, "");
-		printf(USR_CONNECT_END);
+		printf(PASSWD_LOGIN, PASSWD_POST_LOGIN);
+		printf(PASSWD_EMAIL, PASSWD_POST_EMAIL);
       }
   }
  else
-   {
-     printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, "");
-     printf(PASSWD_EMAIL, PASSWD_POST_EMAIL, "");
-   }
+    {
+      printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, "");
+      printf(PASSWD_EMAIL, PASSWD_POST_EMAIL, "");
+    }
 printf(PASSWD_END);
 printf(XML_FOOTER);
 sql_close($link);

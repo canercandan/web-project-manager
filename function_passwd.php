@@ -11,12 +11,15 @@ function passwd_check()
     return (PASSWD_ERROR_LOGIN_NOTFOUND);
   if (!$_POST[PASSWD_POST_EMAIL])
     return (PASSWD_ERROR_EMAIL_NOTFOUND);
-  $test = sql_query(sprintf(PASSWD_GET_INFO, $_POST[PASSWD_POST_LOGIN]));
+  $test = sql_query(sprintf(PASSWD_GET_INFO, 
+							sql_real_escape_string($_POST[PASSWD_POST_LOGIN])));
   if (!(sql_num_rows($test)))
     return (PASSWD_ERROR_PASSWD);
-  if (ereg(PASSWD_REGEX_EMAIL, $_POST[USR_POST_EMAIL]) == FALSE)
+  if (ereg(PASSWD_REGEX_EMAIL, 
+		   sql_real_escape_string($_POST[PASSWD_POST_EMAIL])) == FALSE)
     return (PASSWD_ERROR_PASSWD);
-  if (strcmp($_POST[USR_POST_EMAIL], sql_result(0, 0)) != 0)
+  if (strcmp(sql_real_escape_string($_POST[PASSWD_POST_EMAIL]), 
+			 sql_result($test, 0, 0)) != 0)
     return (PASSWD_ERROR_PASSWD);
   return (1);
 }
@@ -51,13 +54,14 @@ function passwd_send()
 			    $_POST[PASSWD_POST_LOGIN],
 			    $_POST[PASSWD_POST_EMAIL]),
 		    sprintf(SEND_HEADER_FROM));
-  var_dump($passwd);
   mail(sql_real_escape_string($_POST[PASSWD_POST_EMAIL]),
        SEND_SUBJECT,
        sprintf(SEND_MESSAGE,
 	       sql_real_escape_string($_POST[PASSWD_POST_LOGIN]),
 	       $passwd),
        $header);
+  $test = sql_query(sprintf(PASSWD_INSERT_PASSWD,
+							sql_real_escape_string($passwd),
+							sql_real_escape_string($_POST[PASSWD_POST_LOGIN])));
 }
-
 ?>
