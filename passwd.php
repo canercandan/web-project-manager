@@ -14,7 +14,7 @@ sql_select_db(SQL_DB, $link);
 if ($_POST)
   {
     $error = passwd_check();
-    if ($error != 1)
+    if ($error == 1)
       passwd_send();
   }
 header(HEADER_CONTENT_TYPE);
@@ -27,19 +27,19 @@ if ($_GET[DEBUG])
 
 if ($_POST)
   {
-    if ($error)
+    if ($error != 1)
       {
         printf(PASSWD_ERROR, $error);
-	printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, $_POST[PASSWD_POST_LOGIN]);
-	printf(PASSWD_EMAIL, PASSWD_POST_EMAIL, $_POST[PASSWD_POST_EMAIL]);
+		printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, $_POST[PASSWD_POST_LOGIN]);
+		printf(PASSWD_EMAIL, PASSWD_POST_EMAIL, $_POST[PASSWD_POST_EMAIL]);
       }
     else
       {
-	printf(PASSWD_CONGRATULATION_MESS);
-	printf(USR_CONNECT_BEGIN);
-	printf(USR_FIELD_LOGIN, $_POST[PASSWD_POST_LOGIN]);
-	printf(USR_FIELD_PASSWD, "");
-	printf(USR_CONNECT_END);
+		printf(PASSWD_CONGRATULATION_MESS);
+		printf(USR_CONNECT_BEGIN);
+		printf(USR_FIELD_LOGIN, $_POST[PASSWD_POST_LOGIN]);
+		printf(USR_FIELD_PASSWD, "");
+		printf(USR_CONNECT_END);
       }
   }
  else
