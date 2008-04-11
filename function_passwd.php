@@ -61,7 +61,7 @@ function passwd_send()
 	       $passwd),
        $header);
   $test = sql_query(sprintf(PASSWD_INSERT_PASSWD,
-							sql_real_escape_string($passwd),
+							sha1($passwd),
 							sql_real_escape_string($_POST[PASSWD_POST_LOGIN])));
 }
 ?>
