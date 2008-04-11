@@ -26,15 +26,13 @@ if ($_POST[PROFIL_POST_LOCATION] && $_POST[PROFIL_POST_NAME] &&
     if ($_SESSION[SESSION_LEVEL] <= IS_AN_ADMIN && $_POST[MEMBER_SELECT])
       {
 		admin_profil_update();
-		printf(LOCATION_ADMIN);
-		//header(LOCATION_ADMIN);
+		header(LOCATION_ADMIN);
 		exit(0);
       }
     else
       {
         profil_update();
-		printf(LOCATION_MEMBER);
-        //header(LOCATION_MEMBER);
+        header(LOCATION_MEMBER);
 		exit(0);
       }
   }
