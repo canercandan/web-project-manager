@@ -24,6 +24,9 @@
             <input type="password" name="{field_passwd/@name}" />
           </label>
 	  <hr />
+	  <div>
+	    <a href="./passwd.php">Password forgot ?</a>
+	  </div>
           <input type="submit" value="Sign in" />
         </div>
       </fieldset>
