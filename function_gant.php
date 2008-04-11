@@ -14,7 +14,10 @@ GROUP BY activity_id;');
 define('SQL_GET_PROJECT_DATES', 'SELECT month(project_date), day(project_date), year(project_date),
 										month(project_date_end), day(project_date_end), year(project_date_end), DATEDIFF(project_date_end, project_date)
 FROM tw_project	
-WHERE project_id = \'%d\';');									
+WHERE project_id = \'%d\';');
+
+define('GANTT_BEGIN', '<gantt>');
+define('GANTT_END', '</gantt>');  							
 
 function get_project_activity_plan($id_project)
 {
