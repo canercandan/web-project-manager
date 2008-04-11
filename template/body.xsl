@@ -19,6 +19,12 @@
       </xsl:when>
       <xsl:otherwise>
 	<div>
+	  <xsl:if test="mesg">
+	    <xsl:apply-templates select="mesg" />
+	  </xsl:if>
+	  <xsl:if test="error">
+	    <xsl:apply-templates select="error" />
+	  </xsl:if>
 	  <xsl:if test="home">
 	    <xsl:apply-templates select="home" />
 	  </xsl:if>

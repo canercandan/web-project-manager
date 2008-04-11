@@ -103,7 +103,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_activity">
+  <xsl:template match="member_activity[/doc/header/@level=1]">
     <fieldset>
       <legend>Activity's members</legend>
       <form action="?" method="post">
@@ -131,9 +131,23 @@
 	<div class="member_submit">
 	</div>
       </form>
-      <xsl:if test="/doc/header/@level=4">
-	You're a simple user.
-      </xsl:if>
     </fieldset>
+  </xsl:template>
+
+  <xsl:template match="member_activity[/doc/header/@level=4]">
+    <form action="?" method="post">
+      <div class="member_list">
+	<table class="table">
+	  <caption>Active or future members</caption>
+	  <xsl:apply-templates select="member_list_activity" />
+	</table>
+	<div class="form big">
+	  <input type="submit" name="{btn_update/@post}" value="Update" />
+	  <input type="submit" name="{btn_up/@post}" value="Delete" />
+	</div>
+      </div>
+      <div class="member_submit">
+      </div>
+    </form>
   </xsl:template>
 </xsl:stylesheet>
