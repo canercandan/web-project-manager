@@ -18,7 +18,7 @@ define('PASSWD_POST_EMAIL', 'passemail');
 define('PASSWD_BEGIN', '<passwd>');
 define('PASSWD_END', '</passwd>');
 
-define('PASSWD_ERROR', '<error value="%s" />');
+define('PASSWD_ERROR', '<error>%s</error>');
 define('PASSWD_ERROR_LOGIN', 'Wrong login');
 define('PASSWD_ERROR_LOGIN_NOTFOUND', 'No login found');
 define('PASSWD_ERROR_EMAIL', 'Wrong email');
