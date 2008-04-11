@@ -27,28 +27,26 @@ if ($_GET[DEBUG])
    printf(XML_HEADER, XML_TEMPLATE,
 	  $_SESSIN[SESSION_LEVEL], $_SESSION[SESSION_ID]);
 
-printf(PASSWD_BEGIN);
 if ($_POST)
   {
     if ($error != 1)
       {
+	    printf(PASSWD_BEGIN);
         printf(PASSWD_ERROR, $error);
 		printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, $_POST[PASSWD_POST_LOGIN]);
 		printf(PASSWD_EMAIL, PASSWD_POST_EMAIL, $_POST[PASSWD_POST_EMAIL]);
+		printf(PASSWD_END);
       }
     else
-      {
 		printf(PASSWD_CONGRATULATION_MESS);
-		printf(PASSWD_LOGIN, PASSWD_POST_LOGIN);
-		printf(PASSWD_EMAIL, PASSWD_POST_EMAIL);
-      }
   }
- else
-    {
-      printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, "");
-      printf(PASSWD_EMAIL, PASSWD_POST_EMAIL, "");
-    }
-printf(PASSWD_END);
+if (!$_POST)
+  {
+    printf(PASSWD_BEGIN);
+    printf(PASSWD_LOGIN, PASSWD_POST_LOGIN, "");
+    printf(PASSWD_EMAIL, PASSWD_POST_EMAIL, "");
+	printf(PASSWD_END);
+  }
 printf(XML_FOOTER);
 sql_close($link);
 

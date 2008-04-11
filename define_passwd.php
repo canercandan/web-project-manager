@@ -23,7 +23,7 @@ define('PASSWD_ERROR_LOGIN_NOTFOUND', 'No login found');
 define('PASSWD_ERROR_EMAIL_NOTFOUND', 'No email found');
 define('PASSWD_ERROR_PASSWD', 'Wrong login or email');
 
-define('PASSWD_CONGRATULATION_MESS', '<congratulation value="A email will be send in the next 24h with your new account information." />');
+define('PASSWD_CONGRATULATION_MESS', '<mesg>A email will be send in the next 24h with your new account information</mesg>');
 
 define('SEND_SUBJECT', 'Techweb : new password');
 define('SEND_HEADER_TO', 'To: %s <%s>');
