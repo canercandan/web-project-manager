@@ -23,7 +23,7 @@ if ($_POST[PROFIL_POST_LOCATION] && $_POST[PROFIL_POST_NAME] &&
     $_POST[PROFIL_POST_MPHONE] && $_POST[PROFIL_POST_TITLE] &&
     $_POST[PROFIL_POST_ADDRESS])
   {
-    if ($_SESSION[SESSION_LEVEL] == IS_A_ADMIN && $_POST[MEMBER_SELECT])
+    if ($_SESSION[SESSION_LEVEL] <= IS_AN_ADMIN && $_GET[MEMBER_SELECT])
       {
 		admin_profil_update();
 		header(LOCATION_ADMIN);
@@ -62,6 +62,8 @@ if ($_POST)
       $error = sprintf(XML_ERROR, PROFIL_ADDRESS_ERROR);
 	else if (!$_POST[PROFIL_POST_EMAIL])
 	  $error = sprintf(XML_ERROR, PROFIL_EMAIL_ERROR_NOTFOUND);
+	else if (!(profil_email_check($_POST[PROFIL_POST_EMAIL])))
+	  $error = sprintf(XML_ERROR, PROFIL_EMAIL_ERROR);
   }
 
 header(HEADER_CONTENT_TYPE);
@@ -78,14 +80,14 @@ if ($_GET[MEMBER_SELECT]);
   printf(XML_MEMBER_SELECT, MEMBER_SELECT, $_GET[MEMBER_SELECT]);
 if (!$_POST)
   {
-    if ($_SESSION[SESSION_LEVEL] == IS_A_ADMIN && $_GET[MEMBER_SELECT])
+    if ($_SESSION[SESSION_LEVEL] <= IS_AN_ADMIN && $_GET[MEMBER_SELECT])
       {
-	admin_select_profil();
+		admin_select_profil();
       }
     else if (!$_SESSION[SESSION_LOCATION] || !$_SESSION[SESSION_TITLE] ||
-	     !$_SESSION[SESSION_NAME] || !$_SESSION[SESSION_FNAME] ||
-	     !$_SESSION[SESSION_FPHONE] || !$_SESSION[SESSION_MPHONE] ||
-	     !$_SESSION[SESSION_ADDRESS] || !$_SESSION[SESSION_EMAIL])
+	    !$_SESSION[SESSION_NAME] || !$_SESSION[SESSION_FNAME] ||
+	    !$_SESSION[SESSION_FPHONE] || !$_SESSION[SESSION_MPHONE] ||
+	    !$_SESSION[SESSION_ADDRESS] || !$_SESSION[SESSION_EMAIL])
       user_select_profil();
     else
       select_session();

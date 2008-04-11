@@ -27,11 +27,17 @@ function profil_number_check($number)
 
 function profil_name_check($name)
 {
-   if (ereg(PROFIL_IS_CHAR, $name) != FALSE)
+  if (ereg(PROFIL_IS_CHAR, $name) != FALSE)
     return (1);
   return (0);
 }
 
+function profil_email_check($email)
+{
+  if (ereg(PROFIL_IS_EMAIL, $email) != FALSE)
+	return (1);
+  return (0);
+}
 
 function select_location()
 {
@@ -74,6 +80,7 @@ function user_select_profil()
 
 function admin_select_profil()
 {
+  printf(PROFIL_SQL_PROFIL, $_GET[MEMBER_SELECT]);
   $test = sql_query(sprintf(PROFIL_SQL_PROFIL, $_GET[MEMBER_SELECT]));
   $tab = sql_fetch_array($test);
   if ($tab[2] != 'NULL')
@@ -85,6 +92,10 @@ function admin_select_profil()
   if ($tab[5] != 'NULL')
 	$_POST[PROFIL_POST_MPHONE] = $tab[5];
   $_POST[PROFIL_POST_ADDRESS] = $tab[7];
+  $test = sql_query(sprintf(PROFIL_SQL_PROFIL_EMAIL, $_GET[MEMBER_SELECT]));
+  $tab = sql_fetch_array($test);
+  if ($tab[0] != 'NULL')
+    $_POST[PROFIL_POST_EMAIL] = $tab[0];
   printf(PROFIL_FIELD_LOCATION_BEGIN, PROFIL_POST_LOCATION, $tab[1]);
   select_location();
   printf(PROFIL_FIELD_LOCATION_END);
@@ -100,6 +111,7 @@ function select_session()
   $_POST[PROFIL_POST_FPHONE] = $_SESSION[SESSION_FPHONE];
   $_POST[PROFIL_POST_MPHONE] = $_SESSION[SESSION_MPHONE];
   $_POST[PROFIL_POST_ADDRESS] = $_SESSION[SESSION_ADDRESS];
+  $_POST[PROFIL_POST_EMAIL] = $_SESSION[SESSION_EMAIL];
   printf(PROFIL_FIELD_LOCATION_BEGIN, PROFIL_POST_LOCATION, $_SESSION[SESSION_LOCATION]);
   select_location();
   printf(PROFIL_FIELD_LOCATION_END);
@@ -142,10 +154,10 @@ function admin_profil_update()
 		    sql_real_escape_string($_POST[PROFIL_POST_MPHONE]),
 		    sql_real_escape_string($_POST[PROFIL_POST_TITLE]),
 		    sql_real_escape_string($_POST[PROFIL_POST_ADDRESS]),
-		    sql_real_escape_string($_POST[MEMBER_SELECT])));
+		    sql_real_escape_string($_GET[MEMBER_SELECT])));
   sql_query(sprintf(PROFIL_SQL_UPDATE_EMAIL,
 		    sql_real_escape_string($_POST[PROFIL_POST_EMAIL]),
-			sql_real_escape_string($_POST[MEMBER_SELECT])));
+			sql_real_escape_string($_GET[MEMBER_SELECT])));
 }
 
 ?>

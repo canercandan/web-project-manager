@@ -62,6 +62,7 @@ define('PROFIL_EMAIL_ERROR', 'error : invalid email enter');
 
 define('PROFIL_IS_NUMBER', '^[0-9]{10,15}$');
 define('PROFIL_IS_CHAR', '^[a-zA-Z\ ]{3,30}$');
+define('PROFIL_IS_EMAIL', '^[a-zA-Z0-9\_\-\.]+\@+[a-zA-Z0-9\_\-\.]+\.[a-zA-Z0-9]{2,4}$');
 
 define('MEMBER_SELECT', 'memberselect');
 define('XML_MEMBER_SELECT', '<memberselect post="%s" value="%s" />');
@@ -73,6 +74,11 @@ define('XML_MEMBER_SELECT', '<memberselect post="%s" value="%s" />');
 define('PROFIL_SQL_PROFIL',
 	   'SELECT *
 		FROM tw_profil
+		WHERE profil_usr_id = \'%s\';');
+
+define('PROFIL_SQL_PROFIL_EMAIL',
+	   'SELECT usr_email
+		FROM tw_usr
 		WHERE profil_usr_id = \'%s\';');
 
 define('PROFIL_SQL_SELECT',
