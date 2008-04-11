@@ -16,7 +16,7 @@
 	    <input type="hidden" name="{memberselect/@post}" value="{memberselect/@value}" />
 	  </xsl:if>
 	  <fieldset>
-	    <legend>Profil</legend>
+	    <legend>Profile</legend>
 	    <div class="form">
 	      <label>
 		Location<br />
@@ -29,7 +29,7 @@
 	      </label>
 	      <hr />
 	      <label>
-		Name<br />
+		Last Name<br />
 		<input type="text" name="{field_name/@name}"
 		       value="{field_name/@value}" />
 	      </label>
@@ -47,20 +47,20 @@
 	      </label>
 	      <hr />
 	      <label>
-		Mobile<br />
+		Cell phone<br />
 		<input type="text" name="{field_mphone/@name}"
 		       value="{field_mphone/@value}" />
 	      </label>
 	      <hr />
 	      <label>
-		Address personal<br />
+		Personal address<br />
 		<textarea name="{field_address/@name}">
 		  <xsl:value-of select="field_address/@value" />
 		</textarea>
 	      </label>
 	      <hr />
 	      <label>
-		<input type="submit" value="Ok" />
+		<input type="submit" value="Save" />
 	      </label>
 	    </div>
 	  </fieldset>

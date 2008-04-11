@@ -5,9 +5,9 @@
   <xsl:template match="member_activity/member_list_project">
     <thead>
       <tr>
-	<th>Select</th>
-	<th>Login</th>
-	<th>Name</th>
+	<th class="little" />
+	<th>Username</th>
+	<th>Last Name</th>
 	<th>First name</th>
 	<th>Title</th>
 	<th>Role</th>
@@ -21,15 +21,15 @@
   <xsl:template match="member_activity/member_list_activity">
     <thead>
       <tr>
-	<th>Select</th>
-	<th>Login</th>
-	<th>Name</th>
+	<th class="little" />
+	<th>Username</th>
+	<th>Last Name</th>
 	<th>First name</th>
 	<th>Title</th>
 	<th>Role</th>
 	<th>Admin</th>
 	<th>Work</th>
-	<th>Hour work</th>
+	<th>Work hour</th>
       </tr>
     </thead>
     <tbody>
@@ -105,7 +105,7 @@
 
   <xsl:template match="member_activity">
     <fieldset>
-      <legend>Members activity</legend>
+      <legend>Activity's members</legend>
       <form action="?" method="post">
 	<div class="member_list">
 	  <table class="table">

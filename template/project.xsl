@@ -3,7 +3,7 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="project">
-    <h3 class="blue2">Project List</h3>
+    <h3 class="blue2">Project's list</h3>
     <ul class="line">
       <xsl:for-each select="project">
 	<li class="open">

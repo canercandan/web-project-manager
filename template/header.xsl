@@ -15,10 +15,10 @@
       </xsl:choose>
       <xsl:choose>
 	<xsl:when test="../body/administration">
-	  <li class="on"><a href="./admin2.php">Admin</a></li>
+	  <li class="on"><a href="./admin2.php">Administration</a></li>
 	</xsl:when>
 	<xsl:otherwise>
-	  <li><a href="./admin2.php">Admin</a></li>
+	  <li><a href="./admin2.php">Administration</a></li>
 	</xsl:otherwise>
       </xsl:choose>
       <xsl:choose>
@@ -37,7 +37,7 @@
 	  <li><a href="./root.php?project_add=1">Add a project</a></li>
 	</xsl:otherwise>
       </xsl:choose>
-      <li><a href="./member.php?{../body/sessdestroy/@post}=1">Deconnection</a></li>
+      <li><a href="./member.php?{../body/sessdestroy/@post}=1">Sign out</a></li>
     </ul>
     <div class="clear" />
   </xsl:template>
@@ -55,10 +55,10 @@
       </xsl:choose>
       <xsl:choose>
 	<xsl:when test="../body/member">
-	  <li class="on"><a href="./member.php">Member</a></li>
+	  <li class="on"><a href="./member.php">Member's space</a></li>
 	</xsl:when>
 	<xsl:otherwise>
-	  <li><a href="./member.php">Member</a></li>
+	  <li><a href="./member.php">Member's space</a></li>
 	</xsl:otherwise>
       </xsl:choose>
       <xsl:choose>
@@ -77,7 +77,7 @@
 	  <li><a href="./root.php?project_add=1">Add a project</a></li>
 	</xsl:otherwise>
       </xsl:choose>
-      <li><a href="./member.php?{../body/sessdestroy/@post}=1">Deconnection</a></li>
+      <li><a href="./member.php?{../body/sessdestroy/@post}=1">Sign out</a></li>
     </ul>
     <div class="clear" />
   </xsl:template>
@@ -103,13 +103,13 @@
       </xsl:choose>
       <xsl:choose>
 	<xsl:when test="../body/member">
-	  <li class="on"><a href="./member.php">Member</a></li>
+	  <li class="on"><a href="./member.php">Member's space</a></li>
 	</xsl:when>
 	<xsl:otherwise>
-	  <li><a href="./member.php">Member</a></li>
+	  <li><a href="./member.php">Member's space</a></li>
 	</xsl:otherwise>
       </xsl:choose>
-      <li><a href="./member.php?{../body/sessdestroy/@post}=1">Deconnection</a></li>
+      <li><a href="./member.php?{../body/sessdestroy/@post}=1">Sign out</a></li>
     </ul>
     <div class="clear" />
   </xsl:template>
@@ -127,18 +127,18 @@
       </xsl:choose>
       <xsl:choose>
 	<xsl:when test="../body/create">
-	  <li class="on"><a href="./create.php">Inscription</a></li>
+	  <li class="on"><a href="./create.php">Sign up</a></li>
 	</xsl:when>
 	<xsl:otherwise>
-	  <li><a href="./create.php">Inscription</a></li>
+	  <li><a href="./create.php">Sign up</a></li>
 	</xsl:otherwise>
       </xsl:choose>
       <xsl:choose>
 	<xsl:when test="../body/connect">
-	  <li class="on"><a href="./connect.php">Connexion</a></li>
+	  <li class="on"><a href="./connect.php">Sign in</a></li>
 	</xsl:when>
 	<xsl:otherwise>
-	  <li><a href="./connect.php">Connexion</a></li>
+	  <li><a href="./connect.php">Sign in</a></li>
 	</xsl:otherwise>
       </xsl:choose>
     </ul>

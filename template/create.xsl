@@ -13,12 +13,10 @@
 	</xsl:if>
 	<form action="./create.php" method="post">
 	  <fieldset>
-	    <legend>Inscription</legend>
+	    <legend>Sign up</legend>
 	    <div class="form">
-	      With this form, you can create an account.<br />
-	      <br />
 	      <label>
-		Login<br />
+		Username<br />
 		<input type="text" name="{field_login/@name}"
 		       value="{field_login/@value}" />
 	      </label>
@@ -29,7 +27,7 @@
 		       value="{field_email/@value}" />
 	      </label>
 	      <hr />
-	      <input type="submit" value="Ok" />
+	      <input type="submit" value="Sign up" />
 	    </div>
 	  </fieldset>
 	</form>

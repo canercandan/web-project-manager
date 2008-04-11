@@ -129,6 +129,11 @@ table.table
 	background-color: LightSteelBlue;
 }
 
+th.select
+{
+	width: 5px;
+}
+
 .history
 {
 	margin: 5px auto;

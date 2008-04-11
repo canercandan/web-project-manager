@@ -5,9 +5,9 @@
   <xsl:template match="member_project/member_list">
     <thead>
       <tr>
-	<th>Select</th>
-	<th>Login</th>
-	<th>Name</th>
+	<th class="little" />
+	<th>Username</th>
+	<th>Last Name</th>
 	<th>First name</th>
 	<th>Title</th>
       </tr>
@@ -20,16 +20,12 @@
   <xsl:template match="member_project/member_list_project|member_project/member_histo_list_project">
     <thead>
       <tr>
-	<th>Select</th>
-	<th>Login</th>
-	<th>Name</th>
+	<th class="little" />
+	<th>Username</th>
+	<th>Last Name</th>
 	<th>First name</th>
 	<th>Title</th>
 	<th>Role</th>
-	<!--
-	<th>Date begin</th>
-	<th>Date end</th>
-	-->
       </tr>
     </thead>
     <tbody>
@@ -101,20 +97,12 @@
 	  </xsl:for-each>
 	</select>
       </td>
-      <!--
-      <td class="little2">
-	<xsl:apply-templates select="date_start" />
-      </td>
-      <td class="little2">
-	<xsl:apply-templates select="date_end" />
-      </td>
-      -->
     </tr>
   </xsl:template>
 
   <xsl:template match="member_project">
     <fieldset>
-      <legend>Members project</legend>
+      <legend>Project's members</legend>
       <form action="?" method="post">
 	<div class="member_list">
 	  <table class="table">
@@ -122,7 +110,6 @@
 	    <xsl:apply-templates select="member_list" />
 	  </table>
 	  <div class="form big">
-	    <!--<input type="submit" name="{btn_down/@post}" value="Add to active members" />-->
 	    <input type="submit" name="{btn_down/@post}" value="Add to members" />
 	  </div>
 	</div>
@@ -130,31 +117,15 @@
       <form action="?" method="post">
 	<div class="member_list">
 	  <table class="table">
-	    <!--<caption>Active or future members</caption>-->
 	    <caption>Members</caption>
 	    <xsl:apply-templates select="member_list_project" />
 	  </table>
 	  <div class="form big">
 	    <input type="submit" name="{btn_update/@post}" value="Update" />
 	    <input type="submit" name="{btn_up/@post}" value="Delete" />
-	    <!--<input type="submit" name="{btn_histo/@post}" value="Move to old members" />-->
 	  </div>
 	</div>
       </form>
-      <!--
-      <form action="?" method="post">
-	<div class="member_list">
-	  <table class="table">
-	    <caption>Old members' entries</caption>
-	    <xsl:apply-templates select="member_histo_list_project" />
-	  </table>
-	  <div class="form big">
-	    <input type="submit" name="{btn_update_histo/@post}" value="Update" />
-	    <input type="submit" name="{btn_delete_histo/@post}" value="Delete" />
-	  </div>
-	</div>
-      </form>
-      -->
     </fieldset>
   </xsl:template>
 </xsl:stylesheet>

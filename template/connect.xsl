@@ -11,12 +11,10 @@
     </xsl:if>
     <form action="./connect.php" method="post">
       <fieldset>
-        <legend>Connexion</legend>
+        <legend>Sign in</legend>
         <div class="form">
-          With this form, you can sign in an account.<br />
-          <br />
           <label>
-            Login<br />
+            Username<br />
             <input type="text" name="{field_login/@name}"
 		   value="{field_login/@value}" />
           </label>
@@ -26,7 +24,7 @@
             <input type="password" name="{field_passwd/@name}" />
           </label>
 	  <hr />
-          <input type="submit" value="Ok" />
+          <input type="submit" value="Sign in" />
         </div>
       </fieldset>
     </form>

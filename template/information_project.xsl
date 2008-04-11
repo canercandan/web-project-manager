@@ -8,7 +8,7 @@
       <form action="?" method="post">
 	<div class="form">
 	  <label>
-	    Autor<br />
+	    Author<br />
 	    <input type="text" value="{autor/@name} {autor/@fname}"
 		   disabled="disabled"/>
 	  </label>
@@ -20,7 +20,7 @@
 	  </label>
 	  <hr />
 	  <label>
-	    Name<br />
+	    Project's name<br />
 	    <xsl:choose>
 	      <xsl:when test="editable=1">
 		<input type="text" name="{name/@post}"
@@ -34,7 +34,7 @@
 	  </label>
 	  <hr />
 	  <label class="big">
-	    Describe<br />
+	    Description<br />
 	    <xsl:choose>
 	      <xsl:when test="editable=1">
 		<textarea name="{describ/@post}">
@@ -66,7 +66,7 @@
 	  </label>
 	  <hr />
 	  <label class="little">
-	    Charge<br />
+	    Workload<br />
 	    <input type="text" value="{charge/@value}" disabled="disabled" />
 	  </label>
 	  <hr />
@@ -80,7 +80,7 @@
     </fieldset>
     <xsl:if test="activity_work">
       <fieldset>
-	<legend>Charge</legend>
+	<legend>Workload</legend>
 	<div class="list">
 	  <ul>
 	    <xsl:apply-templates select="activity_work" />

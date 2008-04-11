@@ -18,7 +18,7 @@ else
   printf(XML_HEADER, XML_TEMPLATE, $_SESSION[SESSION_LEVEL]);
   printf(SESSION_DESTROY, DESTROY);
 printf('<home>
-	  <mesg>Presentation de TechWEB</mesg>
+	  <mesg>Home page of TechWEB</mesg>
 	  <location name="location">
 	    <item id="1" name="Strasbourg" />
 	    <item id="2" name="Paris" />

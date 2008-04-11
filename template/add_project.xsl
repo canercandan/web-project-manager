@@ -16,13 +16,13 @@
 	    <legend>Add a project</legend>
 	    <div class="form">
 	      <label>
-		Name<br />
+		Project's name<br />
 		<input type="text" name="{field_name}"
 		       value="{field_name/@value}" />
 	      </label>
 	      <hr />
 	      <label>
-		Describe<br />
+		Description<br />
 		<textarea name="{field_descr}">
 		  <xsl:value-of select="field_descr/@value" />
 		</textarea>

@@ -4,7 +4,7 @@
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="home">
     <fieldset>
-      <legend>Presentation</legend>
+      <legend>Home</legend>
       <div>
         <xsl:value-of select="mesg" />
       </div>

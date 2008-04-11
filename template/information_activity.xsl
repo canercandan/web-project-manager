@@ -20,7 +20,7 @@
       <form action="?" method="post">
 	<div class="form">
 	  <label>
-	    Name<br />
+	    Activity's name<br />
 	    <xsl:choose>
 	      <xsl:when test="editable=1">
 		<input type="text" name="{name/@post}"
@@ -34,7 +34,7 @@
 	  </label>
 	  <hr />
 	  <label class="big">
-	    Describe<br />
+	    Description<br />
 	    <xsl:choose>
 	      <xsl:when test="editable=1">
 		<textarea name="{describ/@post}">
@@ -50,7 +50,7 @@
 	  </label>
 	  <hr />
 	  <label class="little">
-	    Charge<br />
+	    Workload<br />
 	    <xsl:choose>
 	      <xsl:when test="editable=0">
 		<input type="text" name="{charge/@post}"
@@ -78,12 +78,12 @@
 	  </div>
 	  <hr />
 	  <div class="little">
-	    Start date estimation<br />
+	    Estimation of start date<br />
 	    <xsl:apply-templates select="field_estimate_date_start" />
 	  </div>
 	  <hr />
 	  <div class="little">
-	    End date estimation<br />
+	    Estimation of end date<br />
 	    <xsl:apply-templates select="field_estimate_date_end" />
 	  </div>
 	  <hr />
@@ -96,14 +96,14 @@
       </form>
     </fieldset>
     <fieldset>
-      <legend>Dependance</legend>
+      <legend>Dependancy</legend>
       <div>
 	<xsl:apply-templates select="information_dependance_activity" />
       </div>
     </fieldset>
     <xsl:if test="activity_work">
       <fieldset>
-	<legend>Charge</legend>
+	<legend>Workload</legend>
 	<div class="list">
 	  <ul>
 	    <xsl:apply-templates select="activity_work" />

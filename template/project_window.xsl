@@ -7,7 +7,7 @@
       <xsl:value-of select="name" />
     </h2>
     <xsl:if test="admin">
-      <h3 class="blue1">Project Menu</h3>
+      <h3 class="blue1">Project's menu</h3>
       <ul class="line">
 	<li class="go">
 	  <a href="?project=1&amp;information=1">Information</a>
@@ -18,11 +18,6 @@
 	<li class="go">
 	  <a href="?project=1&amp;add_activity=1">Add an activity</a>
 	</li>
-	<!--
-	<li class="go">
-	  <a href="?project=1&amp;member_dategraph=1">History</a>
-	</li>
-	-->
 	<li class="go">
 	  <a href="?project=1&amp;delete_project=1">Remove</a>
 	</li>
@@ -30,7 +25,7 @@
     </xsl:if>
     <div class="menu blue2">
       <xsl:if test="activity">
-	<h3 class="blue1">Activity List</h3>
+	<h3 class="blue1">Activity's list</h3>
 	<div class="list">
 	  <ul>
 	    <xsl:apply-templates select="activity" />
@@ -51,7 +46,7 @@
 	    <xsl:value-of select="activity_window/name" />
 	  </h2>
 	  <xsl:if test="activity_window/admin">
-	    <h3 class="blue1">Activity Menu</h3>
+	    <h3 class="blue1">Activity's menu</h3>
 	    <ul class="line">
 	      <li class="go">
 		<a href="?activity=1&amp;information=1">Information</a>
@@ -60,13 +55,8 @@
 		<a href="?activity=1&amp;member=1">Members</a>
 	      </li>
 	      <li class="go">
-		<a href="?activity=1&amp;add_activity=1">Add an sub-activity</a>
+		<a href="?activity=1&amp;add_activity=1">Add a sub-activity</a>
 	      </li>
-	      <!--
-	      <li class="go">
-		<a href="?activity=1&amp;member_dategraph=1">History</a>
-	      </li>
-	      -->
 	    </ul>
 	  </xsl:if>
 	  <xsl:apply-templates select="activity_window" />

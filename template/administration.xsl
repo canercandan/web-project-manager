@@ -6,12 +6,12 @@
       <form action="?" method="post">
 	<div class="member_list">
 	  <table class="table">
-	    <caption>List of member</caption>
+	    <caption>Members' list</caption>
 	    <thead>
 	      <tr>
-		<th>Select</th>
-		<th>Login</th>
-		<th>Name</th>
+		<th class="little" />
+		<th>Username</th>
+		<th>Last Name</th>
 		<th>First Name</th>
 		<th>Level</th>
 		<th>Action</th>
@@ -56,7 +56,7 @@
 		    </select>
 		  </td>
 		  <td>
-		    <a href="./profil.php?memberselect={id}">Profil</a>
+		    <a href="./profil.php?memberselect={id}">Profile</a>
 		  </td>
 		</tr>
 	      </xsl:for-each>

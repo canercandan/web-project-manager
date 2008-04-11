@@ -14,17 +14,17 @@
 	<legend>Add an activity</legend>
 	<div class="form">
 	  <label>
-	    Name<br />
+	    Project's name<br />
 	    <input type="text" name="{field_activity_name}" />
 	  </label>
 	  <hr />
 	  <label class="big">
-	    Describe<br />
+	    Description<br />
 	    <textarea name="{field_activity_describ}"></textarea>
 	  </label>
 	  <hr />
 	  <label>
-	    Charge<br />
+	    Workload<br />
 	    <input type="text" name="{field_activity_charge}" />
 	  </label>
 	  <hr />

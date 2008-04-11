@@ -4,7 +4,7 @@
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="body/member">
     <fieldset>
-      <legend>Member space</legend>
+      <legend>Member's space</legend>
       <div>
 	<h3 class="blue2">
 	  <a href="./profil.php">Edit your profil</a>

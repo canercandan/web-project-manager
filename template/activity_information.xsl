@@ -8,14 +8,14 @@
 	  <xsl:apply-templates select="infoproject" />
 	    <div class="member_list">
 	      <table class="table">
-	        <caption>Member project</caption>
+	        <caption>Project's members</caption>
 	        <thead>
 	          <tr>
-				<th>Select</th>
-				<th>Member</th>
-				<th>Action</th>
+		    <th>Selection</th>
+		    <th>Member</th>
+		    <th>Action</th>
 	          </tr>
-			</thead>
+		</thead>
 	      </table>
 		</div>
 	  </xsl:when>
@@ -26,11 +26,11 @@
 	        <caption>Member Charge</caption>
 	        <thead>
 	          <tr>
-			    <th>Select</th>
-			    <th>Member</th>
-			    <th>Activity</th>
-			    <th>Answer</th>
-			    <th>Action</th>
+		    <th>Selection</th>
+		    <th>Member</th>
+		    <th>Activity</th>
+		    <th>Answer</th>
+		    <th>Action</th>
 	          </tr>
 	        </thead>
 	      </table>
@@ -41,13 +41,13 @@
 	  <xsl:apply-templates select="infoanswer">
 	    <div class="member_list">
 	      <table class="table">
-	        <caption>Member project</caption>
+	        <caption>Project's members</caption>
 	        <thead>
 	          <tr>
-			    <th>Select</th>
-			    <th>Acitivty</th>
-			    <th>Answer</th>
-			    <th>Action</th>
+		    <th>Selection</th>
+		    <th>Acitivty</th>
+		    <th>Answer</th>
+		    <th>Action</th>
 	          </tr>
 	        </thead>
 	      </table>
