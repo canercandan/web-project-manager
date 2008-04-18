@@ -45,6 +45,8 @@ function info_list_average()
 {
   $test = sql_query(sprintf(INFO_SQL_LIST_AVERAGE, 
 							$_SESSION['ACTIVITY_ID']));
+  $sum = 0;
+  $number = 0;
   while($value = sql_fetch_array($test))
     {
 	  if ($value[0] > 0)
