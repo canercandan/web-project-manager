@@ -70,7 +70,6 @@ function get_parent_date_end($id_activity)
 
 function	get_activity_start($id_activity, $id_project, $tab_result) 
 {
-
 	if (isset($tab_result['start']))
 		{
 			foreach($tab_result['start'] as $key => $value)
@@ -172,7 +171,6 @@ function	get_activity_start($id_activity, $id_project, $tab_result)
 			}
 	}
 	$tab_result['start'][$id_activity] = $resultat;
-
 	return ($tab_result);
 }
 

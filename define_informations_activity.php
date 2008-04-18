@@ -53,8 +53,9 @@ WHERE
 p.activity_id = \'%d\'
 GROUP BY f.activity_id');
 
-define('SQL_SELECT_ACTIVITIES_DEPENDANCE', 'SELECT activity_id, activity_name, (activity_dependance_dependof_id is not NULL) 
-FROM tw_activity LEFT JOIN tw_activity_dependance ON (activity_dependance_activity_id = \'%d\' AND activity_dependance_dependof_id = activity_id)
+define('SQL_SELECT_ACTIVITIES_DEPENDANCE', 'SELECT activity_id, activity_name, (r.activity_dependance_dependof_id is not NULL), (t.activity_dependance_dependof_id is not NULL) 
+FROM tw_activity LEFT JOIN tw_activity_dependance r ON (r.activity_dependance_activity_id = \'%d\' AND r.activity_dependance_dependof_id = activity_id)
+LEFT JOIN tw_activity_dependance t ON (t.activity_dependance_activity_id = activity_id AND t.activity_dependance_dependof_id = \'%d\')
 WHERE activity_project_id = \'%d\' 
 and activity_parent_id = \'%d\'
 order by activity_name;');

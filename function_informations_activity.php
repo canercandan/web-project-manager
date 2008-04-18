@@ -73,18 +73,23 @@ function get_new_activity_informations($id_activity)
 
 function print_activities_list_dependance($id_project, $id_activity, $id_root_activity)
 {
-  $res = SQL_QUERY(sprintf(SQL_SELECT_ACTIVITIES_DEPENDANCE, sql_real_escape_string($id_root_activity), sql_real_escape_string($id_project), sql_real_escape_string($id_activity)));
-  if (sql_num_rows($res))
-    while ($tab = sql_fetch_array($res))
-      {
-		printf(ACTIVITY_START);
-		printf('<depend post="%s" value="%s"/>', POST_ACTIVITY_DEPEND, $tab[2]);
-		printf(ACTIVITY_TITLE, htmlentities($tab[1] == "" ? UNNAMED_ACTIVITY : $tab[1]));
-		printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]] : 0);
-		printf(ACTIVITY_ID, $tab[0]);
-		print_activities_list_dependance($id_project, $tab[0], $id_root_activity);
-		printf(ACTIVITY_END);
-      }
+	$test = 0;
+	$res = SQL_QUERY(sprintf(SQL_SELECT_ACTIVITIES_DEPENDANCE, sql_real_escape_string($id_root_activity), sql_real_escape_string($id_root_activity), sql_real_escape_string($id_project), sql_real_escape_string($id_activity)));
+	if (sql_num_rows($res))
+		while ($tab = sql_fetch_array($res))
+		{
+			printf(ACTIVITY_START);
+			if (print_activities_list_dependance($id_project, $tab[0], $id_root_activity))
+				$test = 1;
+			else
+				$test = ($tab[0] == $id_root_activity) || $tab[3];
+			printf('<depend post="%s" value="%s" disabled="%d"/>', POST_ACTIVITY_DEPEND, $tab[2], $test);
+			printf(ACTIVITY_TITLE, htmlentities($tab[1] == "" ? UNNAMED_ACTIVITY : $tab[1]));
+			printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]] : 0);
+			printf(ACTIVITY_ID, $tab[0]);
+			printf(ACTIVITY_END);
+		}
+	return ($test);
 }
 
 function new_add_activities($id_project, $id_activity, $name, $describ, $charge, $day, $month, $year,
