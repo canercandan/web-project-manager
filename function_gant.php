@@ -66,7 +66,7 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 	$start1 = ($actstart < 0 ? 20 : (($actstart - $start) / $len) * 80 + 20);
 	$workwidth = ($work * 80) / $len;
 	if ($start1 > 20)
-		printf(TAB_ITEM, '', '',
+		printf(TAB_ITEM, '0', '',
 			'', 
 			$bg,
 			0,
@@ -74,7 +74,7 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 			20,
 			$start1 - 20);
 	if ($workwidth > 0)
-		printf(TAB_ITEM, '', $save1 = ($actstart < 0 ? "Unevaluable" : print_date($dstart['mday'], $dstart['mon'], $dstart['year'])),
+		printf(TAB_ITEM, '1', $save1 = ($actstart < 0 ? "Unevaluable" : print_date($dstart['mday'], $dstart['mon'], $dstart['year'])),
 				$save2 = ($actend < 0 ? "Unevaluable" : print_date($dend['mday'], $dend['mon'], $dend['year'])), 
 				$bg + 4,
 				0,
@@ -82,7 +82,7 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 				$start1,
 				$workwidth);
 	if (!$workwidth || $workwidth < $end1 - $start1)		
-		printf(TAB_ITEM, '', $save1 = ($actstart < 0 ? "Unevaluable" : print_date($dstart['mday'], $dstart['mon'], $dstart['year'])),
+		printf(TAB_ITEM, '1', $save1 = ($actstart < 0 ? "Unevaluable" : print_date($dstart['mday'], $dstart['mon'], $dstart['year'])),
 				$save2 = ($actend < 0 ? "Unevaluable" : print_date($dend['mday'], $dend['mon'], $dend['year'])), 
 				$bg + 2,
 				0,
@@ -90,7 +90,7 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 				$start1 + $workwidth,
 				$end1 - $start1 - $workwidth);
 	if ($end1 < 100 && $start1 + $workwidth < 100)
-		printf(TAB_ITEM, '', '',
+		printf(TAB_ITEM, '0', '',
 			'', 
 			$bg,
 			0,
