@@ -75,6 +75,9 @@
 	    <xsl:when test="project_member_dategraph">
 	      <xsl:apply-templates select="project_member_dategraph" />
 	    </xsl:when>
+		<xsl:when test="gantt">
+			<xsl:apply-templates select="gantt" />
+		</xsl:when>
 	  </xsl:choose>
 	</xsl:otherwise>
       </xsl:choose>

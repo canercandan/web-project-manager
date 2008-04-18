@@ -134,37 +134,37 @@ th.select
 	width: 5px;
 }
 
-.history
+.gantt
 {
 	margin: 5px auto;
 	width: 100%;
 }
 
-.history .name
+.gantt .name
 {
 	padding-left: 15px;
 	width: 15%;
 	background-color: #eee;
 }
 
-.history .legend
+.gantt .legend
 {
 	border-left: 1px solid DarkGray;
 	background-color: WhiteSmoke;
 }
 
-.history .name,
-.history .legend
+.gantt .name,
+.gantt .legend
 {
 	font-weight: bold;
 	font-size: 0.8em;
 }
 
-.history .col div
+.gantt .col div
 {
 	float: left;
 	padding-top: 3px;
-	height: 20px;
+	height: 15px;
 }
 
 fieldset
