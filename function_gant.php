@@ -79,7 +79,7 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 				$bg + 4,
 				0,
 				sprintf('%.0f day of work', $work / (24 * 60 * 60)), 
-				$start1,
+				$actstart < 0 ? 20 : $start1,
 				$workwidth);
 	if (!$workwidth || $workwidth < $end1 - $start1)		
 		printf(TAB_ITEM, '1', $save1 = ($actstart < 0 ? "Unevaluable" : print_date($dstart['mday'], $dstart['mon'], $dstart['year'])),
@@ -87,9 +87,9 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 				$bg + 2,
 				0,
 				$save1 . " - " . $save2, 
-				$start1 + $workwidth,
-				$end1 - $start1 - $workwidth);
-	if ($end1 < 100 && $start1 + $workwidth < 100)
+				$actstart < 0 ? 20 : $start1 + $workwidth,
+				$actend < 0 ? 100 - ($start1 + $workwidth) : $end1 - $start1 - $workwidth);
+	if ($actend >= 0 && $end1 < 100 && $start1 + $workwidth < 100)
 		printf(TAB_ITEM, '0', '',
 			'', 
 			$bg,
