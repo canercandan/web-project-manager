@@ -6,6 +6,7 @@ if (!MAIN || !isset($_SESSION['PROJECT_NAME']))
 require_once('define_project.php');
 require_once('function_activity.php');
 require_once('define_activity.php');
+require_once('function_right.php');
 //require_once('dategraph.php');
 
 printf(PROJECT_WINDOW_BEGIN);
@@ -16,9 +17,9 @@ if (isset($_SESSION['PROJECT_NAME']))
   {
     printf(PROJECT_NAME, htmlentities($_SESSION['PROJECT_NAME']));
   }
+get_project_right($_SESSION['PROJECT_ID'], $_SESSION[SESSION_ID]);
 
 check_admin_for_project(isset($_SESSION['PROJECT_ID']) ? $_SESSION['PROJECT_ID'] : 0);
-
 printf(ACTIVITY_LIST_START);
 printf(ACTIVITY_TITLE, htmlentities(isset($_SESSION['PROJECT_NAME']) ? $_SESSION['PROJECT_NAME'] : UNKNOWED_PROJECT));
 printf(ACTIVITY_DEV, isset($_SESSION['DEVELOPPED_ACTIVITY'][0]) ? $_SESSION['DEVELOPPED_ACTIVITY'][0] : 0);

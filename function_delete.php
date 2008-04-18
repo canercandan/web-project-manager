@@ -2,16 +2,59 @@
 
 define('SQL_DELETE_ONE_ACT', 'DELETE FROM tw_activity WHERE activity_id = \'%d\';');
 define('SQL_DELETE_ACT_FROM_ACT_MEMBER', 'DELETE FROM tw_activity_member WHERE activity_member_activity_id = \'%d\';');
-define('SQL_DELETE_PROJ_FROM_PROJ_MEMBER', 'DELETE FROM ')
-define('SQL_GET_ACT_ACT'
-define('SQL_GET_ACT_PROJ',)
+define('SQL_DELETE_ACT_DEPENDANCE', 'DELETE FROM tw_activity_dependance WHERE activity_dependance_activity_id = \'%d\' or activity_dependance_dependof_id = \'%d\';');
+define('SQL_GET_ACT_ACT', 'SELECT activity_id FROM tw_activity WHERE activity_parent_id = \'%d\';');
+define('SQL_GET_ACT_PROJ', 'SELECT activity_id FROM tw_activity WHERE activity_project_id=\'%d\' AND activity_parent_id = 0;');
+define('SQL_DELETE_MEMBER_PROJECT', 'DELETE FROM tw_member WHERE member_project_id =\'%d\';');
+define('SQL_DELETE_ONE_MEMBER_PROJECT', 'DELETE FROM tw_member WHERE member_project_id =\'%d\' AND member_usr_id=\'%d\';');
+define('SQL_DELETE_PROJECT', 'DELETE FROM tw_project WHERE project_id =\'%d\';');
+define('SQL_DELETE_ONE_MEMBER_ACT', 'DELETE FROM tw_activity_member WHERE activity_member_activity_id = \'%d\' AND activity_member_usr_id = \'%d\';');
 
+function remove_member_project($id_project, $id_usr)
+{
+	$res = sql_query(sprintf(SQL_GET_ACT_PROJ, sql_real_escape_string($id_project)));
+	if (sql_num_rows($res))
+	{
+		while (($tab = sql_fetch_array($res)))
+			remove_member_activity($tab[0], $id_usr);
+	}
+	sql_query(sprintf(SQL_DELETE_ONE_MEMBER_PROJECT, sql_real_escape_string($id_project), sql_real_escape_string($id_usr)));
+}
 
+function remove_member_activity($id_activity, $id_usr)
+{
+	$res = sql_query(sprintf(SQL_GET_ACT_ACT, sql_real_escape_string($id_activity)));
+	if (sql_num_rows($res))
+	{
+		while (($tab = sql_fetch_array($res)))
+			remove_member_activity($tab[0], $id_usr);	
+	}
+	sql_query(sprintf(SQL_DELETE_ONE_ACT, sql_real_escape_string($id_activity), sql_real_escape_string($id_usr)));
+}
 
+function delete_activity($id_activity)
+{
+	$res = sql_query(sprintf(SQL_GET_ACT_ACT, sql_real_escape_string($id_activity)));
+	if (sql_num_rows($res))
+	{
+		while (($tab = sql_fetch_array($res)))
+			delete_activity($tab[0]);	
+	}
+	sql_query(sprintf(SQL_DELETE_ONE_ACT, sql_real_escape_string($id_activity)));
+	sql_query(sprintf(SQL_DELETE_ACT_FROM_ACT_MEMBER, sql_real_escape_string($id_activity)));
+	sql_query(sprintf(SQL_DELETE_ACT_DEPENDANCE, sql_real_escape_string($id_activity), sql_real_escape_string($id_activity)));
+}
 
-define('SQL_DELETE_USR_FROM_ACT')
-define('SQL_DELETE_USR_FROM_ACT_MEMBER')
-define('SQL_DELETE_USR_FROM_ACT_AUTOR')
-define('SQL_DELETE_USR_FROM_PROJ_MEMBER')
+function delete_project($id_project)
+{
+	$res = sql_query(sprintf(SQL_GET_ACT_PROJ, sql_real_escape_string($id_project)));
+	if (sql_num_rows($res))
+	{
+		while (($tab = sql_fetch_array($res)))
+			delete_activity($tab[0]);	
+	}
+	sql_query(sprintf(SQL_DELETE_MEMBER_PROJECT, sql_real_escape_string($id_activity)));
+	sql_query(sprintf(SQL_DELETE_PROJECT, sql_real_escape_string($id_activity)));
+}
 
 ?>
