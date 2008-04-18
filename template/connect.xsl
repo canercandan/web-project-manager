@@ -25,7 +25,7 @@
           </label>
 	  <hr />
 	  <div>
-	    <a href="./passwd.php">Password forgot ?</a>
+	    <a href="./passwd.php">Password forgotten ?</a>
 	  </div>
 	  <hr />
           <input type="submit" value="Sign in" />
