@@ -34,4 +34,5 @@
   <xsl:import href="./template/information_dependance_activity.xsl" />
   <xsl:import href="./template/passwd.xsl" />
   <xsl:import href="./template/gantt.xsl" />
+  <xsl:import href="./template/agenda.xsl" />
 </xsl:stylesheet>

@@ -25,4 +25,6 @@ define('SESSION_LEVEL', 'sesslevel');
 define('DESTROY', 'deco');
 define('SESSION_DESTROY', '<sessdestroy post="%s" />');
 
+define('PROJECT_ID', PROJECT_ID);
+
 ?>

@@ -46,6 +46,9 @@
 	  <xsl:if test="passwd">
 	    <xsl:apply-templates select="passwd" />
 	  </xsl:if>
+	  <xsl:if test="agenda">
+	    <xsl:apply-templates select="agenda" />
+	  </xsl:if>
 	</div>
       </xsl:otherwise>
     </xsl:choose>

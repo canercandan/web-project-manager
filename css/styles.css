@@ -474,3 +474,35 @@ h3.blue2
 	padding: 2px;
 	text-align: center;
 }
+
+.agenda
+{
+	margin: auto;
+}
+
+.agenda .event
+{
+	float: left;
+	width: 18%;
+	min-height: 150px;
+	border: 1px solid LightGrey;
+}
+
+.agenda .title,
+.agenda .line
+{
+	border-bottom: 1px solid LightSteelBlue;
+}
+
+.agenda .title
+{
+	padding: 5px;
+	text-align: right;
+	background-color: Lavender;
+}
+
+.agenda .line
+{
+	padding-left: 5px;
+	background-color: #eee;
+}
