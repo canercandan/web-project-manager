@@ -96,7 +96,7 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 			0,
 			'', 
 			max($end1, $start1 + $workwidth),
-			min(100 - $end1, 100 - $start1 + $workwidth)
+			min(100 - $end1, 100 - ($start1 + $workwidth))
 			);
 	printf(TAB_LINE_END);
 }
