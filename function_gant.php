@@ -49,6 +49,8 @@ function get_project_activity_plan($id_project)
 
 function print_line($tab, $id, $work, $bg, $len, $start, $name)
 {
+	if (!($tab['end'][$id]['ok'] && $tab['start'][$id]['ok']))
+		$bg + 10;
 	printf(TAB_LINE_START, 
 		0, ($name ? $tab['name'][$id] : ""), $bg,
 		$tab['end'][$id]['ok'] && $tab['start'][$id]['ok'] ? 1 : 0);

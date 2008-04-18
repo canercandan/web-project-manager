@@ -32,12 +32,14 @@ define('FIELD_ESTIMATE_DATE_END', '<field_estimate_date_end ok="%s" value="%s"/>
 define('ERR_NEW_DATE_ORDER', 'There are some mistakes with the dates : the date corresponding to the start (%s) must be after the one corresponding to the end (%s)');
 define('ERR_NEW_DATE_PROJECT', 'There are some mistakes with the dates : the dates of the project are : %s - %s');
 
-define('SQL_GET_WORKER', 'SELECT activity_member_usr_id from tw_activity_member
+define('SQL_GET_WORKER', 'SELECT activity_member_usr_id, profil_fname, profil_name from tw_activity_member, tw_profil
 where activity_member_activity_id = \'%d\'
-and activity_work = 1;');
+and activity_work = 1
+and profil_usr_id = activity_member_usr_id;');
 
-define('SQL_CHECK_WORK_ACTIVITY', 'SELECT activity_member_activity_id from tw_activity_member
+define('SQL_CHECK_WORK_ACTIVITY', 'SELECT activity_member_activity_id, activity_name from tw_activity_member, tw_activity
 where activity_member_activity_id != \'%d\'
+and activity_id = activity_member_activity_id
 and activity_member_usr_id =\'%d\'
 and activity_work = 1;');
 

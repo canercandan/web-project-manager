@@ -8,10 +8,36 @@ require_once('function_plane_activity.php');
 if (!MAIN)
   exit(0);
 
-function check_user($id_activity, $st_day, $st_month, $st_year,
-									$end_day, $end_month, $end_year)
+function check_user($id_activity, $aend, $astart)
 {
-	
+	if ($aend['date'] >= 0 && $astart['date'] >=0)
+	{
+		$res = sql_query(sprintf(SQL_GET_WORKER, sql_real_escape_string($id_activity)));
+		if (sql_num_rows($res))
+		while ($tab = sql_fetch_array($res))
+		{
+			$tabdate = null;
+			$res2 = sql_query(sprintf(SQL_GET_WORKER, sql_real_escape_string($id_activity), sql_real_escape_string($tab[0])));
+			if (sql_num_rows($res2))
+				while ($tab2 = sql_fetch_array($res2))
+				{
+					$tabdate = get_activity_start($tab2[0], $_SESSION['PROJECT_ID'], $tabdate);
+					$start = $tabdate['start'][$tab2[0]];
+					$tabdate = get_activity_end($start, $tab2[0], $_SESSION['PROJECT_ID'], $tabdate);
+					$end = $tabdate['end'][$tab2[0]];
+					if ($end['date'] >= 0 && $start['date'] >=0)
+					{
+						if (($astart['date'] < $start['date'] && $start['date'] < $aend['date'])	
+							|| ($astart['date'] < $end['date'] && $end['date'] < $aend['date'])	
+							|| ($start['date'] < $astart['date'] && $astart['date'] < $end['date	'])
+							|| ($start['date'] < $aend['date'] && $aend['date'] < $end['date'])	
+							|| ($start['date'] <= $astart['date'] && $aend['date'] <= $end['date'])	
+							|| ($astart['date'] <= $start['date'] && $end['date'] <= $aend['date']))	
+							printf("<warning>Be carefull: %s %s work in the same time on this activity and on the activity named %s</warning>", $tab[1], $tab[2], $tab2[1]);	
+					}
+				}
+		}
+	}
 }
   
 function get_new_activity_informations($id_activity)
@@ -42,7 +68,7 @@ function get_new_activity_informations($id_activity)
 	$dend = getdate($end['date']);
 	printf(FIELD_ESTIMATE_DATE_START, $start['ok'] ? 1 : 0, $start['date'] == -1 ? 'Unevaluable' : sprintf('%02d/%02d/%04d', $dstart['mday'], $dstart['mon'], $dstart['year']));
 	printf(FIELD_ESTIMATE_DATE_END, $end['ok'] ? 1 : 0, $end['date'] == -1 ? 'Unevaluable' : sprintf('%02d/%02d/%04d', $dend['mday'], $dend['mon'], $dend['year']));
-	
+	check_user($id_activity, $end, $start);
 }  
 
 function print_activities_list_dependance($id_project, $id_activity, $id_root_activity)
