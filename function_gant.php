@@ -1,7 +1,7 @@
 <?php
 
 define('TAB_DATE_START','<tab_date length="%.3f">');
-define('TAB_LINE_START', '<line legend="%d" name="%s" colorbg="%d" valid="%d">');
+define('TAB_LINE_START', '<line level="%d" legend="%d" name="%s" colorbg="%d" valid="%d">');
 define('TAB_LINE_END', '</line>');
 define('TAB_DATE_END','</tab_date>');
 define('TAB_ITEM', '<item title="%s" date_start="%s" date_end="%s" color="%s" color_text="%s" legend="%s" start="%.3f" width="%.3f"/>');
@@ -9,10 +9,12 @@ define('TAB_ITEM', '<item title="%s" date_start="%s" date_end="%s" color="%s" co
 define('SQL_GET_ACTIVITY_PROJECT', 'SELECT activity_id, activity_name, SUM(activity_hour_work) FROM tw_activity
 LEFT JOIN tw_activity_member ON activity_id = activity_member_activity_id
 WHERE activity_project_id = \'%d\'
-GROUP BY activity_id;');
+and activity_parent_id = \'%d\'
+GROUP BY activity_id
+ORDER BY activity_name;');
 
 define('SQL_GET_PROJECT_DATES', 'SELECT month(project_date), day(project_date), year(project_date),
-										month(project_date_end), day(project_date_end), year(project_date_end), DATEDIFF(project_date_end, project_date)
+								month(project_date_end), day(project_date_end), year(project_date_end), DATEDIFF(project_date_end, project_date)
 FROM tw_project	
 WHERE project_id = \'%d\';');
 
@@ -25,33 +27,31 @@ AND project_id = \'%d\';');
 define('GANTT_BEGIN', '<gantt>');
 define('GANTT_END', '</gantt>');  							
 
-function get_project_activity_plan($id_project)
+
+function get_activities($id_project, $id_activity, $level, $tab_result)
 {
-	$res = sql_query(sprintf(SQL_GET_ACTIVITY_PROJECT, sql_real_escape_string($id_project)));
-	$tab_result = null;
+	$res = sql_query(sprintf(SQL_GET_ACTIVITY_PROJECT, sql_real_escape_string($id_project), sql_real_escape_string($id_activity)));
 	if (sql_num_rows($res))
 	{
 		while(($tab = sql_fetch_array($res)))
-		{
-			if (strlen($tab[1]))
-			{
-				$tab_result['name'][$tab[0]] = $tab[1];
-				$tab_result['work'][$tab[0]] = $tab[2];
-				$tab_result = get_activity_start($tab[0], $id_project, $tab_result);
-				$start = $tab_result['start'][$tab[0]];
-				$tab_result = get_activity_end($start, $id_activity, $id_project, $tab_result);
-			}
+		{	
+			$tab_result['level'][$tab[0]] = $level;
+			$tab_result['name'][$tab[0]] = $tab[1];
+			$tab_result['work'][$tab[0]] = $tab[2];
+			$tab_result = get_activity_start($tab[0], $id_project, $tab_result);
+			$start = $tab_result['start'][$tab[0]];
+			$tab_result = get_activity_end($start, $id_activity, $id_project, $tab_result);
+			$tab_result = get_activities($id_project, $tab[0], $level + 1, $tab_result);
 		}
-		asort($tab_result['start']);
 	}
-	return($tab_result);
+	return ($tab_result);
 }
 
 function print_line($tab, $id, $work, $bg, $len, $start, $name)
 {
 	if (!($tab['end'][$id]['ok'] && $tab['start'][$id]['ok']))
 		$bg += 10;
-	printf(TAB_LINE_START, 
+	printf(TAB_LINE_START, $tab['level'][$id], 
 		0, ($name ? $tab['name'][$id] : ""), $bg,
 		$tab['end'][$id]['ok'] && $tab['start'][$id]['ok'] ? 1 : 0);
 	if ($tab['start'][$id]['date'] > $start + $len)	
@@ -80,7 +80,7 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 				$save2 = ($actend < 0 ? "Unevaluable" : print_date($dend['mday'], $dend['mon'], $dend['year'])), 
 				$bg + 4,
 				0,
-				sprintf('%.0f day of work', $work / (24 * 60 * 60)), 
+				sprintf('%.0f day(s) of work', $work / (24 * 60 * 60)), 
 				$actstart < 0 ? 20 : $start1,
 				$workwidth);
 	if (!$workwidth || $workwidth < $end1 - $start1)		
@@ -112,7 +112,7 @@ function	print_tab_legend($length, $day, $month, $year, $nb)
 {
 	$step = $length / ($nb);
 	$width = ((double) 80) / ((double) $nb);
-	printf(TAB_LINE_START, 1, '', 0, 1);
+	printf(TAB_LINE_START, 0, 1, '', 0, 1);
 	$end = 20;
 	if ($step >= 1)
 		while ($end < 100)
@@ -140,11 +140,11 @@ function show_gant($id_project)
 	$len = mktime(0, 0, 0, $tab[3], $tab[4], $tab[5]) - mktime(0, 0, 0, $tab[0], $tab[1], $tab[2]);
 	$start = mktime(0, 0, 0, $tab[0], $tab[1], $tab[2]);
 	printf(TAB_DATE_START, $tab[6]);
-	$tab_result = get_project_activity_plan($id_project);
+	$tab_result = get_activities($id_project, 0, 0, null);
 	if ($tab_result)
 	{
 		$i = 1;
-		foreach($tab_result['start'] as $key => $value)
+		foreach($tab_result['name'] as $key => $value)
 		{
 			if (strlen($tab_result['name'][$key]))
 			{
