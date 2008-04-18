@@ -2,7 +2,6 @@
 
 if (!MAIN)
   exit(0);
-
 require_once('./define_charge.php');
 
 function info_list_project()

@@ -68,6 +68,8 @@ define('INFO_SQL_LIST_UPDATE',
 	   'UPDATE tw_charge
 	    SET charge_answer = \'%s\'
 		WHERE charge_activity_id = \'%s\'
-		AND charge_usr_id = \'%s\';');
+		AND charge_usr_id in (SELECT usr_id
+								   FROM tw_usr
+								   WHERE usr_login = \'%s\');');
 
 ?>
