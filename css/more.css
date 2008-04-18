@@ -8,7 +8,8 @@
 }
 
 input,
-textarea
+textarea,
+.gantt .novalid
 {
 	filter: alpha(opacity=70); /* for IE */
 	opacity: 0.7; /* CSS3 Standard */
