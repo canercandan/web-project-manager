@@ -19,6 +19,9 @@
 	  <a href="?project=1&amp;add_activity=1">Add an activity</a>
 	</li>
 	<li class="go">
+		<a href="?project=1&amp;gantt=1">Gantt</a>
+	</li>
+	<li class="go">
 	  <a href="?project=1&amp;delete_project=1">Remove</a>
 	</li>
       </ul>
