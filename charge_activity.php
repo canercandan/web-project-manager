@@ -1,5 +1,4 @@
 <?php
-
 define('MAIN', 1);
 
 require_once('./define_config.php');

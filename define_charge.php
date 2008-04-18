@@ -1,5 +1,4 @@
 <?php
-
 if (!MAIN)
   exit(0);
 
@@ -70,5 +69,4 @@ define('INFO_SQL_LIST_UPDATE',
 		AND charge_usr_id in (SELECT usr_id
 								   FROM tw_usr
 								   WHERE usr_login = \'%s\');');
-
 ?>
