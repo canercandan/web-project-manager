@@ -12,6 +12,7 @@ $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 session_name(SESS_NAME);
 session_start();
+
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE, 0, 0);
@@ -27,12 +28,10 @@ if ($_SESSION[SESSION_LEVEL] != IS_A_WORKER)
 	info_list_charge();
 	info_list_average();
   }
-else
-  {
-    info_list_update();
-    info_list_answer();
-  }
+  info_list_update();
+  info_list_answer();
 printf(INFO_ACTIVITY_END);
+
 printf(XML_FOOTER);
 sql_close($link);
 ?>

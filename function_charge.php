@@ -6,13 +6,14 @@ require_once('./define_charge.php');
 
 function info_list_project()
 {
-  $test = sql_query(INFO_SQL_LIST_PROJECT);
-  $answer = sprintf(INFO_PROJECT_BEGIN); 
+  $test = sql_query(sprintf(INFO_SQL_LIST_PROJECT,
+		                    $_SESSION['ACTIVITY_ID']));
+  printf(INFO_PROJECT_BEGIN); 
   while ($tab = sql_fetch_array($test))
     {
-	  $answer = sprintf(INFO_PROJECT, $answer, $tab[0]);
+	  printf(INFO_PROJECT, $tab[0]);
 	}
-  $answer = sprintf(INFO_PROJECT_END, $answer);
+  printf(INFO_PROJECT_END);
   printf($answer);
 }
 
@@ -20,24 +21,24 @@ function info_list_charge()
 {
   $test = sql_query(sprintf(INFO_SQL_LIST_CHARGE,
 							$_SESSION['ACTIVITY_ID']));
-  $answer = sprintf(INFO_CHARGE_BEGIN);
+  printf(INFO_CHARGE_BEGIN);
   while ($tab = sql_fetch_array($test))
     {
-      $answer = sprintf(INFO_CHARGE, $answer, $tab[0], $tab[1], $tab[2]);
+      printf(INFO_CHARGE, $tab[0], $tab[1], $tab[2]);
     }
-  $answer = sprintf(INFO_CHARGE_END, $answer);
+  printf(INFO_CHARGE_END);
   printf($answer);
 }
 
 function info_list_answer()
 {
   $test = sql_query(sprintf(INFO_SQL_LIST_ANSWER, $_SESSION[SESSION_ID]));
-  $answer = sprintf(INFO_ANSWER_BEGIN);
+  printf(INFO_ANSWER_BEGIN);
   while($tab = sql_fetch_array($test))
 	{
-      $answer = sprintf(INFO_ANSWER, $answer, $tab[0], $tab[1]);
+      printf(INFO_ANSWER, $tab[0], $tab[1]);
 	}
-  $answer = sprintf(INFO_ANSWER_END, $answer);
+  printf(INFO_ANSWER_END);
   printf($answer);
 }
 
