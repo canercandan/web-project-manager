@@ -31,7 +31,7 @@ define('INFO_POST_ANSWER', 'infoanswer');
 // SQL request
 
 define('INFO_SQL_LIST_PROJECT',
-	   'SELECT activity_member_usr_id
+	   'SELECT DISTINCT activity_member_usr_id
 	    FROM tw_activity_member
 		WHERE activity_member_activity_id = \'%s\';');
 
