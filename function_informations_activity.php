@@ -8,6 +8,12 @@ require_once('function_plane_activity.php');
 if (!MAIN)
   exit(0);
 
+function check_user($id_activity, $st_day, $st_month, $st_year,
+									$end_day, $end_month, $end_year)
+{
+	
+}
+  
 function get_new_activity_informations($id_activity)
 {
   $res = sql_query(sprintf(SQL_GET_NEW_ACTIVITY_INFORMATIONS, sql_real_escape_string($id_activity)));
@@ -25,7 +31,7 @@ function get_new_activity_informations($id_activity)
   sprintf(ACTIVITY_CHARGE_EDITABLE, POST_MOD_ACTIVITY_CHARGE, $tab[8], $tab[2]),
   POST_ACTIVITY_YEAR, POST_ACTIVITY_MONTH, POST_ACTIVITY_DAY,
 	$tab[3], $tab[4], $tab[5],
-POST_ACTIVITY_YEAR_END, POST_ACTIVITY_MONTH_END, POST_ACTIVITY_DAY_END,
+	POST_ACTIVITY_YEAR_END, POST_ACTIVITY_MONTH_END, POST_ACTIVITY_DAY_END,
 	$tab[6], $tab[7], $tab[8]);
 	
 	$tab = get_activity_start($id_activity, $_SESSION['PROJECT_ID'], null);
@@ -36,6 +42,7 @@ POST_ACTIVITY_YEAR_END, POST_ACTIVITY_MONTH_END, POST_ACTIVITY_DAY_END,
 	$dend = getdate($end['date']);
 	printf(FIELD_ESTIMATE_DATE_START, $start['ok'] ? 1 : 0, $start['date'] == -1 ? 'Unevaluable' : sprintf('%02d/%02d/%04d', $dstart['mday'], $dstart['mon'], $dstart['year']));
 	printf(FIELD_ESTIMATE_DATE_END, $end['ok'] ? 1 : 0, $end['date'] == -1 ? 'Unevaluable' : sprintf('%02d/%02d/%04d', $dend['mday'], $dend['mon'], $dend['year']));
+	
 }  
 
 function print_activities_list_dependance($id_project, $id_activity, $id_root_activity)

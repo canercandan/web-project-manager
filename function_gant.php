@@ -42,15 +42,15 @@ function get_project_activity_plan($id_project)
 				$tab_result = get_activity_end($start, $id_activity, $id_project, $tab_result);
 			}
 		}
-		//asort($tab_result['start']);
+		asort($tab_result['start']);
 	}
 	return($tab_result);
 }
 
-function print_line($tab, $id, $work, $bg, $len, $start)
+function print_line($tab, $id, $work, $bg, $len, $start, $name)
 {
 	printf(TAB_LINE_START, 
-		0, ($work ? $tab['name'][$id] : ""), $bg,
+		0, ($name ? $tab['name'][$id] : ""), $bg,
 		$tab['end'][$id]['ok'] && $tab['start'][$id]['ok'] ? 1 : 0);
 	if ($tab['start'][$id]['date'] > $start + $len)	
 		$actstart = $start + $len;	
@@ -130,11 +130,11 @@ function show_gant($id_project)
 			if (strlen($tab_result['name'][$key]))
 			{
 				$i++;
-				print_line($tab_result, $key, 0, $i % 2, $len, $start);
+				print_line($tab_result, $key, 0, $i % 2, $len, $start, 0);
 				$res = sql_query(sprintf(SQL_GET_WORK_ACTIVITY, sql_real_escape_string($key), sql_real_escape_string($id_project)));
 				$tabtmp = sql_fetch_array($res);
-				print_line($tab_result, $key, $tabtmp[0], $i % 2, $len, $start);
-				print_line($tab_result, $key, 0, $i % 2, $len, $start);
+				print_line($tab_result, $key, $tabtmp[0], $i % 2, $len, $start, 1);
+				print_line($tab_result, $key, 0, $i % 2, $len, $start, 0);
 			}
 		}
 		print_tab_legend($tab[6], $tab[0], $tab[1], $tab[2], 3);
