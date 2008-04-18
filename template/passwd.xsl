@@ -11,7 +11,7 @@
     </xsl:if>
     <form action="./passwd.php" method="post">
       <fieldset>
-        <legend>Password forgot ?</legend>
+        <legend>Password forgotten ?</legend>
         <div class="form">
           <label>
             Username<br />
