@@ -65,6 +65,14 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 	$end1 = ($actend  < 0 ? 80 : (($actend - $start) / $len) * 80 + 20);
 	$start1 = ($actstart < 0 ? 20 : (($actstart - $start) / $len) * 80 + 20);
 	$workwidth = ($work * 80) / $len;
+	if ($start1 > 20)
+		printf(TAB_ITEM, '', '',
+			'', 
+			$bg,
+			0,
+			'', 
+			20,
+			$start1 - 20);
 	if ($workwidth > 0)
 		printf(TAB_ITEM, '', $save1 = ($actstart < 0 ? "Unevaluable" : print_date($dstart['mday'], $dstart['mon'], $dstart['year'])),
 				$save2 = ($actend < 0 ? "Unevaluable" : print_date($dend['mday'], $dend['mon'], $dend['year'])), 
@@ -80,7 +88,16 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 				0,
 				$save1 . " - " . $save2, 
 				$start1 + $workwidth,
-				$end1 - $start1);
+				$end1 - $start1 - $workwidth);
+	if ($end1 < 100 && $start1 + $workwidth < 100)
+		printf(TAB_ITEM, '', '',
+			'', 
+			$bg,
+			0,
+			'', 
+			max($end1, $start1 + $workwidth),
+			min(100 - $end1, 100 - $start1 + $workwidth)
+			);
 	printf(TAB_LINE_END);
 }
 
