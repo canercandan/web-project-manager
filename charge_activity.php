@@ -1,12 +1,16 @@
 <?php
 
 define('MAIN', 1);
+
 require_once('./define_config.php');
 require_once('./function_sql.php');
 require_once('./function_usr.php');
 require_once('./function_charge.php');
 require_once('./define_session.php');
 require_once('./define_charge.php');
+
+$link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
+sql_select_db(SQL_DB, $link);
 
 session_name(SESS_NAME);
 session_start();
@@ -30,4 +34,6 @@ if ($_SESSION[SESSION_LEVEL] < IS_A_WORKER)
   info_list_answer();
 printf(INFO_ACTIVITY_END);
 
+printf(XML_FOOTER);
+sql_close($link);
 ?>
