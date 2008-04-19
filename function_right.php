@@ -2,7 +2,7 @@
 
 define('SQL_GET_LEVEL_USR','SELECT usr_level_id FROM tw_usr WHERE usr_id = \'%d\';');
 
-define('SQL_GET_PROJECT_RIGHT', 'SELECT add_subactivity, update_member_activity, update_member, add_activity, remove_activity, add_member, kick_member, add_member_activity, kick_member_activity, remove_project FROM tw_member_role, tw_member_project
+define('SQL_GET_PROJECT_RIGHT', 'SELECT add_subactivity, update_member_activity, update_member, add_activity, remove_activity, add_member, kick_member, add_member_activity, kick_member_activity, remove_project FROM tw_member_role, tw_member
 	WHERE 
 	role_id = member_role_id
 	AND member_usr_id =\'%d\'
