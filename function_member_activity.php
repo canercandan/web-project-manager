@@ -29,13 +29,6 @@ function	update_member_activity($id_act, $id_user, $work,
 		    sql_real_escape_string($id_act)));
 }
 
-function	remove_member_activity($id_act, $id_user)
-{
-  sql_query(sprintf(SQL_REMOVE_MEMBER_ACTIVITY,
-		    sql_real_escape_string($id_user),
-		    sql_real_escape_string($id_act)));
-}
-
 function	get_member_project_activity($id_act, $id_proj, $last)
 {
   $res = sql_query(sprintf(SQL_GET_MEMBER_PROJECT_ACT,
