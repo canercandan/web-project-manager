@@ -4,6 +4,7 @@ require_once('function_informations_project.php');
 require_once('function_informations_activity.php');
 require_once('function_project.php');
 require_once('function_activity.php');
+require_once('function_delete.php');
 
 if (isset($_POST[BTN_UPDATE])
     && isset($_POST[POST_ACTIVITY_DEPEND]))

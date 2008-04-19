@@ -18,6 +18,7 @@ function remove_member_project($id_project, $id_usr)
 		while (($tab = sql_fetch_array($res)))
 			remove_member_activity($tab[0], $id_usr);
 	}
+	printf(SQL_DELETE_ONE_MEMBER_PROJECT, sql_real_escape_string($id_project), sql_real_escape_string($id_usr));
 	sql_query(sprintf(SQL_DELETE_ONE_MEMBER_PROJECT, sql_real_escape_string($id_project), sql_real_escape_string($id_usr)));
 }
 
@@ -29,7 +30,7 @@ function remove_member_activity($id_activity, $id_usr)
 		while (($tab = sql_fetch_array($res)))
 			remove_member_activity($tab[0], $id_usr);	
 	}
-	sql_query(sprintf(SQL_DELETE_ONE_ACT, sql_real_escape_string($id_activity), sql_real_escape_string($id_usr)));
+	sql_query(sprintf(SQL_DELETE_ONE_MEMBER_ACT, sql_real_escape_string($id_activity), sql_real_escape_string($id_usr)));
 }
 
 function delete_activity($id_activity)

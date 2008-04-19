@@ -2,6 +2,7 @@
 
 require_once('./function_member_project.php');
 require_once('./function_misc.php');
+require_once('./function_delete.php');
 
 if (isset($_POST[BTN_DOWN]) && isset($_POST[POST_SELECT]))
   {
@@ -11,8 +12,7 @@ if (isset($_POST[BTN_DOWN]) && isset($_POST[POST_SELECT]))
  else if (isset($_POST[BTN_UP]) && isset($_POST[POST_SELECT]))
    {
      foreach ($_POST[POST_SELECT] as $value)
-       remove_member_project($_POST[POST_LIST_KEY][$value][POST_KEY_ID],
-			     $_SESSION['PROJECT_ID']);
+       remove_member_project($_SESSION['PROJECT_ID'], $_POST[POST_LIST_KEY][$value][POST_KEY_ID]);
    }
  else if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_SELECT]))
    {
