@@ -28,7 +28,9 @@
 	<th>Title</th>
 	<th>Role</th>
 	<th>Admin</th>
-	<th>Work</th>
+	<xsl:if test="../show_work=1">
+	  <th>Work</th>
+	</xsl:if>
 	<th>Work hour</th>
       </tr>
     </thead>
@@ -85,21 +87,23 @@
 	      </xsl:otherwise>
 	    </xsl:choose>
 	  </td>
-	  <td>
-	    <xsl:choose>
-	      <xsl:when test="work=1">
-		<input type="checkbox"
-		       name="{work/@post}[{key/@unique}]"
-		       value="1"
-		       checked="checked" />
-	      </xsl:when>
-	      <xsl:otherwise>
-		<input type="checkbox"
-		       name="{work/@post}[{key/@unique}]"
-		       value="1" />
-	      </xsl:otherwise>
-	    </xsl:choose>
-	  </td>
+	  <xsl:if test="../../show_work=1">
+	    <td>
+	      <xsl:choose>
+		<xsl:when test="work=1">
+		  <input type="checkbox"
+			 name="{work/@post}[{key/@unique}]"
+			 value="1"
+			 checked="checked" />
+		</xsl:when>
+		<xsl:otherwise>
+		  <input type="checkbox"
+			 name="{work/@post}[{key/@unique}]"
+			 value="1" />
+		</xsl:otherwise>
+	      </xsl:choose>
+	    </td>
+	  </xsl:if>
 	</xsl:when>
 	<xsl:otherwise>
 	  <td>
@@ -119,29 +123,39 @@
 	      </xsl:otherwise>
 	    </xsl:choose>
 	  </td>
-	  <td>
-	    <xsl:choose>
-	      <xsl:when test="work=1">
-		<input type="checkbox"
-		       name="{work/@post}[{key/@unique}]"
-		       value="1"
-		       checked="checked"
-		       disabled="disabled" />
-	      </xsl:when>
-	      <xsl:otherwise>
-		<input type="checkbox"
-		       name="{work/@post}[{key/@unique}]"
-		       value="1"
-		       disabled="disabled" />
-	      </xsl:otherwise>
-	    </xsl:choose>
-	  </td>
+	  <xsl:if test="../../show_work=1">
+	    <td>
+	      <xsl:choose>
+		<xsl:when test="work=1">
+		  <input type="checkbox"
+			 name="{work/@post}[{key/@unique}]"
+			 value="1"
+			 checked="checked"
+			 disabled="disabled" />
+		</xsl:when>
+		<xsl:otherwise>
+		  <input type="checkbox"
+			 name="{work/@post}[{key/@unique}]"
+			 value="1"
+			 disabled="disabled" />
+		</xsl:otherwise>
+	      </xsl:choose>
+	    </td>
+	  </xsl:if>
 	</xsl:otherwise>
       </xsl:choose>
       <td class="little">
 	<xsl:if test="id=/doc/header/@id or ../../../activityright/@update_member_activity=1 or ../../../../projectright/@update_member_activity=1">
-	  <input type="text" name="{hour/@post}[{key/@unique}]"
-		 value="{hour}" />
+	  <xsl:choose>
+	    <xsl:when test="../../show_work=0">
+	      <input type="text" name="{hour/@post}[{key/@unique}]"
+		     value="{hour}" disabled="disabled" />
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <input type="text" name="{hour/@post}[{key/@unique}]"
+		     value="{hour}" />
+	    </xsl:otherwise>
+	  </xsl:choose>
 	</xsl:if>
       </td>
     </tr>
