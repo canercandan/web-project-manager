@@ -6,18 +6,7 @@ require_once('function_project.php');
 require_once('function_activity.php');
 require_once('function_delete.php');
 
-if (isset($_POST[BTN_UPDATE])
-    && isset($_POST[POST_ACTIVITY_DEPEND]))
-  {
-    $res = sql_query(sprintf(SQL_GET_ACTIVITY_DEPEND,
-			     $_SESSION['ACTIVITY_ID']));
-    if (sql_num_rows($res))
-      while (list($id_act, $id_act_dep) = sql_fetch_array($res))
-	remove_dependance($id_act, $id_act_dep);
-    foreach ($_POST[POST_ACTIVITY_DEPEND] as $key => $val)
-      add_dependance($_SESSION['ACTIVITY_ID'], $key);
-  }
- else if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_PROJECT_NAME]) && isset($_POST[POST_PROJECT_DESCRIB])
+if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_PROJECT_NAME]) && isset($_POST[POST_PROJECT_DESCRIB])
 	  && isset($_POST[POST_PROJECT_DAY]) && isset($_POST[POST_PROJECT_MONTH]) && isset($_POST[POST_PROJECT_YEAR])
 	  && isset($_POST[POST_PROJECT_DAY_END]) && isset($_POST[POST_PROJECT_MONTH_END]) && isset($_POST[POST_PROJECT_YEAR_END]))
   {
@@ -55,7 +44,7 @@ if (isset($_POST[BTN_UPDATE])
      header('Location:root.php?creation=project');
      exit(0);
    }
- else if (isset($_POST[POST_ACTIVITY_NAME]) && isset($_POST[POST_ACTIVITY_DESCRIB]) && isset($_POST[POST_ACTIVITY_CHARGE]) && 
+else if (isset($_POST[POST_ACTIVITY_NAME]) && isset($_POST[POST_ACTIVITY_DESCRIB]) && isset($_POST[POST_ACTIVITY_CHARGE]) && 
 	  $_POST[POST_ACTIVITY_NAME] != "" && $_POST[POST_ACTIVITY_CHARGE] != "" && is_numeric($_POST[POST_ACTIVITY_CHARGE])
 	  && isset($_POST[POST_ACTIVITY_YEAR]) && isset($_POST[POST_ACTIVITY_MONTH])  && isset($_POST[POST_ACTIVITY_DAY])
 	  && isset($_POST[POST_ACTIVITY_YEAR_END]) && isset($_POST[POST_ACTIVITY_MONTH_END])  && isset($_POST[POST_ACTIVITY_DAY_END]))
@@ -67,5 +56,18 @@ if (isset($_POST[BTN_UPDATE])
      header('Location:root.php?creation=activity');
      exit(0);
    }
+else if (isset($_POST[BTN_UPDATE]) && $_SESSION['ACTIVITY_MENU'] == INFORMATION_ACTIVITY)
+  {
+    $res = sql_query(sprintf(SQL_GET_ACTIVITY_DEPEND,
+			     $_SESSION['ACTIVITY_ID']));
+    if (sql_num_rows($res))
+      while (list($id_act, $id_act_dep) = sql_fetch_array($res))
+		{
+			remove_dependance($id_act, $id_act_dep);
+		}
+	if (isset($_POST[POST_ACTIVITY_DEPEND]))
+		foreach ($_POST[POST_ACTIVITY_DEPEND] as $key => $val)
+			add_dependance($_SESSION['ACTIVITY_ID'], $key);
+  }
 
 ?>

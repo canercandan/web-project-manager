@@ -41,6 +41,7 @@ define('SQL_CHECK_WORK_ACTIVITY', 'SELECT activity_member_activity_id, activity_
 where activity_member_activity_id != \'%d\'
 and activity_id = activity_member_activity_id
 and activity_member_usr_id =\'%d\'
+and activity_member_activity_id not in (SELECT activity_parent_id FROM tw_activity)
 and activity_work = 1;');
 
 define('SQL_GET_NEW_ACTIVITY_INFORMATIONS', '

@@ -10,6 +10,9 @@ if (!MAIN)
 
 function check_user($id_activity, $aend, $astart)
 {
+	$res = sql_query(sprintf(SQL_GET_ACT_ACT, sql_real_escape_string($id_activity)));
+	if (sql_num_rows($res))
+		return;
 	if ($aend['date'] >= 0 && $astart['date'] >=0)
 	{
 		$res = sql_query(sprintf(SQL_GET_WORKER, sql_real_escape_string($id_activity)));

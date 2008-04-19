@@ -66,11 +66,28 @@ define('SQL_ADD_MEMBER_ACTIVITY',
 	 activity_level, activity_work, activity_hour_work)
 	VALUES (\'%s\', \'%s\', 0, 0, 0);');
 
+define('SQL_GET_FIXED_WORK_MEMBER',
+'SELECT SUM(activity_hour_work) 
+FROM tw_activity_member, tw_activity
+WHERE 
+activity_member_activity_id = activity_id
+AND activity_parent_id = \'%d\'
+AND activity_member_usr_id = \'%d\';');
+	
+	
+define('SQL_UPDATE_WORK_HOUR_MEMBER',
+       '
+	   UPDATE	tw_activity_member
+			SET
+			activity_hour_work = \'%d\'
+			WHERE	activity_member_usr_id = \'%d\'
+			AND activity_member_activity_id = \'%d\';
+			');
+	
 define('SQL_UPDATE_MEMBER_ACTIVITY',
        'UPDATE	tw_activity_member
 	SET	activity_level = \'%d\',
-		activity_work = \'%d\',
-		activity_hour_work = \'%d\'
+		activity_work = \'%d\'
 	WHERE	activity_member_usr_id = \'%d\'
 		AND activity_member_activity_id = \'%d\';');
 

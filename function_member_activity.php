@@ -21,18 +21,38 @@ function	do_we_show_work($id_act)
 function	update_member_activity($id_act, $id_user, $work,
 				       $admin, $hour)
 {
-  printf(SQL_UPDATE_MEMBER_ACTIVITY,
-	 sql_real_escape_string($admin),
-	 sql_real_escape_string($work),
-	 sql_real_escape_string($hour),
-	 sql_real_escape_string($id_user),
-	 sql_real_escape_string($id_act));
-  sql_query(sprintf(SQL_UPDATE_MEMBER_ACTIVITY,
-		    sql_real_escape_string($admin),
-		    sql_real_escape_string($work),
-		    sql_real_escape_string($hour),
-		    sql_real_escape_string($id_user),
-		    sql_real_escape_string($id_act)));
+	if ($_SESSION['update_member_activity'])
+	{
+		sql_query(sprintf(SQL_UPDATE_MEMBER_ACTIVITY,
+				sql_real_escape_string($admin),
+				sql_real_escape_string($work),
+				sql_real_escape_string($id_user),
+				sql_real_escape_string($id_act)));
+	}
+	update_work_hour_member($id_act, $id_user, $hour, 1);
+}
+
+function	update_work_hour_member($id_activity, $id_usr, $hour, $full)
+{
+	if ($id_activity)
+	{
+		if ($_SESSION['update_member_activity'] || $id_usr == $_SESSION[SESSION_ID])
+		{
+			if (!$full)
+			{
+				$res = sql_query(sprintf(SQL_GET_FIXED_WORK_MEMBER,
+						sql_real_escape_string($id_activity),
+						sql_real_escape_string($id_usr)));
+				$hour = sql_result($res, 0, 0);
+			}
+			sql_query(sprintf(SQL_UPDATE_WORK_HOUR_MEMBER,
+						sql_real_escape_string($hour),
+						sql_real_escape_string($id_usr),
+						sql_real_escape_string($id_activity)));
+			$res = sql_query(sprintf(SQL_GET_PARENT_ID, sql_real_escape_string($id_activity)));
+			update_work_hour_member(sql_result($res, 0, 0), $id_usr, $hour, 0);
+		}
+	}
 }
 
 function	get_member_project_activity($id_act, $id_proj, $last)
