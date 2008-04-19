@@ -2,7 +2,7 @@
 
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template match="error">
+  <xsl:template match="warning">
     <fieldset>
       <legend>Warning</legend>
       <div class="warning">
