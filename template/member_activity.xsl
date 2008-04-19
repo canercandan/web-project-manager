@@ -18,7 +18,7 @@
     </tbody>
   </xsl:template>
 
-  <xsl:template match="member_activity/member_list_activity[/doc/header/@level=4]">
+  <xsl:template match="member_activity/member_list_activity">
     <thead>
       <tr>
 	<th class="little" />
@@ -33,7 +33,6 @@
       </tr>
     </thead>
     <tbody>
-      <xsl:variable name="id" select="/doc/header/@id" />
       <xsl:apply-templates select="member" />
     </tbody>
   </xsl:template>
@@ -52,7 +51,7 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_activity/member_list_activity/member[/doc/header/@id=$id]">
+  <xsl:template match="member_activity/member_list_activity/member">
     <tr>
       <td>
 	<input type="checkbox"
@@ -104,54 +103,38 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_activity[/doc/header/@level=1]|member_activity[/doc/header/@level=2]">
+  <xsl:template match="member_activity">
     <fieldset>
       <legend>Activity's members</legend>
-      <form action="?" method="post">
-	<div class="member_list">
-	  <table class="table">
-	    <caption>Project's members available</caption>
-	    <xsl:apply-templates select="member_list_project" />
-	  </table>
-	  <div class="form big">
-	    <input type="submit" name="{btn_down/@post}" value="Add to members" />
+      <xsl:if test="../@add_member_activity=1">
+	<form action="?" method="post">
+	  <div class="member_list">
+	    <table class="table">
+	      <caption>Project's members available</caption>
+	      <xsl:apply-templates select="member_list_project" />
+	    </table>
+	    <div class="form big">
+	      <input type="submit" name="{btn_down/@post}" value="Add to members" />
+	    </div>
 	  </div>
-	</div>
-      </form>
-      <form action="?" method="post">
-	<div class="member_list">
-	  <table class="table">
-	    <caption>Active or future members</caption>
-	    <xsl:apply-templates select="member_list_activity" />
-	  </table>
-	  <div class="form big">
-	    <input type="submit" name="{btn_update/@post}" value="Update" />
-	    <input type="submit" name="{btn_up/@post}" value="Delete" />
+	</form>
+      </xsl:if>
+      <xsl:if test="1">
+	<form action="?" method="post">
+	  <div class="member_list">
+	    <table class="table">
+	      <caption>Active or future members</caption>
+	      <xsl:apply-templates select="member_list_activity" />
+	    </table>
+	    <div class="form big">
+	      <input type="submit" name="{btn_update/@post}" value="Update" />
+	      <input type="submit" name="{btn_up/@post}" value="Delete" />
+	    </div>
 	  </div>
-	</div>
-	<div class="member_submit">
-	</div>
-      </form>
-    </fieldset>
-  </xsl:template>
-
-  <xsl:template match="member_activity[/doc/header/@level=4]">
-    <fieldset>
-      <legend>Activity's members</legend>
-      <form action="?" method="post">
-	<div class="member_list">
-	  <table class="table">
-	    <caption>Active or future members</caption>
-	    <xsl:apply-templates select="member_list_activity" />
-	  </table>
-	  <div class="form big">
-	    <input type="submit" name="{btn_update/@post}" value="Update" />
-	    <input type="submit" name="{btn_up/@post}" value="Delete" />
+	  <div class="member_submit">
 	  </div>
-	</div>
-	<div class="member_submit">
-	</div>
-      </form>
+	</form>
+      </xsl:if>
     </fieldset>
   </xsl:template>
 </xsl:stylesheet>
