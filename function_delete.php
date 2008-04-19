@@ -53,8 +53,8 @@ function delete_project($id_project)
 		while (($tab = sql_fetch_array($res)))
 			delete_activity($tab[0]);	
 	}
-	sql_query(sprintf(SQL_DELETE_MEMBER_PROJECT, sql_real_escape_string($id_activity)));
-	sql_query(sprintf(SQL_DELETE_PROJECT, sql_real_escape_string($id_activity)));
+	sql_query(sprintf(SQL_DELETE_MEMBER_PROJECT, sql_real_escape_string($id_project)));
+	sql_query(sprintf(SQL_DELETE_PROJECT, sql_real_escape_string($id_project)));
 }
 
 ?>

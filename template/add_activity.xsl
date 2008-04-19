@@ -14,7 +14,7 @@
 	<legend>Add an activity</legend>
 	<div class="form">
 	  <label>
-	    Project's name<br />
+	    Activity's name<br />
 	    <input type="text" name="{field_activity_name}" />
 	  </label>
 	  <hr />

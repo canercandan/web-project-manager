@@ -2,6 +2,7 @@
 
 require_once('function_project.php');
 require_once('function_activity.php');
+require_once('function_delete.php');
 
 if (isset($_GET['project_id']))
   {
@@ -126,7 +127,7 @@ if (isset($_GET['project_id']))
    }
  else if (isset($_GET['delete_project']))
    {
-     if (project_delete($_SESSION[SESSION_ID], $_SESSION['PROJECT_ID']))
+		delete_project($_SESSION['PROJECT_ID']);	
        unset($_SESSION['PROJECT_ID']);
    }
 
