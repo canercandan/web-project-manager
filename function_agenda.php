@@ -5,6 +5,14 @@ if (!MAIN)
 
 require_once('./define_agenda.php');
 
+function	agenda_select_minute()
+{
+  printf(MINUTE_START, MINUTE_NAME);
+  for ($i = 0; $i <= 59; $i++)
+    printf(DATE_ITEM, $i);
+  printf(MINUTE_END);
+}
+
 function	agenda_select_hour()
 {
   printf(HOUR_START, HOUR_NAME);
@@ -39,125 +47,118 @@ function	agenda_select_year()
   printf(YEAR_END);
 }
 
-function	agenda_date($date, $view)
+function	agenda_date($view)
 {
+  $time = mktime($_GET[HOUR_NAME], $_GET[MINUTE_NAME], 0,
+		 $_GET[MONTH_NAME], $_GET[DAY_NAME], $_GET[YEAR_NAME]);
   if ($view == VIEW_YEAR)
-    {
-      if ($date)
-	return (sprintf('%04d', $date));
-      return (date('Y'));
-    }
+    return (date('Y', $time));
   if ($view == VIEW_MONTH)
-    {
-      if ($date)
-	return (sprintf('%02d', $date));
-      return (date('m'));
-    }
+    return (date('m', $time));
   if ($view == VIEW_DAY)
-    {
-      if ($date)
-	return (sprintf('%02d', $date));
-      return (date('d'));
-    }
+    return (date('d', $time));
   if ($view == VIEW_HOUR)
-    {
-      if ($date)
-	return (sprintf('%02d', $date));
-      return (date('H'));
-    }
-}
-
-function	agenda_get_year()
-{
-  $res = sql_query(sprintf(SQL_AGENDA_GET,
-			   sql_real_escape_string(agenda_date($_GET[YEAR_NAME],
-							      VIEW_YEAR)),
-			   '%',
-			   '%',
-			   '%',
-			   sql_real_escape_string($_SESSION[PROJECT_ID])));
-  if (!sql_num_rows($res))
-    return (-1);
-  while ((list($subject, $body) = sql_fetch_array($res)))
-    printf(EVENT_ITEM, $subject, $body);
+    return (date('H', $time));
+  if ($view == VIEW_MINUTE)
+    return (date('i', $time));
   return (0);
 }
 
-function	agenda_get_month()
+function	agenda_get_res($res)
 {
-  $res = sql_query(sprintf(SQL_AGENDA_GET,
-			   sql_real_escape_string(agenda_date($_GET[YEAR_NAME],
-							      VIEW_YEAR)),
-			   sql_real_escape_string(agenda_date($_GET[MONTH_NAME],
-							      VIEW_MONTH)),
-			   '%',
-			   '%',
-			   sql_real_escape_string($_SESSION[PROJECT_ID])));
-  if (!sql_num_rows($res))
-    return (-1);
   while ((list($subject, $body, $date) = sql_fetch_array($res)))
     {
       $year = strtok($date, DELIMIT_DATE);
       $month = strtok(DELIMIT_DATE);
       $day = strtok(DELIMIT_DATE);
       $hour = strtok(DELIMIT_DATE);
-      printf(EVENT_ITEM, $year, $month, $day, $hour, $subject, $body);
+      $minute = strtok(DELIMIT_DATE);
+      printf(EVENT_ITEM, $year, $month, $day, $hour, $minute, $subject, $body);
     }
+}
+
+function	agenda_get_year()
+{
+  $res = sql_query(sprintf(SQL_AGENDA_GET,
+			   sql_real_escape_string(agenda_date(VIEW_YEAR)),
+			   '%',
+			   '%',
+			   '%',
+			   sql_real_escape_string($_GET[PROJ_ID])));
+  if (!sql_num_rows($res))
+    return (-1);
+  agenda_get_res($res);
+  return (0);
+}
+
+function	agenda_get_month()
+{
+  $res = sql_query(sprintf(SQL_AGENDA_GET,
+			   sql_real_escape_string(agenda_date(VIEW_YEAR)),
+			   sql_real_escape_string(agenda_date(VIEW_MONTH)),
+			   '%',
+			   '%',
+			   sql_real_escape_string($_GET[PROJ_ID])));
+  if (!sql_num_rows($res))
+    return (-1);
+  agenda_get_res($res);
   return (0);
 }
 
 function	agenda_get_week()
 {
   $res = sql_query(sprintf(SQL_AGENDA_GET,
-			   sql_real_escape_string(agenda_date($_GET[YEAR_NAME],
-							      VIEW_YEAR)),
-			   sql_real_escape_string(agenda_date($_GET[MONTH_NAME],
-							      VIEW_MONTH)),
+			   sql_real_escape_string(agenda_date(VIEW_YEAR)),
+			   sql_real_escape_string(agenda_date(VIEW_MONTH)),
 			   '%',
 			   '%',
-			   sql_real_escape_string($_SESSION[PROJECT_ID])));
+			   sql_real_escape_string($_GET[PROJ_ID])));
   if (!sql_num_rows($res))
     return (-1);
-  while ((list($subject, $body) = sql_fetch_array($res)))
-    printf(EVENT_ITEM, $subject, $body);
+  agenda_get_res($res);
   return (0);
 }
 
 function	agenda_get_day()
 {
   $res = sql_query(sprintf(SQL_AGENDA_GET,
-			   sql_real_escape_string(agenda_date($_GET[YEAR_NAME],
-							      VIEW_YEAR)),
-			   sql_real_escape_string(agenda_date($_GET[MONTH_NAME],
-							      VIEW_MONTH)),
-			   sql_real_escape_string(agenda_date($_GET[DAY_NAME],
-							      VIEW_DAY)),
+			   sql_real_escape_string(agenda_date(VIEW_YEAR)),
+			   sql_real_escape_string(agenda_date(VIEW_MONTH)),
+			   sql_real_escape_string(agenda_date(VIEW_DAY)),
 			   '%',
-			   sql_real_escape_string($_SESSION[PROJECT_ID])));
+			   sql_real_escape_string($_GET[PROJ_ID])));
   if (!sql_num_rows($res))
     return (-1);
-  while ((list($subject, $body) = sql_fetch_array($res)))
-    printf(EVENT_ITEM, $subject, $body);
+  agenda_get_res($res);
   return (0);
 }
 
 function	agenda_get_hours()
 {
   $res = sql_query(sprintf(SQL_AGENDA_GET,
-			   sql_real_escape_string(agenda_date($_GET[YEAR_NAME],
-							      VIEW_YEAR)),
-			   sql_real_escape_string(agenda_date($_GET[MONTH_NAME],
-							      VIEW_MONTH)),
-			   sql_real_escape_string(agenda_date($_GET[DAY_NAME],
-							      VIEW_DAY)),
-			   sql_read_escape_string(agenda_date($_GET[HOUR_NAME],
-							      VIEW_HOUR)),
-			   sql_real_escape_string($_SESSION[PROJECT_ID])));
+			   sql_real_escape_string(agenda_date(VIEW_YEAR)),
+			   sql_real_escape_string(agenda_date(VIEW_MONTH)),
+			   sql_real_escape_string(agenda_date(VIEW_DAY)),
+			   sql_read_escape_string(agenda_date(VIEW_HOUR)),
+			   sql_real_escape_string($_GET[PROJ_ID])));
   if (!sql_num_rows($res))
     return (-1);
-  while ((list($subject, $body) = sql_fetch_array($res)))
-    printf(EVENT_ITEM, $subject, $body);
+  agenda_get_res($res);
   return (0);
+}
+
+function	agenda_add_event()
+{
+  $date = sprintf(DATE_FMT, $_POST[YEAR_NAME], $_POST[MONTH_NAME],
+		  $_POST[DAY_NAME], $_POST[HOUR_NAME], $_POST[MINUTE_NAME]);
+  if (sql_query(sprintf(SQL_AGENDA_ADD_EVENT,
+			sql_real_escape_string($_POST[PROJ_ID]),
+			sql_real_escape_string($_SESSION[SESSION_ID]),
+			sql_real_escape_string($date),
+			sql_real_escape_string($_POST[EVENT_SUBJECT]),
+			sql_real_escape_string($_POST[EVENT_BODY]))))
+    return (EVENT_OK);
+  return (EVENT_ERR);
 }
 
 ?>

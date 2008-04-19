@@ -151,7 +151,7 @@ th.select
 
 .gantt .legend
 {
-	border-left: 1px solid DarkGray;
+	border-left: 1px solid Gray;
 	background-color: WhiteSmoke;
 }
 
@@ -484,7 +484,8 @@ h3.blue2
 
 .agenda
 {
-	margin: auto;
+	margin: 0 8%;
+	width: 90%;
 }
 
 .agenda .event
@@ -512,4 +513,22 @@ h3.blue2
 {
 	padding-left: 5px;
 	background-color: #eee;
+}
+
+.view
+{
+	margin: auto;
+	width: 200px;
+}
+
+.view div
+{
+	float: left;
+	padding: 5px;
+	border: 2px solid LightSteelBlue;
+}
+
+.view .on
+{
+	background-color: LightSteelBlue;
 }

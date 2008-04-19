@@ -12,7 +12,38 @@ sql_select_db(SQL_DB, $link);
 session_name(SESS_NAME);
 session_start();
 if (!$_SESSION[SESSION_ID])
-  header("Location: connect.php");
+  {
+    header(LOCATION_NOTLOG);
+    exit(-1);
+  }
+if (!$_GET[PROJ_ID] && !$_POST[PROJ_ID])
+  {
+    header(LOCATION_NOPROJ);
+    exit(-1);
+  }
+if ($_POST[PROJ_ID])
+  {
+    header(sprintf(LOCATION_DATE,
+		   ADD_EVENT,
+		   (agenda_add_event() == EVENT_ERR ? EVENT_ERR : EVENT_OK),
+		   PROJ_ID, $_POST[PROJ_ID],
+		   MINUTE_NAME, $_POST[MINUTE_NAME],
+		   HOUR_NAME, $_POST[HOUR_NAME],
+		   DAY_NAME, $_POST[DAY_NAME],
+		   MONTH_NAME, $_POST[MONTH_NAME],
+		   YEAR_NAME, $_POST[YEAR_NAME]));
+    exit(0);
+  }
+if (!$_GET[MINUTE_NAME] && !$_GET[HOUR_NAME] && !$_GET[DAY_NAME]
+    && !$_GET[MONTH_NAME] && !$_GET[YEAR_NAME])
+  header(sprintf(LOCATION_DATE,
+		 ADD_EVENT, ($_GET[ADD_EVENT] ? $_GET[ADD_EVENT] : 0),
+		 PROJ_ID, $_GET[PROJ_ID],
+		 MINUTE_NAME, date('i'),
+		 HOUR_NAME, date('H'),
+		 DAY_NAME, date('d'),
+		 MONTH_NAME, date('m'),
+		 YEAR_NAME, date('Y')));
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE,
@@ -22,11 +53,15 @@ if ($_GET[DEBUG])
 	  $_SESSION[SESSION_LEVEL], $_SESSION[SESSION_ID]);
 printf(SESSION_DESTROY, DESTROY);
 printf(AGENDA_START,
+       ($_GET[ADD_EVENT] ? $_GET[ADD_EVENT] : 0),
+       $_GET[PROJ_ID],
        ($_GET[GET_VIEW] ? $_GET[GET_VIEW] : VIEW_MONTH),
-       agenda_date($_GET[YEAR_NAME], VIEW_YEAR),
-       agenda_date($_GET[MONTH_NAME], VIEW_MONTH),
-       agenda_date($_GET[DAY_NAME], VIEW_DAY),
-       agenda_date($_GET[HOUR_NAME], VIEW_HOUR));
+       agenda_date(VIEW_YEAR),
+       agenda_date(VIEW_MONTH),
+       agenda_date(VIEW_DAY),
+       agenda_date(VIEW_HOUR),
+       agenda_date(VIEW_MINUTE));
+agenda_select_minute();
 agenda_select_hour();
 agenda_select_day();
 agenda_select_month();
