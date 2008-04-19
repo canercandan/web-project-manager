@@ -96,7 +96,7 @@
       </form>
     </fieldset>
     <fieldset>
-      <legend>Dependancy</legend>
+      <legend>This activity depend of...</legend>
       <div>
 	<xsl:apply-templates select="information_dependance_activity" />
       </div>

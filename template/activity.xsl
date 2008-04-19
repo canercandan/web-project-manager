@@ -3,15 +3,22 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:template match="activity/depend">
-    <xsl:choose>
-      <xsl:when test="@value=1">
-	<input type="checkbox" name="{@post}[{../id}]" value="1"
-	       checked="checked" />
-      </xsl:when>
-      <xsl:otherwise>
-	<input type="checkbox" name="{@post}[{../id}]" value="1" />
-      </xsl:otherwise>
-    </xsl:choose>
+	<xsl:choose>
+		<xsl:when test="@disabled=0">
+		<xsl:choose>
+			<xsl:when test="@value=1">
+				<input type="checkbox" name="{@post}[{../id}]" value="1"
+				checked="checked" />
+			</xsl:when>
+			<xsl:otherwise>
+				<input type="checkbox" name="{@post}[{../id}]" value="1" />
+			</xsl:otherwise>
+		</xsl:choose>
+		</xsl:when>
+		<xsl:otherwise>
+			<input type="checkbox" name="{@post}[{../id}]" value="1" disabled="disabled"/>
+		</xsl:otherwise>
+	</xsl:choose>
   </xsl:template>
 
   <xsl:template match="activity/title">
