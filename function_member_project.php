@@ -24,13 +24,6 @@ function	update_member_project($id_user, $id_project, $role)
 		    sql_real_escape_string($id_project)));
 }
 
-function	remove_member_project($id_user, $id_project)
-{
-  sql_query(sprintf(SQL_REMOVE_PROJECT_MEMBER,
-		    sql_real_escape_string($id_user),
-		    sql_real_escape_string($id_project)));
-}
-
 function	get_member_out_project($id_project, $last)
 {
   $res = sql_query(sprintf(SQL_GET_MEMBER_OUT_PROJECT,
