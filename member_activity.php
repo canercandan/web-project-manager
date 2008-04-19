@@ -27,6 +27,7 @@ get_full_years();
 get_full_days();
 get_full_months();
 printf(MEMBER_ACTIVITY_BEGIN);
+do_we_show_work($_SESSION['ACTIVITY_ID']);
 printf(MEMBER_BTN_UP, BTN_UP);
 printf(MEMBER_BTN_DOWN, BTN_DOWN);
 printf(MEMBER_BTN_UPDATE, BTN_UPDATE);

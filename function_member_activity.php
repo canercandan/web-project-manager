@@ -12,6 +12,12 @@ function	put_to_member_activity($id_act, $id_user)
 		    sql_real_escape_string($id_user)));
 }
 
+function	do_we_show_work($id_act)
+{
+	$res = sql_query(sprintf(SQL_GET_ACT_ACT, sql_real_escape_string($id_act)));
+	printf("<show_work>%d</show_work>", !sql_num_rows($res));
+}
+
 function	update_member_activity($id_act, $id_user, $work,
 				       $admin, $hour)
 {
