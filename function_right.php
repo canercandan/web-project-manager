@@ -21,8 +21,8 @@ define('SQL_GET_ACTIVITY_ADMIN', 'SELECT activity_level FROM tw_activity_member
 WHERE activity_member_activity_id=\'%d\'
 AND activity_member_usr_id=\'%d\';');
 	
-define('PROJECT_RIGHT','<projectright add_subactivity="%d" update_member_activity="%d" update_member="%d" add_activity="%d" remove_activity="%d" add_member="%d" kick_member="%d" add_member_activity="%d" kick_member_activity="%d" remove_project="%d"/>');
-define('ACTIVITY_RIGHT','<activityright update_member_activity="%d" add_subactivity="%d" remove_activity="%d" add_member_activity="%d" kick_member_activity="%d"/>');
+define('PROJECT_RIGHT','<projectright updateproject="1" updateactivity="1" add_subactivity="%d" update_member_activity="%d" update_member="%d" add_activity="%d" remove_activity="%d" add_member="%d" kick_member="%d" add_member_activity="%d" kick_member_activity="%d" remove_project="%d"/>');
+define('ACTIVITY_RIGHT','<activityright updateactivity="1" update_member_activity="%d" add_subactivity="%d" remove_activity="%d" add_member_activity="%d" kick_member_activity="%d"/>');
 
 function get_project_right($id_project, $id_usr)
 {
