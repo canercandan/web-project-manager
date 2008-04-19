@@ -139,9 +139,10 @@ function usr_level_check()
 {
   if ($_SESSION[SESSION_ID])
     {
-      $test = sql_query(sprintf(USR_SQL_SESSION_ID, sql_real_escape_string($_SESSION[SESSION_LOGIN])));
+      $test = sql_query(sprintf(USR_SQL_SESSION_ID,
+				sql_real_escape_string($_SESSION[SESSION_LOGIN])));
       $_SESSION[SESSION_LEVEL] = sql_result($test, 0, 0);
-	}
+    }
 }
 
 ?>

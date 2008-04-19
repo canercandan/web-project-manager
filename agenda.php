@@ -11,6 +11,8 @@ $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 session_name(SESS_NAME);
 session_start();
+if (!$_SESSION[SESSION_ID])
+  header("Location: connect.php");
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE,
@@ -36,8 +38,8 @@ if ($_GET[GET_VIEW] == VIEW_DAY)
    agenda_get_month();
  else if ($_GET[GET_VIEW] == VIEW_YEAR)
    agenda_get_year();
-else
-  agenda_get_month();
+ else
+   agenda_get_month();
 printf(EVENT_END);
 printf(AGENDA_END);
 printf(XML_FOOTER);
