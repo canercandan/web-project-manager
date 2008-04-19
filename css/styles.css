@@ -146,7 +146,7 @@ th.select
 	width: 15%;
 	background-color: #eee;
 	border-left: 1px solid DarkGrey;
-	border-right: 1px dashed DarkGrey;
+	border-right: 1px dashed Gray;
 }
 
 .gantt .legend
