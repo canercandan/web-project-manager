@@ -15,9 +15,11 @@
 	<li class="go">
 	  <a href="?project=1&amp;member=1">Members</a>
 	</li>
-	<li class="go">
-	  <a href="?project=1&amp;add_activity=1">Add an activity</a>
-	</li>
+	<xsl:if test="projectright/@add_activity=1">
+	  <li class="go">
+	    <a href="?project=1&amp;add_activity=1">Add an activity</a>
+	  </li>
+	</xsl:if>
 	<li class="go">
 		<a href="?project=1&amp;gantt=1">Gantt</a>
 	</li>
@@ -59,12 +61,16 @@
 	      <li class="go">
 		<a href="?activity=1&amp;member=1">Members</a>
 	      </li>
-	      <li class="go">
-		<a href="?activity=1&amp;add_activity=1">Add a sub-activity</a>
-	      </li>
+	      <xsl:if test="projectright/@add_subactivity=1 or activity_window/activityright/@add_subactivity=1">
 		<li class="go">
-		<a href="?activity=1&amp;delete_activity=1">Remove</a>
-	      </li>
+		  <a href="?activity=1&amp;add_activity=1">Add a sub-activity</a>
+		</li>
+	      </xsl:if>
+	      <xsl:if test="projectright/@remove_activity=1 or activity_window/activityright/@remove_activity=1">
+		<li class="go">
+		  <a href="?activity=1&amp;delete_activity=1">Remove</a>
+		</li>
+	      </xsl:if>
 	    </ul>
 	  </xsl:if>
 	  <xsl:apply-templates select="activity_window" />
