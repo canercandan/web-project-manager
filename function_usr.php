@@ -137,8 +137,11 @@ function session_create()
 
 function usr_level_check()
 {
-  $test = sql_query(sprintf(USR_SQL_SESSION_ID, sql_real_escape_string($_SESSION[SESSION_LOGIN])));
-  $_SESSION[SESSION_LEVEL] = sql_result($test, 0, 0);
+  if ($_SESSION[SESSION_ID])
+    {
+      $test = sql_query(sprintf(USR_SQL_SESSION_ID, sql_real_escape_string($_SESSION[SESSION_LOGIN])));
+      $_SESSION[SESSION_LEVEL] = sql_result($test, 0, 0);
+	}
 }
 
 ?>
