@@ -7,7 +7,7 @@ if (!MAIN)
 define('UNNAMED_ACTIVITY', 'Unnamed activity');
 define('UNKNOWED_ACTIVITY', 'Unknowed activity');
 
-define('ACTIVITY_WINDOW_BEGIN', '<activity_window>');
+define('ACTIVITY_WINDOW_BEGIN', '<activity_window id="%d">');
 define('ACTIVITY_WINDOW_END', '</activity_window>');
 
 
