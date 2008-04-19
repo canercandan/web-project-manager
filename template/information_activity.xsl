@@ -15,6 +15,7 @@
   </xsl:template>
 
   <xsl:template match="information_activity">
+    <xsl:apply-templates select="warning" />
     <fieldset>
       <legend>General</legend>
       <form action="?" method="post">

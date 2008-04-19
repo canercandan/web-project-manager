@@ -221,6 +221,11 @@ legend
 	color: Black;
 }
 
+.warning
+{
+	color: Orange;
+}
+
 .clear
 {
 	clear: both;

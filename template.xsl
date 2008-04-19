@@ -18,6 +18,7 @@
   <xsl:import href="./template/member_activity.xsl" />
   <xsl:import href="./template/error.xsl" />
   <xsl:import href="./template/mesg.xsl" />
+  <xsl:import href="./template/warning.xsl" />
   <xsl:import href="./template/project.xsl" />
   <xsl:import href="./template/project_window.xsl" />
   <xsl:import href="./template/add_project.xsl" />
