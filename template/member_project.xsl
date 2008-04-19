@@ -20,7 +20,9 @@
   <xsl:template match="member_project/member_list_project">
     <thead>
       <tr>
-	<th class="little" />
+	<xsl:if test="../../projectright/@update_member=1">
+	  <th class="little" />
+	</xsl:if>
 	<th>Username</th>
 	<th>Last Name</th>
 	<th>First name</th>
@@ -48,8 +50,8 @@
 
   <xsl:template match="member_project/member_list_project/member">
     <tr>
-      <td>
-	<xsl:if test="../../../projectright/@update_member=1">
+      <xsl:if test="../../../projectright/@update_member=1">
+	<td>
 	  <input type="checkbox"
 		 name="{../checkbox/@name}[]"
 		 value="{key/@unique}" />
@@ -74,30 +76,39 @@
 	  <input type="hidden"
 		 name="{key/@name}[{key/@unique}][{key/@id}]"
 		 value="{id}" />
-	</xsl:if>
-      </td>
+	</td>
+      </xsl:if>
       <td><xsl:value-of select="login" /></td>
       <td><xsl:value-of select="name" /></td>
       <td><xsl:value-of select="fname" /></td>
       <td><xsl:value-of select="title" /></td>
       <td>
 	<xsl:variable name="id" select="role" />
-	<select name="{role/@post}[{key/@unique}]">
-	  <xsl:for-each select="../role_list/role">
-	    <xsl:choose>
-	      <xsl:when test="@id=$id">
-		<option value="{@id}" selected="selected">
-		  <xsl:value-of select="@name" />
-		</option>
-	      </xsl:when>
-	      <xsl:otherwise>
-		<option value="{@id}">
-		  <xsl:value-of select="@name" />
-		</option>
-	      </xsl:otherwise>
-	    </xsl:choose>
-	  </xsl:for-each>
-	</select>
+	<xsl:choose>
+	  <xsl:when test="../../../projectright/@update_member=1">
+	    <select name="{role/@post}[{key/@unique}]">
+	      <xsl:for-each select="../role_list/role">
+		<xsl:choose>
+		  <xsl:when test="@id=$id">
+		    <option value="{@id}" selected="selected">
+		      <xsl:value-of select="@name" />
+		    </option>
+		  </xsl:when>
+		  <xsl:otherwise>
+		    <option value="{@id}">
+		      <xsl:value-of select="@name" />
+		    </option>
+		  </xsl:otherwise>
+		</xsl:choose>
+	      </xsl:for-each>
+	    </select>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:for-each select="../role_list/role[@id=$id]">
+	      <xsl:value-of select="@name" />
+	    </xsl:for-each>
+	  </xsl:otherwise>
+	</xsl:choose>
       </td>
     </tr>
   </xsl:template>
