@@ -17,7 +17,7 @@ function check_user($id_activity, $aend, $astart)
 		while ($tab = sql_fetch_array($res))
 		{
 			$tabdate = null;
-			$res2 = sql_query(sprintf(SQL_GET_WORKER, sql_real_escape_string($id_activity), sql_real_escape_string($tab[0])));
+			$res2 = sql_query(sprintf(SQL_CHECK_WORK_ACTIVITY, sql_real_escape_string($id_activity), sql_real_escape_string($tab[0])));
 			if (sql_num_rows($res2))
 				while ($tab2 = sql_fetch_array($res2))
 				{
@@ -33,7 +33,7 @@ function check_user($id_activity, $aend, $astart)
 							|| ($start['date'] < $aend['date'] && $aend['date'] < $end['date'])	
 							|| ($start['date'] <= $astart['date'] && $aend['date'] <= $end['date'])	
 							|| ($astart['date'] <= $start['date'] && $end['date'] <= $aend['date']))	
-							printf("<warning>Be carefull: %s %s work in the same time on this activity and on the activity named %s</warning>", $tab[1], $tab[2], $tab2[1]);	
+							printf("<warning>Be carefull: %s %s work, in the same time, on this activity and on the activity named %s.</warning>", $tab[1], $tab[2], $tab2[1]);	
 					}
 				}
 		}
