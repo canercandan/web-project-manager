@@ -17,7 +17,7 @@
     </tbody>
   </xsl:template>
 
-  <xsl:template match="member_project/member_list_project|member_project/member_histo_list_project">
+  <xsl:template match="member_project/member_list_project">
     <thead>
       <tr>
 	<th class="little" />
@@ -46,33 +46,35 @@
     </tr>
   </xsl:template>
 
-  <xsl:template match="member_project/member_list_project/member|member_project/member_histo_list_project/member">
+  <xsl:template match="member_project/member_list_project/member">
     <tr>
       <td>
-	<input type="checkbox"
-	       name="{../checkbox/@name}[]"
-	       value="{key/@unique}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@day_start}]"
-	       value="{date_start/@day}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@month_start}]"
-	       value="{date_start/@month}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@year_start}]"
-	       value="{date_start/@year}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@day_end}]"
-	       value="{date_end/@day}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@month_end}]"
-		   value="{date_end/@month}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@year_end}]"
-	       value="{date_end/@year}" />
-	<input type="hidden"
-	       name="{key/@name}[{key/@unique}][{key/@id}]"
-	       value="{id}" />
+	<xsl:if test="../../../projectright/@update_member=1">
+	  <input type="checkbox"
+		 name="{../checkbox/@name}[]"
+		 value="{key/@unique}" />
+	  <input type="hidden"
+		 name="{key/@name}[{key/@unique}][{key/@day_start}]"
+		 value="{date_start/@day}" />
+	  <input type="hidden"
+		 name="{key/@name}[{key/@unique}][{key/@month_start}]"
+		 value="{date_start/@month}" />
+	  <input type="hidden"
+		 name="{key/@name}[{key/@unique}][{key/@year_start}]"
+		 value="{date_start/@year}" />
+	  <input type="hidden"
+		 name="{key/@name}[{key/@unique}][{key/@day_end}]"
+		 value="{date_end/@day}" />
+	  <input type="hidden"
+		 name="{key/@name}[{key/@unique}][{key/@month_end}]"
+		 value="{date_end/@month}" />
+	  <input type="hidden"
+		 name="{key/@name}[{key/@unique}][{key/@year_end}]"
+		 value="{date_end/@year}" />
+	  <input type="hidden"
+		 name="{key/@name}[{key/@unique}][{key/@id}]"
+		 value="{id}" />
+	</xsl:if>
       </td>
       <td><xsl:value-of select="login" /></td>
       <td><xsl:value-of select="name" /></td>
@@ -103,17 +105,19 @@
   <xsl:template match="member_project">
     <fieldset>
       <legend>Project's members</legend>
-      <form action="?" method="post">
-	<div class="member_list">
-	  <table class="table">
-	    <caption>Users available</caption>
-	    <xsl:apply-templates select="member_list" />
-	  </table>
-	  <div class="form big">
-	    <input type="submit" name="{btn_down/@post}" value="Add to members" />
+      <xsl:if test="../projectright/@add_member=1">
+	<form action="?" method="post">
+	  <div class="member_list">
+	    <table class="table">
+	      <caption>Users available</caption>
+	      <xsl:apply-templates select="member_list" />
+	    </table>
+	    <div class="form big">
+	      <input type="submit" name="{btn_down/@post}" value="Add to members" />
+	    </div>
 	  </div>
-	</div>
-      </form>
+	</form>
+      </xsl:if>
       <form action="?" method="post">
 	<div class="member_list">
 	  <table class="table">
@@ -121,8 +125,12 @@
 	    <xsl:apply-templates select="member_list_project" />
 	  </table>
 	  <div class="form big">
-	    <input type="submit" name="{btn_update/@post}" value="Update" />
-	    <input type="submit" name="{btn_up/@post}" value="Delete" />
+	    <xsl:if test="../projectright/@update_member=1">
+	      <input type="submit" name="{btn_update/@post}" value="Update" />
+	    </xsl:if>
+	    <xsl:if test="../projectright/@kick_member=1">
+	      <input type="submit" name="{btn_up/@post}" value="Delete" />
+	    </xsl:if>
 	  </div>
 	</div>
       </form>

@@ -21,9 +21,11 @@
 	<li class="go">
 		<a href="?project=1&amp;gantt=1">Gantt</a>
 	</li>
-	<li class="go">
-	  <a href="?project=1&amp;delete_project=1">Remove</a>
-	</li>
+	<xsl:if test="projectright/@remove_project=1">
+	  <li class="go">
+	    <a href="?project=1&amp;delete_project=1">Remove</a>
+	  </li>
+	</xsl:if>
       </ul>
     </xsl:if>
     <div class="menu blue2">

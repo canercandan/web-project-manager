@@ -54,9 +54,11 @@
   <xsl:template match="member_activity/member_list_activity/member">
     <tr>
       <td>
-	<input type="checkbox"
-	       name="{../checkbox/@name}[]"
-	       value="{key/@unique}" />
+	<xsl:if test="id=/doc/header/@id or ../../../activityright/@update_member_activity=1 or ../../../../projectright/@update_member_activity=1">
+	    <input type="checkbox"
+		   name="{../checkbox/@name}[]"
+		   value="{key/@unique}" />
+	</xsl:if>
 	<input type="hidden"
 	       name="{key/@name}[{key/@unique}][{key/@id}]"
 	       value="{id}" />
@@ -66,39 +68,81 @@
       <td><xsl:value-of select="fname" /></td>
       <td><xsl:value-of select="title" /></td>
       <td><xsl:value-of select="role" /></td>
-      <td>
-	<xsl:choose>
-	  <xsl:when test="level=1">
-	    <input type="checkbox"
-		   name="{level/@post}[{key/@unique}]"
-		   value="1"
-		   checked="checked" />
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <input type="checkbox"
-		   name="{level/@post}[{key/@unique}]"
-		   value="1" />
-	  </xsl:otherwise>
-	</xsl:choose>
-      </td>
-      <td>
-	<xsl:choose>
-	  <xsl:when test="work=1">
-	    <input type="checkbox"
-		   name="{work/@post}[{key/@unique}]"
-		   value="1"
-		   checked="checked" />
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <input type="checkbox"
-		   name="{work/@post}[{key/@unique}]"
-		   value="1" />
-	  </xsl:otherwise>
-	</xsl:choose>
-      </td>
+      <xsl:choose>
+	<xsl:when test="../../activityright/@update_member_activity=1 or ../../../../projectright/@update_member_activity=1">
+	  <td>
+	    <xsl:choose>
+	      <xsl:when test="level=1">
+		<input type="checkbox"
+		       name="{level/@post}[{key/@unique}]"
+		       value="1"
+		       checked="checked" />
+	      </xsl:when>
+	      <xsl:otherwise>
+		<input type="checkbox"
+		       name="{level/@post}[{key/@unique}]"
+		       value="1" />
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </td>
+	  <td>
+	    <xsl:choose>
+	      <xsl:when test="work=1">
+		<input type="checkbox"
+		       name="{work/@post}[{key/@unique}]"
+		       value="1"
+		       checked="checked" />
+	      </xsl:when>
+	      <xsl:otherwise>
+		<input type="checkbox"
+		       name="{work/@post}[{key/@unique}]"
+		       value="1" />
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </td>
+	</xsl:when>
+	<xsl:otherwise>
+	  <td>
+	    <xsl:choose>
+	      <xsl:when test="level=1">
+		<input type="checkbox"
+		       name="{level/@post}[{key/@unique}]"
+		       value="1"
+		       checked="checked"
+		       disabled="disabled" />
+	      </xsl:when>
+	      <xsl:otherwise>
+		<input type="checkbox"
+		       name="{level/@post}[{key/@unique}]"
+		       value="1"
+		       disabled="disabled" />
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </td>
+	  <td>
+	    <xsl:choose>
+	      <xsl:when test="work=1">
+		<input type="checkbox"
+		       name="{work/@post}[{key/@unique}]"
+		       value="1"
+		       checked="checked"
+		       disabled="disabled" />
+	      </xsl:when>
+	      <xsl:otherwise>
+		<input type="checkbox"
+		       name="{work/@post}[{key/@unique}]"
+		       value="1"
+		       disabled="disabled" />
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </td>
+	</xsl:otherwise>
+      </xsl:choose>
       <td class="little">
-	<input type="text" name="{hour/@post}[{key/@unique}]"
-	       value="{hour}" />
+	<xsl:if test="id=/doc/header/@id or ../../../activityright/@update_member_activity=1 or ../../../../projectright/@update_member_activity=1">
+	  <input type="text" name="{hour/@post}[{key/@unique}]"
+		 value="{hour}" />
+	</xsl:if>
       </td>
     </tr>
   </xsl:template>
@@ -106,7 +150,7 @@
   <xsl:template match="member_activity">
     <fieldset>
       <legend>Activity's members</legend>
-      <xsl:if test="../@add_member_activity=1">
+      <xsl:if test="../activityright/@add_member_activity=1 or ../../projectright/@add_member_activity=1">
 	<form action="?" method="post">
 	  <div class="member_list">
 	    <table class="table">
@@ -119,22 +163,22 @@
 	  </div>
 	</form>
       </xsl:if>
-      <xsl:if test="1">
-	<form action="?" method="post">
-	  <div class="member_list">
-	    <table class="table">
-	      <caption>Active or future members</caption>
-	      <xsl:apply-templates select="member_list_activity" />
-	    </table>
-	    <div class="form big">
-	      <input type="submit" name="{btn_update/@post}" value="Update" />
+      <form action="?" method="post">
+	<div class="member_list">
+	  <table class="table">
+	    <caption>Active or future members</caption>
+	    <xsl:apply-templates select="member_list_activity" />
+	  </table>
+	  <div class="form big">
+	    <!--<xsl:if test="../activityright/@update_member_activity=1 or ../../projectright/@update_member_activity=1">-->
+	    <input type="submit" name="{btn_update/@post}" value="Update" />
+	    <!--</xsl:if>-->
+	    <xsl:if test="../activityright/@kick_member_activity=1 or ../../projectright/@kick_member_activity=1">
 	      <input type="submit" name="{btn_up/@post}" value="Delete" />
-	    </div>
+	    </xsl:if>
 	  </div>
-	  <div class="member_submit">
-	  </div>
-	</form>
-      </xsl:if>
+	</div>
+      </form>
     </fieldset>
   </xsl:template>
 </xsl:stylesheet>
