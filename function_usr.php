@@ -135,4 +135,10 @@ function session_create()
   $_SESSION[SESSION_LEVEL] = $row[8];
 }
 
+function usr_level_check()
+{
+  $test = sql_query(sprintf(USR_SQL_SESSION_ID, sql_real_escape_string($_SESSION[SESSION_LOGIN])));
+  $_SESSION[SESSION_LEVEL] = sql_result($test, 0, 0);
+}
+
 ?>
