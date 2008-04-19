@@ -60,6 +60,9 @@
 	      <li class="go">
 		<a href="?activity=1&amp;add_activity=1">Add a sub-activity</a>
 	      </li>
+		<li class="go">
+		<a href="?activity=1&amp;delete_activity=1">Remove</a>
+	      </li>
 	    </ul>
 	  </xsl:if>
 	  <xsl:apply-templates select="activity_window" />

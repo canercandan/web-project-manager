@@ -17,8 +17,8 @@ define('SQL_GET_ACTIVITY_RIGHT', 'SELECT add_activity_ifmember, remove_activity_
 	AND activity_member_activity_id=\'%d\'
 	AND activity_member_usr_id=member_usr_id;');	
 
-define('PROJECT_RIGHT','<projectright add_activity="%d" remove_activity="%d" add_member="%d" kick_member="%d" add_member_activity="%d" kick_member_activity="%d" remove_project="%d"/>');
-define('ACTIVITY_RIGHT','<activityright add_activity="%d" remove_activity="%d" add_member_activity="%d" kick_member_activity="%d"/>');
+define('PROJECT_RIGHT','<projectright update_member_activity="1" add_activity="%d" remove_activity="%d" add_member="%d" kick_member="%d" add_member_activity="%d" kick_member_activity="%d" remove_project="%d"/>');
+define('ACTIVITY_RIGHT','<activityright update_member_activity="1" add_activity="%d" remove_activity="%d" add_member_activity="%d" kick_member_activity="%d"/>');
 
 function get_project_right($id_project, $id_usr)
 {
