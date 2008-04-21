@@ -49,6 +49,9 @@
 	  <xsl:if test="agenda">
 	    <xsl:apply-templates select="agenda" />
 	  </xsl:if>
+	  <xsl:if test="infoactivity">
+	    <xsl:apply-templates select="infoactivity" />
+	  </xsl:if>
 	</div>
       </xsl:otherwise>
     </xsl:choose>

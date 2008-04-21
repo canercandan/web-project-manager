@@ -129,7 +129,8 @@ table.table
 	background-color: LightSteelBlue;
 }
 
-th.select
+th.select,
+th.little
 {
 	width: 5px;
 }
@@ -442,7 +443,7 @@ h3.blue2
 
 .bar
 {
-	margin-left: 50px;
+	margin: auto;
 	width: 100px;
 	height: 20px;
 	background-color: WhiteSmoke;
@@ -521,7 +522,7 @@ h3.blue2
 	width: 200px;
 }
 
-.view div
+.view div,
 {
 	float: left;
 	padding: 5px;

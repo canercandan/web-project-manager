@@ -30,43 +30,44 @@ define('INFO_POST_ANSWER', 'infoanswer');
 // SQL request
 
 define('INFO_SQL_LIST_PROJECT',
-	   'SELECT DISTINCT activity_member_usr_id
-	    FROM tw_activity_member
-		WHERE activity_member_activity_id = \'%s\';');
+       'SELECT	DISTINCT activity_member_usr_id
+	FROM	tw_activity_member
+	WHERE	activity_member_activity_id = \'%s\';');
 
 define('INFO_SQL_LIST_CHARGE',
-	   'SELECT usr_login, charge_activity_id, charge_answer
-	    FROM tw_usr, tw_charge
-		WHERE usr_id = charge_usr_id
+       'SELECT	usr_login, charge_activity_id, charge_answer
+	FROM	tw_usr, tw_charge
+	WHERE	usr_id = charge_usr_id
 		AND charge_activity_id = \'%s\';');
 
 define('INFO_SQL_LIST_ANSWER',
-	   'SELECT charge_activity_id, charge_answer
-	    FROM tw_activity, tw_charge
-		WHERE charge_activity_id = activity_id
+       'SELECT	charge_activity_id, charge_answer
+	FROM	tw_activity, tw_charge
+	WHERE	charge_activity_id = activity_id
 		AND charge_usr_id = \'%s\';');
 
 define('INFO_SQL_LIST_AVERAGE',
-	   'SELECT charge_answer
-	    FROM tw_charge
-		WHERE charge_activity_id = \'%s\';');
+       'SELECT	charge_answer
+	FROM	tw_charge
+	WHERE	charge_activity_id = \'%s\';');
 
 define('INFO_SQL_LIST_ADD',
-       'INSERT INTO tw_charge
-		VALUES(\'%s\', \'%s\', \'%s\');');
+       'INSERT INTO	tw_charge
+	VALUES (\'%s\', \'%s\', \'%s\');');
 
 define('INFO_SQL_LIST_DEL',
-	   'DELETE FROM tw_charge
-	    WHERE charge_activity_id = \'%s\'
-		AND charge_usr_id in (SELECT usr_id
-								   FROM tw_usr
-								   WHERE usr_login = \'%s\');');
+       'DELETE	FROM tw_charge
+	WHERE	charge_activity_id = \'%s\'
+		AND charge_usr_id in (	SELECT	usr_id
+					FROM	tw_usr
+					WHERE	usr_login = \'%s\');');
 
 define('INFO_SQL_LIST_UPDATE',
-	   'UPDATE tw_charge
-	    SET charge_answer = \'%s\'
-		WHERE charge_activity_id = \'%s\'
-		AND charge_usr_id in (SELECT usr_id
-								   FROM tw_usr
-								   WHERE usr_login = \'%s\');');
+       'UPDATE	tw_charge
+	SET	charge_answer = \'%s\'
+	WHERE	charge_activity_id = \'%s\'
+		AND charge_usr_id in (	SELECT	usr_id
+					FROM	tw_usr
+					WHERE	usr_login = \'%s\');');
+
 ?>

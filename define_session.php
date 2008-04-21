@@ -26,5 +26,6 @@ define('DESTROY', 'deco');
 define('SESSION_DESTROY', '<sessdestroy post="%s" />');
 
 define('PROJECT_ID', PROJECT_ID);
+define('ACTIVITY_ID', ACTIVITY_ID);
 
 ?>

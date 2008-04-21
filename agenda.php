@@ -16,7 +16,7 @@ if (!$_SESSION[SESSION_ID])
     header(LOCATION_NOTLOG);
     exit(-1);
   }
-if (!$_GET[PROJ_ID] && !$_POST[PROJ_ID])
+if (!$_GET[PROJ_ID] && !$_POST[PROJ_ID] && !$_SESSION[PROJECT_ID])
   {
     header(LOCATION_NOPROJ);
     exit(-1);
@@ -35,10 +35,10 @@ if ($_POST[PROJ_ID])
     exit(0);
   }
 if (!$_GET[MINUTE_NAME] && !$_GET[HOUR_NAME] && !$_GET[DAY_NAME]
-    && !$_GET[MONTH_NAME] && !$_GET[YEAR_NAME])
+    && !$_GET[MONTH_NAME] && !$_GET[YEAR_NAME] && !$_GET[PROJ_ID])
   header(sprintf(LOCATION_DATE,
 		 ADD_EVENT, ($_GET[ADD_EVENT] ? $_GET[ADD_EVENT] : 0),
-		 PROJ_ID, $_GET[PROJ_ID],
+		 PROJ_ID, $_SESSION[PROJECT_ID],
 		 MINUTE_NAME, date('i'),
 		 HOUR_NAME, date('H'),
 		 DAY_NAME, date('d'),
