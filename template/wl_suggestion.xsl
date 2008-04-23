@@ -130,7 +130,7 @@
 
   <xsl:template match="wl_suggestion">
     <fieldset>
-      <legend>Workload suggestion</legend>
+      <legend>Workload suggestions</legend>
       <div>
 	<xsl:apply-templates select="activity_suggestion" />
       </div>
