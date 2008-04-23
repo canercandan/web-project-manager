@@ -9,11 +9,13 @@
 	  <xsl:apply-templates select="activity/activity" />
 	</ul>
       </div>
-      <div class="form">
-	<label>
-	  <input type="submit" name="{btn_update/@post}" value="Update" />
-	</label>
-      </div>
+      <xsl:if test="../../activityright/@updateactivity=1 or ../../../projectright/@updateactivity=1">
+	<div class="form">
+	  <label>
+	    <input type="submit" name="{btn_update/@post}" value="Update" />
+	  </label>
+	</div>
+      </xsl:if>
     </form>
   </xsl:template>
 </xsl:stylesheet>

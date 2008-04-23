@@ -5,7 +5,8 @@
   <xsl:template match="listnotin/user">
     <tr>
       <td>
-	<input type="checkbox" name="{../../../select/@name}[{@id}]" value="{@id}" />
+	<input type="checkbox" name="{../../../select/@name}[{@id}]"
+	       value="{@id}" />
       </td>
       <td><xsl:value-of select="@login" /></td>
       <td><xsl:value-of select="@name" /></td>
@@ -16,7 +17,8 @@
   <xsl:template match="listin/user">
     <tr>
       <td>
-	<input type="checkbox" name="{../../../select/@name}[{@id}]" value="{@id}" />
+	<input type="checkbox" name="{../../../select/@name}[{@id}]"
+	       value="{@id}" />
       </td>
       <td><xsl:value-of select="@login" /></td>
       <td><xsl:value-of select="@name" /></td>
@@ -24,7 +26,8 @@
       <td class="little">
 	<xsl:choose>
 	  <xsl:when test="@editable=1">
-	    <input type="text" name="{../../../txtbox_sugg/@name}[{@id}]" value="{@suggestion}" />
+	    <input type="text" name="{../../../txtbox_sugg/@name}[{@id}]"
+		   value="{@suggestion}" />
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <input type="text" value="{@suggestion}" disabled="disabled" />
@@ -34,10 +37,12 @@
       <xsl:choose>
 	<xsl:when test="@editable=1">
 	  <td>
-	    <input type="submit" name="{../../../buttonunset/@name}[{@id}]" value="Unset" />
+	    <input type="submit" name="{../../../buttonunset/@name}[{@id}]"
+		   value="Unset" />
 	  </td>
 	  <td>
-	    <input type="submit" name="{../../../buttonupdate/@name}[{@id}]" value="Update" />
+	    <input type="submit" name="{../../../buttonupdate/@name}[{@id}]"
+		   value="Update" />
 	  </td>
 	</xsl:when>
 	<xsl:otherwise>
@@ -96,7 +101,8 @@
       </table>
       <xsl:if test="../@right=1">
 	<div class="form">
-	  <input class="bigbig" type="submit" name="{../../buttondel/@name}" value="Remove from questioned members" />
+	  <input class="bigbig" type="submit" name="{../../buttondel/@name}"
+		 value="Remove from questioned members" />
 	</div>
       </xsl:if>
       <xsl:if test="../@right=1 and result/@value!=''">
@@ -105,7 +111,10 @@
 	  <tbody>
 	    <th class="little marg">Mean</th>
 	    <td class="marg"><xsl:value-of select="result/@value" /></td>
-	    <th class="little"><input class="big" type="submit" name="{../../buttonset/@name}" value="Set as new workload" /></th>
+	    <th class="little">
+	      <input class="big" type="submit" name="{../../buttonset/@name}"
+		     value="Set as new workload" />
+	    </th>
 	  </tbody>
 	</table>
       </xsl:if>
