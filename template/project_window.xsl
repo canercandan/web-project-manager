@@ -10,7 +10,7 @@
       <h3 class="blue1">Project's menu</h3>
       <ul class="line">
 	<li class="go">
-	  <a href="?project=1&amp;information=1">Information</a>
+	  <a href="?project=1&amp;information=1">Informations</a>
 	</li>
 	<li class="go">
 	  <a href="?project=1&amp;member=1">Members</a>
@@ -59,7 +59,7 @@
 	    <h3 class="blue1">Activity's menu</h3>
 	    <ul class="line">
 	      <li class="go">
-		<a href="?activity=1&amp;information=1">Information</a>
+		<a href="?activity=1&amp;information=1">Informations</a>
 	      </li>
 	      <li class="go">
 		<a href="?activity=1&amp;member=1">Members</a>
@@ -70,7 +70,7 @@
 		</li>
 	      </xsl:if>
 	      <li class="go">
-		<a href="?activity=1&amp;wl_suggestion=1">Workload suggestion</a>
+		<a href="?activity=1&amp;wl_suggestion=1">Workload suggestions</a>
 	      </li>
 	      <xsl:if test="projectright/@remove_activity=1 or activity_window/activityright/@remove_activity=1">
 		<li class="go">
