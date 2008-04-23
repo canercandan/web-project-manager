@@ -27,11 +27,18 @@ DEFINE('WL_LIST_NOTIN_TAIL', '</listnotin>');
 
 DEFINE('WL_USER_NOTIN', '<user id="%d" name="%s" fname="%s" login="%s"/>');
 DEFINE('WL_USER_IN', '<user id="%d" name="%s" fname="%s" login="%s" suggestion="%s" editable="%d"/>');
-
+DEFINE('WL_RESULT', '<result id="result" value="%d"/>');
+DEFINE('WL_RESULT_VOID', '<result id="result" value=""/>');
 DEFINE('SQL_GET_ALL_SUG_USER', 'SELECT usr_id, profil_name, profil_fname, usr_login, wload_suggested 
 FROM tw_wload_suggestion, tw_usr, tw_profil
 WHERE profil_usr_id = usr_id
 AND wload_usr_id = usr_id
+AND wload_activity_id = \'%d\';');
+
+DEFINE('SQL_GET_SUG_RESULT', 'SELECT sum(wload_suggested)/count(wload_suggested) 
+FROM tw_wload_suggestion
+WHERE
+wload_suggested > 0
 AND wload_activity_id = \'%d\';');
 
 DEFINE('SQL_GET_NOTIN_SUG_USER', 'SELECT usr_id, profil_name, profil_fname, usr_login
@@ -104,6 +111,13 @@ function show_list_act_suggestion($id_activity, $dev_all)
 				htmlentities($tab[4] > 0 ? $tab[4] : ''), $tab[0] == $_SESSION[SESSION_ID]);
 			}
 		}
+		$res = sql_query(sprintf(SQL_GET_SUG_RESULT, sql_real_escape_string($id_activity)));
+		if (sql_result($res, 0, 0) != null)
+		{
+			printf(WL_RESULT, htmlentities(sql_result($res, 0, 0)));
+		}
+		else
+			printf(WL_RESULT_VOID);
 		printf(WL_LIST_IN_TAIL);
 	}
 	else
@@ -147,3 +161,4 @@ function	update_suggestion($id_activity, $id_user, $new_wl)
 	if ($id_user == $_SESSION[SESSION_ID])
 		sql_query(sprintf(SQL_ADD_SUGGESTION, sql_real_escape_string($new_wl), sql_real_escape_string($id_user), sql_real_escape_string($id_activity)));
 }
+
