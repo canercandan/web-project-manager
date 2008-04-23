@@ -22,6 +22,9 @@
       <xsl:when test="project_member_dategraph">
 	<xsl:apply-templates select="project_member_dategraph" />
       </xsl:when>
+      <xsl:when test="wl_suggestion">
+	<xsl:apply-templates select="wl_suggestion" />
+      </xsl:when>
     </xsl:choose>
   </xsl:template>
 </xsl:stylesheet>

@@ -38,4 +38,5 @@ info_list_answer();
 printf(INFO_ACTIVITY_END);
 printf(XML_FOOTER);
 sql_close($link);
+
 ?>

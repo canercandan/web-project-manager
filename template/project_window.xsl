@@ -69,6 +69,9 @@
 		  <a href="?activity=1&amp;add_activity=1">Add a sub-activity</a>
 		</li>
 	      </xsl:if>
+	      <li class="go">
+		<a href="?activity=1&amp;wl_suggestion=1">Workload suggestion</a>
+	      </li>
 	      <xsl:if test="projectright/@remove_activity=1 or activity_window/activityright/@remove_activity=1">
 		<li class="go">
 		  <a href="?activity=1&amp;delete_activity=1">Remove</a>

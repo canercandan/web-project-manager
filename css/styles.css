@@ -59,6 +59,16 @@ input[type='submit']
 	width: 50px;
 }
 
+input[type='submit'].big
+{
+	width: 150px;
+}
+
+input[type='submit'].bigbig
+{
+	width: 250px;
+}
+
 input[disabled='disabled'],
 textarea[disabled='disabled'],
 select[disabled='disabled']

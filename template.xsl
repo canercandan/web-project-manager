@@ -37,4 +37,5 @@
   <xsl:import href="./template/gantt.xsl" />
   <xsl:import href="./template/agenda.xsl" />
   <xsl:import href="./template/infoactivity.xsl" />
+  <xsl:import href="./template/wl_suggestion.xsl" />
 </xsl:stylesheet>
