@@ -8,6 +8,7 @@ DEFINE('BTN_ADD', 'add');
 DEFINE('BTN_UP', 'update');
 DEFINE('BTN_UNSET', 'unset');
 DEFINE('SELECT', 'userselected');
+DEFINE('SUGGESTION', 'suggestion');
 
 DEFINE('WL_SUGGESTION_HEAD','<wl_suggestion>
 <buttonset visible="" name="set_as_new_charge"/>
@@ -15,7 +16,8 @@ DEFINE('WL_SUGGESTION_HEAD','<wl_suggestion>
 <buttonupdate name="%s"/>
 <buttonunset name="%s"/>
 <select name="%s"/>
-<buttonadd name="%s"/>');
+<buttonadd name="%s"/>
+<txtbox_sugg name="%s"/>');
 
 DEFINE('WL_SUGGESTION_TAIL', '</wl_suggestion>');
 
