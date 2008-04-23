@@ -5,6 +5,7 @@ require_once('function_informations_activity.php');
 require_once('function_project.php');
 require_once('function_activity.php');
 require_once('function_delete.php');
+require_once('function_wl_suggestion.php');
 
 if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_PROJECT_NAME]) && isset($_POST[POST_PROJECT_DESCRIB])
 	  && isset($_POST[POST_PROJECT_DAY]) && isset($_POST[POST_PROJECT_MONTH]) && isset($_POST[POST_PROJECT_YEAR])
@@ -56,7 +57,7 @@ else if (isset($_POST[POST_ACTIVITY_NAME]) && isset($_POST[POST_ACTIVITY_DESCRIB
      header('Location:root.php?creation=activity');
      exit(0);
    }
-else if (isset($_POST[BTN_UPDATE]) && $_SESSION['ACTIVITY_MENU'] == INFORMATION_ACTIVITY)
+else if (isset($_POST[BTN_UPDATE]) && isset($_SESSION['ACTIVITY_MENU']) && $_SESSION['ACTIVITY_MENU'] == INFORMATION_ACTIVITY)
   {
     $res = sql_query(sprintf(SQL_GET_ACTIVITY_DEPEND,
 			     $_SESSION['ACTIVITY_ID']));
@@ -69,5 +70,26 @@ else if (isset($_POST[BTN_UPDATE]) && $_SESSION['ACTIVITY_MENU'] == INFORMATION_
 		foreach ($_POST[POST_ACTIVITY_DEPEND] as $key => $val)
 			add_dependance($_SESSION['ACTIVITY_ID'], $key);
   }
+ else if (isset($_POST[BTN_ADD]) && isset($_SESSION['ACTIVITY_MENU']) && $_SESSION['ACTIVITY_MENU'] == ACTIVITY_WL_SUGGESTION)
+  {
+	if (isset($_POST[SELECT]))
+		foreach ($_POST[SELECT] as $key => $val)
+			add_suggestion($_SESSION['ACTIVITY_ID'], $key);
+  }
+ else if (isset($_POST[BTN_DEL]) && isset($_SESSION['ACTIVITY_MENU']) && $_SESSION['ACTIVITY_MENU'] == ACTIVITY_WL_SUGGESTION)
+  {
+	if (isset($_POST[SELECT]))
+		foreach ($_POST[SELECT] as $key => $val)
+			delete_suggestion($_SESSION['ACTIVITY_ID'], $key);
 
+  }
+ else if (isset($_POST[BTN_UP]) && isset($_SESSION['ACTIVITY_MENU']) && $_SESSION['ACTIVITY_MENU'] == ACTIVITY_WL_SUGGESTION)
+  {
+	if (is_numeric($_POST[SUGGESTION][$_SESSION[SESSION_ID]]))
+		update_suggestion($_SESSION['ACTIVITY_ID'], $_SESSION[SESSION_ID], $_POST[SUGGESTION][$_SESSION[SESSION_ID]]);
+  }
+else if (isset($_POST[BTN_UNSET]) && isset($_SESSION['ACTIVITY_MENU']) && $_SESSION['ACTIVITY_MENU'] == ACTIVITY_WL_SUGGESTION)
+  {
+		unset_suggestion($_SESSION['ACTIVITY_ID'], $_SESSION[SESSION_ID]);
+  }
 ?>

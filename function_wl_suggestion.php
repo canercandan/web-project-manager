@@ -64,7 +64,7 @@ DEFINE('SQL_UNSET_SUGGESTION', 'UPDATE tw_wload_suggestion SET wload_suggested =
 DEFINE('SQL_DELETE_SUGGESTION', 'DELETE FROM tw_wload_suggestion WHERE wload_usr_id =\'%d\'
 	AND wload_activity_id=\'%d\';');
 
-DEFINE('SQL_ADD_SUGGESTION', 'INSERT INTO tw_project (wload_usr_id, wload_activity_id, tw_wload_suggestion)
+DEFINE('SQL_ADD_SUGGESTION', 'INSERT INTO tw_wload_suggestion (wload_usr_id, wload_activity_id, wload_suggested)
 VALUES (\'%d\',\'%d\', -1);');
 
 DEFINE('SQL_UPDATE_SUGGESTION', 'UPDATE tw_wload_suggestion SET wload_suggested = \'%d\'
@@ -163,6 +163,6 @@ function	add_suggestion($id_activity, $id_user)
 function	update_suggestion($id_activity, $id_user, $new_wl)
 {
 	if ($id_user == $_SESSION[SESSION_ID])
-		sql_query(sprintf(SQL_ADD_SUGGESTION, sql_real_escape_string($new_wl), sql_real_escape_string($id_user), sql_real_escape_string($id_activity)));
+		sql_query(sprintf(SQL_UPDATE_SUGGESTION, sql_real_escape_string($new_wl), sql_real_escape_string($id_user), sql_real_escape_string($id_activity)));
 }
 
