@@ -4,6 +4,7 @@ if (!MAIN)
   exit(0);
   
 DEFINE('BTN_DEL', 'delete');
+DEFINE('BTN_ADD', 'add');
 DEFINE('BTN_UP', 'update');
 DEFINE('BTN_UNSET', 'unset');
 DEFINE('SELECT', 'userselected');
@@ -13,7 +14,8 @@ DEFINE('WL_SUGGESTION_HEAD','<wl_suggestion>
 <buttondel name="%s"/>
 <buttonupdate name="%s"/>
 <buttonunset name="%s"/>
-<select name="%s"/>');
+<select name="%s"/>
+<buttonadd name="%s"/>');
 
 DEFINE('WL_SUGGESTION_TAIL', '</wl_suggestion>');
 
