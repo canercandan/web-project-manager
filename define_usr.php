@@ -101,7 +101,7 @@ define('USR_SQL_UPDATE_USR',
 */
 
 define('USR_SQL_SESSION_ID',
-	   'SELECT usr_level_id
+	   'SELECT usr_id
 	    FROM tw_usr
 		WHERE usr_login = \'%s\';');
 

@@ -38,6 +38,10 @@ if (isset($_SESSION['ACTIVITY_MENU']))
 	{
 		include('activity_member_dategraph.php');
 	}
+	if ($_SESSION['ACTIVITY_MENU'] == ACTIVITY_WL_SUGGESTION)
+	{
+		include('wl_suggestion.php');
+	}
 	
 }
 

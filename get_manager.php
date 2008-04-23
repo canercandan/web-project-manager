@@ -111,6 +111,10 @@ if (isset($_GET['project_id']))
    {
      $_SESSION['ACTIVITY_MENU'] = ADD_ACTIVITY_ACTIVITY;
    }
+ else if (isset($_GET['activity']) && isset($_GET['wl_suggestion']))
+   {
+     $_SESSION['ACTIVITY_MENU'] = ACTIVITY_WL_SUGGESTION;
+   }
  else if (isset($_GET['project_add']))
    {
      /*unset($_SESSION['ACTIVITY_NAME']);
