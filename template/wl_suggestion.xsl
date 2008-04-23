@@ -96,7 +96,7 @@
       </table>
       <xsl:if test="../@right=1">
 	<div class="form">
-	  <input class="bigbig" type="submit" name="{../buttondel/@name}" value="Remove from questioned members" />
+	  <input class="bigbig" type="submit" name="{../../buttondel/@name}" value="Remove from questioned members" />
 	</div>
       </xsl:if>
       <xsl:if test="../@right=1 and result/@value!=''">

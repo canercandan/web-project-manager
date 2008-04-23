@@ -79,6 +79,47 @@
 	      </xsl:if>
 	    </xsl:when>
 	    <xsl:otherwise>
+	      <label>
+		Project's name<br />
+		<input type="text" name="{name/@post}"
+		       value="{name}" disabled="disabled" />
+	      </label>
+	      <hr />
+	      <label class="big">
+		Description<br />
+		<textarea name="{describ/@post}" disabled="disabled">
+		  <xsl:value-of select="describ" />
+		</textarea>
+	      </label>
+	      <hr />
+	      <div class="little">
+		Start date<br />
+		<xsl:value-of select="date/@day" />
+		/
+		<xsl:value-of select="date/@month" />
+		/
+		<xsl:value-of select="date/@year" />
+	      </div>
+	      <hr />
+	      <div class="little">
+		End date<br />
+		<xsl:value-of select="dateend/@day" />
+		/
+		<xsl:value-of select="dateend/@month" />
+		/
+		<xsl:value-of select="dateend/@year" />
+	      </div>
+	      <hr />
+	      <label class="little">
+		Hour per day<br />
+		<input type="text" name="{hour_day/@post}"
+		       value="{hour_day}" disabled="disabled" />
+	      </label>
+	      <hr />
+	      <label class="little">
+		Workload<br />
+		<input type="text" value="{charge/@value}" disabled="disabled" />
+	      </label>
 	    </xsl:otherwise>
 	  </xsl:choose>
 	</div>

@@ -20,79 +20,135 @@
       <legend>General</legend>
       <form action="?" method="post">
 	<div class="form">
-	  <label>
-	    Activity's name<br />
-	    <xsl:choose>
-	      <xsl:when test="editable=1">
-		<input type="text" name="{name/@post}"
-		       value="{name}" />
-	      </xsl:when>
-	      <xsl:otherwise>
+	  <xsl:choose>
+	    <xsl:when test="../activityright/@updateactivity=1 or ../../projectright/@updateactivity=1">
+	      <label>
+		Activity's name<br />
+		<xsl:choose>
+		  <xsl:when test="editable=1">
+		    <input type="text" name="{name/@post}"
+			   value="{name}" />
+		  </xsl:when>
+		  <xsl:otherwise>
+		    <input type="text" name="{name/@post}"
+			   value="{name}" disabled="disabled" />
+		  </xsl:otherwise>
+		</xsl:choose>
+	      </label>
+	      <hr />
+	      <label class="big">
+		Description<br />
+		<xsl:choose>
+		  <xsl:when test="editable=1">
+		    <textarea name="{describ/@post}">
+		      <xsl:value-of select="describ" />
+		    </textarea>
+		  </xsl:when>
+		  <xsl:otherwise>
+		    <textarea name="{describ/@post}" disabled="disabled">
+		      <xsl:value-of select="describ" />
+		    </textarea>
+		  </xsl:otherwise>
+		</xsl:choose>
+	      </label>
+	      <hr />
+	      <label class="little">
+		Workload<br />
+		<xsl:choose>
+		  <xsl:when test="editable=0">
+		    <input type="text" name="{charge/@post}"
+			   value="{charge}" disabled="disabled" />
+		  </xsl:when>
+		  <xsl:when test="@editable=0">
+		    <input type="text" name="{charge/@post}"
+			   value="{charge}" disabled="disabled" />
+		  </xsl:when>
+		  <xsl:otherwise>
+		    <input type="text" name="{charge/@post}"
+			   value="{charge}" />
+		  </xsl:otherwise>
+		</xsl:choose>
+	      </label>
+	      <hr />
+	      <div class="little">
+		Start date<br />
+		<xsl:apply-templates select="date" />
+	      </div>
+	      <hr />
+	      <div class="little">
+		End date<br />
+		<xsl:apply-templates select="dateend" />
+	      </div>
+	      <hr />
+	      <div class="little">
+		Estimation of start date<br />
+		<xsl:apply-templates select="field_estimate_date_start" />
+	      </div>
+	      <hr />
+	      <div class="little">
+		Estimation of end date<br />
+		<xsl:apply-templates select="field_estimate_date_end" />
+	      </div>
+	      <hr />
+	      <label>
+		<xsl:if test="editable=1">
+		  <input type="submit" name="{btn_update/@post}" value="Ok" />
+		</xsl:if>
+	      </label>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <label>
+		Activity's name<br />
 		<input type="text" name="{name/@post}"
 		       value="{name}" disabled="disabled" />
-	      </xsl:otherwise>
-	    </xsl:choose>
-	  </label>
-	  <hr />
-	  <label class="big">
-	    Description<br />
-	    <xsl:choose>
-	      <xsl:when test="editable=1">
-		<textarea name="{describ/@post}">
-		  <xsl:value-of select="describ" />
-		</textarea>
-	      </xsl:when>
-	      <xsl:otherwise>
+	      </label>
+	      <hr />
+	      <label class="big">
+		Description<br />
 		<textarea name="{describ/@post}" disabled="disabled">
 		  <xsl:value-of select="describ" />
 		</textarea>
-	      </xsl:otherwise>
-	    </xsl:choose>
-	  </label>
-	  <hr />
-	  <label class="little">
-	    Workload<br />
-	    <xsl:choose>
-	      <xsl:when test="editable=0">
+	      </label>
+	      <hr />
+	      <label class="little">
+		Workload<br />
 		<input type="text" name="{charge/@post}"
 		       value="{charge}" disabled="disabled" />
-	      </xsl:when>
-	      <xsl:when test="@editable=0">
-		<input type="text" name="{charge/@post}"
-		       value="{charge}" disabled="disabled" />
-	      </xsl:when>
-	      <xsl:otherwise>
-		<input type="text" name="{charge/@post}"
-		       value="{charge}" />
-	      </xsl:otherwise>
-	    </xsl:choose>
-	  </label>
-	  <hr />
-	  <div class="little">
-	    Start date<br />
-	    <xsl:apply-templates select="date" />
-	  </div>
-	  <hr />
-	  <div class="little">
-	    End date<br />
-	    <xsl:apply-templates select="dateend" />
-	  </div>
-	  <hr />
-	  <div class="little">
-	    Estimation of start date<br />
-	    <xsl:apply-templates select="field_estimate_date_start" />
-	  </div>
-	  <hr />
-	  <div class="little">
-	    Estimation of end date<br />
-	    <xsl:apply-templates select="field_estimate_date_end" />
-	  </div>
-	  <hr />
-	  <label>
-	    <xsl:if test="editable=1">
-	      <input type="submit" name="{btn_update/@post}" value="Ok" />
-	    </xsl:if>
-	  </label>
+	      </label>
+	      <hr />
+	      <xsl:if test="date/@day!=0 and date/@month!=0 and date/@year!=0">
+		<div class="little">
+		  Start date<br />
+		  <xsl:value-of select="date/@day" />
+		  /
+		  <xsl:value-of select="date/@month" />
+		  /
+		  <xsl:value-of select="date/@year" />
+		</div>
+		<hr />
+	      </xsl:if>
+	      <xsl:if test="dateend/@day!=0 and dateend/@month!=0 and dateend/@year!=0">
+		<div class="little">
+		  End date<br />
+		  <xsl:value-of select="dateend/@day" />
+		  /
+		  <xsl:value-of select="dateend/@month" />
+		  /
+		  <xsl:value-of select="dateend/@year" />
+		</div>
+		<hr />
+	      </xsl:if>
+	      <div class="little">
+		Estimation of start date<br />
+		<xsl:apply-templates select="field_estimate_date_start" />
+	      </div>
+	      <hr />
+	      <div class="little">
+		Estimation of end date<br />
+		<xsl:apply-templates select="field_estimate_date_end" />
+	      </div>
+	    </xsl:otherwise>
+	  </xsl:choose>
 	</div>
       </form>
     </fieldset>
