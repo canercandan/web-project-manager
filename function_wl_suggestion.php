@@ -43,7 +43,7 @@ WHERE
 wload_suggested > 0
 AND wload_activity_id = \'%d\';');
 
-DEFINE('SQL_GET_NOTIN_SUG_USER', 'SELECT usr_id, profil_name, profil_fname, usr_login
+DEFINE('SQL_GET_NOTIN_SUG_USER', 'SELECT DISTINCT usr_id, profil_name, profil_fname, usr_login
 FROM tw_usr, tw_profil, tw_member
 WHERE
 member_usr_id = usr_id
