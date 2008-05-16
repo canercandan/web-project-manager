@@ -59,6 +59,7 @@ define('ADD_ACTIVITY', 1);
 define('MEMBER', 2);
 define('MEMBER_DATEGRAPH', 3);
 define('GANT', 4);
+define('PROJECT_ARCHIVE', 5);
 
 define('BTN_UPDATE','update');
 define('BTN_UPDATE_MEMBER', 'update');

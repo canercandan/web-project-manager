@@ -20,6 +20,7 @@ define('INFORMATION_ACTIVITY', 1);
 define('ADD_ACTIVITY_ACTIVITY', 2);
 define('MEMBER_DATEGRAPH_ACTIVITY', 3);
 define('ACTIVITY_WL_SUGGESTION', 4);
+define('ACTIVITY_ARCHIVE', 5);
 define('MEMBER_HISTO_LIST_ACTIVITY_BEGIN', '<member_histo_list_activity>');
 define('MEMBER_HISTO_LIST_ACTIVITY_END', '</member_histo_list_activity>');
 /*

@@ -67,6 +67,13 @@ if (isset($_GET['project_id']))
      unset($_SESSION['ACTIVITY_MENU']);
      $_SESSION['PROJECT_MENU'] = INFORMATION;
    }
+else if (isset($_GET['project']) && isset($_GET['archive']))
+   {
+     unset($_SESSION['ACTIVITY_NAME']);
+     unset($_SESSION['ACTIVITY_ID']);
+     unset($_SESSION['ACTIVITY_MENU']);
+     $_SESSION['PROJECT_MENU'] = PROJECT_ARCHIVE;
+   }
   else if (isset($_GET['project']) && isset($_GET['gantt']))
    {
      unset($_SESSION['ACTIVITY_NAME']);
@@ -111,6 +118,10 @@ if (isset($_GET['project_id']))
    {
      $_SESSION['ACTIVITY_MENU'] = ADD_ACTIVITY_ACTIVITY;
    }
+ else if (isset($_GET['activity']) && isset($_GET['archive']))
+   {
+     $_SESSION['ACTIVITY_MENU'] = ACTIVITY_ARCHIVE;
+   }
  else if (isset($_GET['activity']) && isset($_GET['wl_suggestion']))
    {
      $_SESSION['ACTIVITY_MENU'] = ACTIVITY_WL_SUGGESTION;
@@ -139,4 +150,5 @@ if (isset($_GET['project_id']))
 		delete_activity($_SESSION['ACTIVITY_ID']);	
        unset($_SESSION['ACTIVITY_ID']);
    }
+
 ?>

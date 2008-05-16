@@ -31,17 +31,21 @@ if (isset($_SESSION['ACTIVITY_MENU']))
 	{
 		include('informations_activity.php');
 	}
-	if ($_SESSION['ACTIVITY_MENU'] == ADD_ACTIVITY_ACTIVITY)
+	else if ($_SESSION['ACTIVITY_MENU'] == ADD_ACTIVITY_ACTIVITY)
 	{
 		include('add_activity.php');
 	}
-	if ($_SESSION['ACTIVITY_MENU'] == MEMBER_DATEGRAPH_ACTIVITY)
+	else if ($_SESSION['ACTIVITY_MENU'] == MEMBER_DATEGRAPH_ACTIVITY)
 	{
 		include('activity_member_dategraph.php');
 	}
-	if ($_SESSION['ACTIVITY_MENU'] == ACTIVITY_WL_SUGGESTION)
+	else if ($_SESSION['ACTIVITY_MENU'] == ACTIVITY_WL_SUGGESTION)
 	{
 		include('wl_suggestion.php');
+	}
+	else if ($_SESSION['ACTIVITY_MENU'] == ACTIVITY_ARCHIVE)
+	{
+		include('member_activity.php');
 	}
 	
 }

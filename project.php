@@ -35,19 +35,21 @@ if (isset($_SESSION['ACTIVITY_NAME']))
  else
    {
      if ((isset($_SESSION['PROJECT_MENU'])))
-       {
+      {
 	 // window at the right of the project menu = add activity to this project
 	 if ($_SESSION['PROJECT_MENU'] == ADD_ACTIVITY)
 		include('add_activity.php');
 	 if ($_SESSION['PROJECT_MENU'] == GANT) 
-	  include('archiver.php');//'gant.php');
+	  include('gant.php');
 	 else if ($_SESSION['PROJECT_MENU'] == INFORMATION)
 	   include('informations_project.php');
 	 else if ($_SESSION['PROJECT_MENU'] == MEMBER)
 	   include('member_project.php');
 	 else if ($_SESSION['PROJECT_MENU'] == MEMBER_DATEGRAPH)
 	   include('project_member_dategraph.php');
-       }
+	 else if ($_SESSION['PROJECT_MENU'] == PROJECT_ARCHIVE)
+		include('archiver.php');
+	}
 
      /*
       ** TODO info projet, ajout membre, .... = Vivien
