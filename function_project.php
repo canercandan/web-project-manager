@@ -7,6 +7,7 @@ require_once('./function_sql.php');
 require_once('define_project.php');
 require_once('function_activity.php');
 require_once('function_misc.php');
+require_once('./define_phorum.php');
 
 function print_projects_list($id_user)
 {
@@ -62,6 +63,9 @@ function	project_delete($id_usr, $id_project)
 		    sql_real_escape_string($id_project)));
   sql_query(sprintf(SQL_DELETE_PROJECT_ACTIVITY,
 		    sql_real_escape_string($id_project)));
+  sql_query(sprintf(PHORUM_DELETE_PERMISSIONS,
+		    sql_real_escape_string($id_project
+					   + PHORUM_PROJECT_ID)));
   return (1);
 }
 

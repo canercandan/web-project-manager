@@ -3,6 +3,7 @@
 require_once('./function_sql.php');
 require_once('./define_informations_project.php');
 require_once('./function_misc.php');
+require_once('./define_phorum.php');
 
 if (!MAIN)
   exit(0);
@@ -80,17 +81,26 @@ function new_add_project($id_user, $name, $describ, $day, $month, $year,
       exit(0);
     }
   else
-    sql_query(sprintf(SQL_NEW_ADD_PROJECT,
-		      sql_real_escape_string($id_user),
-		      sql_real_escape_string($name),
-		      sql_real_escape_string($describ),
-		      sql_real_escape_string($year),
-		      sql_real_escape_string($month),
-		      sql_real_escape_string($day),
-		      sql_real_escape_string($year_end),
-		      sql_real_escape_string($month_end),
-		      sql_real_escape_string($day_end),
-		      sql_real_escape_string($hour_day)));
+    {
+      sql_query(sprintf(SQL_NEW_ADD_PROJECT,
+			sql_real_escape_string($id_user),
+			sql_real_escape_string($name),
+			sql_real_escape_string($describ),
+			sql_real_escape_string($year),
+			sql_real_escape_string($month),
+			sql_real_escape_string($day),
+			sql_real_escape_string($year_end),
+			sql_real_escape_string($month_end),
+			sql_real_escape_string($day_end),
+			sql_real_escape_string($hour_day)));
+      sql_query(sprintf(PHORUM_ADD_PROJECT,
+			sql_insert_id() + PHORUM_PROJECT_ID,
+			sql_real_escape_string($name),
+			sql_real_escape_string($describ)));
+      sql_query(sprintf(PHORUM_ADD_GENERAL,
+			sql_insert_id() + PHORUM_GENERAL_ID,
+			sql_real_escape_string(sql_insert_id())));
+    }
   return (0);
 }
 

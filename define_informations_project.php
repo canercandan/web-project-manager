@@ -40,7 +40,10 @@ define('SQL_NEW_INFORMATION',
 	WHERE	f.project_id = \'%d\';');
 
 define('SQL_GET_PROJECT_CHARGE',
-'select sum(activity_charge_total) FROM tw_activity WHERE activity_parent_id = 0 and activity_project_id = \'%d\';');
+	'SELECT	SUM(activity_charge_total)
+	 FROM	tw_activity
+	 WHERE	activity_parent_id = 0
+		AND activity_project_id = \'%d\';');
 
 define('SQL_NEW_UPDATE_PROJECT',
        'UPDATE	tw_project

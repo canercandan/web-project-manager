@@ -1,6 +1,7 @@
 <?php
 
 require_once('./define_usr.php');
+require_once('./define_phorum.php');
 
 function usr_login_check()
 {
@@ -100,11 +101,18 @@ function usr_add()
     return (0);
   else
     {
-      sql_query(sprintf(USR_SQL_ADD_USR, sql_real_escape_string($_POST[USR_POST_LOGIN]), 
-			sha1($passwd), sql_real_escape_string($_POST[USR_POST_EMAIL])));
-      $user = mysql_insert_id();
+      sql_query(sprintf(USR_SQL_ADD_USR,
+			sql_real_escape_string($_POST[USR_POST_LOGIN]),
+			sha1($passwd),
+			sql_real_escape_string($_POST[USR_POST_EMAIL])));
+      $user = sql_insert_id();
       sql_query(sprintf(USR_SQL_ADD_PROFIL, $user));
-      //var_dump($passwd);
+      sql_query(sprintf(PHORUM_ADD_USER,
+			$user,
+			sql_real_escape_string($_POST[USR_POST_LOGIN]),
+			sql_real_escape_string($_POST[USR_POST_LOGIN]),
+			md5($passwd),
+			sql_real_escape_string($_POST[USR_POST_EMAIL])));
       return (1);
     }
 }
