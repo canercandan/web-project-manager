@@ -84,7 +84,7 @@ function get_activity_right($id_activity, $id_project, $id_usr)
 		}
 	}
 	$res = sql_query(sprintf(SQL_GET_ACTIVITY_RIGHT, sql_real_escape_string($id_usr), sql_real_escape_string($id_project), sql_real_escape_string($id_activity)));
-	if (sql_num_rows($res))
+	if (!sql_num_rows($res))
 	{
 		printf(ACTIVITY_RIGHT, 0, 0, 0, 0, 0, 0);
 	}

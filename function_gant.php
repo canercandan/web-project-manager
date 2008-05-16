@@ -19,10 +19,12 @@ FROM tw_project
 WHERE project_id = \'%d\';');
 
 define('SQL_GET_WORK_ACTIVITY', '
-SELECT 24 * 60 * 60 * SUM(activity_hour_work) / project_hour_per_day
-FROM tw_activity_member, tw_project 
+SELECT SUM(activity_hour_work) / (project_hour_per_day), activity_charge_total
+FROM tw_activity_member, tw_project, tw_activity
 WHERE activity_member_activity_id = \'%d\' 
-AND project_id = \'%d\';');
+AND project_id = \'%d\'
+AND activity_member_activity_id = activity_id
+GROUP BY activity_id;');
  
 define('GANTT_BEGIN', '<gantt>');
 define('GANTT_END', '</gantt>');  							
@@ -47,7 +49,7 @@ function get_activities($id_project, $id_activity, $level, $tab_result)
 	return ($tab_result);
 }
 
-function print_line($tab, $id, $work, $bg, $len, $start, $name)
+function print_line($tab, $id, $work, $bg, $len, $start, $name, $tot_work)
 {
 	if (!($tab['end'][$id]['ok'] && $tab['start'][$id]['ok']))
 		$bg += 10;
@@ -66,7 +68,8 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 	$dend = $actend  > 0 ? getdate($actend) : -1;
 	$end1 = ($actend  < 0 ? 80 : (($actend - $start) / $len) * 80 + 20);
 	$start1 = ($actstart < 0 ? 20 : (($actstart - $start) / $len) * 80 + 20);
-	$workwidth = ($work * 80) / $len;
+	if ($work)
+		$workwidth = ($work /$tot_work) * (($actend - $start) / $len) * 80;
 	if ($start1 > 20)
 		printf(TAB_ITEM, '0', '',
 			'', 
@@ -80,7 +83,7 @@ function print_line($tab, $id, $work, $bg, $len, $start, $name)
 				$save2 = ($actend < 0 ? "Unevaluable" : print_date($dend['mday'], $dend['mon'], $dend['year'])), 
 				$bg + 4,
 				0,
-				sprintf('%.0f day(s) of work', $work / (24 * 60 * 60)), 
+				sprintf('%.0f day(s) of work', $work), 
 				$actstart < 0 ? 20 : $start1,
 				$workwidth);
 	if (!$workwidth || $workwidth < $end1 - $start1)		
@@ -149,11 +152,11 @@ function show_gant($id_project)
 			if (strlen($tab_result['name'][$key]))
 			{
 				$i++;
-				print_line($tab_result, $key, 0, $i % 2, $len, $start, 0);
+				print_line($tab_result, $key, 0, $i % 2, $len, $start, 0, 0);
 				$res = sql_query(sprintf(SQL_GET_WORK_ACTIVITY, sql_real_escape_string($key), sql_real_escape_string($id_project)));
 				$tabtmp = sql_fetch_array($res);
-				print_line($tab_result, $key, $tabtmp[0], $i % 2, $len, $start, 1);
-				print_line($tab_result, $key, 0, $i % 2, $len, $start, 0);
+				print_line($tab_result, $key, $tabtmp[0], $i % 2, $len, $start, 1, $tabtmp[1]);
+				print_line($tab_result, $key, 0, $i % 2, $len, $start, 0, 0);
 			}
 		}
 		print_tab_legend($tab[6], $tab[0], $tab[1], $tab[2], 3);

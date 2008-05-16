@@ -69,27 +69,37 @@ else if (isset($_POST[BTN_UPDATE]) && isset($_SESSION['ACTIVITY_MENU']) && $_SES
 	if (isset($_POST[POST_ACTIVITY_DEPEND]))
 		foreach ($_POST[POST_ACTIVITY_DEPEND] as $key => $val)
 			add_dependance($_SESSION['ACTIVITY_ID'], $key);
+	header(sprintf('Location:root.php'));
+	exit(0);
   }
  else if (isset($_POST[BTN_ADD]) && isset($_SESSION['ACTIVITY_MENU']) && $_SESSION['ACTIVITY_MENU'] == ACTIVITY_WL_SUGGESTION)
   {
 	if (isset($_POST[SELECT]))
 		foreach ($_POST[SELECT] as $key => $val)
 			add_suggestion($_SESSION['ACTIVITY_ID'], $key);
+	header(sprintf('Location:root.php'));
+	exit(0);
   }
  else if (isset($_POST[BTN_DEL]) && isset($_SESSION['ACTIVITY_MENU']) && $_SESSION['ACTIVITY_MENU'] == ACTIVITY_WL_SUGGESTION)
   {
 	if (isset($_POST[SELECT]))
 		foreach ($_POST[SELECT] as $key => $val)
 			delete_suggestion($_SESSION['ACTIVITY_ID'], $key);
-
+	header(sprintf('Location:root.php'));
+	exit(0);
   }
  else if (isset($_POST[BTN_UP]) && isset($_SESSION['ACTIVITY_MENU']) && $_SESSION['ACTIVITY_MENU'] == ACTIVITY_WL_SUGGESTION)
   {
 	if (is_numeric($_POST[SUGGESTION][$_SESSION[SESSION_ID]]))
 		update_suggestion($_SESSION['ACTIVITY_ID'], $_SESSION[SESSION_ID], $_POST[SUGGESTION][$_SESSION[SESSION_ID]]);
+	header(sprintf('Location:root.php'));
+	exit(0);
   }
 else if (isset($_POST[BTN_UNSET]) && isset($_SESSION['ACTIVITY_MENU']) && $_SESSION['ACTIVITY_MENU'] == ACTIVITY_WL_SUGGESTION)
   {
 		unset_suggestion($_SESSION['ACTIVITY_ID'], $_SESSION[SESSION_ID]);
+	header(sprintf('Location:root.php'));
+	exit(0);
   }
+
 ?>
