@@ -7,7 +7,8 @@ require_once('define_activity.php');
 require_once('function_activity.php');
 
 printf(ACTIVITY_WINDOW_BEGIN, $_SESSION['ACTIVITY_ID']);
-get_activity_right($_SESSION['ACTIVITY_ID'], $_SESSION['PROJECT_ID'], $_SESSION[SESSION_ID]);
+unset($_SESSION['project_activity_folder']);
+get_activity_right($_SESSION['ACTIVITY_ID'], $_SESSION['PROJECT_ID'], $_SESSION[SESSION_ID], 1);
 
 if (isset($_SESSION['ACTIVITY_NAME']))
   {

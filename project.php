@@ -17,7 +17,7 @@ if (isset($_SESSION['PROJECT_NAME']))
   {
     printf(PROJECT_NAME, htmlentities($_SESSION['PROJECT_NAME']));
   }
-get_project_right($_SESSION['PROJECT_ID'], $_SESSION[SESSION_ID]);
+get_project_right($_SESSION['PROJECT_ID'], $_SESSION[SESSION_ID], 1);
 
 check_admin_for_project(isset($_SESSION['PROJECT_ID']) ? $_SESSION['PROJECT_ID'] : 0);
 printf(ACTIVITY_LIST_START);
@@ -40,7 +40,7 @@ if (isset($_SESSION['ACTIVITY_NAME']))
 	 if ($_SESSION['PROJECT_MENU'] == ADD_ACTIVITY)
 		include('add_activity.php');
 	 if ($_SESSION['PROJECT_MENU'] == GANT) 
-	  include('gant.php');
+	  include('archiver.php');//'gant.php');
 	 else if ($_SESSION['PROJECT_MENU'] == INFORMATION)
 	   include('informations_project.php');
 	 else if ($_SESSION['PROJECT_MENU'] == MEMBER)
