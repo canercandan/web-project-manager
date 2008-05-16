@@ -23,19 +23,6 @@ define('INFORMATION_PROJECT_BEGIN', '<information_project>');
 define('INFORMATION_PROJECT_END', '</information_project>');
 define('UNNAMED_PROJECT', 'Unnamed project');
 
-/*
-define('MEMBER_ELEM_PROJ', '<member><key unique="%d"/><id>%d</id><moveable>%d</moveable><name>%s</name><fname>%s</fname><title>%s</title><login>%s</login></member>');
-define('MEMBER_ELEM_PROJECT_PROJ', '<member><id>%d</id><moveable>%d</moveable><editable>%d</editable><name>%s</name>
-<fname>%s</fname>
-<title>%s</title>
-<role post="%s">%s</role>
-<login>%s</login>
-<date_start postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
-<date_end postday="%s" day="%d" postmonth="%s" month="%d" postyear="%s" year="%d"/>
-<key name="%s" unique="%d" id="%s" day_start="%s" month_start="%s" year_start= "%s" day_end="%s" month_end="%s" year_end= "%s"/>
-</member>');
-*/
-
 define('POST_KEY_DAY_START', 'key_member_proj_day_start');
 define('POST_KEY_MONTH_START', 'key_member_proj_month_start');
 define('POST_KEY_YEAR_START', 'key_member_proj_year_start');
@@ -101,93 +88,28 @@ define('SQL_CHECK_IN_PROJ',
 	WHERE	member_usr_id = \'%d\'
 		AND member_project_id = \'%d\';');
 
-/*
-define('SQL_INSERT_MEMBER',
-       'INSERT INTO tw_member
-	(member_project_id, member_usr_id, member_role_id)
-	VALUES (\'%d\', \'%d\', 2);');
-
-define('SQL_REMOVE_TOT_MEMBER', 
-'DELETE FROM tw_member
-WHERE member_usr_id = \'%d\'
-AND member_project_id = \'%d\'
-AND DATE(\'%04d-%02d-%02d\') = member_date_start
-AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
-
-define('SQL_UPDATE_PROJECT_MEMBER',
-       'UPDATE	tw_member
-	SET	member_role_id = \'%d\',
-		member_date_start = DATE(\'%04d-%02d-%02d\'),
-		member_date_end = DATE(\'%04d-%02d-%02d\')
-	WHERE	member_usr_id = \'%d\'
-		AND member_project_id = \'%d\'
-		AND DATE(\'%04d-%02d-%02d\') = member_date_start
-		AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
-
-define('SQL_MOVE_TO_OLD_PROJECT_MEMBER', 
-'
-UPDATE tw_member SET
-member_date_end = CURDATE()
-WHERE member_usr_id = \'%d\'
-AND member_project_id = \'%d\'
-AND DATE(\'%04d-%02d-%02d\') = member_date_start
-AND DATE(\'%04d-%02d-%02d\') = member_date_end;');
-*/
-
 define('SQL_GET_ROLE', 'SELECT role_id, role_name FROM tw_member_role');
 
-/*
-define('SQL_GET_MEMBER_OUT_PROJECT', 'SELECT usr_id, profil_name, profil_fname, title_name, usr_login FROM tw_usr, tw_profil, tw_title
-WHERE
-profil_title_id = title_id
-AND profil_usr_id = usr_id
-AND usr_id not in (SELECT member_usr_id FROM tw_member WHERE member_project_id = \'%d\'
-AND (member_date_end = \'0000-00-00\' OR DATEDIFF(CURDATE(), member_date_end) < 0));');
+define('SQL_GET_FIRST_ACTIVITY',
+       'SELECT	activity_id, activity_name, activity_charge_total
+	FROM	tw_activity
+	WHERE	activity_project_id = \'%d\' AND activity_parent_id = 0;');
 
-define('SQL_GET_MEMBER_PROJECT', 'SELECT profil_usr_id, profil_name, profil_fname, title_name, member_role_id, usr_login,
- day(member_date_start), month(member_date_start), year(member_date_start),
- day(member_date_end), month(member_date_end), year(member_date_end)
-FROM tw_usr, tw_profil, tw_member, tw_title
-WHERE
-profil_usr_id = member_usr_id
-AND profil_usr_id = usr_id
-AND member_project_id = \'%d\'
-AND title_id = profil_title_id
-AND (member_date_end = \'0000-00-00\' OR DATEDIFF(CURDATE(), member_date_end) < 0)
-order by usr_login;');
-
-define('SQL_GET_HISTO_MEMBER_PROJECT', 'SELECT profil_usr_id, profil_name, profil_fname, title_name, member_role_id, usr_login,
- day(member_date_start), month(member_date_start), year(member_date_start),
- day(member_date_end), month(member_date_end), year(member_date_end)
-FROM tw_usr, tw_profil, tw_member, tw_title
-WHERE
-profil_usr_id = member_usr_id
-AND profil_usr_id = usr_id
-AND member_project_id = \'%d\'
-AND title_id = profil_title_id
-AND (member_date_end != DATE(\'0000-00-00\') AND DATEDIFF(CURDATE(), member_date_end) >= 0)
-order by usr_login;');
-*/
-
-define('SQL_GET_FIRST_ACTIVITY', 'SELECT activity_id, activity_name, activity_charge_total
-	FROM tw_activity
-	WHERE 
-	activity_project_id = \'%d\'
-	AND activity_parent_id = 0;');
-
-define('SQL_INFORMATION', 'SELECT f.project_name, f.project_describ, day(f.project_date), month(f.project_date), year(f.project_date), p.profil_name, p.profil_fname, title_name
-FROM tw_project f LEFT JOIN tw_profil p ON f.project_autor_usr_id = p.profil_usr_id LEFT JOIN tw_title ON title_id = p.profil_title_id   
-WHERE
-f.project_id = \'%d\';');
+define('SQL_INFORMATION',
+       'SELECT	f.project_name, f.project_describ,
+		day(f.project_date), month(f.project_date), year(f.project_date), p.profil_name, p.profil_fname, title_name
+	FROM	tw_project f
+	LEFT JOIN tw_profil p ON f.project_autor_usr_id = p.profil_usr_id
+	LEFT JOIN tw_title ON title_id = p.profil_title_id
+	WHERE	f.project_id = \'%d\';');
 
 define('SQL_CHECK_PROJECT',
        'SELECT	project_name
 	FROM	tw_project
-	WHERE	project_id = \'%d\'
-		AND (project_autor_usr_id = \'%d\'
-		     OR project_id IN (SELECT	member_project_id
-				       FROM	tw_member
-				       WHERE	member_usr_id = \'%d\'));');
+	WHERE	project_id = \'%d\' AND (project_autor_usr_id = \'%d\'
+		OR project_id IN (SELECT	member_project_id
+				  FROM		tw_member
+				  WHERE		member_usr_id = \'%d\'));');
 
 define('SQL_SELECT_PROJECT',
        'SELECT	project_name, project_id
@@ -197,8 +119,6 @@ define('SQL_SELECT_PROJECT',
 				  FROM tw_member
 				  WHERE member_usr_id = \'%d\'));');
 
-
-
 define('SQL_CHECK_AUTOR_PROJECT',
        'SELECT	project_id
 	FROM	tw_project
@@ -207,14 +127,14 @@ define('SQL_CHECK_AUTOR_PROJECT',
 
 define('SQL_DELETE_PROJECT',
        'DELETE FROM	tw_project
-	WHERE	project_id = \'%d\';');
+	WHERE		project_id = \'%d\';');
 
 define('SQL_DELETE_PROJECT_MEMBER',
        'DELETE FROM	tw_member
-	WHERE	member_project_id = \'%d\';');
+	WHERE		member_project_id = \'%d\';');
 
 define('SQL_DELETE_PROJECT_ACTIVITY',
        'DELETE FROM	tw_activity
-	WHERE	activity_project_id = \'%d\';');
+	WHERE		activity_project_id = \'%d\';');
 
 ?>

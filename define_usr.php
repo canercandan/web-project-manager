@@ -51,43 +51,45 @@ define('USR_ERROR_LOGIN_EXIST', 'error : login already exist');
 define('USR_ERROR_EMAIL_EXIST', 'error : email already used');
 define('USR_ERROR_EMAIL_NOTSEND', 'error : can\'t send email, adress doesn\'t exist');
 
-define('USR_MESG_CREATE_OK', 'Congratulation, user created.
-							  An email will be sent with your account information');
+define('USR_MESG_CREATE_OK',
+       'Congratulation, user created.
+	An email will be sent with your account information');
+
 define('USR_MESG_CONNECT_OK', 'Welcome on techweb');
 
-define('USR_REGEX_EMAIL', '^[a-zA-Z0-9\_\-\.]+\@+[a-zA-Z0-9\_\-\.]+\.[a-zA-Z0-9]{2,4}$');
+define('USR_REGEX_EMAIL',
+       '^[a-zA-Z0-9\_\-\.]+\@+[a-zA-Z0-9\_\-\.]+\.[a-zA-Z0-9]{2,4}$');
 
 /*
 ** Define user : sql  select request
 */
 
 define('USR_SQL_SELECT_LOGIN',
-       'SELECT usr_login
-	    FROM tw_usr
-	    WHERE usr_login = \'%s\';');
+       'SELECT	usr_login
+	FROM	tw_usr
+	WHERE	usr_login = \'%s\';');
 
 define('USR_SQL_SELECT_PASSWD',
-       'SELECT usr_passwd
-	    FROM tw_usr
-	    WHERE usr_login = \'%s\';');
+       'SELECT	usr_passwd
+	FROM	tw_usr
+	WHERE	usr_login = \'%s\';');
 
 define('USR_SQL_SELECT_PROFIL',
-	   'SELECT *
-	    FROM tw_profil
-		WHERE profil_usr_id = \'%s\';');
+       'SELECT	*
+	FROM	tw_profil
+	WHERE	profil_usr_id = \'%s\';');
 
 /*
 ** Define user : sql add request
 */
 
 define('USR_SQL_ADD_USR',
-       'INSERT INTO tw_usr
-	(usr_level_id, usr_login, usr_passwd,
-	usr_email, usr_date)
+       'INSERT INTO	tw_usr
+	(usr_level_id, usr_login, usr_passwd, usr_email, usr_date)
 	VALUES(4, \'%s\', \'%s\', \'%s\', curdate());');
 
 define('USR_SQL_ADD_PROFIL',
-       'INSERT INTO tw_profil
+       'INSERT INTO	tw_profil
 	(profil_usr_id)
 	VALUES(\'%s\');');
 
@@ -101,21 +103,15 @@ define('USR_SQL_UPDATE_USR',
 */
 
 define('USR_SQL_SESSION_ID',
-	   'SELECT usr_id
-	    FROM tw_usr
-		WHERE usr_login = \'%s\';');
+       'SELECT	usr_id
+	FROM	tw_usr
+	WHERE	usr_login = \'%s\';');
 
 define('USR_SQL_SESSION',
-	   'SELECT usr_email,
-			   location_name, 
-	           title_name, 
-			   profil_name, 
-			   profil_fname, 
-			   profil_fphone, 
-			   profil_mphone, 
-			   profil_perso_adress,
-			   usr_level_id
-		FROM tw_profil p
+       'SELECT	usr_email, location_name, title_name, profil_name,
+		profil_fname, profil_fphone, profil_mphone,
+		profil_perso_adress, usr_level_id
+	FROM	tw_profil p
 		LEFT JOIN tw_location l ON p.profil_location_id = l.location_id
 		LEFT JOIN tw_title t ON p.profil_title_id = t.title_id
 		LEFT JOIN tw_usr u ON p.profil_usr_id = u.usr_id
@@ -126,7 +122,7 @@ define('USR_SQL_SESSION',
 */
 
 define('USR_SQL_EMAIL',
-	   'SELECT usr_email
-	    FROM tw_usr;');
+       'SELECT	usr_email
+	FROM	tw_usr;');
 
 ?>
