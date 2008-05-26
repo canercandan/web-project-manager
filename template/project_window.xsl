@@ -24,6 +24,9 @@
 	  <a href="?project=1&amp;gantt=1">Gantt</a>
 	</li>
 	<li class="go">
+	  <a href="?project=1&amp;archive=1">Archive</a>
+	</li>
+	<li class="go">
 	  <a href="agenda.php">Agenda</a>
 	</li>
 	<xsl:if test="projectright/@remove_project=1">
@@ -97,6 +100,9 @@
 	    </xsl:when>
 	    <xsl:when test="gantt">
 	      <xsl:apply-templates select="gantt" />
+	    </xsl:when>
+	    <xsl:when test="archive">
+	      <xsl:apply-templates select="archive" />
 	    </xsl:when>
 	  </xsl:choose>
 	</xsl:otherwise>

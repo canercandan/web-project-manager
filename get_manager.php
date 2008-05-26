@@ -142,13 +142,13 @@ else if (isset($_GET['project']) && isset($_GET['archive']))
    }
  else if (isset($_GET['project']) && isset($_GET['delete_project']))
    {
-		delete_project($_SESSION['PROJECT_ID']);	
-       unset($_SESSION['PROJECT_ID']);
+     delete_project($_SESSION['PROJECT_ID']);
+     unset($_SESSION['PROJECT_ID']);
    }
  else if (isset($_GET['activity']) && isset($_GET['delete_activity']))
    {
-		delete_activity($_SESSION['ACTIVITY_ID']);	
-       unset($_SESSION['ACTIVITY_ID']);
+     delete_activity($_SESSION['ACTIVITY_ID']);
+     unset($_SESSION['ACTIVITY_ID']);
    }
 
 ?>
