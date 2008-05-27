@@ -12,8 +12,10 @@ function create_folder($name, $parent_id, $activity_id, $project_id)
 	{
 		$res = sql_query(sprintf(SQL_CHECK_FOLDER, sql_real_escape_string($project_id), sql_real_escape_string($activity_id), sql_real_escape_string($parent_id), sql_real_escape_string($name)));
 		if (!sql_num_rows($res))
+		{
 			sql_query(sprintf(SQL_CREATE_FOLDER, sql_real_escape_string($name), sql_real_escape_string($project_id), sql_real_escape_string($activity_id), sql_real_escape_string($parent_id)));
-		return (true);
+			return (true);	
+		}
 	}
 	return (false);
 }
@@ -29,7 +31,6 @@ function create_file($tmp_pwd, $name, $parent_id, $activity_id, $project_id)
 		return (true);
 	}
 	return (false);
-	
 }
 
 

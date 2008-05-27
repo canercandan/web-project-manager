@@ -9,7 +9,7 @@ define('SQL_CREATE_FOLDER','INSERT INTO tw_archive (
 `archive_name` ,
 `project_id` ,
 `activity_id` ,
-`` ,
+`parent_archive_id` ,
 `folder`,
 archive_date
 )
