@@ -41,6 +41,11 @@
 			</a>
 		</td>
 		<td><xsl:value-of select="@date" /></td>
+		<td>
+			<a href="./root.php?delete={@id}">
+				<img src="./images/icons/book_delete.png" />
+			</a>
+		</td>
 	</tr>
   </xsl:template>
 
@@ -53,6 +58,11 @@
 			</a>
 		</td>
 		<td><xsl:value-of select="@date" /></td>
+		<td>
+			<a href="./root.php?delete={@id}">
+				<img src="./images/icons/book_delete.png" />
+			</a>
+		</td>
 	</tr>
   </xsl:template>
   
@@ -148,16 +158,20 @@
 	<table class="table">
 	  <thead>
 		<tr>
+			<th class="little"/>
 			<th>Filename</th>
 			<th>Date</th>
+			<th>Actions</th>
 		</tr>
 		</thead>
 		<tbody>
 		<xsl:if test="current_folder/@parent!=-1">
 			<tr>
+				<td/>
+				<td/>
 				<td><a href="./root.php?activity_archive={current_folder/@parent}&amp;folder=0">[ .. ]</a></td>
-			<td />
-		</tr>
+				<td />
+			</tr>
 		</xsl:if>
 		<xsl:apply-templates select="current_folder/folder" />
 		<xsl:apply-templates select="current_folder/file" />
