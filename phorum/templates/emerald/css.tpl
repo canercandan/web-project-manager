@@ -34,7 +34,7 @@ img {
 
 #phorum table.list th  {
     background-repeat: repeat-x;
-    background-image: url('{header_background_image}');
+/*    background-image: url('{header_background_image}');*/
     color: {border_font_color};
     background-color: {border_color};
     font-size: {font_small};

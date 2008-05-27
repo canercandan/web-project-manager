@@ -16,7 +16,6 @@ if ($PHORUM['DATA']['CHARSET']) {
       <link rel="stylesheet" type="text/css" href="{URL->CSS}" media="screen" />
       <link rel="stylesheet" type="text/css" href="{URL->CSS_PRINT}" media="print" />
     {/IF}
-
     {IF URL->RSS}
       <link rel="alternate" type="application/rss+xml" title="RSS-Feed" href="{URL->RSS}" />
     {/IF}

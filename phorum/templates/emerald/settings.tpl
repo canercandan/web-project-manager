@@ -51,7 +51,7 @@
 {VAR default_background_color "White"}
 {VAR alt_background_color "#edf2ed"} {! -- should compliment default_background_color -- }
 {VAR highlight_background_color "#f0f7f0"} {! -- should compliment the two above -- }
-{VAR border_color "#4d894d"}
+{VAR border_color "LightSteelBlue"}
 {VAR border_font_color "White"}
 {VAR quote_border_color "#808080"}
 {VAR pre_border_color "#C4C6A2"}

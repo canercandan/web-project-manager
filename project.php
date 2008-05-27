@@ -9,7 +9,7 @@ require_once('define_activity.php');
 require_once('function_right.php');
 //require_once('dategraph.php');
 
-printf(PROJECT_WINDOW_BEGIN);
+printf(PROJECT_WINDOW_BEGIN, $_SESSION['PROJECT_ID']);
 
 //print_tab_proj_member_date(1);
 

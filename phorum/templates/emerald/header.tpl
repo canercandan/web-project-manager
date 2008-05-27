@@ -26,6 +26,7 @@ if ($PHORUM['DATA']['CHARSET']) {
 {! Load CSS code. This code origins from css.tpl, css_print.tpl. }
 {! Additionally, modules can add their own CSS code to these, using the }
 {! "css_register" module hook. }
+
 {IF PRINTVIEW}
   <meta name="robots" content="NOINDEX,NOFOLLOW">
   <link rel="stylesheet" type="text/css" href="{URL->CSS_PRINT}" media="screen,print" />
@@ -33,7 +34,7 @@ if ($PHORUM['DATA']['CHARSET']) {
   <link rel="stylesheet" type="text/css" href="{URL->CSS}" media="screen" />
   <link rel="stylesheet" type="text/css" href="{URL->CSS_PRINT}" media="print" />
 {/IF}
-
+  <link rel="stylesheet" type="text/css" href="../css/styles.css" media="screen" />
 {! Load Javascript code. This code origins from modules that add their code }
 {! using the "javascript_register" module hook. }
 {IF URL->JAVASCRIPT}
@@ -104,6 +105,20 @@ Some Icons courtesy of:
   {! to also keep all other id=".." and class=".." properties from the }
   {! template files in your code, unless you know what you are doing by }
   {! changing them in relation to CSS and JavaScript. }
+<div id="content">
+  <div id="header">
+    <ul id="nav">
+      <li>
+	<a href="../">Back</a>
+      </li>
+      <li class="on">
+	<a href="?">Forum</a>
+      </li>
+    </ul>
+    <div class="clear" />
+  </div>
+  <div id="body">
+
   <div id="phorum">
 
   {IF NOT PRINTVIEW}
@@ -140,13 +155,14 @@ Some Icons courtesy of:
     {! This <div> holds the site logo. If you provide a different logo in }
     {! images/logo.png, then change logo_width and logo_height in the }
     {! settings.tpl file to match the size of your logo image. }
-    <div id="logo">
-      <a href="{URL->BASE}">
-        <img src="{URL->TEMPLATE}/images/logo.png"
-             width="{logo_width}" height="{logo_height}"
-             alt="Phorum" border="0" />
-      </a>
-    </div> <!-- end of div id=logo -->
+<!--     <div id="logo"> -->
+<!--       <a href="{URL->BASE}"> -->
+<!--         <img src="{URL->TEMPLATE}/images/logo.png" -->
+<!--              width="{logo_width}" height="{logo_height}" -->
+<!--              alt="Phorum" border="0" /> -->
+<!--       </a> -->
+<!--     </div> -->
+<!-- end of div id=logo -->
 
     {! This <div> holds the breadcrumb navigation code. This breadcrumb }
     {! navigation shows the user where he is on the site, relative to }

@@ -29,6 +29,9 @@
 	<li class="go">
 	  <a href="agenda.php">Agenda</a>
 	</li>
+	<li class="go">
+	  <a href="phorum/?{@id}">Forum</a>
+	</li>
 	<xsl:if test="projectright/@remove_project=1">
 	  <li class="go">
 	    <a href="?project=1&amp;delete_project=1">Remove</a>
@@ -74,6 +77,9 @@
 	      </xsl:if>
 	      <li class="go">
 		<a href="?activity=1&amp;wl_suggestion=1">Workload suggestions</a>
+	      </li>
+	      <li class="go">
+		<a href="phorum/?{activity_window/@id + 1000000}">Forum</a>
 	      </li>
 	      <xsl:if test="projectright/@remove_activity=1 or activity_window/activityright/@remove_activity=1">
 		<li class="go">
