@@ -23,9 +23,11 @@
 	<li class="go">
 	  <a href="?project=1&amp;gantt=1">Gantt</a>
 	</li>
+	<xsl:if test="projectright/@read_file=1">
 	<li class="go">
 	  <a href="?project=1&amp;archive=1">Archive</a>
 	</li>
+	</xsl:if>
 	<li class="go">
 	  <a href="agenda.php">Agenda</a>
 	</li>

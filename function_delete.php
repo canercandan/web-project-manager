@@ -18,8 +18,7 @@ function	remove_member_project($id_project, $id_usr)
 		    sql_real_escape_string($id_usr)));
   sql_query(sprintf(PHORUM_DELETE_USER_PERMISSIONS,
 		    sql_real_escape_string($id_usr),
-		    sql_real_escape_string($id_project
-					   + PHORUM_PROJECT_ID)));
+		    sql_real_escape_string($id_project + PHORUM_PROJECT_ID + PHORUM_GENERAL_ID)));
 }
 
 function	remove_member_activity($id_activity, $id_usr)
@@ -35,7 +34,7 @@ function	remove_member_activity($id_activity, $id_usr)
   sql_query(sprintf(PHORUM_DELETE_USER_PERMISSIONS,
 		    sql_real_escape_string($id_usr),
 		    sql_real_escape_string($id_activity
-					   + PHORUM_ACTIVITY_ID)));
+					   + PHORUM_ACTIVITY_ID + PHORUM_GENERAL_ID)));
 }
 
 function	delete_activity($id_activity)
@@ -54,7 +53,9 @@ function	delete_activity($id_activity)
 		    sql_real_escape_string($id_activity)));
   sql_query(sprintf(PHORUM_DELETE_PERMISSIONS,
 		    sql_real_escape_string($id_activity
-					   + PHORUM_ACTIVITY_ID)));
+					   + PHORUM_ACTIVITY_ID + PHORUM_GENERAL_ID)));
+	sql_query(sprintf(PHORUM_DELETE_FORUM,
+				sql_real_escape_string($id_activity + PHORUM_ACTIVITY_ID)));
 }
 
 function	delete_project($id_project)
@@ -70,7 +71,9 @@ function	delete_project($id_project)
 		    sql_real_escape_string($id_project)));
   sql_query(sprintf(PHORUM_DELETE_PERMISSIONS,
 		    sql_real_escape_string($id_project
-					   + PHORUM_PROJECT_ID)));
+					   + PHORUM_PROJECT_ID + PHORUM_GENERAL_ID)));
+	sql_query(sprintf(PHORUM_DELETE_FORUM,
+				sql_real_escape_string($id_project + PHORUM_PROJECT_ID)));
 }
 
 ?>

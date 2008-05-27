@@ -17,7 +17,7 @@ function	put_to_member_project($id_user, $id_project)
 		      sql_real_escape_string($id_user)));
   sql_query(sprintf(PHORUM_ADD_USER_PERMISSIONS,
 		    sql_real_escape_string($id_user),
-		    sql_real_escape_string($id_project + PHORUM_PROJECT_ID),
+		    sql_real_escape_string($id_project + PHORUM_PROJECT_ID + PHORUM_GENERAL_ID),
 		    PHORUM_PERM_READ | PHORUM_PERM_REPLY |
 		    PHORUM_PERM_EDIT | PHORUM_PERM_CREATE |
 		    PHORUM_PERM_ATTACH_FILE));

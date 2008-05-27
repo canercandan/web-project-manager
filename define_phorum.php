@@ -60,4 +60,8 @@ define('PHORUM_DELETE_PERMISSIONS',
        'DELETE FROM	phorum_user_permissions
 	WHERE		forum_id = \'%d\';');
 
+define('PHORUM_DELETE_FORUM',
+		'DELETE FROM phorum_forums
+		WHERE	forum_id = \'%d\';');
+	
 ?>

@@ -137,11 +137,11 @@
 	      <xsl:choose>
 		<xsl:when test="folder">
 			<a href="./root.php?less=1&amp;archive={@id}#activity_{@id}">
-			<img src="./images/icons/less.png" />
+			<img src="./images/icons/folder_less.png" />
 			</a>
 		</xsl:when>
 		<xsl:otherwise>
-		  <img src="./images/icons/less_not.png" />
+		  <img src="./images/icons/folder.png" />
 		</xsl:otherwise>
 	      </xsl:choose>
 	    <xsl:apply-templates select="@name" />
@@ -157,11 +157,11 @@
 	    <xsl:choose>
 		  <xsl:when test="folder">
 			<a href="./root.php?more=1&amp;archive={@id}#activity_{@id}">
-			<img src="./images/icons/more.png" />
+			<img src="./images/icons/folder_more.png" />
 			</a>
 			</xsl:when>
 	      <xsl:otherwise>
-		<img src="./images/icons/less_not.png" />
+		<img src="./images/icons/folder.png" />
 	      </xsl:otherwise>
 	    </xsl:choose>
 	    <xsl:apply-templates select="@name" />
