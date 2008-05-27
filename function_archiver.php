@@ -82,6 +82,12 @@ function show_current_folder($project_id, $activity_id, $id_usr, $id_archive, $a
 		get_activity_right($activity_id, $project_id, $id_usr, 0);
 	else
 		get_project_right($project_id, $id_usr, 0);
+	if ($_SESSION['add_file'])
+	{
+		printf("<showform value=\"1\"/>");
+	}
+	else
+		printf("<showform value=\"0\"/>");
 	if ($_SESSION['read_file'])
 	{
 		if (!$id_archive)
