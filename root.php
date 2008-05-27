@@ -13,6 +13,7 @@ session_start();
 $link = sql_connect(SQL_HOST, SQL_USER, SQL_PASSWD);
 sql_select_db(SQL_DB, $link);
 include('post_manager.php');
+include('get_manager.php');
 header(HEADER_CONTENT_TYPE);
 if ($_GET[DEBUG])
   printf(XML_HEADER, XML_NO_TEMPLATE,
@@ -22,7 +23,7 @@ else
 	 $_SESSION[SESSION_LEVEL], $_SESSION[SESSION_ID]);
 printf(SESSION_DESTROY, DESTROY);
 
-include('get_manager.php');
+
 
 check_admin_create_project();
 
