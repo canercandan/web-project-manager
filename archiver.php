@@ -6,12 +6,12 @@ if (isset($_GET['createfolder']))
 {
 	if ($_GET['createfolder'] == 1)
 		printf("<mesg>You have created a new folder</mesg>");
-	else
+	else if ($_GET['createfolder'] == -1)
 		printf("<error>Impossible to create this folder (try with another name)</error>");
-	if ($_GET['createfile'] == 1)
+	else if ($_GET['createfile'] == 1)
 		printf("<mesg>You have uploaded a file</mesg>");
-	else
-		printf("<error>Impossible to upload this file (not enough rights)</error>");
+	else if ($_GET['createfile'] == -1)
+ 		printf("<error>Impossible to upload this file (not enough rights)</error>");
 }	
 printf(ARCHIVER_START);
 show_current_folder($_SESSION['PROJECT_ID'], isset($_SESSION['project_activity_folder']) ? $_SESSION['project_activity_folder'] : 

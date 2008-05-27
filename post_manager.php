@@ -14,7 +14,7 @@ if (isset($_FILES['file']))
 			isset($_SESSION['project_activity_folder']) ? $_SESSION['project_activity_folder'] : 
 											(isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 0)
 											, $_SESSION['PROJECT_ID']);
-	header(sprintf('Location:root.php?project_id=%s&createfile=%d', $_SESSION['PROJECT_ID'], $bool ? 1 : 0));
+	header(sprintf('Location:root.php?project_id=%s&createfile=%d', $_SESSION['PROJECT_ID'], $bool ? 1 : -1));
 	exit(0);
 }
 if (isset($_POST['dir']))
@@ -23,7 +23,7 @@ if (isset($_POST['dir']))
 			isset($_SESSION['project_activity_folder']) ? $_SESSION['project_activity_folder'] : 
 											(isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 0)
 											, $_SESSION['PROJECT_ID']);
-		header(sprintf('Location:root.php?project_id=%s&createfolder=%d', $_SESSION['PROJECT_ID'], $bool ? 1 : 0));
+		header(sprintf('Location:root.php?project_id=%s&createfolder=%d', $_SESSION['PROJECT_ID'], $bool ? 1 : -1));
 		exit(0);
 	}
 if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_PROJECT_NAME]) && isset($_POST[POST_PROJECT_DESCRIB])

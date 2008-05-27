@@ -34,9 +34,9 @@
 -->
   <xsl:template match="archive/current_folder/folder">
     <tr>
+		<td><img src="./images/icons/folder.png" /></td>
 		<td>
 			<a href="./root.php?activity_archive={../@id}&amp;folder={@id}">
-			<img src="./images/icons/folder.png" />
 			<xsl:value-of select="@name" />
 			</a>
 		</td>
@@ -46,9 +46,9 @@
 
   <xsl:template match="archive/current_folder/file">
     <tr>
+		<td><img src="./images/icons/page_attach.png" /></td>
 		<td>
 			<a href="./root.php?activity_archive={../@id}&amp;file={@id}">
-			<img src="./images/icons/page_attach.png" />
 			<xsl:value-of select="@name" />
 			</a>
 		</td>
