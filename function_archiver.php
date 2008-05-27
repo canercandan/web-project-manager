@@ -3,6 +3,7 @@
 if (!MAIN)
   exit(0);
 require_once('define_archiver.php');
+require_once('function_right.php');
 
 function create_folder($name, $parent_id, $activity_id, $project_id)
 {
