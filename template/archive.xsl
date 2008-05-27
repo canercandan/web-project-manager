@@ -150,7 +150,7 @@
 		<div class="menu">
 			<h3 class="blue1">Create directory</h3>
 			<div>
-				<form action="?">
+				<form action="?" method="post">
 					<input type="text" name="dir" />
 					<input type="submit" value="Ok" />
 				</form>
@@ -160,7 +160,7 @@
 			<h3 class="blue1">Upload</h3>
 			<div class="form">
 				<br />
-				<form action="?">
+				<form action="?" method="post">
 					<input type="file" name="file" /><br />
 					<input type="submit" value="Ok" />
 				</form>
