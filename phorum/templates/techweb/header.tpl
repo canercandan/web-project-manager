@@ -46,7 +46,7 @@ if ($PHORUM['DATA']['CHARSET']) {
   <div id="header">
     <ul id="nav">
       <li>
-	<a href="../">Back</a>
+	<a href="../root.php">Back</a>
       </li>
       <li class="on">
 	<a href="?">Forum</a>
