@@ -72,7 +72,7 @@ function recursive_show_folder($project_id, $activity_id, $id_usr, $id_archive)
 		{
 			while (($tab = sql_fetch_array($res)))
 			{
-				printf(ARCHIVER_FOLDER, htmlentities($tab[1]), htmlentities($tab[0]), (isset($_SESSION['cur_folder']) && $_SESSION['cur_folder']== $tab[0]), (isset($_SESSION['dev_folder'][$tab[0]]) && $_SESSION['dev_folder'][$tab[0]]));
+				printf(ARCHIVER_FOLDER, htmlentities($tab[1]), htmlentities($tab[0]), (isset($_SESSION['cur_folder']) && $_SESSION['cur_folder']== $tab[0]), (isset($_SESSION['dev_folder'][$tab[0]]) ? $_SESSION['dev_folder'][$tab[0]] : 0));
 				recursive_show_folder($project_id, $activity_id, $id_usr, $tab[0]);
 				printf(ARCHIVER_FOLDER_END);
 			}

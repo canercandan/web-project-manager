@@ -59,11 +59,11 @@ if (isset($_GET['project_id']))
    }
   else if (isset($_GET['less']) && isset($_GET['archive']))
    {
-     $_SESSION['dev_folder'][$_GET['activity']] = 0;
+     $_SESSION['dev_folder'][$_GET['archive']] = 0;
    }
  else if (isset($_GET['more']) && isset($_GET['archive']))
    {
-     $_SESSION['dev_folder'][$_GET['activity']] = 1;
+     $_SESSION['dev_folder'][$_GET['archive']] = 1;
    }
  else if (isset($_GET['more']) && isset($_GET['work_id']))
    {
