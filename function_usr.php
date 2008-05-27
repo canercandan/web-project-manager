@@ -97,10 +97,11 @@ function usr_add()
 			sql_real_escape_string($_POST[USR_POST_LOGIN]),
 			$passwd),
 		$header);
-  if ($mail == FALSE || !$mail)
-    return (0);
-  else
-    {
+  //if ($mail == FALSE || !$mail)
+    //return (0);
+  //else
+    //{
+		var_dump($passwd);
       sql_query(sprintf(USR_SQL_ADD_USR,
 			sql_real_escape_string($_POST[USR_POST_LOGIN]),
 			sha1($passwd),
@@ -114,7 +115,7 @@ function usr_add()
 			md5($passwd),
 			sql_real_escape_string($_POST[USR_POST_EMAIL])));
       return (1);
-    }
+    //}
 }
 
 function usr_session_id()
