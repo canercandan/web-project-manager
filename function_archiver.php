@@ -24,12 +24,15 @@ function create_folder($name, $parent_id, $activity_id, $project_id)
 	if ($parent_id)
 		{
 			$res = sql_query(sprintf(SQL_GET_ACTIVITY_ARCH, $parent_id));
-			if (!sql_num_rows($res))
+			if (sql_num_rows($res))
 			{
 				$activity_id = sql_result($res, 0 , 0);
 			}
 		}
-	get_activity_right($activity_id, $project_id, $id_usr, 0);
+	if (!$activity_id)
+		get_project_right($project_id, $_SESSION[SESSION_ID], 0);
+	else
+		get_activity_right($activity_id, $project_id, $_SESSION[SESSION_ID], 0);
 	if ($_SESSION['add_file'])
 	{
 		$res = sql_query(sprintf(SQL_CHECK_FOLDER, sql_real_escape_string($project_id), sql_real_escape_string($activity_id), sql_real_escape_string($parent_id), sql_real_escape_string($name)));
@@ -46,13 +49,19 @@ function create_file($tmp_pwd, $name, $parent_id, $activity_id, $project_id)
 {
 	if ($parent_id)
 		{
+
 			$res = sql_query(sprintf(SQL_GET_ACTIVITY_ARCH, $parent_id));
-			if (!sql_num_rows($res))
+			if (sql_num_rows($res))
 			{
 				$activity_id = sql_result($res, 0 , 0);
 			}
+			var_dump($activity_id);
+						exit(0);
 		}
-	get_activity_right($activity_id, $project_id, $id_usr, 0);
+	if (!$activity_id)
+		get_project_right($project_id, $_SESSION[SESSION_ID], 0);
+	else
+		get_activity_right($activity_id, $project_id, $_SESSION[SESSION_ID], 0);
 	if ($_SESSION['add_file'])
 	{
 		sql_query(sprintf(SQL_CREATE_FILE, sql_real_escape_string($name), sql_real_escape_string($project_id), sql_real_escape_string($activity_id), sql_real_escape_string($parent_id)));
