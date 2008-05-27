@@ -83,14 +83,23 @@ function show_current_folder($project_id, $activity_id, $id_usr, $id_archive, $a
 	if ($_SESSION['read_file'])
 	{
 		if (!$id_archive)
-			$name = $act_name;
+		{
+			if ($activity_id)
+			{
+				$res = sql_query(sprintf(SQL_GET_ARCH_ACT_NAME, $activity_id));
+				$tab = sql_fetch_array($res);
+				$name = $tab[0];
+			}
+			else	
+				$name = $act_name;
+		}
 		else
 		{
 			$res = sql_query(sprintf(SQL_GET_ARCHIVE_NAME, $id_archive));
 			$tab = sql_fetch_array($res);
 			$name = $tab[0];
 		}
-		printf(ARCHIVER_CURRENT_FOLDER_START, $name , $activity_id);
+		printf(ARCHIVER_CURRENT_FOLDER_START, $name , $id_archive ? $id_archive : $activity_id);
 		$res = sql_query(sprintf(SQL_GET_IN_FOLDER, $project_id, $activity_id, $id_archive));
 		if (sql_num_rows($res))
 		{
