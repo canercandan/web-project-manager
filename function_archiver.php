@@ -8,6 +8,15 @@ require_once('function_right.php');
 
 function delete_archive($archive_id)
 {
+	$res = sql_query(sprintf(SQL_GET_ARCH_CHILD, sql_real_escape_string($archive_id)));
+	if (sql_num_rows($res))
+		{
+			while (($tab = sql_fetch_array($res)))
+			{
+				delete_archive($tab[0]);
+				@unlink(sprintf("%s/%d", ROOT_FOLDER, $tab[0]));
+			}
+		}
 	sql_query(sprintf(SQL_DELETE_ARCHIVE, sql_real_escape_string($archive_id)));
 }
 function create_folder($name, $parent_id, $activity_id, $project_id)

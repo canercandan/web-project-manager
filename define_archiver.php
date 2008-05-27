@@ -17,6 +17,8 @@ VALUES (
 NULL , \'%s\', \'%d\', \'%d\', \'%d\', 1, CURDATE()
 );');
 
+define('SQL_GET_ARCH_CHILD', 'select archive_id from tw_archive where parent_archive_id=\'%d\';');
+
 define('SQL_DELETE_ARCHIVE', 'delete from tw_archive where archive_id = \'%d\';');
 
 define('SQL_GET_ARCH_ACT_NAME', 'select activity_name from tw_activity where activity_id = \'%d\';');
