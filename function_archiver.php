@@ -48,7 +48,7 @@ function recursive_show_activity_folders($project_id, $activity_id, $act_name, $
 		get_project_right($project_id, $id_usr, 0);
 		if ($_SESSION['read_file'])
 		{
-			printf(ARCHIVER_ACTIVITY, 0, htmlentities($_SESSION['PROJECT_NAME']), 1, !isset($_SESSION['project_activity_folder']) && $_SESSION['cur_folder'] == 0);
+			printf(ARCHIVER_ACTIVITY, 0, htmlentities($_SESSION['PROJECT_NAME']), 1, 1);
 			recursive_show_folder($project_id, $activity_id, $id_usr, 0);
 		}
 	}
