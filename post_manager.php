@@ -8,13 +8,22 @@ require_once('function_delete.php');
 require_once('function_wl_suggestion.php');
 require_once('function_archiver.php');
 
-if (isset($_POST['dir']))
-	{
-		create_folder($_POST['dir'], isset($_SESSION['cur_folder']) ? $_SESSION['cur_folder'] : 0,
+if (isset($_POST['file']))
+{
+	$bool = create_file($_FILES['file']['tmp_name'], $_FILES['file']['name'], isset($_SESSION['cur_folder']) ? $_SESSION['cur_folder'] : 0,
 			isset($_SESSION['project_activity_folder']) ? $_SESSION['project_activity_folder'] : 
 											(isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 0)
 											, $_SESSION['PROJECT_ID']);
-		header(sprintf('Location:root.php?project_id=%s&createfolder=1', $_SESSION['PROJECT_ID']));
+	header(sprintf('Location:root.php?project_id=%s&createfile=%d', $_SESSION['PROJECT_ID'], $bool ? 1 : 0));
+	exit(0);
+}
+if (isset($_POST['dir']))
+	{
+		$bool = create_folder($_POST['dir'], isset($_SESSION['cur_folder']) ? $_SESSION['cur_folder'] : 0,
+			isset($_SESSION['project_activity_folder']) ? $_SESSION['project_activity_folder'] : 
+											(isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 0)
+											, $_SESSION['PROJECT_ID']);
+		header(sprintf('Location:root.php?project_id=%s&createfolder=%d', $_SESSION['PROJECT_ID'], $bool ? 1 : 0));
 		exit(0);
 	}
 if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_PROJECT_NAME]) && isset($_POST[POST_PROJECT_DESCRIB])
