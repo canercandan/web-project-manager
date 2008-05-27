@@ -50,11 +50,12 @@ function create_file($tmp_pwd, $name, $parent_id, $activity_id, $project_id)
 
 
 function recursive_show_activity_folders($project_id, $activity_id, $act_name, $id_usr)
-{		
+{	
+	
 	if ($activity_id != 0)
 		{
 			get_activity_right($activity_id, $project_id, $id_usr, 0);
-			if ($_SESSION['read_file'])
+			if (($right = $_SESSION['read_file']))
 			{
 				printf(ARCHIVER_ACTIVITY, $activity_id, htmlentities($act_name), isset($_SESSION['project_activity_folder']) && $_SESSION['project_activity_folder'] == $activity_id && $_SESSION['cur_folder'] == 0,
 				isset($_SESSION['DEVELOPPED_ACTIVITY'][$activity_id]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$activity_id] : 0);
@@ -64,7 +65,7 @@ function recursive_show_activity_folders($project_id, $activity_id, $act_name, $
 	else
 	{
 		get_project_right($project_id, $id_usr, 0);
-		if ($_SESSION['read_file'])
+		if (($right = $_SESSION['read_file']))
 		{
 			printf(ARCHIVER_ACTIVITY, 0, htmlentities($_SESSION['PROJECT_NAME']), 1, isset($_SESSION['DEVELOPPED_ACTIVITY'][$activity_id]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$activity_id] : 0);
 			recursive_show_folder($project_id, $activity_id, $id_usr, 0);
@@ -76,7 +77,8 @@ function recursive_show_activity_folders($project_id, $activity_id, $act_name, $
 			{
 				recursive_show_activity_folders($project_id, $tab[0], $tab[1], $id_usr);
 			}
-	printf(ARCHIVER_ACTIVITY_END);
+	if ($right)
+		printf(ARCHIVER_ACTIVITY_END);
 }
 
 function recursive_show_folder($project_id, $activity_id, $id_usr, $id_archive)
