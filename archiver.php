@@ -11,7 +11,7 @@ if (isset($_GET['createfolder']))
 }
 else if (isset($_GET['createfile']))
 {
-	else if ($_GET['createfile'] == 1)
+	if ($_GET['createfile'] == 1)
 		printf("<mesg>You have uploaded a file</mesg>");
 	else if ($_GET['createfile'] == -1)
  		printf("<error>Impossible to upload this file (not enough rights)</error>");
