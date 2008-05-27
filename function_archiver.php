@@ -55,8 +55,6 @@ function create_file($tmp_pwd, $name, $parent_id, $activity_id, $project_id)
 			{
 				$activity_id = sql_result($res, 0 , 0);
 			}
-			var_dump($activity_id);
-						exit(0);
 		}
 	if (!$activity_id)
 		get_project_right($project_id, $_SESSION[SESSION_ID], 0);
