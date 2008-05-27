@@ -64,6 +64,14 @@ if (isset($_GET['project_id']))
 				}
 			}
    }
+ else if (isset($_GET['delete']))
+ {
+	if (is_numeric($_GET['delete']))
+	{
+		delete_archive($_GET['delete']);
+		@unlink(sprintf('%s/%s', ROOT_FOLDER, $_GET['delete']));
+	}
+ }
  else if (isset($_GET['less']) && isset($_GET['activity']))
    {
      $_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 0;
