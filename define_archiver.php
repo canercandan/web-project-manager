@@ -49,6 +49,7 @@ define('ARCHIVER_FILE', '<file name="%s" id="%d" date="%s"/>');
 define('ARCHIVER_CURRENT_FOLDER_END', '</current_folder>');
 define('ARCHIVER_ACTIVITY', '<activity_archive id="%d" name="%s" selectionned="%d" developped="%d">');
 define('ARCHIVER_ACTIVITY_END', '</activity_archive>');
-define('ARCHIVER_FOLDER', '<folder name="%s" id="%d" selectionned="%d" developped="%d"/>');
+define('ARCHIVER_FOLDER', '<folder name="%s" id="%d" selectionned="%d" developped="%d">');
+define('ARCHIVER_FOLDER_END', '</folder>'
 define('ARCHIVER_FOLDER_EASY', '<folder name="%s" id="%d"/>');
 ?>
