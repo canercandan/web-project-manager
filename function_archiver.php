@@ -5,6 +5,11 @@ if (!MAIN)
 require_once('define_archiver.php');
 require_once('function_right.php');
 
+
+function delete_archive($archive_id)
+{
+	sql_query(sprintf(SQL_DELETE_ARCHIVE, sql_real_escape_string($archive_id)));
+}
 function create_folder($name, $parent_id, $activity_id, $project_id)
 {
 	get_activity_right($activity_id, $project_id, $id_usr, 0);
