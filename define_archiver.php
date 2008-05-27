@@ -2,12 +2,14 @@
 
 define('SQL_ARCHIVER_GET_SUB_ACT', 'Select activity_id, activity_name from tw_activity where activity_parent_id = \'%d\' and activity_project_id=\'%d\';');
 
+define('SQL_CHECK_FOLDER', 'select archive_id from tw_archive where project_id = \'%d\' and activity_id = \'%d\' and parent_archive_id = \'%d\';');
+
 define('SQL_CREATE_FOLDER','INSERT INTO tw_archive (
 `archive_id` ,
 `archive_name` ,
 `project_id` ,
 `activity_id` ,
-`parent_archive_id` ,
+`` ,
 `folder`,
 archive_date
 )
