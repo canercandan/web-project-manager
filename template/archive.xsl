@@ -165,11 +165,11 @@
 		</tr>
 		</thead>
 		<tbody>
-		<xsl:if test="current_folder/@parent!=-1">
+		<xsl:if test="current_folder/@activity!=-1">
 			<tr>
 				<td/>
 				<td/>
-				<td><a href="./root.php?activity_archive={current_folder/@parent}&amp;folder=0">[ .. ]</a></td>
+				<td><a href="./root.php?activity_archive={current_folder/@activity}&amp;folder={current_folder/@folder}">[ .. ]</a></td>
 				<td />
 			</tr>
 		</xsl:if>
