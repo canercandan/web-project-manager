@@ -15,6 +15,8 @@ VALUES (
 NULL , \'%s\', \'%d\', \'%d\', \'%d\', 1, CURDATE()
 );');
 
+define('SQL_GET_ARCHIVE_NAME', 'select archive_name from tw_archive where archive_id = \'%d\';');
+
 define('SQL_GET_FOLDER_ACT', 'select archive_id, archive_name from tw_archive where project_id=\'%d\' and activity_id=\'%d\' and folder=1 and parent_archive_id=\'%d\';');
 
 define('SQL_CREATE_FILE','INSERT INTO tw_archive (
