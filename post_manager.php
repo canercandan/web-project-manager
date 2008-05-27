@@ -6,12 +6,14 @@ require_once('function_project.php');
 require_once('function_activity.php');
 require_once('function_delete.php');
 require_once('function_wl_suggestion.php');
-require_once('function_archiver.php')
+require_once('function_archiver.php');
 
 if (isset($_POST['dir']))
 	{
-		create_folder($_POST['dir'], isset($_SESSION['cur_folder']) ? $_SESSION['cur_folder'] : 0, isset($_SESSION['project_activity_folder']) ? $_SESSION['project_activity_folder'] : 
-											(isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 0) , $_SESSION['PROJECT_ID']);
+		create_folder($_POST['dir'], isset($_SESSION['cur_folder']) ? $_SESSION['cur_folder'] : 0,
+			isset($_SESSION['project_activity_folder']) ? $_SESSION['project_activity_folder'] : 
+											(isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 0)
+											, $_SESSION['PROJECT_ID']);
 		header(sprintf('Location:root.php?project_id=%s&createfolder=1', $_SESSION['PROJECT_ID']));
 		exit(0);
 	}
