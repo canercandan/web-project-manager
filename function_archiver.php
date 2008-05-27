@@ -110,17 +110,22 @@ function show_current_folder($project_id, $activity_id, $id_usr, $id_archive, $a
 		}
 		else
 		{
-			$res = sql_query(sprintf(SQL_ARCHIVE_ACT_PARENT, $activity_id));
-			if (sql_num_rows($res))
+			if ($activity_id)
 			{
-				$tab = sql_fetch_array($res);
-				$parent = $tab[0];
+				$res = sql_query(sprintf(SQL_ARCHIVE_ACT_PARENT, $activity_id));
+				if (sql_num_rows($res))
+				{
+					$tab = sql_fetch_array($res);
+					$parent = $tab[0];
+				}
+				else
+					$parent = 0;
 			}
 			else
-				$parent = 0;
+				$parent = -1;
 		}
 		
-		printf(ARCHIVER_CURRENT_FOLDER_START, $name , $id_archive ? $id_archive : $activity_id);
+		printf(ARCHIVER_CURRENT_FOLDER_START, $name , $id_archive ? $id_archive : $activity_id, $parent);
 		$res = sql_query(sprintf(SQL_GET_IN_FOLDER, $project_id, $activity_id, $id_archive));
 		if (sql_num_rows($res))
 		{
