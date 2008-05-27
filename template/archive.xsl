@@ -21,7 +21,7 @@
   <xsl:template match="folder">
     <li>
 		<a href="./root.php?activity_archive={../@id}&amp;folder={@id}">
-      <img src="./images/icons/folder.png" />
+      <img src="./images/icons/folder.png" />-
       <xsl:apply-templates select="@name" />
 	  </a>
 	  <xsl:if test="folder">
@@ -77,16 +77,21 @@
       <xsl:choose>
 	<xsl:when test="@developped=1">
 	  <li>
-	    <a href="./root.php?less=1&amp;activity={@id}#activity_{@id}">
 	      <xsl:choose>
-		<xsl:when test="activity_archive|folder">
-		  <img src="./images/icons/less.png" />
+		<xsl:when test="activity_archive">
+			<a href="./root.php?less=1&amp;activity={@id}#activity_{@id}">
+			<img src="./images/icons/less.png" />
+			</a>
+		</xsl:when>
+		<xsl:when test="folder">
+			<a href="./root.php?less=1&amp;archive={@id}#activity_{@id}">
+			<img src="./images/icons/less.png" />
+			</a>
 		</xsl:when>
 		<xsl:otherwise>
 		  <img src="./images/icons/less_not.png" />
 		</xsl:otherwise>
 	      </xsl:choose>
-	    </a>
 	    <xsl:apply-templates select="@name" />
 	  </li>
 	  <xsl:if test="folder">
