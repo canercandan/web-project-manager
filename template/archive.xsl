@@ -3,6 +3,8 @@
 <xsl:stylesheet version="1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template match="folder/@name">
+    <a href="./root.php?activity_archive={../../@id}&amp;folder={../@id}#activity_{../@id}"
+       id="activity_{../@id}">
       <xsl:choose>
 	<xsl:when test="../@selectionned=1">
 	  <span class="on">
@@ -13,17 +15,23 @@
 	  <xsl:value-of select="." />
 	</xsl:otherwise>
       </xsl:choose>
+	  </a>
   </xsl:template>
-		
-  <xsl:template match="activity_archive/folder">
+<!--  
+  <xsl:template match="folder">
     <li>
 		<a href="./root.php?activity_archive={../@id}&amp;folder={@id}">
       <img src="./images/icons/folder.png" />
       <xsl:apply-templates select="@name" />
 	  </a>
+	  <xsl:if test="folder">
+		<ul class="chield">
+			<xsl:apply-templates select="folder" />
+		</ul>
+		</xsl:if>
     </li>
   </xsl:template>
-
+-->
   <xsl:template match="archive/current_folder/folder">
     <tr>
 		<td>
@@ -64,14 +72,14 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="activity_archive">
+  <xsl:template match="activity_archive|folder">
     <xsl:for-each select=".">
       <xsl:choose>
 	<xsl:when test="@developped=1">
 	  <li>
 	    <a href="./root.php?less=1&amp;activity={@id}#activity_{@id}">
 	      <xsl:choose>
-		<xsl:when test="activity_archive">
+		<xsl:when test="activity_archive|folder">
 		  <img src="./images/icons/less.png" />
 		</xsl:when>
 		<xsl:otherwise>
@@ -81,9 +89,13 @@
 	    </a>
 	    <xsl:apply-templates select="@name" />
 	  </li>
+	  <xsl:if test="folder">
+		<ul class="chield">
+			<xsl:apply-templates select="folder" />
+		</ul>
+		</xsl:if>
 	  <xsl:if test="activity_archive">
 	    <ul class="chield">
-			<xsl:apply-templates select="folder" />
 	      <xsl:apply-templates select="activity_archive" />
 	    </ul>
 	  </xsl:if>
@@ -96,6 +108,11 @@
 		  <img src="./images/icons/more.png" />
 		</a>
 	      </xsl:when>
+		  <xsl:when test="folder">
+			<a href="./root.php?more=1&amp;archive={@id}#activity_{@id}">
+			<img src="./images/icons/more.png" />
+			</a>
+			</xsl:when>
 	      <xsl:otherwise>
 		<img src="./images/icons/less_not.png" />
 	      </xsl:otherwise>
@@ -160,7 +177,7 @@
 			<h3 class="blue1">Upload</h3>
 			<div class="form">
 				<br />
-				<form action="?" method="post">
+				<form action="?" method="post" enctype="multipart/form-data">
 					<input type="file" name="file" /><br />
 					<input type="submit" value="Ok" />
 				</form>

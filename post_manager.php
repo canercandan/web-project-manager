@@ -8,7 +8,7 @@ require_once('function_delete.php');
 require_once('function_wl_suggestion.php');
 require_once('function_archiver.php');
 
-if (isset($_POST['file']))
+if (isset($_FILES['file']))
 {
 	$bool = create_file($_FILES['file']['tmp_name'], $_FILES['file']['name'], isset($_SESSION['cur_folder']) ? $_SESSION['cur_folder'] : 0,
 			isset($_SESSION['project_activity_folder']) ? $_SESSION['project_activity_folder'] : 
