@@ -49,6 +49,21 @@ if (isset($_GET['project_id']))
 		$_SESSION['project_activity_folder'] = $_GET['activity_archive'];
 		$_SESSION['cur_folder'] = $_GET['folder'];
    }
+ else if (isset($_GET['activity_archive']) && isset($_GET['file']))
+   {
+		if (is_numeric($_GET['file']))
+			{
+				$sql = sql_query(sprintf(SQL_GET_ARCHIVE_NAME, $_GET['file']));
+				if (sql_num_rows($sql))
+				{
+					$name = sql_result($sql, 0, 0);
+					header('Content-type: text');
+					header(sprintf('Content-Disposition: attachment; filename="%s"', $name));
+					readfile(sprintf('%s/%s', ROOT_FOLDER, $_GET['file']));
+					exit(0);
+				}
+			}
+   }
  else if (isset($_GET['less']) && isset($_GET['activity']))
    {
      $_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 0;

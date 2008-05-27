@@ -47,4 +47,6 @@ define('MENU_PROJECT', '<menu_project/>');
 
 define('SESS_NAME', 'techweb');
 
+define('ROOT_FOLDER', 'archive');
+
 ?>
