@@ -27,6 +27,8 @@ define('SQL_GET_ARCHIVE_NAME', 'select archive_name from tw_archive where archiv
 
 define('SQL_ARCHIVE_PARENT', 'select parent_archive_id, activity_id from tw_archive where archive_id = \'%d\';');
 
+define('SQL_GET_ACTIVITY_ARCH', 'select activity_id from tw_archive where archive_id = \'%d\';')
+
 define('SQL_ARCHIVE_ACT_PARENT', 'select activity_parent_id from tw_activity where activity_id = \'%d\';');
 
 define('SQL_GET_FOLDER_ACT', 'select archive_id, archive_name from tw_archive where project_id=\'%d\' and activity_id=\'%d\' and folder=1 and parent_archive_id=\'%d\';');

@@ -21,6 +21,14 @@ function delete_archive($archive_id)
 }
 function create_folder($name, $parent_id, $activity_id, $project_id)
 {
+	if ($parent_id)
+		{
+			$res = sql_query(sprintf(SQL_GET_ACTIVITY_ARCH, $parent_id));
+			if (!sql_num_rows($res))
+			{
+				$activity_id = sql_result($res, 0 , 0);
+			}
+		}
 	get_activity_right($activity_id, $project_id, $id_usr, 0);
 	if ($_SESSION['add_file'])
 	{
@@ -36,6 +44,14 @@ function create_folder($name, $parent_id, $activity_id, $project_id)
 
 function create_file($tmp_pwd, $name, $parent_id, $activity_id, $project_id)
 {
+	if ($parent_id)
+		{
+			$res = sql_query(sprintf(SQL_GET_ACTIVITY_ARCH, $parent_id));
+			if (!sql_num_rows($res))
+			{
+				$activity_id = sql_result($res, 0 , 0);
+			}
+		}
 	get_activity_right($activity_id, $project_id, $id_usr, 0);
 	if ($_SESSION['add_file'])
 	{
