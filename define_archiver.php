@@ -37,7 +37,7 @@ define('SQL_CREATE_FILE','INSERT INTO tw_archive (
 archive_date
 )
 VALUES (
-NULL , \'%s\', \'%d\', \'%d\', \'%d\', 0, CURDATE()
+NULL , \'%s\', \'%d\', \'%d\', \'%d\', 0, NOW()
 );');
 
 define('SQL_GET_IN_FOLDER', 'select archive_id, archive_name, folder, DATE_FORMAT(archive_date, \'%%a %%d %%m %%Y %%h:%%m:%%s\') from tw_archive where project_id=\'%d\' and activity_id=\'%d\' and parent_archive_id=\'%d\';');
