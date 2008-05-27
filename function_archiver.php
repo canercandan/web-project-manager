@@ -27,7 +27,7 @@ function create_file($tmp_pwd, $name, $parent_id, $activity_id, $project_id)
 	{
 		sql_query(sprintf(SQL_CREATE_FILE, sql_real_escape_string($name), sql_real_escape_string($project_id), sql_real_escape_string($activity_id), sql_real_escape_string($parent_id)));
 		$id = sql_insert_id();
-		move_uploaded_file($tmp_pwd, sprinft("%s/%d", ROOT_FOLDER, $id));
+		move_uploaded_file($tmp_pwd, sprintf("%s/%d", ROOT_FOLDER, $id));
 		return (true);
 	}
 	return (false);
