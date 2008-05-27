@@ -136,7 +136,7 @@ function show_current_folder($project_id, $activity_id, $id_usr, $id_archive, $a
 				$parent = -1;
 		}
 		
-		printf(ARCHIVER_CURRENT_FOLDER_START, $name , $id_archive ? $id_archive : $activity_id, $parent);
+		printf(ARCHIVER_CURRENT_FOLDER_START, $name , $id_archive ? 1 : 0, $id_archive ? $id_archive : $activity_id, $parent);
 		$res = sql_query(sprintf(SQL_GET_IN_FOLDER, $project_id, $activity_id, $id_archive));
 		if (sql_num_rows($res))
 		{

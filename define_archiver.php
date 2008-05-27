@@ -44,7 +44,7 @@ define('SQL_GET_IN_FOLDER', 'select archive_id, archive_name, folder, DATE_FORMA
 
 define('ARCHIVER_START', '<archive>');
 define('ARCHIVER_END', '</archive>');
-define('ARCHIVER_CURRENT_FOLDER_START', '<current_folder name="%s" id="%d" parent="%d">');
+define('ARCHIVER_CURRENT_FOLDER_START', '<current_folder name="%s" folder="%d" id="%d" parent="%d">');
 define('ARCHIVER_FILE', '<file name="%s" id="%d" date="%s"/>');
 define('ARCHIVER_CURRENT_FOLDER_END', '</current_folder>');
 define('ARCHIVER_ACTIVITY', '<activity_archive id="%d" name="%s" selectionned="%d" developped="%d">');
