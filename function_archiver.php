@@ -39,7 +39,7 @@ function recursive_show_activity_folders($project_id, $activity_id, $act_name, $
 			if ($_SESSION['read_file'])
 			{
 				printf(ARCHIVER_ACTIVITY, $activity_id, htmlentities($act_name), isset($_SESSION['project_activity_folder']) && $_SESSION['project_activity_folder'] == $activity_id && $_SESSION['cur_folder'] == 0,
-				isset($_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$tab[0]] : 0);
+				isset($_SESSION['DEVELOPPED_ACTIVITY'][$activity_id]) ? $_SESSION['DEVELOPPED_ACTIVITY'][$activity_id] : 0);
 				recursive_show_folder($project_id, $activity_id, $id_usr, 0);
 			}
 		}
@@ -91,7 +91,7 @@ function show_current_folder($project_id, $activity_id, $id_usr, $id_archive, $a
 				if ($tab[2])
 					printf(ARCHIVER_FOLDER_EASY, htmlentities($tab[1]), htmlentities($tab[0]));
 				else
-					printf(ARCHIVER_FILE, htmlentities($tab[1]), htmlentities($tab[0]));
+					printf(ARCHIVER_FILE, htmlentities($tab[1]), htmlentities($tab[0]), htmlentities($tab[3]));
 			}
 		}
 		printf(ARCHIVER_CURRENT_FOLDER_END);

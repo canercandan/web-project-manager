@@ -44,6 +44,11 @@ if (isset($_GET['project_id']))
 	 ;
        }
    }
+ else if (isset($_GET['activity_archive']) && isset($_GET['folder']))
+   {
+		$_SESSION['project_activity_folder'] = $_GET['activity_archive'];
+		$_SESSION['cur_folder'] = $_GET['folder'];
+   }
  else if (isset($_GET['less']) && isset($_GET['activity']))
    {
      $_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 0;
@@ -51,6 +56,14 @@ if (isset($_GET['project_id']))
  else if (isset($_GET['more']) && isset($_GET['activity']))
    {
      $_SESSION['DEVELOPPED_ACTIVITY'][$_GET['activity']] = 1;
+   }
+  else if (isset($_GET['less']) && isset($_GET['archive']))
+   {
+     $_SESSION['dev_folder'][$_GET['activity']] = 0;
+   }
+ else if (isset($_GET['more']) && isset($_GET['archive']))
+   {
+     $_SESSION['dev_folder'][$_GET['activity']] = 1;
    }
  else if (isset($_GET['more']) && isset($_GET['work_id']))
    {
