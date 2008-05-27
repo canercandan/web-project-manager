@@ -6,7 +6,15 @@ require_once('function_project.php');
 require_once('function_activity.php');
 require_once('function_delete.php');
 require_once('function_wl_suggestion.php');
+require_once('function_archiver.php')
 
+if (isset($_POST['dir']))
+	{
+		create_folder($_POST['dir'], isset($_SESSION['cur_folder']) ? $_SESSION['cur_folder'] : 0, isset($_SESSION['project_activity_folder']) ? $_SESSION['project_activity_folder'] : 
+											(isset($_SESSION['ACTIVITY_ID']) ? $_SESSION['ACTIVITY_ID'] : 0) , $_SESSION['PROJECT_ID']);
+		header(sprintf('Location:root.php?project_id=%s&createfolder=1', $_SESSION['PROJECT_ID']));
+		exit(0);
+	}
 if (isset($_POST[BTN_UPDATE]) && isset($_POST[POST_PROJECT_NAME]) && isset($_POST[POST_PROJECT_DESCRIB])
     && isset($_POST[POST_PROJECT_DAY]) && isset($_POST[POST_PROJECT_MONTH]) && isset($_POST[POST_PROJECT_YEAR])
     && isset($_POST[POST_PROJECT_DAY_END]) && isset($_POST[POST_PROJECT_MONTH_END]) && isset($_POST[POST_PROJECT_YEAR_END]))

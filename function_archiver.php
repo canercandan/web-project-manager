@@ -9,7 +9,7 @@ function create_folder($name, $parent_id, $activity_id, $project_id)
 	get_activity_right($activity_id, $project_id, $id_usr, 0);
 	if ($_SESSION['add_file'])
 	{
-		$res = sql_query(sprintf(SQL_CHECK_FOLDER, sql_real_escape_string($project_id), sql_real_escape_string($activity_id), sql_real_escape_string($parent_id)));
+		$res = sql_query(sprintf(SQL_CHECK_FOLDER, sql_real_escape_string($project_id), sql_real_escape_string($activity_id), sql_real_escape_string($parent_id), sql_real_escape_string($name)));
 		if (!sql_num_rows($res))
 			sql_query(sprintf(SQL_CREATE_FOLDER, sql_real_escape_string($name), sql_real_escape_string($project_id), sql_real_escape_string($activity_id), sql_real_escape_string($parent_id)));
 		return (true);
