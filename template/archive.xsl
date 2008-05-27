@@ -82,17 +82,59 @@
     </a>
   </xsl:template>
 
-  <xsl:template match="activity_archive|folder">
+  <xsl:template match="activity_archive">
     <xsl:for-each select=".">
       <xsl:choose>
 	<xsl:when test="@developped=1">
 	  <li>
 	      <xsl:choose>
-		<xsl:when test="activity_archive">
+		<xsl:when test="activity_archive|folder">
 			<a href="./root.php?less=1&amp;activity={@id}#activity_{@id}">
 			<img src="./images/icons/less.png" />
 			</a>
 		</xsl:when>
+		<xsl:otherwise>
+		  <img src="./images/icons/less_not.png" />
+		</xsl:otherwise>
+	      </xsl:choose>
+	    <xsl:apply-templates select="@name" />
+	  </li>
+	  <xsl:if test="folder">
+	    <ul class="chield">
+	      <xsl:apply-templates select="folder" />
+	    </ul>
+	  </xsl:if>
+	  <xsl:if test="activity_archive">
+	    <ul class="chield">
+	      <xsl:apply-templates select="activity_archive" />
+	    </ul>
+	  </xsl:if>
+	</xsl:when>
+	<xsl:otherwise>
+	  <li>
+	    <xsl:choose>
+	      <xsl:when test="activity_archive|folder">
+		<a href="./root.php?more=1&amp;activity={@id}#activity_{@id}">
+		  <img src="./images/icons/more.png" />
+		</a>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<img src="./images/icons/less_not.png" />
+	      </xsl:otherwise>
+	    </xsl:choose>
+	    <xsl:apply-templates select="@name" />
+	  </li>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+  </xsl:template>
+
+<xsl:template match="folder">
+    <xsl:for-each select=".">
+      <xsl:choose>
+	<xsl:when test="@developped=1">
+	  <li>
+	      <xsl:choose>
 		<xsl:when test="folder">
 			<a href="./root.php?less=1&amp;archive={@id}#activity_{@id}">
 			<img src="./images/icons/less.png" />
@@ -109,20 +151,10 @@
 			<xsl:apply-templates select="folder" />
 		</ul>
 		</xsl:if>
-	  <xsl:if test="activity_archive">
-	    <ul class="chield">
-	      <xsl:apply-templates select="activity_archive" />
-	    </ul>
-	  </xsl:if>
 	</xsl:when>
 	<xsl:otherwise>
 	  <li>
 	    <xsl:choose>
-	      <xsl:when test="activity_archive">
-		<a href="./root.php?more=1&amp;activity={@id}#activity_{@id}">
-		  <img src="./images/icons/more.png" />
-		</a>
-	      </xsl:when>
 		  <xsl:when test="folder">
 			<a href="./root.php?more=1&amp;archive={@id}#activity_{@id}">
 			<img src="./images/icons/more.png" />
@@ -138,7 +170,7 @@
       </xsl:choose>
     </xsl:for-each>
   </xsl:template>
-
+  
   <xsl:template match="project_window/archive">
     <fieldset>
       <legend>Archive</legend>

@@ -102,6 +102,7 @@ function usr_add()
   //else
     //{
 		var_dump($passwd);
+		exit(0);
       sql_query(sprintf(USR_SQL_ADD_USR,
 			sql_real_escape_string($_POST[USR_POST_LOGIN]),
 			sha1($passwd),
